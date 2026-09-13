@@ -26,6 +26,7 @@ require (
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/mattn/go-runewidth v0.0.27
 	github.com/mdlayher/netlink v1.11.2
+	github.com/metacubex/quic-go v0.61.1-0.20260727080200-2548683b76f4
 	github.com/metacubex/utls v1.8.7
 	github.com/mholt/acmez/v3 v3.1.6
 	github.com/miekg/dns v1.1.72
@@ -83,7 +84,23 @@ require (
 )
 
 require (
-	filippo.io/edwards25519 v1.2.0 // indirect
+	github.com/dunglas/httpsfv v1.0.2 // indirect
+	github.com/gaukas/godicttls v0.0.4 // indirect
+	github.com/klauspost/reedsolomon v1.12.3 // indirect
+	github.com/metacubex/blake3 v0.1.0 // indirect
+	github.com/metacubex/cpu v0.1.0 // indirect
+	github.com/metacubex/hkdf v0.1.0 // indirect
+	github.com/metacubex/hpke v0.1.0 // indirect
+	github.com/metacubex/http v0.1.7 // indirect
+	github.com/metacubex/mlkem v0.1.0 // indirect
+	github.com/metacubex/qpack v0.6.0 // indirect
+	github.com/metacubex/randv2 v0.2.0 // indirect
+	github.com/metacubex/tls v0.1.7 // indirect
+	github.com/metacubex/wazero v0.0.0-20260628025728-9ae6bdcf2a7d // indirect
+)
+
+require (
+	filippo.io/edwards25519 v1.2.0
 	filippo.io/hpke v0.4.0 // indirect
 	github.com/RyuaNerin/go-krypto v1.3.0 // indirect
 	github.com/ajg/form v1.5.1 // indirect
@@ -101,7 +118,9 @@ require (
 	github.com/dgrijalva/jwt-go/v4 v4.0.0-preview1 // indirect
 	github.com/dgryski/go-camellia v0.0.0-20191119043421-69a8a13fb23d // indirect
 	github.com/dgryski/go-metro v0.0.0-20180109044635-280f6062b5bc // indirect
+	github.com/easytier/easytier/easytier-go v0.0.0-20260910071355-3d0c9c3ca5e2
 	github.com/ebitengine/purego v0.10.0 // indirect
+	github.com/enfein/mieru/v3 v3.36.0
 	github.com/florianl/go-nfqueue/v2 v2.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
@@ -111,7 +130,9 @@ require (
 	github.com/go4org/hashtriemap v0.0.0-20251130024219-545ba229f689 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
+	github.com/gobwas/ws v1.4.0
 	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
+	github.com/golang/snappy v1.0.0
 	github.com/google/btree v1.1.3 // indirect
 	github.com/google/certificate-transparency-go v1.3.2 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
@@ -131,9 +152,15 @@ require (
 	github.com/libp2p/go-nat v1.0.1-0.20250821073202-01afc089f138 // indirect
 	github.com/libp2p/go-netroute v0.2.1 // indirect
 	github.com/mdlayher/socket v0.6.0 // indirect
+	github.com/metacubex/chacha v0.1.5
+	github.com/metacubex/connect-ip-go v0.0.0-20260727083417-67ccdb0cf771
+	github.com/metacubex/jls-tls v0.0.0-20260723084315-67adc0e2f796
+	github.com/metacubex/kcp-go v0.0.0-20260105040817-550693377604
+	github.com/metacubex/restls-client-go v0.1.9
+	github.com/metacubex/zerotier-go v0.0.0-20260813124750-13fa6f45da5f
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/philhofer/fwd v1.2.0 // indirect
-	github.com/pierrec/lz4/v4 v4.1.26 // indirect
+	github.com/pierrec/lz4/v4 v4.1.27 // indirect
 	github.com/pion/dtls/v3 v3.1.5 // indirect
 	github.com/pion/logging v0.2.4 // indirect
 	github.com/pion/transport/v4 v4.0.2 // indirect
@@ -183,6 +210,7 @@ require (
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
+	github.com/yosida95/uritemplate/v3 v3.0.2
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
 	github.com/zeebo/blake3 v0.2.4 // indirect
 	go.uber.org/multierr v1.11.0 // indirect

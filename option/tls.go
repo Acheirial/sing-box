@@ -136,7 +136,9 @@ type OutboundTLSOptions struct {
 }
 
 type OutboundTLSOptionsContainer struct {
-	TLS *OutboundTLSOptions `json:"tls,omitempty"`
+	TLS    *OutboundTLSOptions `json:"tls,omitempty"`
+	JLS    *JLSOptions         `json:"jls,omitempty"`
+	Restls *RestLSOptions      `json:"restls,omitempty"`
 }
 
 type OutboundTLSOptionsWrapper interface {
@@ -253,4 +255,15 @@ type OutboundRealityOptions struct {
 	Enabled   bool   `json:"enabled,omitempty"`
 	PublicKey string `json:"public_key,omitempty"`
 	ShortID   string `json:"short_id,omitempty"`
+}
+
+type JLSOptions struct {
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+}
+
+type RestLSOptions struct {
+	Password     string `json:"password,omitempty"`
+	VersionHint  string `json:"version_hint,omitempty"`
+	RestlsScript string `json:"restls_script,omitempty"`
 }

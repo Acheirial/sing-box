@@ -7,7 +7,9 @@ import (
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/adapter/outbound"
 	"github.com/sagernet/sing-box/common/dialer"
+	"github.com/sagernet/sing-box/common/jls"
 	"github.com/sagernet/sing-box/common/mux"
+	"github.com/sagernet/sing-box/common/restls"
 	"github.com/sagernet/sing-box/common/tls"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/log"
@@ -48,6 +50,25 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 	outboundDialer, err := dialer.New(ctx, options.DialerOptions, options.ServerIsDomain())
 	if err != nil {
 		return nil, err
+	}
+	var restlsConfig *restls.Config
+	var jlsConfig *jls.ClientConfig
+	if options.TLS != nil {
+		if options.TLS.Enabled {
+			restlsConfig, err = tls.NewRestlsConfig(options.Server, common.PtrValueOrDefault(options.TLS), options.Restls)
+			if err != nil {
+				return nil, err
+			}
+			jlsConfig, err = tls.NewJLSClientConfig(options.Server, common.PtrValueOrDefault(options.TLS), options.JLS)
+			if err != nil {
+				return nil, err
+			}
+			if restlsConfig != nil || jlsConfig != nil {
+				outboundDialer = tls.NewJLSRestlsDialer(outboundDialer, restlsConfig, jlsConfig)
+			}
+		} else if options.Restls != nil || options.JLS != nil {
+			return nil, E.New("restls/jls requires tls")
+		}
 	}
 	outbound := &Outbound{
 		Adapter:    outbound.NewAdapterWithDialerOptions(C.TypeTrojan, tag, options.Network.Build(), options.DialerOptions),

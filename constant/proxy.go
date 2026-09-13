@@ -43,6 +43,15 @@ const (
 	TypeHysteriaRealm      = "hysteria-realm"
 	TypeACME               = "acme"
 	TypeCloudflareOriginCA = "cloudflare-origin-ca"
+	TypeGost               = "gost"
+	TypeMieru              = "mieru"
+	TypeSudoku             = "sudoku"
+	TypeShadowQUIC         = "shadowquic"
+	TypeMasque             = "masque"
+	TypeTrustTunnel        = "trust-tunnel"
+	TypeTLSMirror          = "tls-mirror"
+	TypeZeroTier           = "zerotier"
+	TypeEasyTier           = "easytier"
 )
 
 const (
@@ -100,6 +109,24 @@ func ProxyDisplayName(proxyType string) string {
 		return "TUIC"
 	case TypeHysteria2:
 		return "Hysteria2"
+	case TypeGost:
+		return "Gost"
+	case TypeMieru:
+		return "Mieru"
+	case TypeSudoku:
+		return "Sudoku"
+	case TypeShadowQUIC:
+		return "ShadowQUIC"
+	case TypeMasque:
+		return "MASQUE"
+	case TypeTrustTunnel:
+		return "TrustTunnel"
+	case TypeTLSMirror:
+		return "TLS Mirror"
+	case TypeZeroTier:
+		return "ZeroTier"
+	case TypeEasyTier:
+		return "EasyTier"
 	case TypeAnyTLS:
 		return "AnyTLS"
 	case TypeOpenConnect:

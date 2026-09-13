@@ -9,11 +9,20 @@ import (
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing-box/transport/v2rayhttp"
 	"github.com/sagernet/sing-box/transport/v2rayhttpupgrade"
+	"github.com/sagernet/sing-box/transport/v2raymekya"
+	"github.com/sagernet/sing-box/transport/v2raymkcp"
 	"github.com/sagernet/sing-box/transport/v2raywebsocket"
+	"github.com/sagernet/sing-box/transport/v2rayxhttp"
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/logger"
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
+)
+
+const (
+	V2RayTransportTypeMKCP  = option.V2RayTransportTypeMKCP
+	V2RayTransportTypeMEKYA = option.V2RayTransportTypeMEKYA
+	V2RayTransportTypeXHTTP = option.V2RayTransportTypeXHTTP
 )
 
 type (
@@ -62,6 +71,12 @@ func NewClientTransport(ctx context.Context, dialer N.Dialer, serverAddr M.Socks
 		return NewQUICClient(ctx, dialer, serverAddr, options.QUICOptions, tlsConfig)
 	case C.V2RayTransportTypeHTTPUpgrade:
 		return v2rayhttpupgrade.NewClient(ctx, dialer, serverAddr, options.HTTPUpgradeOptions, tlsConfig)
+	case V2RayTransportTypeMKCP:
+		return v2raymkcp.NewClient(ctx, dialer, serverAddr, options.MKCPOptions, tlsConfig)
+	case V2RayTransportTypeMEKYA:
+		return v2raymekya.NewClient(ctx, dialer, serverAddr, options.MEKYAOptions, tlsConfig)
+	case V2RayTransportTypeXHTTP:
+		return v2rayxhttp.NewClient(ctx, dialer, serverAddr, options.XHTTPOptions, tlsConfig)
 	default:
 		return nil, E.New("unknown transport type: " + options.Type)
 	}
