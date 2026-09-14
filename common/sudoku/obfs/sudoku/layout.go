@@ -114,16 +114,16 @@ func newEntropyLayout() *byteLayout {
 		paddingPool: padding,
 	}
 
-	for val := 0; val < 4; val++ {
-		for pos := 0; pos < 16; pos++ {
+	for val := range 4 {
+		for pos := range 16 {
 			layout.encodeHint[val][pos] = (byte(val) << 5) | byte(pos)
 		}
 	}
-	for group := 0; group < 64; group++ {
+	for group := range 64 {
 		v := byte(group)
 		layout.encodeGroup[group] = ((v & 0x30) << 1) | (v & 0x0F)
 	}
-	for b := 0; b < 256; b++ {
+	for b := range 256 {
 		wire := byte(b)
 		if (wire & 0x90) != 0 {
 			continue
@@ -189,8 +189,8 @@ func newCustomLayout(pattern string) (*byteLayout, error) {
 	paddingSet := make(map[byte]struct{})
 	var padding []byte
 	for drop := range xBits {
-		for val := 0; val < 4; val++ {
-			for pos := 0; pos < 16; pos++ {
+		for val := range 4 {
+			for pos := range 16 {
 				b := encodeBits(byte(val), byte(pos), drop)
 				if bits.OnesCount8(b) >= 5 {
 					if _, ok := paddingSet[b]; !ok {
@@ -214,17 +214,17 @@ func newCustomLayout(pattern string) (*byteLayout, error) {
 		paddingPool: padding,
 	}
 
-	for val := 0; val < 4; val++ {
-		for pos := 0; pos < 16; pos++ {
+	for val := range 4 {
+		for pos := range 16 {
 			layout.encodeHint[val][pos] = encodeBits(byte(val), byte(pos), -1)
 		}
 	}
-	for group := 0; group < 64; group++ {
+	for group := range 64 {
 		val := byte(group>>4) & 0x03
 		pos := byte(group) & 0x0F
 		layout.encodeGroup[group] = encodeBits(val, pos, -1)
 	}
-	for b := 0; b < 256; b++ {
+	for b := range 256 {
 		wire := byte(b)
 		if (wire & xMask) != xMask {
 			continue

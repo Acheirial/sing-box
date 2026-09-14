@@ -809,7 +809,7 @@ func (c *Config) GetGenerateSessionID() (func() string, error) {
 		if sessionLength.Min <= 0 {
 			return nil, fmt.Errorf("session-length must be greater than 0")
 		}
-		for i := 0; i < len(sessionTable); i++ {
+		for i := range sessionTable {
 			if sessionTable[i] >= 0x80 {
 				return nil, fmt.Errorf("session-table must contain only ASCII characters")
 			}

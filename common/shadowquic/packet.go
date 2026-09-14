@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sagernet/sing-box/common/shadowquic/deadline"
-
 	"github.com/sagernet/quic-go"
+
+	"github.com/sagernet/sing-box/common/shadowquic/deadline"
 )
 
 const packetInputQueue = 128

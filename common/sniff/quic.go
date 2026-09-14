@@ -210,7 +210,7 @@ func QUICClientHello(ctx context.Context, metadata *adapter.InboundContext, pack
 			if err != nil {
 				return err
 			}
-			for i := 0; i < int(ackRangeCount); i++ {
+			for range int(ackRangeCount) {
 				_, err = qtls.ReadUvarint(decryptedReader) // Gap
 				if err != nil {
 					return err

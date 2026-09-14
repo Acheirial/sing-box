@@ -12,10 +12,10 @@ import (
 	"github.com/sagernet/sing-box/adapter"
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/smux"
 
 	"github.com/golang/snappy"
 	"github.com/metacubex/kcp-go"
-	"github.com/sagernet/smux"
 	"golang.org/x/crypto/pbkdf2"
 )
 

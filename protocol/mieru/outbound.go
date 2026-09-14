@@ -6,13 +6,6 @@ import (
 	"net"
 	"sync"
 
-	mieruclient "github.com/enfein/mieru/v3/apis/client"
-	mierucommon "github.com/enfein/mieru/v3/apis/common"
-	mierumodel "github.com/enfein/mieru/v3/apis/model"
-	mierutp "github.com/enfein/mieru/v3/apis/trafficpattern"
-	mierupb "github.com/enfein/mieru/v3/pkg/appctl/appctlpb"
-	"google.golang.org/protobuf/proto"
-
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/adapter/outbound"
 	"github.com/sagernet/sing-box/common/dialer"
@@ -24,6 +17,13 @@ import (
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/service"
+
+	mieruclient "github.com/enfein/mieru/v3/apis/client"
+	mierucommon "github.com/enfein/mieru/v3/apis/common"
+	mierumodel "github.com/enfein/mieru/v3/apis/model"
+	mierutp "github.com/enfein/mieru/v3/apis/trafficpattern"
+	mierupb "github.com/enfein/mieru/v3/pkg/appctl/appctlpb"
+	"google.golang.org/protobuf/proto"
 )
 
 func RegisterOutbound(registry *outbound.Registry) {

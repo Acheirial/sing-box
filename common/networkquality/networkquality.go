@@ -927,7 +927,7 @@ func validateConfig(config *Config) (*resolvedConfig, error) {
 func measureIdleLatency(ctx context.Context, factory MeasurementClientFactory, config *resolvedConfig) (int32, int64, error) {
 	var latencies []int64
 	var maxProbeBytes int64
-	for i := 0; i < settings.idleProbeCount; i++ {
+	for range settings.idleProbeCount {
 		select {
 		case <-ctx.Done():
 			return 0, 0, ctx.Err()
@@ -965,7 +965,7 @@ func measureDirection(
 	runner := newDirectionRunner(factory, plan, probeBytes)
 	defer runner.wait()
 
-	for i := 0; i < settings.initialConnections; i++ {
+	for range settings.initialConnections {
 		err := runner.addConnection(phaseCtx)
 		if err != nil {
 			return nil, err

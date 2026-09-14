@@ -108,7 +108,7 @@ func (p *preparedConnPool) fill(ctx context.Context, count int, dial func(contex
 
 	var wg sync.WaitGroup
 	wg.Add(count)
-	for i := 0; i < count; i++ {
+	for range count {
 		go func() {
 			defer wg.Done()
 
