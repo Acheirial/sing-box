@@ -103,6 +103,38 @@ func NewRealityServer(ctx context.Context, logger log.ContextLogger, options opt
 	tlsConfig.PrivateKey = privateKey
 	tlsConfig.MaxTimeDiff = time.Duration(options.Reality.MaxTimeDifference)
 
+	// Mirror Xray's "mldsa65Seed" rule: the seed must be a valid 32-byte base64 value
+	// and must differ from private_key. Note: server-side ML-DSA signing additionally
+	// requires a xtls/reality-based server handshake, which this build does not vendor;
+	// report a clear error instead of silently ignoring the option.
+	if options.Reality.Mldsa65Seed != "" {
+		if options.Reality.Mldsa65Seed == options.Reality.PrivateKey {
+			return nil, E.New("mldsa65_seed and private_key must not be the same value")
+		}
+		mldsa65Seed, err := base64.RawURLEncoding.DecodeString(options.Reality.Mldsa65Seed)
+		if err != nil {
+			return nil, E.Cause(err, "decode mldsa65_seed")
+		}
+		if len(mldsa65Seed) != 32 {
+			return nil, E.New("invalid mldsa65_seed: must be a base64 seed of 32 bytes")
+		}
+		return nil, E.New("reality: mldsa65_seed (server-side ML-DSA signing) requires a xtls/reality-based server; not supported by this build")
+	}
+	if options.Reality.LimitFallbackUpload != nil {
+		tlsConfig.LimitFallbackUpload = utls.RealityLimitFallback{
+			AfterBytes:       options.Reality.LimitFallbackUpload.AfterBytes,
+			BytesPerSec:      options.Reality.LimitFallbackUpload.BytesPerSec,
+			BurstBytesPerSec: options.Reality.LimitFallbackUpload.BurstBytesPerSec,
+		}
+	}
+	if options.Reality.LimitFallbackDownload != nil {
+		tlsConfig.LimitFallbackDownload = utls.RealityLimitFallback{
+			AfterBytes:       options.Reality.LimitFallbackDownload.AfterBytes,
+			BytesPerSec:      options.Reality.LimitFallbackDownload.BytesPerSec,
+			BurstBytesPerSec: options.Reality.LimitFallbackDownload.BurstBytesPerSec,
+		}
+	}
+
 	tlsConfig.ShortIds = make(map[[8]byte]bool)
 	if len(options.Reality.ShortID) == 0 {
 		tlsConfig.ShortIds[[8]byte{0}] = true

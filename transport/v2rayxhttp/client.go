@@ -174,6 +174,11 @@ func NewTransport(dialRaw DialRawFunc, wrapTLS WrapTLSFunc, dialQUIC DialQUICFun
 				MaxIncomingStreams: -1, // don't allow the server to create bidirectional streams
 				KeepAlivePeriod:    keepAlivePeriod,
 				MaxIdleTimeout:     ConnIdleTimeout,
+				// ChromeParrot makes the QUIC handshake look like Chrome's.
+				// Xray enables it by default (unless the socket-level
+				// quicParams disables it, which has no sing-box equivalent);
+				// there is no user-facing toggle, mirroring Xray.
+				ChromeParrot: true,
 			},
 			Dial: func(ctx context.Context, addr string, tlsCfg *tls.Config, cfg *quic.Config) (*quic.Conn, error) {
 				return dialQUIC(ctx, cfg)

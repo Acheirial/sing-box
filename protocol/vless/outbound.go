@@ -4,6 +4,7 @@ import (
 	"context"
 	"net"
 
+	"github.com/gofrs/uuid/v5"
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/adapter/outbound"
 	"github.com/sagernet/sing-box/common/dialer"
@@ -11,10 +12,12 @@ import (
 	"github.com/sagernet/sing-box/common/mux"
 	"github.com/sagernet/sing-box/common/restls"
 	"github.com/sagernet/sing-box/common/tls"
+	"github.com/sagernet/sing-box/common/vlessenc"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing-box/transport/v2ray"
+	vmess "github.com/sagernet/sing-vmess"
 	"github.com/sagernet/sing-vmess/packetaddr"
 	"github.com/sagernet/sing-vmess/vless"
 	"github.com/sagernet/sing/common"
@@ -47,6 +50,9 @@ type Outbound struct {
 	transport       adapter.V2RayClientTransport
 	packetAddr      bool
 	xudp            bool
+	encryption      *vlessenc.ClientInstance
+	testseed        []uint32
+	testseedKey     [16]byte
 }
 
 func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextLogger, tag string, options option.VLESSOutboundOptions) (adapter.Outbound, error) {
@@ -116,6 +122,28 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 	outbound.client, err = vless.NewClient(options.UUID, options.Flow, logger)
 	if err != nil {
 		return nil, err
+	}
+	encryptionConfig, err := options.ParseEncryption()
+	if err != nil {
+		return nil, err
+	}
+	if encryptionConfig.Enabled {
+		encryption := &vlessenc.ClientInstance{}
+		if err := encryption.Init(encryptionConfig.Keys, encryptionConfig.XorMode, encryptionConfig.Seconds, encryptionConfig.Padding); err != nil {
+			return nil, E.Cause(err, "initialize vless encryption")
+		}
+		outbound.encryption = encryption
+	}
+	if options.Flow == vless.FlowVision && len(options.Testseed) > 0 {
+		// Custom vision padding seed: build the request conn and vision
+		// conn manually instead of DialEarlyConn (which constructs the
+		// vision conn internally without a seed).
+		outbound.testseed = options.Testseed
+		user, err := uuid.FromString(options.UUID)
+		if err != nil {
+			user = uuid.NewV5(uuid.Nil, options.UUID)
+		}
+		outbound.testseedKey = user
 	}
 	outbound.multiplexDialer, err = mux.NewClientWithOptions((*vlessDialer)(outbound), logger, common.PtrValueOrDefault(options.Multiplex))
 	if err != nil {
@@ -213,9 +241,30 @@ func (h *vlessDialer) DialContext(ctx context.Context, network string, destinati
 	if err != nil {
 		return nil, err
 	}
+	if h.encryption != nil {
+		encryptedConn, err := h.encryption.Handshake(conn)
+		if err != nil {
+			conn.Close()
+			return nil, E.Cause(err, "ML-KEM-768 handshake failed")
+		}
+		conn = encryptedConn
+	}
 	switch N.NetworkName(network) {
 	case N.NetworkTCP:
 		h.logger.InfoContext(ctx, "outbound connection to ", destination)
+		if h.testseed != nil {
+			// Mirror client.DialEarlyConn's construction (prepareConn):
+			// the request conn wraps the carrier, and the same carrier is
+			// passed as the vision conn's tlsConn (used for the TLS-type
+			// registry and input reflection only).
+			requestConn := vless.NewConn(conn, h.testseedKey, vmess.CommandTCP, destination, vless.FlowVision)
+			visionConn, err := NewVisionConnWithSeed(requestConn, conn, h.testseedKey, h.logger, h.testseed)
+			if err != nil {
+				conn.Close()
+				return nil, E.Cause(err, "initialize vision")
+			}
+			return visionConn, nil
+		}
 		return h.client.DialEarlyConn(conn, destination)
 	case N.NetworkUDP:
 		h.logger.InfoContext(ctx, "outbound packet connection to ", destination)
@@ -255,6 +304,14 @@ func (h *vlessDialer) ListenPacket(ctx context.Context, destination M.Socksaddr)
 	if err != nil {
 		common.Close(conn)
 		return nil, err
+	}
+	if h.encryption != nil {
+		encryptedConn, err := h.encryption.Handshake(conn)
+		if err != nil {
+			conn.Close()
+			return nil, E.Cause(err, "ML-KEM-768 handshake failed")
+		}
+		conn = encryptedConn
 	}
 	if h.xudp {
 		return h.client.DialEarlyXUDPPacketConn(conn, destination)

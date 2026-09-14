@@ -11,6 +11,7 @@ import (
 	"github.com/sagernet/sing-box/common/mux"
 	"github.com/sagernet/sing-box/common/tls"
 	"github.com/sagernet/sing-box/common/uot"
+	"github.com/sagernet/sing-box/common/vlessenc"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
@@ -44,6 +45,7 @@ type Inbound struct {
 	tlsConfig  tls.ServerConfig
 	transport  adapter.V2RayServerTransport
 	references []string
+	decryption *vlessenc.ServerInstance
 }
 
 func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLogger, tag string, options option.VLESSInboundOptions) (adapter.Inbound, error) {
@@ -53,6 +55,11 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 		router:  uot.NewRouter(router, logger),
 		logger:  logger,
 		users:   options.Users,
+	}
+	for _, user := range options.Users {
+		if user.Encryption != "" {
+			return nil, E.New("VLESS users: \"encryption\" should not be in inbound settings")
+		}
 	}
 	var err error
 	inbound.router, err = mux.NewRouterWithOptions(inbound.router, logger, common.PtrValueOrDefault(options.Multiplex))
@@ -91,6 +98,17 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 		if err != nil {
 			return nil, E.Cause(err, "create server transport: ", options.Transport.Type)
 		}
+	}
+	decryptionConfig, err := options.ParseDecryption()
+	if err != nil {
+		return nil, err
+	}
+	if decryptionConfig.Enabled {
+		decryption := &vlessenc.ServerInstance{}
+		if err := decryption.Init(decryptionConfig.Keys, decryptionConfig.XorMode, decryptionConfig.SecondsFrom, decryptionConfig.SecondsTo, decryptionConfig.Padding); err != nil {
+			return nil, E.Cause(err, "initialize vless decryption")
+		}
+		inbound.decryption = decryption
 	}
 	inbound.listener = listener.New(listener.Options{
 		Context:           ctx,
@@ -148,6 +166,7 @@ func (h *Inbound) Close() error {
 		h.listener,
 		h.tlsConfig,
 		h.transport,
+		h.decryption,
 	)
 }
 
@@ -160,6 +179,15 @@ func (h *Inbound) NewConnection(ctx context.Context, conn net.Conn, metadata ada
 			return
 		}
 		conn = tlsConn
+	}
+	if h.decryption != nil {
+		decryptedConn, err := h.decryption.Handshake(conn, nil)
+		if err != nil {
+			N.CloseOnHandshakeFailure(conn, onClose, err)
+			h.logger.ErrorContext(ctx, E.Cause(err, "process connection from ", metadata.Source, ": ML-KEM-768 handshake failed"))
+			return
+		}
+		conn = decryptedConn
 	}
 	err := h.service.NewConnection(adapter.WithContext(ctx, &metadata), conn, metadata.Source, onClose)
 	if err != nil {

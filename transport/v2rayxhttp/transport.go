@@ -51,6 +51,10 @@ func NewClient(ctx context.Context, dialer N.Dialer, serverAddr M.Socksaddr, opt
 }
 
 func newXHTTPClient(ctx context.Context, dialer N.Dialer, serverAddr M.Socksaddr, options option.V2RayXHTTPOptions, tlsConfig tls.Config) (adapter.V2RayClientTransport, error) {
+	options, err := resolveExtraOptions(options)
+	if err != nil {
+		return nil, err
+	}
 	requestHost := options.Host
 	if requestHost == "" {
 		if tlsConfig != nil && tlsConfig.ServerName() != "" {
@@ -308,7 +312,15 @@ type Server struct {
 }
 
 func NewServer(ctx context.Context, logger logger.ContextLogger, options option.V2RayXHTTPOptions, tlsConfig tls.ServerConfig, handler adapter.V2RayServerTransportHandler) (*Server, error) {
+	options, err := resolveExtraOptions(options)
+	if err != nil {
+		return nil, err
+	}
 	cfg, err := newConfig(options)
+	if err != nil {
+		return nil, err
+	}
+	serverMaxHeaderBytes, err := cfg.GetNormalizedServerMaxHeaderBytes()
 	if err != nil {
 		return nil, err
 	}
@@ -331,7 +343,7 @@ func NewServer(ctx context.Context, logger logger.ContextLogger, options option.
 	server.httpServer = &http.Server{
 		Handler:           xhandler,
 		ReadHeaderTimeout: C.TCPTimeout,
-		MaxHeaderBytes:    http.DefaultMaxHeaderBytes,
+		MaxHeaderBytes:    serverMaxHeaderBytes,
 		BaseContext: func(net.Listener) context.Context {
 			return ctx
 		},

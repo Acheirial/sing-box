@@ -48,6 +48,8 @@ func NewServerTransport(ctx context.Context, logger logger.ContextLogger, option
 		return NewGRPCServer(ctx, logger, options.GRPCOptions, tlsConfig, handler)
 	case C.V2RayTransportTypeHTTPUpgrade:
 		return v2rayhttpupgrade.NewServer(ctx, logger, options.HTTPUpgradeOptions, tlsConfig, handler)
+	case V2RayTransportTypeXHTTP:
+		return v2rayxhttp.NewServer(ctx, logger, options.XHTTPOptions, tlsConfig, handler)
 	default:
 		return nil, E.New("unknown transport type: " + options.Type)
 	}

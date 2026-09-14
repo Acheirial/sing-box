@@ -216,6 +216,31 @@ type InboundRealityOptions struct {
 	PrivateKey        string                         `json:"private_key,omitempty"`
 	ShortID           badoption.Listable[string]     `json:"short_id,omitempty"`
 	MaxTimeDifference badoption.Duration             `json:"max_time_difference,omitempty"`
+
+	// Mldsa65Seed is the base64 (RawURLEncoding) ML-DSA-65 seed (32 bytes) used by the
+	// server to additionally sign the temporary certificate, so that a client can
+	// verify the server via mldsa65_verify against a public key distributed out of band.
+	//
+	// Note: must differ from private_key (like Xray's "mldsa65Seed" vs "privateKey" rule).
+	// Server-side ML-DSA signing additionally requires a xtls/reality-based server;
+	// this build reports a clear error instead of silently ignoring it.
+	Mldsa65Seed string `json:"mldsa65_seed,omitempty"`
+
+	// LimitFallbackUpload limits the bandwidth of forwarded (non-authorized) traffic
+	// from the client to the fallback destination.
+	LimitFallbackUpload *RealityLimitFallbackOptions `json:"limit_fallback_upload,omitempty"`
+	// LimitFallbackDownload limits the bandwidth of forwarded (non-authorized) traffic
+	// from the fallback destination to the client.
+	LimitFallbackDownload *RealityLimitFallbackOptions `json:"limit_fallback_download,omitempty"`
+}
+
+type RealityLimitFallbackOptions struct {
+	// AfterBytes is the amount of data transferred before the rate limit takes effect.
+	AfterBytes uint64 `json:"after_bytes,omitempty"`
+	// BytesPerSec is the sustained transfer rate, in bytes per second. Zero disables limiting.
+	BytesPerSec uint64 `json:"bytes_per_sec,omitempty"`
+	// BurstBytesPerSec is the maximum transfer rate, in bytes per second. Defaults to BytesPerSec.
+	BurstBytesPerSec uint64 `json:"burst_bytes_per_sec,omitempty"`
 }
 
 type InboundRealityHandshakeOptions struct {
@@ -255,6 +280,15 @@ type OutboundRealityOptions struct {
 	Enabled   bool   `json:"enabled,omitempty"`
 	PublicKey string `json:"public_key,omitempty"`
 	ShortID   string `json:"short_id,omitempty"`
+
+	// UseMLKEM keeps the X25519MLKEM768 (hybrid post-quantum) group and key share of the
+	// chosen uTLS fingerprint instead of filtering it out, matching Xray's current behavior.
+	// The server must support the post-quantum key exchange.
+	UseMLKEM bool `json:"use_mlkem,omitempty"`
+
+	// Mldsa65Verify is the base64 (RawURLEncoding) ML-DSA-65 public key (1952 bytes)
+	// additionally verifying the server, distributed out of band (like Xray's "mldsa65Verify").
+	Mldsa65Verify string `json:"mldsa65_verify,omitempty"`
 }
 
 type JLSOptions struct {

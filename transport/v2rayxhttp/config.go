@@ -14,6 +14,8 @@ import (
 	"strings"
 
 	"github.com/sagernet/sing-box/option"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/json"
 )
 
 const (
@@ -51,6 +53,7 @@ type Config struct {
 	NoSSEHeader          bool   // server only
 	ScStreamUpServerSecs string // server only
 	ScMaxBufferedPosts   string // server only
+	ServerMaxHeaderBytes string // server only
 	ScMaxEachPostBytes   string
 	ScMinPostsIntervalMs string
 	ReuseConfig          *ReuseConfig
@@ -66,6 +69,10 @@ type ReuseConfig struct {
 }
 
 func newConfig(options option.V2RayXHTTPOptions) (*Config, error) {
+	options, err := resolveExtraOptions(options)
+	if err != nil {
+		return nil, err
+	}
 	cfg := &Config{
 		Path:                 options.Path,
 		Mode:                 options.Mode,
@@ -90,6 +97,7 @@ func newConfig(options option.V2RayXHTTPOptions) (*Config, error) {
 		NoSSEHeader:          options.NoSSEHeader,
 		ScStreamUpServerSecs: options.ScStreamUpServerSecs,
 		ScMaxBufferedPosts:   options.ScMaxBufferedPosts,
+		ServerMaxHeaderBytes: options.ServerMaxHeaderBytes,
 		ScMaxEachPostBytes:   options.ScMaxEachPostBytes,
 		ScMinPostsIntervalMs: options.ScMinPostsIntervalMs,
 	}
@@ -103,6 +111,117 @@ func newConfig(options option.V2RayXHTTPOptions) (*Config, error) {
 		}
 	}
 	return cfg, nil
+}
+
+// resolveExtraOptions applies the "extra" forward-compatibility overlay.
+//
+// Mirrors the precedence of Xray's SplitHTTPConfig.Build(): "extra" is
+// unmarshalled into a fresh option set, then every field it sets (non-zero /
+// non-nil) overrides the base value, while fields it leaves unset keep the
+// base value. Host, Path and Mode always win from the base options, exactly
+// as Xray copies them over the extra-parsed config before using it.
+//
+// "extra" accepts the sing-box option names; keys it carries that this
+// version does not know are silently ignored (forward compatibility).
+//
+// The resolved options are returned (rather than applied inside newConfig
+// only) because Host, ReuseSettings.HKeepAlivePeriod, DownloadSettings and
+// ALPN are consumed directly by the client and server constructors too.
+func resolveExtraOptions(options option.V2RayXHTTPOptions) (option.V2RayXHTTPOptions, error) {
+	if len(options.Extra) == 0 {
+		return options, nil
+	}
+	var extra option.V2RayXHTTPOptions
+	err := json.Unmarshal(options.Extra, &extra)
+	if err != nil {
+		return options, E.Cause(err, `xhttp: failed to unmarshal "extra"`)
+	}
+	if extra.Headers != nil {
+		options.Headers = extra.Headers
+	}
+	if len(extra.ALPN) > 0 {
+		options.ALPN = extra.ALPN
+	}
+	if extra.NoGRPCHeader {
+		options.NoGRPCHeader = extra.NoGRPCHeader
+	}
+	if extra.XPaddingBytes != "" {
+		options.XPaddingBytes = extra.XPaddingBytes
+	}
+	if extra.XPaddingObfsMode {
+		options.XPaddingObfsMode = extra.XPaddingObfsMode
+	}
+	if extra.XPaddingKey != "" {
+		options.XPaddingKey = extra.XPaddingKey
+	}
+	if extra.XPaddingHeader != "" {
+		options.XPaddingHeader = extra.XPaddingHeader
+	}
+	if extra.XPaddingPlacement != "" {
+		options.XPaddingPlacement = extra.XPaddingPlacement
+	}
+	if extra.XPaddingMethod != "" {
+		options.XPaddingMethod = extra.XPaddingMethod
+	}
+	if extra.UplinkHTTPMethod != "" {
+		options.UplinkHTTPMethod = extra.UplinkHTTPMethod
+	}
+	if extra.SessionPlacement != "" {
+		options.SessionPlacement = extra.SessionPlacement
+	}
+	if extra.SessionKey != "" {
+		options.SessionKey = extra.SessionKey
+	}
+	if extra.SessionTable != "" {
+		options.SessionTable = extra.SessionTable
+	}
+	if extra.SessionLength != "" {
+		options.SessionLength = extra.SessionLength
+	}
+	if extra.SeqPlacement != "" {
+		options.SeqPlacement = extra.SeqPlacement
+	}
+	if extra.SeqKey != "" {
+		options.SeqKey = extra.SeqKey
+	}
+	if extra.UplinkDataPlacement != "" {
+		options.UplinkDataPlacement = extra.UplinkDataPlacement
+	}
+	if extra.UplinkDataKey != "" {
+		options.UplinkDataKey = extra.UplinkDataKey
+	}
+	if extra.UplinkChunkSize != "" {
+		options.UplinkChunkSize = extra.UplinkChunkSize
+	}
+	if extra.ScMaxEachPostBytes != "" {
+		options.ScMaxEachPostBytes = extra.ScMaxEachPostBytes
+	}
+	if extra.ScMinPostsIntervalMs != "" {
+		options.ScMinPostsIntervalMs = extra.ScMinPostsIntervalMs
+	}
+	if extra.ReuseSettings != nil {
+		options.ReuseSettings = extra.ReuseSettings
+	}
+	if extra.NoSSEHeader {
+		options.NoSSEHeader = extra.NoSSEHeader
+	}
+	if extra.ScStreamUpServerSecs != "" {
+		options.ScStreamUpServerSecs = extra.ScStreamUpServerSecs
+	}
+	if extra.ScMaxBufferedPosts != "" {
+		options.ScMaxBufferedPosts = extra.ScMaxBufferedPosts
+	}
+	if extra.DownloadSettings != nil {
+		options.DownloadSettings = extra.DownloadSettings
+	}
+	if extra.ServerMaxHeaderBytes != "" {
+		options.ServerMaxHeaderBytes = extra.ServerMaxHeaderBytes
+	}
+	// Clear Extra: newConfig also resolves (it must work standalone), and the
+	// constructors resolve before consuming Host/ReuseSettings/DownloadSettings
+	// directly, so this makes the second pass a no-op instead of re-applying.
+	options.Extra = nil
+	return options, nil
 }
 
 func (c *Config) NormalizedMode() string {
@@ -229,6 +348,20 @@ func (c *Config) GetNormalizedUplinkHTTPMethod() string {
 		return http.MethodPost
 	}
 	return c.UplinkHTTPMethod
+}
+
+// GetNormalizedServerMaxHeaderBytes mirrors Xray's
+// splithttp.Config.GetNormalizedServerMaxHeaderBytes: values <= 0 fall back
+// to the default of 8192, positive values are used as-is.
+func (c *Config) GetNormalizedServerMaxHeaderBytes() (int, error) {
+	r, err := ParseRange(c.ServerMaxHeaderBytes, "8192")
+	if err != nil {
+		return 0, fmt.Errorf("invalid server-max-header-bytes: %w", err)
+	}
+	if r.Min <= 0 {
+		return 8192, nil
+	}
+	return r.Min, nil
 }
 
 func (c *Config) GetNormalizedScStreamUpServerSecs() (Range, error) {

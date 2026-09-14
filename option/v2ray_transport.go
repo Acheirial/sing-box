@@ -194,6 +194,8 @@ type V2RayXHTTPOptions struct {
 	ScStreamUpServerSecs string                     `json:"sc_stream_up_server_secs,omitempty"` // server only
 	ScMaxBufferedPosts   string                     `json:"sc_max_buffered_posts,omitempty"`    // server only
 	DownloadSettings     *V2RayXHTTPDownloadOptions `json:"download_settings,omitempty"`
+	ServerMaxHeaderBytes string                     `json:"server_max_header_bytes,omitempty"` // server only
+	Extra                json.RawMessage            `json:"extra,omitempty" schema:"omit"`
 }
 
 type V2RayXHTTPReuseSettings struct {
