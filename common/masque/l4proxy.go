@@ -4,9 +4,8 @@ import (
 	"context"
 	"fmt"
 	"net"
-	"unsafe"
-
 	"net/http"
+	"unsafe"
 
 	squic "github.com/sagernet/quic-go"
 	shttp3 "github.com/sagernet/quic-go/http3"

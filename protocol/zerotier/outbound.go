@@ -476,10 +476,7 @@ func (z *Outbound) startLocked() error {
 	if !z.identityCollisionRetryAt.IsZero() {
 		retryAfter := time.Until(z.identityCollisionRetryAt)
 		if retryAfter > 0 {
-			retryAfter = retryAfter.Round(time.Second)
-			if retryAfter < time.Second {
-				retryAfter = time.Second
-			}
+			retryAfter = max(retryAfter.Round(time.Second), time.Second)
 			return fmt.Errorf("configured ZeroTier identity %s can retry in %s: %w", z.configuredIdentity.Address(), retryAfter, zerotier.ErrIdentityCollision)
 		}
 		z.identityCollisionRetryAt = time.Time{}
@@ -1079,10 +1076,7 @@ func (z *Outbound) runStackPackets(rt *runtime, device ipStack) {
 	if err != nil || mtu < 1 {
 		mtu = 64 * 1024
 	}
-	batchSize := device.BatchSize()
-	if batchSize < 1 {
-		batchSize = 1
-	}
+	batchSize := max(device.BatchSize(), 1)
 	storage := make([]byte, mtu*batchSize)
 	buffers := make([][]byte, batchSize)
 	for index := range buffers {

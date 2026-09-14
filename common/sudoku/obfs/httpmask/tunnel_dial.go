@@ -285,7 +285,7 @@ func dialSessionWithClient(ctx context.Context, client *http.Client, dialer *pre
 
 	var resp *http.Response
 	backoff := 50 * time.Millisecond
-	for attempt := 0; attempt < 3; attempt++ {
+	for attempt := range 3 {
 		resp, err = client.Do(req)
 		if err == nil {
 			break
@@ -364,7 +364,7 @@ func sendSessionControl(client *http.Client, controlURL, headerHost string, mode
 		lastErr error
 		backoff = 50 * time.Millisecond
 	)
-	for attempt := 0; attempt < maxAttempts; attempt++ {
+	for attempt := range maxAttempts {
 		req, err := http.NewRequestWithContext(closeCtx, http.MethodPost, controlURL, nil)
 		if err != nil {
 			return err

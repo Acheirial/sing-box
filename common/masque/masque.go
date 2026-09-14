@@ -17,11 +17,10 @@ import (
 	"net/url"
 	"time"
 
+	connectip "github.com/metacubex/connect-ip-go"
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/http3"
 	"github.com/yosida95/uritemplate/v3"
-
-	connectip "github.com/metacubex/connect-ip-go"
 )
 
 const (

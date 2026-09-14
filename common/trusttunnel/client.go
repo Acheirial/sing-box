@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/http/httptrace"
 	"net/url"
+	"slices"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -85,12 +86,7 @@ func NewClient(ctx context.Context, options ClientOptions) (*Client, error) {
 }
 
 func containsString(array []string, target string) bool {
-	for _, item := range array {
-		if item == target {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(array, target)
 }
 
 func (c *Client) h2RoundTripper() {
