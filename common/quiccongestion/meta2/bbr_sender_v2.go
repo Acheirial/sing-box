@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"time"
 
+	"math/rand/v2"
+
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/congestion"
 	"github.com/sagernet/quic-go/monotime"
-
-	"math/rand/v2"
 )
 
 // BbrSender implements BBR congestion control algorithm.  BBR aims to estimate

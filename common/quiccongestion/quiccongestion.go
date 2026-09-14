@@ -7,7 +7,6 @@ package quiccongestion
 import (
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/congestion"
-
 	"github.com/sagernet/sing-box/common/quiccongestion/meta1"
 	"github.com/sagernet/sing-box/common/quiccongestion/meta2"
 )

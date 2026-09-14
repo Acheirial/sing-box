@@ -56,7 +56,7 @@ func resolveLayout(mode string, customPattern string) (*byteLayout, error) {
 
 func newASCIILayout() *byteLayout {
 	padding := make([]byte, 0, 32)
-	for i := 0; i < 32; i++ {
+	for i := range 32 {
 		padding = append(padding, byte(0x20+i))
 	}
 
@@ -68,8 +68,8 @@ func newASCIILayout() *byteLayout {
 		paddingPool: padding,
 	}
 
-	for val := 0; val < 4; val++ {
-		for pos := 0; pos < 16; pos++ {
+	for val := range 4 {
+		for pos := range 16 {
 			b := byte(0x40 | (byte(val) << 4) | byte(pos))
 			if b == 0x7F {
 				b = '\n'
