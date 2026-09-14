@@ -77,10 +77,7 @@ func absInt(x int) int {
 }
 
 func GenerateTokenishPaddingBase62(targetHuffmanBytes int) string {
-	n := int(math.Ceil(float64(targetHuffmanBytes) / avgHuffmanBytesPerCharBase62))
-	if n < 1 {
-		n = 1
-	}
+	n := max(int(math.Ceil(float64(targetHuffmanBytes)/avgHuffmanBytesPerCharBase62)), 1)
 
 	randBase62Str, ok := randStringFromCharset(n, charsetBase62)
 	if !ok {

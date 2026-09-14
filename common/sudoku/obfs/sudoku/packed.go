@@ -102,10 +102,7 @@ func (pc *PackedConn) writeProtectedPrefix(out []byte, p []byte) ([]byte, int) {
 		return out, 0
 	}
 
-	limit := len(p)
-	if limit > packedProtectedPrefixBytes {
-		limit = packedProtectedPrefixBytes
-	}
+	limit := min(len(p), packedProtectedPrefixBytes)
 
 	for padCount := 0; padCount < 1+pc.rng.Intn(2); padCount++ {
 		out = pc.appendForcedPadding(out)

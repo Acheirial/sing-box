@@ -1,10 +1,11 @@
 package masque
 
 import (
-	connectip "github.com/metacubex/connect-ip-go"
-	mquic "github.com/metacubex/quic-go"
 	squic "github.com/sagernet/quic-go"
 	shttp3 "github.com/sagernet/quic-go/http3"
+
+	connectip "github.com/metacubex/connect-ip-go"
+	mquic "github.com/metacubex/quic-go"
 )
 
 // proxiedStream adapts a sagernet/quic-go HTTP/3 request stream to the

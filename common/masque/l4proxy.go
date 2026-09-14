@@ -9,6 +9,7 @@ import (
 
 	squic "github.com/sagernet/quic-go"
 	shttp3 "github.com/sagernet/quic-go/http3"
+
 	"golang.org/x/sync/semaphore"
 )
 
