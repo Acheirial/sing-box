@@ -77,14 +77,14 @@ func newASCIILayout() *byteLayout {
 			layout.encodeHint[val][pos] = b
 		}
 	}
-	for group := 0; group < 64; group++ {
+	for group := range 64 {
 		b := byte(0x40 | byte(group))
 		if b == 0x7F {
 			b = '\n'
 		}
 		layout.encodeGroup[group] = b
 	}
-	for b := 0; b < 256; b++ {
+	for b := range 256 {
 		wire := byte(b)
 		if (wire & 0x40) == 0x40 {
 			layout.hintTable[wire] = true
@@ -101,7 +101,7 @@ func newASCIILayout() *byteLayout {
 
 func newEntropyLayout() *byteLayout {
 	padding := make([]byte, 0, 16)
-	for i := 0; i < 8; i++ {
+	for i := range 8 {
 		padding = append(padding, byte(0x80+i))
 		padding = append(padding, byte(0x10+i))
 	}

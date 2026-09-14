@@ -4,9 +4,8 @@ package meta2
 
 import (
 	"fmt"
-	"time"
-
 	"math/rand/v2"
+	"time"
 
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/congestion"

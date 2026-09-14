@@ -8,9 +8,8 @@ import (
 	"time"
 
 	"github.com/sagernet/quic-go"
-	M "github.com/sagernet/sing/common/metadata"
-
 	"github.com/sagernet/sing-box/common/quiccongestion"
+	M "github.com/sagernet/sing/common/metadata"
 )
 
 type DialFunc func(ctx context.Context) (*quic.Conn, error)

@@ -5,13 +5,12 @@ package meta1
 import (
 	"fmt"
 	"math"
+	"math/rand/v2"
 	"time"
 
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/congestion"
 	"github.com/sagernet/quic-go/monotime"
-
-	"math/rand/v2"
 )
 
 const (
