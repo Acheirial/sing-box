@@ -2,6 +2,7 @@ package shadowquic
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/sagernet/quic-go"
@@ -18,7 +19,7 @@ func ParseQUICVersions(values []string) ([]quic.Version, error) {
 		if err != nil {
 			return nil, err
 		}
-		if !containsQUICVersion(versions, version) {
+		if !slices.Contains(versions, version) {
 			versions = append(versions, version)
 		}
 	}
@@ -35,13 +36,4 @@ func ParseQUICVersion(value string) (quic.Version, error) {
 		return quic.Version2, nil
 	}
 	return 0, fmt.Errorf("unsupported QUIC version %q (supported: v1, v2)", value)
-}
-
-func containsQUICVersion(versions []quic.Version, version quic.Version) bool {
-	for _, v := range versions {
-		if v == version {
-			return true
-		}
-	}
-	return false
 }

@@ -299,9 +299,6 @@ func validateMieruOption(options option.MieruOutboundOptions) error {
 	if options.ServerPort != 0 && options.PortRange != "" {
 		return E.New("server_port and port_range cannot be set at the same time")
 	}
-	if options.ServerPort != 0 && options.ServerPort > 65535 {
-		return E.New("server_port must be between 1 and 65535")
-	}
 	if options.PortRange != "" {
 		beginPort, endPort, err := beginAndEndPortFromPortRange(options.PortRange)
 		if err != nil {

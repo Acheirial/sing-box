@@ -1,10 +1,11 @@
+//go:build with_easytier
+
 package easytier
 
 import (
 	"encoding/binary"
 	"fmt"
 	"net/netip"
-	"strconv"
 	"strings"
 )
 
@@ -74,25 +75,6 @@ func lookupOverlayHost(host, zone string, nodes []Node) (netip.Addr, bool) {
 	return netip.Addr{}, false
 }
 
-// lookupOverlayPTR finds a MagicDNS name for an overlay IPv4 address.
-func lookupOverlayPTR(ip netip.Addr, zone string, nodes []Node) (string, bool) {
-	if !ip.IsValid() || !ip.Is4() {
-		return "", false
-	}
-	zone = normalizeZone(zone)
-	for _, node := range nodes {
-		if node.IPv4 != ip {
-			continue
-		}
-		names := overlayNames(node.Hostname, zone)
-		if len(names) == 0 {
-			continue
-		}
-		return names[len(names)-1] + ".", true
-	}
-	return "", false
-}
-
 // parseNodeIPv4 parses a node IPv4 address or CIDR such as "10.144.0.1/24".
 func parseNodeIPv4(value string) (netip.Addr, error) {
 	value = strings.TrimSpace(value)
@@ -114,26 +96,4 @@ func ipv4FromUint32(addr uint32) netip.Addr {
 	var bytes [4]byte
 	binary.BigEndian.PutUint32(bytes[:], addr)
 	return netip.AddrFrom4(bytes)
-}
-
-// parsePTRIPv4 parses an IPv4 PTR name such as "2.0.144.10.in-addr.arpa.".
-func parsePTRIPv4(name string) (netip.Addr, bool) {
-	name = normalizeDNSName(name)
-	const suffix = ".in-addr.arpa"
-	if !strings.HasSuffix(name, suffix) {
-		return netip.Addr{}, false
-	}
-	labels := strings.Split(strings.TrimSuffix(name, suffix), ".")
-	if len(labels) != 4 {
-		return netip.Addr{}, false
-	}
-	var bytes [4]byte
-	for i := range 4 {
-		part, err := strconv.Atoi(labels[3-i])
-		if err != nil || part < 0 || part > 255 {
-			return netip.Addr{}, false
-		}
-		bytes[i] = byte(part)
-	}
-	return netip.AddrFrom4(bytes), true
 }

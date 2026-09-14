@@ -4,17 +4,9 @@ import (
 	"encoding/binary"
 	"io"
 	"math"
-	"time"
-
-	"github.com/sagernet/quic-go"
 )
 
 const (
-	extensionOpcodeConn uint64 = 0x01
-	extensionOpcodeUser uint64 = 0x02
-
-	extensionConnGetStats byte = 0x00
-
 	extensionResultOK  byte = 0x00
 	extensionResultErr byte = 0x01
 
@@ -39,14 +31,6 @@ func ReadExtensionOpcode(r io.Reader) (uint64, error) {
 		return 0, err
 	}
 	return binary.BigEndian.Uint64(buf[:]), nil
-}
-
-func readExtensionSubcommand(r io.Reader) (byte, error) {
-	var buf [1]byte
-	if _, err := io.ReadFull(r, buf[:]); err != nil {
-		return 0, err
-	}
-	return buf[0], nil
 }
 
 func WriteExtensionConnStatsResult(w io.Writer, stats ExtensionConnStats) error {
@@ -76,18 +60,4 @@ func WriteExtensionErrorResult(w io.Writer, code byte, message string) error {
 	}
 	_, err := w.Write(msg)
 	return err
-}
-
-func shadowQUICConnStats(conn *quic.Conn) ExtensionConnStats {
-	stats := conn.ConnectionStats()
-	rtt := stats.SmoothedRTT
-	if rtt == 0 {
-		rtt = stats.LatestRTT
-	}
-	return ExtensionConnStats{
-		LostPackets: stats.PacketsLost,
-		SentPackets: stats.PacketsSent,
-		RTT:         float64(rtt) / float64(time.Millisecond),
-		CurrentMTU:  uint16(conn.InitialPacketSize()),
-	}
 }

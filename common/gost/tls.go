@@ -7,7 +7,6 @@ import (
 
 	"github.com/sagernet/sing-box/common/tls"
 	M "github.com/sagernet/sing/common/metadata"
-
 	"github.com/sagernet/smux"
 )
 

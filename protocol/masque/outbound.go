@@ -47,7 +47,6 @@ type Outbound struct {
 	quicConfig    *quic.Config
 	stack         *packetStackHandle
 	uri           string
-	h2DialConn    func(ctx context.Context) (net.Conn, error)
 	l4Client      *masque.L4Client
 	handshakeTime time.Duration
 
@@ -87,10 +86,8 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 	if !l4proxy && sni == "" {
 		sni = masque.ConnectSNI
 	}
-	if l4proxy {
-		// L4 proxy mode uses a distinct SNI by default in mihomo; the server
-		// option is authoritative when set.
-	}
+	// L4 proxy mode uses a distinct SNI by default in mihomo; the server
+	// option is authoritative when set.
 
 	tlsConfig, err := masque.PrepareTlsConfig(privKey, peerPubKey, sni, options.SkipCertVerify)
 	if err != nil {

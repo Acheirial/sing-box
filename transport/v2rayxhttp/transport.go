@@ -175,7 +175,7 @@ func newXHTTPClient(ctx context.Context, dialer N.Dialer, serverAddr M.Socksaddr
 			}
 		}
 
-		var downloadHKeepAlivePeriod time.Duration = hKeepAlivePeriod
+		var downloadHKeepAlivePeriod = hKeepAlivePeriod
 
 		downloadCfg := *cfg // make a copy
 		downloadCfg.Host = downloadHost

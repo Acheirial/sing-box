@@ -192,7 +192,7 @@ func (c *cubicSender) OnCongestionEvent(packetNumber congestion.PacketNumber, lo
 	c.numAckedPackets = 0
 }
 
-func (b *cubicSender) OnCongestionEventEx(priorInFlight congestion.ByteCount, eventTime monotime.Time, ackedPackets []congestion.AckedPacketInfo, lostPackets []congestion.LostPacketInfo) {
+func (c *cubicSender) OnCongestionEventEx(priorInFlight congestion.ByteCount, eventTime monotime.Time, ackedPackets []congestion.AckedPacketInfo, lostPackets []congestion.LostPacketInfo) {
 	// Stub
 }
 

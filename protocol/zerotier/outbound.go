@@ -59,7 +59,6 @@ type Outbound struct {
 	ctx                  context.Context
 	cancel               context.CancelFunc
 	logger               log.ContextLogger
-	router               adapter.Router
 	options              option.ZeroTierOutboundOptions
 	networkID            uint64
 	stateStore           zerotier.StateStore
@@ -331,7 +330,7 @@ func (z *Outbound) wireTransportConfig() (ZTTransport.Config, error) {
 		SecondaryPort:    int(z.options.SecondaryPort),
 		TCPFallbackMode:  fallbackMode,
 		TCPFallbackRelay: z.options.TCPFallbackRelay,
-		Log: func(level ZTTransport.LogLevel, format string, arguments ...interface{}) {
+		Log: func(level ZTTransport.LogLevel, format string, arguments ...any) {
 			message := fmt.Sprintf(format, arguments...)
 			if level == ZTTransport.LogInfo {
 				z.logger.Info("[ZeroTier](", z.Tag(), ") ", message)

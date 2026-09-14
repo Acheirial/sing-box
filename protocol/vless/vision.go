@@ -204,11 +204,12 @@ func (c *VisionConn) Read(p []byte) (n int, err error) {
 			chunkBuffer.Reset()
 		}
 		if c.remainingContent == 0 && c.remainingPadding == 0 {
-			if c.currentCommand == commandPaddingEnd {
+			switch c.currentCommand {
+			case commandPaddingEnd:
 				c.withinPaddingBuffers = false
 				c.remainingContent = -1
 				c.remainingPadding = -1
-			} else if c.currentCommand == commandPaddingDirect {
+			case commandPaddingDirect:
 				c.withinPaddingBuffers = false
 				c.directRead = true
 
@@ -226,9 +227,9 @@ func (c *VisionConn) Read(p []byte) (n int, err error) {
 				buffers = append(buffers, buf.As(rawInputBuffer))
 
 				c.logger.Trace("XtlsRead readV")
-			} else if c.currentCommand == commandPaddingContinue {
+			case commandPaddingContinue:
 				c.withinPaddingBuffers = true
-			} else {
+			default:
 				return 0, E.New("unknown command ", c.currentCommand)
 			}
 		} else if c.remainingContent > 0 || c.remainingPadding > 0 {
@@ -266,7 +267,7 @@ func (c *VisionConn) Write(p []byte) (n int, err error) {
 		var specIndex int
 		for i, buffer := range buffers {
 			if c.isTLS && buffer.Len() > 6 && bytes.Equal(tlsApplicationDataStart, buffer.To(3)) {
-				var command byte = commandPaddingEnd
+				var command = commandPaddingEnd
 				if c.enableXTLS {
 					c.directWrite = true
 					specIndex = i

@@ -11,7 +11,8 @@ import (
 
 var packetBufferPool = sync.Pool{
 	New: func() any {
-		return make([]byte, maxPacketSize)
+		b := make([]byte, maxPacketSize)
+		return &b
 	},
 }
 
@@ -27,13 +28,13 @@ func NewPacketConn(c N.NetPacketConn, ciph Cipher) *PacketConn {
 }
 
 func (c *PacketConn) WriteTo(b []byte, addr net.Addr) (int, error) {
-	buf := packetBufferPool.Get().([]byte)
+	buf := packetBufferPool.Get().(*[]byte)
 	defer packetBufferPool.Put(buf)
-	buf, err := Pack(buf, b, c.Cipher)
+	packed, err := Pack(*buf, b, c.Cipher)
 	if err != nil {
 		return 0, err
 	}
-	_, err = c.NetPacketConn.WriteTo(buf, addr)
+	_, err = c.NetPacketConn.WriteTo(packed, addr)
 	return len(b), err
 }
 

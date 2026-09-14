@@ -82,7 +82,7 @@ func isRetryableHTTPTransportError(err error) bool {
 		return true
 	}
 	var netErr net.Error
-	return errors.As(err, &netErr) && (netErr.Timeout() || netErr.Temporary())
+	return errors.As(err, &netErr) && (netErr.Timeout() || netErr.Temporary()) //nolint:staticcheck // Temporary semantics required to match upstream retry behavior
 }
 
 func resetTimer(t *time.Timer, d time.Duration) {

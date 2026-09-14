@@ -999,7 +999,7 @@ func (s *TunnelServer) pollPush(rawConn net.Conn, token string, sequence uint64,
 	}
 
 	var decodedPayload bytes.Buffer
-	for _, line := range bytes.Split(payload, []byte{'\n'}) {
+	for line := range bytes.SplitSeq(payload, []byte{'\n'}) {
 		line = bytes.TrimSpace(line)
 		if len(line) == 0 {
 			continue

@@ -47,8 +47,9 @@ func (c *tls12TicketConn) Read(b []byte) (int, error) {
 		return c.decoded.Read(b)
 	}
 
-	buf := tools.GetRelayBuffer()
-	defer tools.PutRelayBuffer(buf)
+	bufPtr := tools.GetRelayBuffer()
+	defer tools.PutRelayBuffer(bufPtr)
+	buf := *bufPtr
 	n, err := c.Conn.Read(buf)
 	if err != nil {
 		return 0, err

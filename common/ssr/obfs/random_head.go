@@ -39,8 +39,9 @@ func (c *randomHeadConn) Read(b []byte) (int, error) {
 	if c.rawTransRecv {
 		return c.Conn.Read(b)
 	}
-	buf := tools.GetRelayBuffer()
-	defer tools.PutRelayBuffer(buf)
+	bufPtr := tools.GetRelayBuffer()
+	defer tools.PutRelayBuffer(bufPtr)
+	buf := *bufPtr
 	c.Conn.Read(buf)
 	c.rawTransRecv = true
 	c.Write(nil)

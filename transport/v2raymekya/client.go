@@ -149,7 +149,7 @@ func (r *alpnAwareRoundTripper) RoundTrip(req *http.Request) (*http.Response, er
 		return nil, fmt.Errorf("mekya: unsupported url scheme %q", req.URL.Scheme)
 	}
 	addr := roundTripAddr(req)
-	for retry := 0; retry < 5; retry++ {
+	for range 5 {
 		var rt http.RoundTripper
 		if r.shouldConnectWithH1(addr) {
 			rt = r.h1
@@ -511,13 +511,6 @@ func (s *requestClientSession) Write(p []byte) (int, error) {
 func (s *requestClientSession) Close() error {
 	s.cancel()
 	return nil
-}
-
-func (s *requestClientSession) setUnderlyingAddr(conn net.Conn) {
-	s.addrMu.Lock()
-	s.localAddr = conn.LocalAddr()
-	s.remoteAddr = conn.RemoteAddr()
-	s.addrMu.Unlock()
 }
 
 func (s *requestClientSession) LocalAddr() net.Addr {

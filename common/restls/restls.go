@@ -68,7 +68,7 @@ func SetNameCertVerify(config *Config, dnsName string) {
 // NewFingerprintVerifier returns a function that verifies whether a certificate's
 // SHA-256 fingerprint matches the given one.
 func NewFingerprintVerifier(fingerprint string, now func() time.Time) (func(certs []*x509.Certificate, serverName string) error, error) {
-	fingerprint = strings.TrimSpace(strings.Replace(fingerprint, ":", "", -1))
+	fingerprint = strings.TrimSpace(strings.ReplaceAll(fingerprint, ":", ""))
 	fpByte, err := hex.DecodeString(fingerprint)
 	if err != nil {
 		return nil, fmt.Errorf("fingerprint string decode error: %w", err)

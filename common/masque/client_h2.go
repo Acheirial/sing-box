@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"maps"
 	"net"
 	"net/http"
 	"net/url"
@@ -16,6 +17,7 @@ import (
 	"sync"
 
 	"github.com/sagernet/quic-go/quicvarint"
+
 	"github.com/yosida95/uritemplate/v3"
 	http2 "golang.org/x/net/http2"
 )
@@ -95,9 +97,7 @@ func dialH2(ctx context.Context, rt http.RoundTripper, template *uritemplate.Tem
 	req.Host = authorityFromURL(u)
 	req.ContentLength = -1
 	req.Header = make(http.Header)
-	for k, v := range additionalHeaders {
-		req.Header[k] = v
-	}
+	maps.Copy(req.Header, additionalHeaders)
 
 	stop := context.AfterFunc(ctx, cancel) // temporarily connect ctx with reqCtx when client.Do
 	rsp, err := rt.RoundTrip(req)

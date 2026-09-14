@@ -115,12 +115,6 @@ func (h *requestHandler) deleteSession(sessionID string) {
 	}
 }
 
-func (h *requestHandler) getSession(sessionID string) *httpSession {
-	h.mu.Lock()
-	defer h.mu.Unlock()
-	return h.sessions[sessionID]
-}
-
 func (h *requestHandler) normalizedMode() string {
 	if h.config.Mode == "" {
 		return "auto"

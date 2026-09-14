@@ -19,9 +19,7 @@ const V2RayTransportTypeMEKYA = "mekya"
 var _ adapter.V2RayClientTransport = (*Transport)(nil)
 
 type Transport struct {
-	client    *Client
-	tlsConfig tls.Config
-	dialer    N.Dialer
+	client *Client
 }
 
 func NewClient(ctx context.Context, dialer N.Dialer, serverAddr M.Socksaddr, options option.V2RayMEKYAOptions, tlsConfig tls.Config) (adapter.V2RayClientTransport, error) {

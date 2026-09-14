@@ -99,10 +99,10 @@ func parseAuthorizeResponse(body []byte) (*authorizeResponse, error) {
 }
 
 func findAuthorizeField(body []byte, prefix string) string {
-	for _, line := range strings.Split(strings.TrimSpace(string(body)), "\n") {
+	for line := range strings.SplitSeq(strings.TrimSpace(string(body)), "\n") {
 		line = strings.TrimSpace(line)
-		if strings.HasPrefix(line, prefix) {
-			return strings.TrimSpace(strings.TrimPrefix(line, prefix))
+		if after, ok := strings.CutPrefix(line, prefix); ok {
+			return strings.TrimSpace(after)
 		}
 	}
 	return ""
@@ -186,21 +186,6 @@ func (t *tunnelHTTPTransport) clearIdle() {
 type tunnelHTTPClient struct {
 	client    *http.Client
 	transport *tunnelHTTPTransport
-}
-
-func (c *tunnelHTTPClient) preconnect(ctx context.Context, req *http.Request, count int) context.CancelFunc {
-	if c == nil || c.transport == nil || c.transport.transport == nil || c.transport.dialer == nil ||
-		req == nil || req.URL == nil || count <= 0 {
-		return func() {}
-	}
-
-	if proxy := c.transport.transport.Proxy; proxy != nil {
-		proxyURL, err := proxy(req)
-		if err != nil || proxyURL != nil {
-			return func() {}
-		}
-	}
-	return c.transport.dialer.preconnect(ctx, req.URL.Scheme == "https", count)
 }
 
 type httpClientTarget struct {

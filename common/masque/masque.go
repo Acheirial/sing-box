@@ -10,6 +10,7 @@ import (
 	"crypto/x509"
 	"errors"
 	"fmt"
+	"maps"
 	"math/big"
 	"net/http"
 	"net/netip"
@@ -197,9 +198,7 @@ func dialEx(ctx context.Context, conn *http3.ClientConn, template *uritemplate.T
 
 	const capsuleProtocolHeaderValue = "?1"
 	headers := http.Header{http3.CapsuleProtocolHeader: []string{capsuleProtocolHeaderValue}}
-	for k, v := range additionalHeaders {
-		headers[k] = v
-	}
+	maps.Copy(headers, additionalHeaders)
 
 	rstr, err := conn.OpenRequestStream(ctx)
 	if err != nil {

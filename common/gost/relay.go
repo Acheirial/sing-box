@@ -365,7 +365,7 @@ func encodeRelayUserAuth(username, password string) []byte {
 func encodeRelayAddr(address M.Socksaddr) ([]byte, error) {
 	port := address.Port
 	out := make([]byte, 0, 1+1+len(address.AddrString())+2)
-	if !address.IsFqdn() {
+	if !address.IsDomain() {
 		ip := address.Addr.AsSlice()
 		if address.IsIPv4() {
 			out = append(out, relayAddrIPv4)

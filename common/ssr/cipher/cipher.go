@@ -108,8 +108,8 @@ func AESCTR(key []byte) (Cipher, error) {
 type cfbStream struct{ cipher.Block }
 
 func (b *cfbStream) IVSize() int                       { return b.BlockSize() }
-func (b *cfbStream) Decrypter(iv []byte) cipher.Stream { return cipher.NewCFBDecrypter(b.Block, iv) }
-func (b *cfbStream) Encrypter(iv []byte) cipher.Stream { return cipher.NewCFBEncrypter(b.Block, iv) }
+func (b *cfbStream) Decrypter(iv []byte) cipher.Stream { return cipher.NewCFBDecrypter(b.Block, iv) } //nolint:staticcheck // CFB required by SSR protocol wire compatibility
+func (b *cfbStream) Encrypter(iv []byte) cipher.Stream { return cipher.NewCFBEncrypter(b.Block, iv) } //nolint:staticcheck // CFB required by SSR protocol wire compatibility
 
 func AESCFB(key []byte) (Cipher, error) {
 	blk, err := aes.NewCipher(key)
@@ -210,10 +210,7 @@ func newWriter(w io.Writer, s cipher.Stream) *writer { return &writer{Writer: w,
 func (w *writer) Write(p []byte) (n int, err error) {
 	buf := w.buf[:]
 	for nw := 0; n < len(p) && err == nil; n += nw {
-		end := n + len(buf)
-		if end > len(p) {
-			end = len(p)
-		}
+		end := min(n+len(buf), len(p))
 		w.XORKeyStream(buf, p[n:end])
 		nw, err = w.Writer.Write(buf[:end-n])
 	}

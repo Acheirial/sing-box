@@ -14,17 +14,18 @@ const RelayBufferSize = 32768
 
 var relayBufferPool = sync.Pool{
 	New: func() any {
-		return make([]byte, RelayBufferSize)
+		b := make([]byte, RelayBufferSize)
+		return &b
 	},
 }
 
 // GetRelayBuffer returns a pooled buffer for stream relaying.
-func GetRelayBuffer() []byte {
-	return relayBufferPool.Get().([]byte)
+func GetRelayBuffer() *[]byte {
+	return relayBufferPool.Get().(*[]byte)
 }
 
 // PutRelayBuffer returns a relay buffer to the pool.
-func PutRelayBuffer(buffer []byte) {
+func PutRelayBuffer(buffer *[]byte) {
 	relayBufferPool.Put(buffer)
 }
 

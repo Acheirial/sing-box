@@ -26,7 +26,8 @@ import (
 
 var OutBytesPool = sync.Pool{
 	New: func() any {
-		return make([]byte, 5+8192+16)
+		outBytes := make([]byte, 5+8192+16)
+		return &outBytes
 	},
 }
 
@@ -54,14 +55,15 @@ func (c *CommonConn) Write(b []byte) (int, error) {
 	if len(b) == 0 {
 		return 0, nil
 	}
-	outBytes := OutBytesPool.Get().([]byte)
-	defer OutBytesPool.Put(outBytes)
+	outBytesPtr := OutBytesPool.Get().(*[]byte)
+	defer OutBytesPool.Put(outBytesPtr)
 	for n := 0; n < len(b); {
 		b := b[n:]
 		if len(b) > 8192 {
 			b = b[:8192] // for avoiding another copy() in peer's Read()
 		}
 		n += len(b)
+		outBytes := *outBytesPtr
 		headerAndData := outBytes[:5+len(b)+16]
 		EncodeHeader(headerAndData, len(b)+16)
 		max := false

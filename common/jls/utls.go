@@ -16,6 +16,7 @@ import (
 	"math/rand/v2"
 	"net"
 	"net/http"
+	"slices"
 	"strings"
 	"time"
 
@@ -177,12 +178,7 @@ func jlsClientHTTPFallback(ctx context.Context, uConn *utls.UConn, serverName st
 }
 
 func utlsClientHelloSupportsTLS13(hello *utls.PubClientHelloMsg) bool {
-	for _, version := range hello.SupportedVersions {
-		if version == utls.VersionTLS13 {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(hello.SupportedVersions, utls.VersionTLS13)
 }
 
 type utlsJLSVerifier struct {
@@ -238,13 +234,7 @@ func (v *utlsJLSVerifier) verifyUTLSCertificate(state utls.ConnectionState) erro
 
 // overrideUTLSALPN keeps ALPS only when h2 remains advertised.
 func overrideUTLSALPN(conn *utls.UConn, protocols []string) {
-	hasH2 := false
-	for _, protocol := range protocols {
-		if protocol == "h2" {
-			hasH2 = true
-			break
-		}
-	}
+	hasH2 := slices.Contains(protocols, "h2")
 
 	hasALPN := false
 	extensions := conn.Extensions[:0]
