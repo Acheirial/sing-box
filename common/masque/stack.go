@@ -220,9 +220,7 @@ func dialTCPWithBind(ctx context.Context, s *stack.Stack, localAddr, remoteAddr 
 	return gonet.NewTCPConn(&wq, ep), nil
 }
 
-var (
-	_ stack.LinkEndpoint = (*packetEndpoint)(nil)
-)
+var _ stack.LinkEndpoint = (*packetEndpoint)(nil)
 
 type packetEndpoint struct {
 	mtu        uint32

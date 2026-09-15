@@ -104,7 +104,7 @@ type bbrSender struct {
 	rttStats      congestion.RTTStatsProvider
 	bytesInFlight congestion.ByteCount
 	// return total bytes of unacked packets.
-	//GetBytesInFlight func() congestion.ByteCount
+	// GetBytesInFlight func() congestion.ByteCount
 	// Bandwidth sampler provides BBR with the bandwidth measurements at
 	// individual points.
 	sampler *BandwidthSampler
