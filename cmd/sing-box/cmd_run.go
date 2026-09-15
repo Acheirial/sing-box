@@ -22,6 +22,7 @@ import (
 	"github.com/sagernet/sing/service"
 
 	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
 )
 
 var commandRun = &cobra.Command{
@@ -58,6 +59,17 @@ func readConfigAt(path string) (*OptionsEntry, error) {
 	if err != nil {
 		return nil, E.Cause(err, "read config at ", path)
 	}
+	if strings.HasSuffix(path, ".yaml") || strings.HasSuffix(path, ".yml") {
+		var yamlContent map[string]any
+		err = yaml.Unmarshal(configContent, &yamlContent)
+		if err != nil {
+			return nil, E.Cause(err, "decode config at ", path)
+		}
+		configContent, err = json.Marshal(yamlContent)
+		if err != nil {
+			return nil, E.Cause(err, "encode config at ", path)
+		}
+	}
 	options, err := json.UnmarshalExtendedContext[option.Options](globalCtx, configContent)
 	if err != nil {
 		return nil, E.Cause(err, "decode config at ", path)
@@ -84,7 +96,7 @@ func readConfig() ([]*OptionsEntry, error) {
 			return nil, E.Cause(err, "read config directory at ", directory)
 		}
 		for _, entry := range entries {
-			if !strings.HasSuffix(entry.Name(), ".json") || entry.IsDir() {
+			if entry.IsDir() || !(strings.HasSuffix(entry.Name(), ".json") || strings.HasSuffix(entry.Name(), ".yaml") || strings.HasSuffix(entry.Name(), ".yml")) {
 				continue
 			}
 			optionsEntry, err := readConfigAt(filepath.Join(directory, entry.Name()))
