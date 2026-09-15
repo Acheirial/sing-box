@@ -13,9 +13,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/metacubex/zerotier-go"
-	ZTIP "github.com/metacubex/zerotier-go/iplink"
-	ZTTransport "github.com/metacubex/zerotier-go/transport"
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/adapter/outbound"
 	"github.com/sagernet/sing-box/common/dialer"
@@ -28,6 +25,10 @@ import (
 	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/service"
 	"github.com/sagernet/sing/service/filemanager"
+
+	"github.com/metacubex/zerotier-go"
+	ZTIP "github.com/metacubex/zerotier-go/iplink"
+	ZTTransport "github.com/metacubex/zerotier-go/transport"
 )
 
 func RegisterOutbound(registry *outbound.Registry) {
