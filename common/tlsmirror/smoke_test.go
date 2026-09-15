@@ -219,6 +219,7 @@ func TestDecodePrimaryKey(t *testing.T) {
 		t.Fatalf("expected 32-byte key, got %d", len(decoded))
 	}
 }
+
 func TestNonceGenerators(t *testing.T) {
 	nonce := newNonceGenerator()
 	first := append([]byte(nil), nonce.Next()...)

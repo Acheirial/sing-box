@@ -324,9 +324,7 @@ func (b *bbrSender) GetCongestionWindow() congestion.ByteCount {
 	return b.congestionWindow
 }
 
-func (b *bbrSender) MaybeExitSlowStart() {
-
-}
+func (b *bbrSender) MaybeExitSlowStart() {}
 
 func (b *bbrSender) OnPacketAcked(number congestion.PacketNumber, ackedBytes congestion.ByteCount, priorInFlight congestion.ByteCount, eventTime monotime.Time) {
 	// Stub
@@ -388,7 +386,6 @@ func (b *bbrSender) OnCongestionEventEx(priorInFlight congestion.ByteCount, even
 //}
 
 func (b *bbrSender) OnRetransmissionTimeout(packetsRetransmitted bool) {
-
 }
 
 //func (b *bbrSender) OnConnectionMigration() {
@@ -934,6 +931,4 @@ func minByteCount(a, b congestion.ByteCount) congestion.ByteCount {
 	}
 }
 
-var (
-	InfiniteRTT = time.Duration(math.MaxInt64)
-)
+var InfiniteRTT = time.Duration(math.MaxInt64)

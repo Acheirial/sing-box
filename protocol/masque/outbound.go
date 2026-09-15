@@ -34,9 +34,7 @@ func RegisterOutbound(registry *outbound.Registry) {
 	outbound.Register[option.MasqueOutboundOptions](registry, C.TypeMasque, NewOutbound)
 }
 
-var (
-	_ adapter.Outbound = (*Outbound)(nil)
-)
+var _ adapter.Outbound = (*Outbound)(nil)
 
 type Outbound struct {
 	outbound.Adapter
@@ -251,7 +249,6 @@ func (w *Outbound) run(ctx context.Context) error {
 }
 
 func (w *Outbound) startLocked(ctx context.Context) error {
-
 	packetConn, quicConn, err := w.dialQuic(ctx)
 	if err != nil {
 		return err

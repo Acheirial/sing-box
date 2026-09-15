@@ -267,7 +267,7 @@ func (c *VisionConn) Write(p []byte) (n int, err error) {
 		var specIndex int
 		for i, buffer := range buffers {
 			if c.isTLS && buffer.Len() > 6 && bytes.Equal(tlsApplicationDataStart, buffer.To(3)) {
-				var command = commandPaddingEnd
+				command := commandPaddingEnd
 				if c.enableXTLS {
 					c.directWrite = true
 					specIndex = i

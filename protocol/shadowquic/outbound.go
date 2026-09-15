@@ -29,9 +29,7 @@ func RegisterOutbound(registry *outbound.Registry) {
 	outbound.Register[option.ShadowQUICOutboundOptions](registry, C.TypeShadowQUIC, NewOutbound)
 }
 
-var (
-	_ adapter.Outbound = (*Outbound)(nil)
-)
+var _ adapter.Outbound = (*Outbound)(nil)
 
 type Outbound struct {
 	outbound.Adapter

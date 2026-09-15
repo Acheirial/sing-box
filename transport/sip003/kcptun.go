@@ -423,7 +423,8 @@ func scavenger(ctx context.Context, ch chan timedSession, config *kcpTunConfig) 
 		case item := <-ch:
 			sessionList = append(sessionList, timedSession{
 				item.session,
-				item.expiryDate.Add(time.Duration(config.ScavengeTTL) * time.Second)})
+				item.expiryDate.Add(time.Duration(config.ScavengeTTL) * time.Second),
+			})
 		case <-ticker.C:
 			var newList []timedSession
 			for k := range sessionList {

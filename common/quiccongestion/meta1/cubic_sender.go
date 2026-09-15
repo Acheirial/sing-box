@@ -53,9 +53,7 @@ type cubicSender struct {
 	maxDatagramSize congestion.ByteCount
 }
 
-var (
-	_ congestion.CongestionControl = &cubicSender{}
-)
+var _ congestion.CongestionControl = &cubicSender{}
 
 // NewCubicSender makes a new cubic sender
 func NewCubicSender(
