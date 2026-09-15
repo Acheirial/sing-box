@@ -109,6 +109,7 @@ type cfbStream struct{ cipher.Block }
 
 func (b *cfbStream) IVSize() int                       { return b.BlockSize() }
 func (b *cfbStream) Decrypter(iv []byte) cipher.Stream { return cipher.NewCFBDecrypter(b.Block, iv) } //nolint:staticcheck // CFB required by SSR protocol wire compatibility
+
 func (b *cfbStream) Encrypter(iv []byte) cipher.Stream { return cipher.NewCFBEncrypter(b.Block, iv) } //nolint:staticcheck // CFB required by SSR protocol wire compatibility
 
 func AESCFB(key []byte) (Cipher, error) {
