@@ -27,8 +27,6 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/cloudflare/circl/sign/mldsa/mldsa65"
-	utls "github.com/metacubex/utls"
 	"github.com/sagernet/sing-box/adapter"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/option"
@@ -38,6 +36,9 @@ import (
 	"github.com/sagernet/sing/common/logger"
 	"github.com/sagernet/sing/common/ntp"
 	aTLS "github.com/sagernet/sing/common/tls"
+
+	"github.com/cloudflare/circl/sign/mldsa/mldsa65"
+	utls "github.com/metacubex/utls"
 	"golang.org/x/crypto/hkdf"
 	"golang.org/x/net/http2"
 )

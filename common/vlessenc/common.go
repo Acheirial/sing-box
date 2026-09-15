@@ -20,6 +20,7 @@ import (
 	"time"
 
 	E "github.com/sagernet/sing/common/exceptions"
+
 	"golang.org/x/crypto/chacha20poly1305"
 	"lukechampine.com/blake3"
 )
