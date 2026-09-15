@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/sagernet/quic-go"
-
 	"github.com/sagernet/sing-box/common/shadowquic/deadline"
 )
 

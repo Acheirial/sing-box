@@ -2,12 +2,11 @@ package httpmask
 
 import (
 	"context"
+	"crypto/tls"
 	"errors"
 	"net"
 	"sync"
 	"time"
-
-	"crypto/tls"
 )
 
 const (

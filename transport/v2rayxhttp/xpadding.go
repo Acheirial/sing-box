@@ -88,7 +88,7 @@ func GenerateTokenishPaddingBase62(targetHuffmanBytes int) string {
 	adjustChar := byte('X')
 
 	// Adjust until close enough
-	for iter := 0; iter < maxIter; iter++ {
+	for range maxIter {
 		currentLength := int(hpack.HuffmanEncodeLength(randBase62Str))
 		diff := currentLength - targetHuffmanBytes
 

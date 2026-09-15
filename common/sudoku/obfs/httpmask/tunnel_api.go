@@ -5,10 +5,9 @@ import (
 	"fmt"
 	mrand "math/rand"
 	"net"
+	"net/http"
 	"strings"
 	"time"
-
-	"net/http"
 )
 
 type TunnelMode string

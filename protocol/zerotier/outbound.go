@@ -1105,7 +1105,7 @@ func (z *Outbound) runStackPackets(rt *runtime, device ipStack) {
 			return
 		}
 		writeErrors = writeErrors[:0]
-		for index := 0; index < count; index++ {
+		for index := range count {
 			if writeErr := rt.ipLink.WritePacket(buffers[index][:sizes[index]]); writeErr != nil {
 				writeErrors = append(writeErrors, writeErr)
 			}
@@ -1151,7 +1151,7 @@ func (z *Outbound) runInboundFrames() {
 				}
 			}
 		}
-		for index := 0; index < count; index++ {
+		for index := range count {
 			frames[index] = inboundFrame{}
 		}
 		packets, frameErrors = output, processingErrors
