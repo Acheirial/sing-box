@@ -12,19 +12,14 @@ CCM（Claude Code 多路复用器）服务是一个多路复用服务，允许�
 
 ### 结构
 
-```json
-{
-  "type": "ccm",
-
-  ... // 监听字段
-
-  "credential_path": "",
-  "usages_path": "",
-  "users": [],
-  "headers": {},
-  "detour": "",
-  "tls": {}
-}
+```yaml
+type: ccm
+credential_path: ''
+usages_path: ''
+users: []
+headers: {}
+detour: ''
+tls: {}
 ```
 
 ### 监听字段
@@ -68,11 +63,9 @@ Claude Code OAuth 凭据文件的路径。
 
 对象格式：
 
-```json
-{
-  "name": "",
-  "token": ""
-}
+```yaml
+name: ''
+token: ''
 ```
 
 对象字段：
@@ -98,27 +91,17 @@ TLS 配置，参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
 #### 服务端
 
-```json
-{
-  "services": [
-    {
-      "type": "ccm",
-      "listen": "0.0.0.0",
-      "listen_port": 8080,
-      "usages_path": "./claude-usages.json",
-      "users": [
-        {
-          "name": "alice",
-          "token": "ak-ccm-hello-world"
-        },
-        {
-          "name": "bob",
-          "token": "ak-ccm-hello-bob"
-        }
-      ]
-    }
-  ]
-}
+```yaml
+services:
+- type: ccm
+  listen: 0.0.0.0
+  listen_port: 8080
+  usages_path: ./claude-usages.json
+  users:
+  - name: alice
+    token: ak-ccm-hello-world
+  - name: bob
+    token: ak-ccm-hello-bob
 ```
 
 #### 客户端

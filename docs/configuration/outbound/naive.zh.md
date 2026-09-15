@@ -6,26 +6,21 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "naive",
-  "tag": "naive-out",
-
-  "server": "127.0.0.1",
-  "server_port": 443,
-  "username": "sekai",
-  "password": "password",
-  "insecure_concurrency": 0,
-  "extra_headers": {},
-  "stream_receive_window": "",
-  "udp_over_tcp": false | {},
-  "quic": false,
-  "quic_congestion_control": "",
-  "quic_session_receive_window": "",
-  "tls": {},
-
-  ... // 拨号字段
-}
+```yaml
+type: naive
+tag: naive-out
+server: 127.0.0.1
+server_port: 443
+username: sekai
+password: password
+insecure_concurrency: 0
+extra_headers: {}
+stream_receive_window: ''
+udp_over_tcp: false
+quic: false
+quic_congestion_control: ''
+quic_session_receive_window: ''
+tls: {}
 ```
 
 !!! warning "平台支持"

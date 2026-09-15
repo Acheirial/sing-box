@@ -12,16 +12,11 @@ See https://github.com/Shadowsocks-NET/shadowsocks-specs/blob/main/2023-1-shadow
 
 ### Structure
 
-```json
-{
-  "type": "ssm-api",
-  
-  ... // Listen Fields
-  
-  "servers": {},
-  "cache_path": "",
-  "tls": {}
-}
+```yaml
+type: ssm-api
+servers: {}
+cache_path: ''
+tls: {}
 ```
 
 ### Listen Fields
@@ -40,12 +35,9 @@ Selected Shadowsocks inbounds must be configured with [managed](/configuration/i
 
 Example:
 
-```json
-{
-  "servers": {
-    "/": "ss-in"
-  }
-}
+```yaml
+servers:
+  /: ss-in
 ```
 
 #### cache_path

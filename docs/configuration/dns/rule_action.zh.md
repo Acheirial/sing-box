@@ -22,13 +22,9 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "action": "",
-  "race": false,
-
-  ... // 动作字段
-}
+```yaml
+action: ''
+race: false
 ```
 
 #### action
@@ -52,19 +48,17 @@ icon: material/new-box
 
 ### route
 
-```json
-{
-  "action": "route", // 默认
-  "server": "",
-  "speculative": false,
-  "strategy": "",
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null,
-  "remove_client_subnet": false
-}
+```yaml
+action: route
+server: ''
+speculative: false
+strategy: ''
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ''
+client_subnet: null
+remove_client_subnet: false
 ```
 
 `route` 继承了将 DNS 请求 路由到指定服务器的经典规则动作。
@@ -139,19 +133,17 @@ icon: material/new-box
 
 !!! question "自 sing-box 1.14.0 起"
 
-```json
-{
-  "action": "evaluate",
-  "server": "",
-  "tag": "",
-  "speculative": false,
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null,
-  "remove_client_subnet": false
-}
+```yaml
+action: evaluate
+server: ''
+tag: ''
+speculative: false
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ''
+client_subnet: null
+remove_client_subnet: false
 ```
 
 `evaluate` 向指定服务器发送 DNS 查询并保存已评估的响应，供后续规则通过 [`match_response`](/zh/configuration/dns/rule/#match_response) 和响应字段进行匹配。与 `route` 不同，它**不会**终止规则评估。
@@ -226,10 +218,8 @@ icon: material/new-box
 
 !!! question "自 sing-box 1.14.0 起"
 
-```json
-{
-  "action": "respond"
-}
+```yaml
+action: respond
 ```
 
 `respond` 会终止规则评估，并直接返回前序 [`evaluate`](/zh/configuration/dns/rule_action/#evaluate) 动作保存的已评估的响应。
@@ -240,28 +230,24 @@ icon: material/new-box
 
 ### route-options
 
-```json
-{
-  "action": "route-options",
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null,
-  "remove_client_subnet": false
-}
+```yaml
+action: route-options
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ''
+client_subnet: null
+remove_client_subnet: false
 ```
 
 `route-options` 为路由设置选项。
 
 ### reject
 
-```json
-{
-  "action": "reject",
-  "method": "",
-  "no_drop": false
-}
+```yaml
+action: reject
+method: ''
+no_drop: false
 ```
 
 `reject` 拒绝 DNS 请求。
@@ -283,14 +269,12 @@ icon: material/new-box
 
 !!! question "自 sing-box 1.12.0 起"
 
-```json
-{
-  "action": "predefined",
-  "rcode": "",
-  "answer": [],
-  "ns": [],
-  "extra": []
-}
+```yaml
+action: predefined
+rcode: ''
+answer: []
+ns: []
+extra: []
 ```
 
 `predefined` 以预定义的 DNS 记录响应。

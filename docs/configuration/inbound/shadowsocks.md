@@ -1,52 +1,37 @@
 ### Structure
 
-```json
-{
-  "type": "shadowsocks",
-  "tag": "ss-in",
-
-  ... // Listen Fields
-
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "managed": false,
-  "multiplex": {}
-}
+```yaml
+type: shadowsocks
+tag: ss-in
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+managed: false
+multiplex: {}
 ```
 
 ### Multi-User Structure
 
-```json
-{
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "users": [
-    {
-      "name": "sekai",
-      "password": "PCD2Z4o12bKUoFa3cC97Hw=="
-    }
-  ],
-  "multiplex": {}
-}
+```yaml
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+users:
+- name: sekai
+  password: PCD2Z4o12bKUoFa3cC97Hw==
+multiplex: {}
 ```
 
 ### Relay Structure
 
-```json
-{
-  "type": "shadowsocks",
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "destinations": [
-    {
-      "name": "test",
-      "server": "example.com",
-      "server_port": 8080,
-      "password": "PCD2Z4o12bKUoFa3cC97Hw=="
-    }
-  ],
-  "multiplex": {}
-}
+```yaml
+type: shadowsocks
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+destinations:
+- name: test
+  server: example.com
+  server_port: 8080
+  password: PCD2Z4o12bKUoFa3cC97Hw==
+multiplex: {}
 ```
 
 ### Listen Fields

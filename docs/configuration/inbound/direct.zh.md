@@ -2,17 +2,12 @@
 
 ### 结构
 
-```json
-{
-  "type": "direct",
-  "tag": "direct-in",
-
-  ... // 监听字段
-
-  "network": "udp",
-  "override_address": "1.0.0.1",
-  "override_port": 53
-}
+```yaml
+type: direct
+tag: direct-in
+network: udp
+override_address: 1.0.0.1
+override_port: 53
 ```
 
 ### 监听字段

@@ -13,12 +13,8 @@ Resolved 服务是一个伪造的 systemd-resolved DBUS 服务，用于从其他
 
 ### 结构
 
-```json
-{
-  "type": "resolved",
-
-  ... // 监听字段
-}
+```yaml
+type: resolved
 ```
 
 ### 监听字段

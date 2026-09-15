@@ -8,21 +8,14 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "openvpn",
-        "tag": "",
-
-        "endpoint": "ovpn-client",
-        "accept_default_resolvers": false,
-        "accept_search_domain": false
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: openvpn
+    tag: ''
+    endpoint: ovpn-client
+    accept_default_resolvers: false
+    accept_search_domain: false
 ```
 
 ### 字段
@@ -53,30 +46,19 @@ DNS 查询会通过该端点发送到 OpenVPN 服务器推送的解析器。现�
 
 ### 示例
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "local",
-        "tag": "local"
-      },
-      {
-        "type": "openvpn",
-        "tag": "ovpn-dns",
-        "endpoint": "ovpn-client",
-        "accept_default_resolvers": true,
-        "accept_search_domain": true
-      }
-    ],
-    "rules": [
-      {
-        "preferred_by": "ovpn-dns",
-        "action": "route",
-        "server": "ovpn-dns"
-      }
-    ],
-    "final": "local"
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: local
+    tag: local
+  - type: openvpn
+    tag: ovpn-dns
+    endpoint: ovpn-client
+    accept_default_resolvers: true
+    accept_search_domain: true
+  rules:
+  - preferred_by: ovpn-dns
+    action: route
+    server: ovpn-dns
+  final: local
 ```

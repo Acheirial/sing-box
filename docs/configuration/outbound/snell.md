@@ -6,43 +6,33 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-out",
-
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": 4,
-  "psk": "password",
-  "userkey": "",
-  "reuse": false,
-  "network": "tcp",
-  "obfs_mode": "",
-  "obfs_host": "",
-
-  ... // Dial Fields
-}
+```yaml
+type: snell
+tag: snell-out
+server: 127.0.0.1
+server_port: 1080
+version: 4
+psk: password
+userkey: ''
+reuse: false
+network: tcp
+obfs_mode: ''
+obfs_host: ''
 ```
 
 ### Version 6 Structure
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-out",
-
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": 6,
-  "psk": "password",
-  "userkey": "",
-  "reuse": false,
-  "network": "tcp",
-  "mode": "",
-
-  ... // Dial Fields
-}
+```yaml
+type: snell
+tag: snell-out
+server: 127.0.0.1
+server_port: 1080
+version: 6
+psk: password
+userkey: ''
+reuse: false
+network: tcp
+mode: ''
 ```
 
 ### Fields

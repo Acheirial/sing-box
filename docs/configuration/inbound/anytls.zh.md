@@ -6,22 +6,14 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "anytls",
-  "tag": "anytls-in",
-
-  ... // 监听字段
-
-  "users": [
-    {
-      "name": "sekai",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
-    }
-  ],
-  "padding_scheme": [],
-  "tls": {}
-}
+```yaml
+type: anytls
+tag: anytls-in
+users:
+- name: sekai
+  password: 8JCsPssfgS8tiRwiMlhARg==
+padding_scheme: []
+tls: {}
 ```
 
 ### 监听字段
@@ -42,18 +34,16 @@ AnyTLS 填充方案行数组。
 
 默认填充方案:
 
-```json
-[
-  "stop=8",
-  "0=30-30",
-  "1=100-400",
-  "2=400-500,c,500-1000,c,500-1000,c,500-1000,c,500-1000",
-  "3=9-9,500-1000",
-  "4=500-1000",
-  "5=500-1000",
-  "6=500-1000",
-  "7=500-1000"
-]
+```yaml
+- stop=8
+- 0=30-30
+- 1=100-400
+- 2=400-500,c,500-1000,c,500-1000,c,500-1000,c,500-1000
+- 3=9-9,500-1000
+- 4=500-1000
+- 5=500-1000
+- 6=500-1000
+- 7=500-1000
 ```
 
 #### tls

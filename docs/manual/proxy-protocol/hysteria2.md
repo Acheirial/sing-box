@@ -46,94 +46,64 @@ To use sing-box with the official program, you need to fill in that combination 
 
 === ":material-harddisk: With local certificate"
 
-    ```json
-     {
-      "inbounds": [
-        {
-          "type": "hysteria2",
-          "listen": "::",
-          "listen_port": 8080,
-          "up_mbps": 100,
-          "down_mbps": 100,
-          "users": [
-            {
-              "name": "sekai",
-              "password": "<password>"
-            }
-          ],
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "key_path": "/path/to/key.pem",
-            "certificate_path": "/path/to/certificate.pem"
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: hysteria2
+      listen: '::'
+      listen_port: 8080
+      up_mbps: 100
+      down_mbps: 100
+      users:
+      - name: sekai
+        password: <password>
+      tls:
+        enabled: true
+        server_name: example.org
+        key_path: /path/to/key.pem
+        certificate_path: /path/to/certificate.pem
     ```
 
 === ":material-auto-fix: With ACME"
 
-    ```json
-     {
-      "inbounds": [
-        {
-          "type": "hysteria2",
-          "listen": "::",
-          "listen_port": 8080,
-          "up_mbps": 100,
-          "down_mbps": 100,
-          "users": [
-            {
-              "name": "sekai",
-              "password": "<password>"
-            }
-          ],
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "acme": {
-              "domain": "example.org",
-              "email": "admin@example.org"
-            }
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: hysteria2
+      listen: '::'
+      listen_port: 8080
+      up_mbps: 100
+      down_mbps: 100
+      users:
+      - name: sekai
+        password: <password>
+      tls:
+        enabled: true
+        server_name: example.org
+        acme:
+          domain: example.org
+          email: admin@example.org
     ```
 
 === ":material-cloud: With ACME and Cloudflare API"
 
-    ```json
-     {
-      "inbounds": [
-        {
-          "type": "hysteria2",
-          "listen": "::",
-          "listen_port": 8080,
-          "up_mbps": 100,
-          "down_mbps": 100,
-          "users": [
-            {
-              "name": "sekai",
-              "password": "<password>"
-            }
-          ],
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "acme": {
-              "domain": "example.org",
-              "email": "admin@example.org",
-              "dns01_challenge": {
-                "provider": "cloudflare",
-                "api_token": "my_token"
-              }
-            }
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: hysteria2
+      listen: '::'
+      listen_port: 8080
+      up_mbps: 100
+      down_mbps: 100
+      users:
+      - name: sekai
+        password: <password>
+      tls:
+        enabled: true
+        server_name: example.org
+        acme:
+          domain: example.org
+          email: admin@example.org
+          dns01_challenge:
+            provider: cloudflare
+            api_token: my_token
     ```
 
 ## :material-cellphone-link: Client Example
@@ -144,23 +114,17 @@ To use sing-box with the official program, you need to fill in that combination 
 
 === ":material-web-check: With valid certificate"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "hysteria2",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "up_mbps": 100,
-          "down_mbps": 100,
-          "password": "<password>",
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org"
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: hysteria2
+      server: 127.0.0.1
+      server_port: 8080
+      up_mbps: 100
+      down_mbps: 100
+      password: <password>
+      tls:
+        enabled: true
+        server_name: example.org
     ```
 
 === ":material-check: With self-sign certificate"
@@ -169,44 +133,32 @@ To use sing-box with the official program, you need to fill in that combination 
         
         Use `sing-box merge` command to merge configuration and certificate into one file.
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "hysteria2",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "up_mbps": 100,
-          "down_mbps": 100,
-          "password": "<password>",
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "certificate_path": "/path/to/certificate.pem"
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: hysteria2
+      server: 127.0.0.1
+      server_port: 8080
+      up_mbps: 100
+      down_mbps: 100
+      password: <password>
+      tls:
+        enabled: true
+        server_name: example.org
+        certificate_path: /path/to/certificate.pem
     ```
 
 === ":material-alert: Ignore certificate verification"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "hysteria2",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "up_mbps": 100,
-          "down_mbps": 100,
-          "password": "<password>",
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "insecure": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: hysteria2
+      server: 127.0.0.1
+      server_port: 8080
+      up_mbps: 100
+      down_mbps: 100
+      password: <password>
+      tls:
+        enabled: true
+        server_name: example.org
+        insecure: true
     ```

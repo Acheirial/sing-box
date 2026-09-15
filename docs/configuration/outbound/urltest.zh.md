@@ -1,21 +1,17 @@
 ### 结构
 
-```json
-{
-  "type": "urltest",
-  "tag": "auto",
-  
-  "outbounds": [
-    "proxy-a",
-    "proxy-b",
-    "proxy-c"
-  ],
-  "url": "",
-  "interval": "",
-  "tolerance": 50,
-  "idle_timeout": "",
-  "interrupt_exist_connections": false
-}
+```yaml
+type: urltest
+tag: auto
+outbounds:
+- proxy-a
+- proxy-b
+- proxy-c
+url: ''
+interval: ''
+tolerance: 50
+idle_timeout: ''
+interrupt_exist_connections: false
 ```
 
 ### 字段

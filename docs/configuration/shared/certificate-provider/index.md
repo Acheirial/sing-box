@@ -8,15 +8,10 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "certificate_providers": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+certificate_providers:
+- type: ''
+  tag: ''
 ```
 
 ### Fields

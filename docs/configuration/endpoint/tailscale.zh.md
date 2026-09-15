@@ -25,34 +25,30 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "tailscale",
-  "tag": "ts-ep",
-  "state_directory": "",
-  "auth_key": "",
-  "control_url": "",
-  "ephemeral": false,
-  "hostname": "",
-  "accept_routes": false,
-  "exit_node": "",
-  "exit_node_allow_lan_access": false,
-  "advertise_routes": [],
-  "advertise_exit_node": false,
-  "advertise_tags": [],
-  "listen_port": 0,
-  "relay_server_port": 0,
-  "relay_server_static_endpoints": [],
-  "system_interface": false,
-  "system_interface_name": "",
-  "system_interface_mtu": 0,
-  "udp_timeout": "5m",
-  "ssh_server": false,
-  "taildrop_directory": "",
-  "on_demand": false,
-
-  ... // 拨号字段
-}
+```yaml
+type: tailscale
+tag: ts-ep
+state_directory: ''
+auth_key: ''
+control_url: ''
+ephemeral: false
+hostname: ''
+accept_routes: false
+exit_node: ''
+exit_node_allow_lan_access: false
+advertise_routes: []
+advertise_exit_node: false
+advertise_tags: []
+listen_port: 0
+relay_server_port: 0
+relay_server_static_endpoints: []
+system_interface: false
+system_interface_name: ''
+system_interface_mtu: 0
+udp_timeout: 5m
+ssh_server: false
+taildrop_directory: ''
+on_demand: false
 ```
 
 ### 字段
@@ -190,13 +186,11 @@ UDP NAT 过期时间。
 
 对象格式：
 
-```json
-{
-  "enabled": true,
-  "disable_pty": false,
-  "disable_sftp": false,
-  "disable_forwarding": false
-}
+```yaml
+enabled: true
+disable_pty: false
+disable_sftp: false
+disable_forwarding: false
 ```
 
 将 `ssh_server` 值设置为 `true` 等同于 `{ "enabled": true }`。

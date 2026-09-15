@@ -15,48 +15,34 @@ icon: material/alert-decagram
 
 ### Structure
 
-```json
-{
-  "type": "hysteria2",
-  "tag": "hy2-in",
-  
-  ... // Listen Fields
-
-  "up_mbps": 100,
-  "down_mbps": 100,
-  "obfs": {
-    "type": "salamander",
-    "password": "cry_me_a_r1ver"
-  },
-  "users": [
-    {
-      "name": "tobyxdd",
-      "password": "goofy_ahh_password"
-    }
-  ],
-  "ignore_client_bandwidth": false,
-  "tls": {},
-
-  ... // QUIC Fields
-
-  "masquerade": "", // or {}
-  "bbr_profile": "",
-  "brutal_debug": false,
-  "realm": {
-    "server_url": "https://realm.example.com",
-    "token": "",
-    "realm_id": "",
-    "stun_servers": [],
-    "stun_domain_resolver": "", // or {}
-    "ip_version": 0,
-    "port_mapping": {
-      "enabled": false,
-      "timeout": "",
-      "lifetime": ""
-    },
-    "http_client": {}
-  }
-}
+```yaml
+type: hysteria2
+tag: hy2-in
+up_mbps: 100
+down_mbps: 100
+obfs:
+  type: salamander
+  password: cry_me_a_r1ver
+users:
+- name: tobyxdd
+  password: goofy_ahh_password
+ignore_client_bandwidth: false
+tls: {}
+masquerade: ''
+bbr_profile: ''
+brutal_debug: false
+realm:
+  server_url: https://realm.example.com
+  token: ''
+  realm_id: ''
+  stun_servers: []
+  stun_domain_resolver: ''
+  ip_version: 0
+  port_mapping:
+    enabled: false
+    timeout: ''
+    lifetime: ''
+  http_client: {}
 ```
 
 !!! warning "Difference from official Hysteria2"

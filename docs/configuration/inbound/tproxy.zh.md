@@ -10,17 +10,10 @@
 
 ### 结构
 
-```json
-{
-  "type": "tproxy",
-  "tag": "tproxy-in",
-
-  ... // 监听字段
-
-  "network": "udp",
-
-  ... // UDP NAT 字段
-}
+```yaml
+type: tproxy
+tag: tproxy-in
+network: udp
 ```
 
 ### 监听字段

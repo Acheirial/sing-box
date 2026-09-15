@@ -6,18 +6,12 @@
 
 ### 结构
 
-```json
-{
-  "ntp": {
-    "enabled": false,
-    "server": "time.apple.com",
-    "server_port": 123,
-    "interval": "30m",
-    
-    ... // 拨号字段
-  }
-}
-
+```yaml
+ntp:
+  enabled: false
+  server: time.apple.com
+  server_port: 123
+  interval: 30m
 ```
 
 ### 字段

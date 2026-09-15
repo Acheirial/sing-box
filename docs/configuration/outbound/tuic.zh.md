@@ -1,26 +1,19 @@
 ### 结构
 
-```json
-{
-  "type": "tuic",
-  "tag": "tuic-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "uuid": "2DD61D93-75D8-4DA4-AC0E-6AECE7EAC365",
-  "password": "hello",
-  "congestion_control": "cubic",
-  "udp_relay_mode": "native",
-  "udp_over_stream": false,
-  "zero_rtt_handshake": false,
-  "heartbeat": "10s",
-  "network": "tcp",
-  "tls": {},
-
-  ... // QUIC 字段
-
-  ... // 拨号字段
-}
+```yaml
+type: tuic
+tag: tuic-out
+server: 127.0.0.1
+server_port: 1080
+uuid: 2DD61D93-75D8-4DA4-AC0E-6AECE7EAC365
+password: hello
+congestion_control: cubic
+udp_relay_mode: native
+udp_over_stream: false
+zero_rtt_handshake: false
+heartbeat: 10s
+network: tcp
+tls: {}
 ```
 
 ### 字段

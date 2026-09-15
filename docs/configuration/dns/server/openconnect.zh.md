@@ -8,21 +8,14 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "openconnect",
-        "tag": "",
-
-        "endpoint": "oc-client",
-        "accept_default_resolvers": false,
-        "accept_search_domain": false
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: openconnect
+    tag: ''
+    endpoint: oc-client
+    accept_default_resolvers: false
+    accept_search_domain: false
 ```
 
 ### 字段
@@ -53,45 +46,28 @@ DNS 查询会通过 OpenConnect 端点发送到 VPN 服务器推送的解析器�
 
 === "仅分流 DNS"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "type": "local",
-            "tag": "local"
-          },
-          {
-            "type": "openconnect",
-            "tag": "oc",
-            "endpoint": "oc-client"
-          }
-        ],
-        "rules": [
-          {
-            "preferred_by": "oc",
-            "action": "route",
-            "server": "oc"
-          }
-        ],
-        "final": "local"
-      }
-    }
-    ```
+```yaml
+dns:
+  servers:
+  - type: local
+    tag: local
+  - type: openconnect
+    tag: oc
+    endpoint: oc-client
+  rules:
+  - preferred_by: oc
+    action: route
+    server: oc
+  final: local
+```
 
 === "接受推送的默认解析器"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "type": "openconnect",
-            "endpoint": "oc-client",
-            "accept_default_resolvers": true,
-            "accept_search_domain": true
-          }
-        ]
-      }
-    }
-    ```
+```yaml
+dns:
+  servers:
+  - type: openconnect
+    endpoint: oc-client
+    accept_default_resolvers: true
+    accept_search_domain: true
+```

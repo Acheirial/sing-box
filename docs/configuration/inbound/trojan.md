@@ -1,32 +1,21 @@
 ### Structure
 
-```json
-{
-  "type": "trojan",
-  "tag": "trojan-in",
-
-  ... // Listen Fields
-
-  "users": [
-    {
-      "name": "sekai",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
-    }
-  ],
-  "tls": {},
-  "fallback": {
-    "server": "127.0.0.1",
-    "server_port": 8080
-  },
-  "fallback_for_alpn": {
-    "http/1.1": {
-      "server": "127.0.0.1",
-      "server_port": 8081
-    }
-  },
-  "multiplex": {},
-  "transport": {}
-}
+```yaml
+type: trojan
+tag: trojan-in
+users:
+- name: sekai
+  password: 8JCsPssfgS8tiRwiMlhARg==
+tls: {}
+fallback:
+  server: 127.0.0.1
+  server_port: 8080
+fallback_for_alpn:
+  http/1.1:
+    server: 127.0.0.1
+    server_port: 8081
+multiplex: {}
+transport: {}
 ```
 
 ### Listen Fields

@@ -4,23 +4,15 @@
 
 ### Structure
 
-```json
-{
-"type": "naive",
-"tag": "naive-in",
-"network": "udp",
-...
-// Listen Fields
-
-"users": [
-{
-"username": "sekai",
-"password": "password"
-}
-],
-"quic_congestion_control": "",
-"tls": {}
-}
+```yaml
+type: naive
+tag: naive-in
+network: udp
+users:
+- username: sekai
+  password: password
+quic_congestion_control: ''
+tls: {}
 ```
 
 ### Listen Fields

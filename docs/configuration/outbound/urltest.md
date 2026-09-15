@@ -1,21 +1,17 @@
 ### Structure
 
-```json
-{
-  "type": "urltest",
-  "tag": "auto",
-  
-  "outbounds": [
-    "proxy-a",
-    "proxy-b",
-    "proxy-c"
-  ],
-  "url": "",
-  "interval": "",
-  "tolerance": 0,
-  "idle_timeout": "",
-  "interrupt_exist_connections": false
-}
+```yaml
+type: urltest
+tag: auto
+outbounds:
+- proxy-a
+- proxy-b
+- proxy-c
+url: ''
+interval: ''
+tolerance: 0
+idle_timeout: ''
+interrupt_exist_connections: false
 ```
 
 ### Fields

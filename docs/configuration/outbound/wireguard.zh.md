@@ -16,32 +16,26 @@ icon: material/delete-clock
 
 ### 结构
 
-```json
-{
-  "type": "wireguard",
-  "tag": "wireguard-out",
-
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "system_interface": false,
-  "interface_name": "wg0",
-  "local_address": [
-    "10.0.0.1/32"
-  ],
-  "private_key": "YNXtAzepDqRv9H52osJVDQnznT5AM11eCK3ESpwSt04=",
-  "peer_public_key": "Z1XXLsKYkYxuiYjJIkRvtIKFepCYHTgON+GwPq7SOV4=",
-  "pre_shared_key": "31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=",
-  "reserved": [0, 0, 0],
-  "workers": 4,
-  "mtu": 1408,
-  "network": "tcp",
-  
-  // 废弃的
-  
-  "gso": false,
-
-  ... // 拨号字段
-}
+```yaml
+type: wireguard
+tag: wireguard-out
+server: 127.0.0.1
+server_port: 1080
+system_interface: false
+interface_name: wg0
+local_address:
+- 10.0.0.1/32
+private_key: YNXtAzepDqRv9H52osJVDQnznT5AM11eCK3ESpwSt04=
+peer_public_key: Z1XXLsKYkYxuiYjJIkRvtIKFepCYHTgON+GwPq7SOV4=
+pre_shared_key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
+reserved:
+- 0
+- 0
+- 0
+workers: 4
+mtu: 1408
+network: tcp
+gso: false
 ```
 
 ### 字段

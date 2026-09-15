@@ -7,12 +7,10 @@ See [tcp-brutal](https://github.com/apernet/tcp-brutal) for details.
 
 ### Structure
 
-```json
-{
-  "enabled": true,
-  "up_mbps": 100,
-  "down_mbps": 100
-}
+```yaml
+enabled: true
+up_mbps: 100
+down_mbps: 100
 ```
 
 ### Fields

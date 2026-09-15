@@ -1,27 +1,17 @@
 ### Structure
 
-```json
-{
-  "type": "tuic",
-  "tag": "tuic-in",
-  
-  ... // Listen Fields
-
-  "users": [
-    {
-      "name": "sekai",
-      "uuid": "059032A9-7D40-4A96-9BB1-36823D848068",
-      "password": "hello"
-    }
-  ],
-  "congestion_control": "cubic",
-  "auth_timeout": "3s",
-  "zero_rtt_handshake": false,
-  "heartbeat": "10s",
-  "tls": {},
-
-  ... // QUIC Fields
-}
+```yaml
+type: tuic
+tag: tuic-in
+users:
+- name: sekai
+  uuid: 059032A9-7D40-4A96-9BB1-36823D848068
+  password: hello
+congestion_control: cubic
+auth_timeout: 3s
+zero_rtt_handshake: false
+heartbeat: 10s
+tls: {}
 ```
 
 ### Listen Fields

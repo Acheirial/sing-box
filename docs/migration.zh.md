@@ -15,29 +15,21 @@ icon: material/arrange-bring-forward
 
 === ":material-card-remove: 已废弃"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "tun",
-          "address": ["172.18.0.1/30"],
-          "stack": "system"
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: tun
+      address:
+      - 172.18.0.1/30
+      stack: system
     ```
 
 === ":material-card-multiple: 已迁移"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "tun",
-          "address": ["172.18.0.1/30"]
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: tun
+      address:
+      - 172.18.0.1/30
     ```
 
 ## 1.14.0
@@ -78,65 +70,45 @@ sing-box 1.14.0 新增字段参阅 [ACME](/zh/configuration/shared/certificate-p
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "trojan",
-          "tls": {
-            "enabled": true,
-            "acme": {
-              "domain": ["example.com"],
-              "email": "admin@example.com"
-            }
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: trojan
+      tls:
+        enabled: true
+        acme:
+          domain:
+          - example.com
+          email: admin@example.com
     ```
 
 === ":material-card-multiple: 内联"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "trojan",
-          "tls": {
-            "enabled": true,
-            "certificate_provider": {
-              "type": "acme",
-              "domain": ["example.com"],
-              "email": "admin@example.com"
-            }
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: trojan
+      tls:
+        enabled: true
+        certificate_provider:
+          type: acme
+          domain:
+          - example.com
+          email: admin@example.com
     ```
 
 === ":material-card-multiple: 共享"
 
-    ```json
-    {
-      "certificate_providers": [
-        {
-          "type": "acme",
-          "tag": "my-cert",
-          "domain": ["example.com"],
-          "email": "admin@example.com"
-        }
-      ],
-      "inbounds": [
-        {
-          "type": "trojan",
-          "tls": {
-            "enabled": true,
-            "certificate_provider": "my-cert"
-          }
-        }
-      ]
-    }
+    ```yaml
+    certificate_providers:
+    - type: acme
+      tag: my-cert
+      domain:
+      - example.com
+      email: admin@example.com
+    inbounds:
+    - type: trojan
+      tls:
+        enabled: true
+        certificate_provider: my-cert
     ```
 
 ### 迁移地址筛选字段到响应匹配
@@ -156,47 +128,29 @@ sing-box 1.14.0 新增字段参阅 [ACME](/zh/configuration/shared/certificate-p
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "dns": {
-        "rules": [
-          {
-            "rule_set": "geoip-cn",
-            "action": "route",
-            "server": "local"
-          },
-          {
-            "action": "route",
-            "server": "remote"
-          }
-        ]
-      }
-    }
+    ```yaml
+    dns:
+      rules:
+      - rule_set: geoip-cn
+        action: route
+        server: local
+      - action: route
+        server: remote
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "dns": {
-        "rules": [
-          {
-            "action": "evaluate",
-            "server": "remote"
-          },
-          {
-            "match_response": true,
-            "rule_set": "geoip-cn",
-            "action": "route",
-            "server": "local"
-          },
-          {
-            "action": "route",
-            "server": "remote"
-          }
-        ]
-      }
-    }
+    ```yaml
+    dns:
+      rules:
+      - action: evaluate
+        server: remote
+      - match_response: true
+        rule_set: geoip-cn
+        action: route
+        server: local
+      - action: route
+        server: remote
     ```
 
 ### 迁移 independent DNS cache
@@ -210,20 +164,15 @@ DNS 缓存现在始终按传输名称分离，使 `independent_cache` 不再需�
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "dns": {
-        "independent_cache": true
-      }
-    }
+    ```yaml
+    dns:
+      independent_cache: true
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "dns": {}
-    }
+    ```yaml
+    dns: {}
     ```
 
 ### 迁移 store_rdrc
@@ -237,28 +186,20 @@ DNS 缓存现在始终按传输名称分离，使 `independent_cache` 不再需�
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "experimental": {
-        "cache_file": {
-          "enabled": true,
-          "store_rdrc": true
-        }
-      }
-    }
+    ```yaml
+    experimental:
+      cache_file:
+        enabled: true
+        store_rdrc: true
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "experimental": {
-        "cache_file": {
-          "enabled": true,
-          "store_dns": true
-        }
-      }
-    }
+    ```yaml
+    experimental:
+      cache_file:
+        enabled: true
+        store_dns: true
     ```
 
 ### DNS 规则中的 ip_version 和 query_type 行为更改
@@ -317,499 +258,302 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "local"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: local
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "local"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: local
         ```
 
 === "TCP"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "tcp://1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: tcp://1.1.1.1
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "tcp",
-                "server": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: tcp
+            server: 1.1.1.1
         ```
 
 === "UDP"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: 1.1.1.1
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "udp",
-                "server": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: udp
+            server: 1.1.1.1
         ```
 
 === "TLS"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "tls://1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: tls://1.1.1.1
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "tls",
-                "server": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: tls
+            server: 1.1.1.1
         ```
 
 === "HTTPS"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "https://1.1.1.1/dns-query"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: https://1.1.1.1/dns-query
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "https",
-                "server": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: https
+            server: 1.1.1.1
         ```
 
 === "QUIC"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "quic://1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: quic://1.1.1.1
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "quic",
-                "server": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: quic
+            server: 1.1.1.1
         ```
 
 === "HTTP3"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "h3://1.1.1.1/dns-query"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: h3://1.1.1.1/dns-query
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "h3",
-                "server": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: h3
+            server: 1.1.1.1
         ```
 
 === "DHCP"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "dhcp://auto"
-              },
-              {
-                "address": "dhcp://en0"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: dhcp://auto
+          - address: dhcp://en0
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "dhcp",
-              },
-              {
-                "type": "dhcp",
-                "interface": "en0"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: dhcp
+          - type: dhcp
+            interface: en0
         ```
 
 === "FakeIP"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "1.1.1.1"
-              },
-              {
-                "address": "fakeip",
-                "tag": "fakeip"
-              }
-            ],
-            "rules": [
-              {
-                "query_type": [
-                  "A",
-                  "AAAA"
-                ],
-                "server": "fakeip"
-              }
-            ],
-            "fakeip": {
-              "enabled": true,
-              "inet4_range": "198.18.0.0/15",
-              "inet6_range": "fc00::/18"
-            }
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: 1.1.1.1
+          - address: fakeip
+            tag: fakeip
+          rules:
+          - query_type:
+            - A
+            - AAAA
+            server: fakeip
+          fakeip:
+            enabled: true
+            inet4_range: 198.18.0.0/15
+            inet6_range: fc00::/18
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "udp",
-                "server": "1.1.1.1"
-              },
-              {
-                "type": "fakeip",
-                "tag": "fakeip",
-                "inet4_range": "198.18.0.0/15",
-                "inet6_range": "fc00::/18"
-              }
-            ],
-            "rules": [
-              {
-                "query_type": [
-                  "A",
-                  "AAAA"
-                ],
-                "server": "fakeip"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: udp
+            server: 1.1.1.1
+          - type: fakeip
+            tag: fakeip
+            inet4_range: 198.18.0.0/15
+            inet6_range: fc00::/18
+          rules:
+          - query_type:
+            - A
+            - AAAA
+            server: fakeip
         ```
 
 === "RCode"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "rcode://refused"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: rcode://refused
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "rules": [
-              {
-                "domain": [
-                  "example.com"
-                ],
-                // 其它规则
-                
-                "action": "predefined",
-                "rcode": "REFUSED"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          rules:
+          - domain:
+            - example.com
+            action: predefined
+            rcode: REFUSED
         ```
 
 === "带有域名地址的服务器"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "https://dns.google/dns-query",
-                "address_resolver": "google"
-              },
-              {
-                "tag": "google",
-                "address": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: https://dns.google/dns-query
+            address_resolver: google
+          - tag: google
+            address: 1.1.1.1
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "https",
-                "server": "dns.google",
-                "domain_resolver": "google"
-              },
-              {
-                "type": "udp",
-                "tag": "google",
-                "server": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: https
+            server: dns.google
+            domain_resolver: google
+          - type: udp
+            tag: google
+            server: 1.1.1.1
         ```
 
 === "带有域策略的服务器"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "1.1.1.1",
-                "strategy": "ipv4_only"
-              },
-              {
-                "tag": "google",
-                "address": "8.8.8.8",
-                "strategy": "prefer_ipv6"
-              }
-            ],
-            "rules": [
-              {
-                "domain": "google.com",
-                "server": "google"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: 1.1.1.1
+            strategy: ipv4_only
+          - tag: google
+            address: 8.8.8.8
+            strategy: prefer_ipv6
+          rules:
+          - domain: google.com
+            server: google
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "udp",
-                "server": "1.1.1.1"
-              },
-              {
-                "type": "udp",
-                "tag": "google",
-                "server": "8.8.8.8"
-              }
-            ],
-            "rules": [
-              {
-                "domain": "google.com",
-                "server": "google",
-                "strategy": "prefer_ipv6"
-              }
-            ],
-            "strategy": "ipv4_only"
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: udp
+            server: 1.1.1.1
+          - type: udp
+            tag: google
+            server: 8.8.8.8
+          rules:
+          - domain: google.com
+            server: google
+            strategy: prefer_ipv6
+          strategy: ipv4_only
         ```
 
 === "带有客户端子网的服务器"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "address": "1.1.1.1"
-              },
-              {
-                "tag": "google",
-                "address": "8.8.8.8",
-                "client_subnet": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - address: 1.1.1.1
+          - tag: google
+            address: 8.8.8.8
+            client_subnet: 1.1.1.1
         ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "udp",
-                "server": "1.1.1.1"
-              },
-              {
-                "type": "udp",
-                "tag": "google",
-                "server": "8.8.8.8"
-              }
-            ],
-            "rules": [
-              {
-                "domain": "google.com",
-                "server": "google",
-                "client_subnet": "1.1.1.1"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - type: udp
+            server: 1.1.1.1
+          - type: udp
+            tag: google
+            server: 8.8.8.8
+          rules:
+          - domain: google.com
+            server: google
+            client_subnet: 1.1.1.1
         ```
 
 ### 迁移 outbound DNS 规则项到域解析选项
@@ -824,68 +568,40 @@ DNS 服务器已经重构。
 
 === ":material-card-remove: 废弃的"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "address": "local",
-            "tag": "local"
-          }
-        ],
-        "rules": [
-          {
-            "outbound": "any",
-            "server": "local"
-          }
-        ]
-      },
-      "outbounds": [
-        {
-          "type": "socks",
-          "server": "example.org",
-          "server_port": 2080
-        }
-      ]
-    }
+    ```yaml
+    dns:
+      servers:
+      - address: local
+        tag: local
+      rules:
+      - outbound: any
+        server: local
+    outbounds:
+    - type: socks
+      server: example.org
+      server_port: 2080
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "type": "local",
-            "tag": "local"
-          }
-        ]
-      },
-      "outbounds": [
-        {
-          "type": "socks",
-          "server": "example.org",
-          "server_port": 2080,
-          "domain_resolver": {
-            "server": "local",
-            "rewrite_ttl": 60,
-            "client_subnet": "1.1.1.1"
-          },
-          // 或 "domain_resolver": "local",
-        }
-      ],
-
-      // 或
-
-      "route": {
-        "default_domain_resolver": {
-          "server": "local",
-          "rewrite_ttl": 60,
-          "client_subnet": "1.1.1.1"
-        }
-      }
-    }
+    ```yaml
+    dns:
+      servers:
+      - type: local
+        tag: local
+    outbounds:
+    - type: socks
+      server: example.org
+      server_port: 2080
+      domain_resolver:
+        server: local
+        rewrite_ttl: 60
+        client_subnet: 1.1.1.1
+    route:
+      default_domain_resolver:
+        server: local
+        rewrite_ttl: 60
+        client_subnet: 1.1.1.1
     ```
 
 ### 迁移出站域名策略选项到域名解析器
@@ -900,43 +616,28 @@ DNS 服务器已经重构。
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "socks",
-          "server": "example.org",
-          "server_port": 2080,
-          "domain_strategy": "prefer_ipv4",
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: socks
+      server: example.org
+      server_port: 2080
+      domain_strategy: prefer_ipv4
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-     {
-      "dns": {
-        "servers": [
-          {
-            "type": "local",
-            "tag": "local"
-          }
-        ]
-      },
-      "outbounds": [
-        {
-          "type": "socks",
-          "server": "example.org",
-          "server_port": 2080,
-          "domain_resolver": {
-            "server": "local",
-            "strategy": "prefer_ipv4"
-          }
-        }
-      ]
-    }
+    ```yaml
+    dns:
+      servers:
+      - type: local
+        tag: local
+    outbounds:
+    - type: socks
+      server: example.org
+      server_port: 2080
+      domain_resolver:
+        server: local
+        strategy: prefer_ipv4
     ```
 
 ## 1.11.0
@@ -955,88 +656,50 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "outbounds": [
-            {
-              "type": "block",
-              "tag": "block"
-            }
-          ],
-          "route": {
-            "rules": [
-              {
-                ...,
-
-                "outbound": "block"
-              }
-            ]
-          }
-        }
-        ```
+    ```yaml
+    outbounds:
+    - type: block
+      tag: block
+    route:
+      rules:
+      - # ... 其他字段
+        outbound: block
+    ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "route": {
-            "rules": [
-              {
-                ...,
-
-                "action": "reject"
-              }
-            ]
-          }
-        }
-        ```
+    ```yaml
+    route:
+      rules:
+      - # ... 其他字段
+        action: reject
+    ```
 
 === "DNS"
 
     === ":material-card-remove: 弃用的"
 
-        ```json
-        {
-          "inbound": [
-            {
-              ...,
-
-              "sniff": true
-            }
-          ],
-          "outbounds": [
-            {
-              "tag": "dns",
-              "type": "dns"
-            }
-          ],
-          "route": {
-            "rules": [
-              {
-                "protocol": "dns",
-                "outbound": "dns"
-              }
-            ]
-          }
-        }
-        ```
+    ```yaml
+    inbound:
+    - # ... 其他字段
+      sniff: true
+    outbounds:
+    - tag: dns
+      type: dns
+    route:
+      rules:
+      - protocol: dns
+        outbound: dns
+    ```
 
     === ":material-card-multiple: 新的"
 
-        ```json
-        {
-          "route": {
-            "rules": [
-              {
-                "action": "sniff"
-              },
-              {
-                "protocol": "dns",
-                "action": "hijack-dns"
-              }
-            ]
-          }
-        }
+        ```yaml
+        route:
+          rules:
+          - action: sniff
+          - protocol: dns
+            action: hijack-dns
         ```
 
 ### 迁移旧的入站字段到规则动作
@@ -1053,44 +716,28 @@ DNS 服务器已经重构。
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "mixed",
-          "sniff": true,
-          "sniff_timeout": "1s",
-          "domain_strategy": "prefer_ipv4"
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: mixed
+      sniff: true
+      sniff_timeout: 1s
+      domain_strategy: prefer_ipv4
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "mixed",
-          "tag": "in"
-        }
-      ],
-      "route": {
-        "rules": [
-          {
-            "inbound": "in",
-            "action": "resolve",
-            "strategy": "prefer_ipv4"
-          },
-          {
-            "inbound": "in",
-            "action": "sniff",
-            "timeout": "1s"
-          }
-        ]
-      }
-    }
+    ```yaml
+    inbounds:
+    - type: mixed
+      tag: in
+    route:
+      rules:
+      - inbound: in
+        action: resolve
+        strategy: prefer_ipv4
+      - inbound: in
+        action: sniff
+        timeout: 1s
     ```
 
 ### 迁移 direct 出站中的目标地址覆盖字段到路由字段
@@ -1104,32 +751,21 @@ direct 出站中的目标地址覆盖字段已废弃，且可以被路由字段�
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "direct",
-          "override_address": "1.1.1.1",
-          "override_port": 443
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: direct
+      override_address: 1.1.1.1
+      override_port: 443
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "route": {
-        "rules": [
-          {
-            "action": "route-options", // 或 route
-            "override_address": "1.1.1.1",
-            "override_port": 443
-          }
-        ]
-      }
-    }
+    ```yaml
+    route:
+      rules:
+      - action: route-options
+        override_address: 1.1.1.1
+        override_port: 443
     ```
 
 ### 迁移 WireGuard 出站到端点
@@ -1144,63 +780,52 @@ WireGuard 出站已被弃用，且可以被端点替代。
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "wireguard",
-          "tag": "wg-out",
-
-          "server": "127.0.0.1",
-          "server_port": 10001,
-          "system_interface": true,
-          "gso": true,
-          "interface_name": "wg0",
-          "local_address": [
-            "10.0.0.1/32"
-          ],
-          "private_key": "<private_key>",
-          "peer_public_key": "<peer_public_key>",
-          "pre_shared_key": "<pre_shared_key>",
-          "reserved": [0, 0, 0],
-          "mtu": 1408
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: wireguard
+      tag: wg-out
+      server: 127.0.0.1
+      server_port: 10001
+      system_interface: true
+      gso: true
+      interface_name: wg0
+      local_address:
+      - 10.0.0.1/32
+      private_key: <private_key>
+      peer_public_key: <peer_public_key>
+      pre_shared_key: <pre_shared_key>
+      reserved:
+      - 0
+      - 0
+      - 0
+      mtu: 1408
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "endpoints": [
-        {
-          "type": "wireguard",
-          "tag": "wg-ep",
-          "system": true,
-          "name": "wg0",
-          "mtu": 1408,
-          "address": [
-            "10.0.0.2/32"
-          ],
-          "private_key": "<private_key>",
-          "listen_port": 10000,
-          "peers": [
-            {
-              "address": "127.0.0.1",
-              "port": 10001,
-              "public_key": "<peer_public_key>",
-              "pre_shared_key": "<pre_shared_key>",
-              "allowed_ips": [
-                "0.0.0.0/0"
-              ],
-              "persistent_keepalive_interval": 30,
-              "reserved": [0, 0, 0]
-            }
-          ]
-        }
-      ]
-    }
+    ```yaml
+    endpoints:
+    - type: wireguard
+      tag: wg-ep
+      system: true
+      name: wg0
+      mtu: 1408
+      address:
+      - 10.0.0.2/32
+      private_key: <private_key>
+      listen_port: 10000
+      peers:
+      - address: 127.0.0.1
+        port: 10001
+        public_key: <peer_public_key>
+        pre_shared_key: <pre_shared_key>
+        allowed_ips:
+        - 0.0.0.0/0
+        persistent_keepalive_interval: 30
+        reserved:
+        - 0
+        - 0
+        - 0
     ```
 
 ## 1.10.0
@@ -1217,56 +842,39 @@ WireGuard 出站已被弃用，且可以被端点替代。
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "tun",
-          "inet4_address": "172.19.0.1/30",
-          "inet6_address": "fdfe:dcba:9876::1/126",
-          "inet4_route_address": [
-            "0.0.0.0/1",
-            "128.0.0.0/1"
-          ],
-          "inet6_route_address": [
-            "::/1",
-            "8000::/1"
-          ],
-          "inet4_route_exclude_address": [
-            "192.168.0.0/16"
-          ],
-          "inet6_route_exclude_address": [
-            "fc00::/7"
-          ]
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: tun
+      inet4_address: 172.19.0.1/30
+      inet6_address: fdfe:dcba:9876::1/126
+      inet4_route_address:
+      - 0.0.0.0/1
+      - 128.0.0.0/1
+      inet6_route_address:
+      - ::/1
+      - 8000::/1
+      inet4_route_exclude_address:
+      - 192.168.0.0/16
+      inet6_route_exclude_address:
+      - fc00::/7
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "tun",
-          "address": [
-            "172.19.0.1/30",
-            "fdfe:dcba:9876::1/126"
-          ],
-          "route_address": [
-            "0.0.0.0/1",
-            "128.0.0.0/1",
-            "::/1",
-            "8000::/1"
-          ],
-          "route_exclude_address": [
-            "192.168.0.0/16",
-            "fc00::/7"
-          ]
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: tun
+      address:
+      - 172.19.0.1/30
+      - fdfe:dcba:9876::1/126
+      route_address:
+      - 0.0.0.0/1
+      - 128.0.0.0/1
+      - ::/1
+      - 8000::/1
+      route_exclude_address:
+      - 192.168.0.0/16
+      - fc00::/7
     ```
 
 ## 1.9.5
@@ -1313,33 +921,25 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "experimental": {
-        "clash_api": {
-          "cache_file": "cache.db", // 默认值
-          "cahce_id": "my_profile2",
-          "store_mode": true,
-          "store_selected": true,
-          "store_fakeip": true
-        }
-      }
-    }
+    ```yaml
+    experimental:
+      clash_api:
+        cache_file: cache.db
+        cahce_id: my_profile2
+        store_mode: true
+        store_selected: true
+        store_fakeip: true
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "experimental"  : {
-        "cache_file": {
-          "enabled": true,
-          "path": "cache.db", // 默认值
-          "cache_id": "my_profile2",
-          "store_fakeip": true
-        }
-      }
-    }
+    ```yaml
+    experimental:
+      cache_file:
+        enabled: true
+        path: cache.db
+        cache_id: my_profile2
+        store_fakeip: true
     ```
 
 ### :material-checkbox-intermediate: 迁移 GeoIP 到规则集
@@ -1358,73 +958,45 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "route": {
-        "rules": [
-          {
-            "geoip": "private",
-            "outbound": "direct"
-          },
-          {
-            "geoip": "cn",
-            "outbound": "direct"
-          },
-          {
-            "source_geoip": "cn",
-            "outbound": "block"
-          }
-        ],
-        "geoip": {
-          "download_detour": "proxy"
-        }
-      }
-    }
+    ```yaml
+    route:
+      rules:
+      - geoip: private
+        outbound: direct
+      - geoip: cn
+        outbound: direct
+      - source_geoip: cn
+        outbound: block
+      geoip:
+        download_detour: proxy
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "route": {
-        "rules": [
-          {
-            "ip_is_private": true,
-            "outbound": "direct"
-          },
-          {
-            "rule_set": "geoip-cn",
-            "outbound": "direct"
-          },
-          {
-            "rule_set": "geoip-us",
-            "rule_set_ipcidr_match_source": true,
-            "outbound": "block"
-          }
-        ],
-        "rule_set": [
-          {
-            "tag": "geoip-cn",
-            "type": "remote",
-            "format": "binary",
-            "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-            "download_detour": "proxy"
-          },
-          {
-            "tag": "geoip-us",
-            "type": "remote",
-            "format": "binary",
-            "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-us.srs",
-            "download_detour": "proxy"
-          }
-        ]
-      },
-      "experimental": {
-        "cache_file": {
-          "enabled": true // required to save rule-set cache
-        }
-      }
-    }
+    ```yaml
+    route:
+      rules:
+      - ip_is_private: true
+        outbound: direct
+      - rule_set: geoip-cn
+        outbound: direct
+      - rule_set: geoip-us
+        rule_set_ipcidr_match_source: true
+        outbound: block
+      rule_set:
+      - tag: geoip-cn
+        type: remote
+        format: binary
+        url: https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs
+        download_detour: proxy
+      - tag: geoip-us
+        type: remote
+        format: binary
+        url: https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-us.srs
+        download_detour: proxy
+    experimental:
+      cache_file:
+        enabled: true
     ```
 
 ### :material-checkbox-intermediate: 迁移 Geosite 到规则集
@@ -1443,47 +1015,29 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-remove: 弃用的"
 
-    ```json
-    {
-      "route": {
-        "rules": [
-          {
-            "geosite": "cn",
-            "outbound": "direct"
-          }
-        ],
-        "geosite": {
-          "download_detour": "proxy"
-        }
-      }
-    }
+    ```yaml
+    route:
+      rules:
+      - geosite: cn
+        outbound: direct
+      geosite:
+        download_detour: proxy
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```json
-    {
-      "route": {
-        "rules": [
-          {
-            "rule_set": "geosite-cn",
-            "outbound": "direct"
-          }
-        ],
-        "rule_set": [
-          {
-            "tag": "geosite-cn",
-            "type": "remote",
-            "format": "binary",
-            "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-            "download_detour": "proxy"
-          }
-        ]
-      },
-      "experimental": {
-        "cache_file": {
-          "enabled": true // required to save rule-set cache
-        }
-      }
-    }
+    ```yaml
+    route:
+      rules:
+      - rule_set: geosite-cn
+        outbound: direct
+      rule_set:
+      - tag: geosite-cn
+        type: remote
+        format: binary
+        url: https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs
+        download_detour: proxy
+    experimental:
+      cache_file:
+        enabled: true
     ```

@@ -1,32 +1,21 @@
 ### 结构
 
-```json
-{
-  "type": "trojan",
-  "tag": "trojan-in",
-
-  ... // 监听字段
-
-  "users": [
-    {
-      "name": "sekai",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
-    }
-  ],
-  "tls": {},
-  "fallback": {
-    "server": "127.0.0.1",
-    "server_port": 8080
-  },
-  "fallback_for_alpn": {
-    "http/1.1": {
-      "server": "127.0.0.1",
-      "server_port": 8081
-    }
-  },
-  "multiplex": {},
-  "transport": {}
-}
+```yaml
+type: trojan
+tag: trojan-in
+users:
+- name: sekai
+  password: 8JCsPssfgS8tiRwiMlhARg==
+tls: {}
+fallback:
+  server: 127.0.0.1
+  server_port: 8080
+fallback_for_alpn:
+  http/1.1:
+    server: 127.0.0.1
+    server_port: 8081
+multiplex: {}
+transport: {}
 ```
 
 ### 监听字段

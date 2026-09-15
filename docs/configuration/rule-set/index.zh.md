@@ -19,23 +19,19 @@
 
     !!! question "自 sing-box 1.10.0 起"
 
-    ```json
-    {
-      "type": "inline", // 可选
-      "tag": "",
-      "rules": []
-    }
+    ```yaml
+    type: inline
+    tag: ''
+    rules: []
     ```
 
 === "本地文件"
 
-    ```json
-    {
-      "type": "local",
-      "tag": "", // 或 []
-      "format": "source", // or binary
-      "path": ""
-    }
+    ```yaml
+    type: local
+    tag: ''
+    format: source
+    path: ''
     ```
 
 === "远程文件"
@@ -44,20 +40,15 @@
     
         远程规则集将被缓存如果 `experimental.cache_file.enabled` 已启用。
 
-    ```json
-    {
-      "type": "remote",
-      "tag": "", // 或 []
-      "format": "source", // or binary
-      "url": "",
-      "initial_path": "",
-      "http_client": "", // 或 {}
-      "update_interval": "",
-
-      // 废弃的
-
-      "download_detour": ""
-    }
+    ```yaml
+    type: remote
+    tag: ''
+    format: source
+    url: ''
+    initial_path: ''
+    http_client: ''
+    update_interval: ''
+    download_detour: ''
     ```
 
 ### 字段

@@ -14,24 +14,13 @@ The realm only carries control-plane signaling. Once hole-punching succeeds, all
 
 ### Structure
 
-```json
-{
-  "type": "hysteria-realm",
-
-  ... // Listen Fields
-
-  "tls": {},
-
-  ... // HTTP2 Fields
-
-  "users": [
-    {
-      "name": "",
-      "token": "",
-      "max_realms": 0
-    }
-  ]
-}
+```yaml
+type: hysteria-realm
+tls: {}
+users:
+- name: ''
+  token: ''
+  max_realms: 0
 ```
 
 ### Listen Fields

@@ -1,23 +1,18 @@
 ### Structure
 
-```json
-{
-  "type": "vless",
-  "tag": "vless-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "uuid": "bf000d23-0752-40b4-affe-68f7707a9661",
-  "flow": "xtls-rprx-vision",
-  "network": "tcp",
-  "tls": {},
-  "packet_encoding": "",
-  "encryption": "",
-  "multiplex": {},
-  "transport": {},
-
-  ... // Dial Fields
-}
+```yaml
+type: vless
+tag: vless-out
+server: 127.0.0.1
+server_port: 1080
+uuid: bf000d23-0752-40b4-affe-68f7707a9661
+flow: xtls-rprx-vision
+network: tcp
+tls: {}
+packet_encoding: ''
+encryption: ''
+multiplex: {}
+transport: {}
 ```
 
 ### Fields

@@ -10,111 +10,90 @@
 
 ## Structure
 
-```json
-{
-  "type": "openconnect",
-  "tag": "oc-client",
-
-  "system": false,
-  "name": "",
-
-  ... // UDP NAT Fields
-
-  "server": "vpn.example.com",
-  "flavor": "anyconnect",
-  "username": "",
-  "password": "",
-  "auth_group": "",
-  "cookie": "",
-  "token": {
-    "mode": "",
-    "secret": "",
-    "secret_path": "",
-    "pin": "",
-    "password": "",
-    "device_id": "",
-    "counter": 0
-  },
-  "reported_os": "",
-  "user_agent": "",
-  "version": "",
-  "local_hostname": "",
-  "mobile": {
-    "platform_version": "",
-    "device_type": "",
-    "device_unique_id": ""
-  },
-  "csd": {
-    "wrapper_path": ""
-  },
-  "hip": {
-    "wrapper_path": ""
-  },
-  "tncc": {
-    "wrapper_path": "",
-    "device_id": "",
-    "user_agent": "",
-    "machine_identification_enabled": false,
-    "certificates": [
-      {
-        "certificate": [],
-        "certificate_path": ""
-      }
-    ]
-  },
-  "fortinet_host_check": {
-    "hostcheck": "",
-    "check_virtual_desktop": ""
-  },
-  "no_udp": false,
-  "dtls_local_port": 0,
-  "compression_disabled": false,
-  "compression_mode": "",
-  "ipv6_disabled": false,
-  "http_keepalive_disabled": false,
-  "xml_post_disabled": false,
-  "external_auth_disabled": false,
-  "password_authentication_disabled": false,
-  "tcp_keep_alive_enabled": false,
-  "pfs": false,
-  "mtu": 0,
-  "base_mtu": 0,
-  "dpd_interval": "",
-  "reconnect_timeout": "",
-  "trojan_interval": "",
-  "queue_length": 0,
-  "allow_insecure_crypto": false,
-  "tls": {
-    "insecure": false,
-    "server_name": "",
-    "peer_fingerprint": [],
-    "system_trust_disabled": false,
-    "certificate_authority": [],
-    "certificate_authority_path": "",
-    "client_certificate": [],
-    "client_certificate_path": "",
-    "client_key": [],
-    "client_key_path": "",
-    "client_key_password": "",
-    "mca_certificate": [],
-    "mca_certificate_path": "",
-    "mca_key": [],
-    "mca_key_path": "",
-    "mca_key_password": ""
-  },
-  "form_entries": [
-    {
-      "form_id": "",
-      "submission_key": "",
-      "name": "",
-      "value": "",
-      "promote": false
-    }
-  ],
-  "on_demand": false,
-
-  ... // Dial Fields
-}
+```yaml
+type: openconnect
+tag: oc-client
+system: false
+name: ''
+server: vpn.example.com
+flavor: anyconnect
+username: ''
+password: ''
+auth_group: ''
+cookie: ''
+token:
+  mode: ''
+  secret: ''
+  secret_path: ''
+  pin: ''
+  password: ''
+  device_id: ''
+  counter: 0
+reported_os: ''
+user_agent: ''
+version: ''
+local_hostname: ''
+mobile:
+  platform_version: ''
+  device_type: ''
+  device_unique_id: ''
+csd:
+  wrapper_path: ''
+hip:
+  wrapper_path: ''
+tncc:
+  wrapper_path: ''
+  device_id: ''
+  user_agent: ''
+  machine_identification_enabled: false
+  certificates:
+  - certificate: []
+    certificate_path: ''
+fortinet_host_check:
+  hostcheck: ''
+  check_virtual_desktop: ''
+no_udp: false
+dtls_local_port: 0
+compression_disabled: false
+compression_mode: ''
+ipv6_disabled: false
+http_keepalive_disabled: false
+xml_post_disabled: false
+external_auth_disabled: false
+password_authentication_disabled: false
+tcp_keep_alive_enabled: false
+pfs: false
+mtu: 0
+base_mtu: 0
+dpd_interval: ''
+reconnect_timeout: ''
+trojan_interval: ''
+queue_length: 0
+allow_insecure_crypto: false
+tls:
+  insecure: false
+  server_name: ''
+  peer_fingerprint: []
+  system_trust_disabled: false
+  certificate_authority: []
+  certificate_authority_path: ''
+  client_certificate: []
+  client_certificate_path: ''
+  client_key: []
+  client_key_path: ''
+  client_key_password: ''
+  mca_certificate: []
+  mca_certificate_path: ''
+  mca_key: []
+  mca_key_path: ''
+  mca_key_password: ''
+form_entries:
+- form_id: ''
+  submission_key: ''
+  name: ''
+  value: ''
+  promote: false
+on_demand: false
 ```
 
 !!! note ""

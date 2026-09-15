@@ -12,19 +12,14 @@ OCM（OpenAI Codex 多路复用器）服务是一个多路复用服务，允许�
 
 ### 结构
 
-```json
-{
-  "type": "ocm",
-
-  ... // 监听字段
-
-  "credential_path": "",
-  "usages_path": "",
-  "users": [],
-  "headers": {},
-  "detour": "",
-  "tls": {}
-}
+```yaml
+type: ocm
+credential_path: ''
+usages_path: ''
+users: []
+headers: {}
+detour: ''
+tls: {}
 ```
 
 ### 监听字段
@@ -66,11 +61,9 @@ OpenAI OAuth 凭据文件的路径。
 
 对象格式：
 
-```json
-{
-  "name": "",
-  "token": ""
-}
+```yaml
+name: ''
+token: ''
 ```
 
 对象字段：
@@ -96,16 +89,11 @@ TLS 配置，参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
 #### 服务端
 
-```json
-{
-  "services": [
-    {
-      "type": "ocm",
-      "listen": "127.0.0.1",
-      "listen_port": 8080
-    }
-  ]
-}
+```yaml
+services:
+- type: ocm
+  listen: 127.0.0.1
+  listen_port: 8080
 ```
 
 #### 客户端
@@ -137,27 +125,17 @@ codex --profile ocm
 
 #### 服务端
 
-```json
-{
-  "services": [
-    {
-      "type": "ocm",
-      "listen": "0.0.0.0",
-      "listen_port": 8080,
-      "usages_path": "./codex-usages.json",
-      "users": [
-        {
-          "name": "alice",
-          "token": "sk-ocm-hello-world"
-        },
-        {
-          "name": "bob",
-          "token": "sk-ocm-hello-bob"
-        }
-      ]
-    }
-  ]
-}
+```yaml
+services:
+- type: ocm
+  listen: 0.0.0.0
+  listen_port: 8080
+  usages_path: ./codex-usages.json
+  users:
+  - name: alice
+    token: sk-ocm-hello-world
+  - name: bob
+    token: sk-ocm-hello-bob
 ```
 
 #### 客户端

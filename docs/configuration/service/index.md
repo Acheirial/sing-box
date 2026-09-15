@@ -8,15 +8,10 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "services": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+services:
+- type: ''
+  tag: ''
 ```
 
 ### Fields

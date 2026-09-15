@@ -14,17 +14,11 @@ icon: material/alert-decagram
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "",
-        "tag": ""
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: ''
+    tag: ''
 ```
 
 #### type

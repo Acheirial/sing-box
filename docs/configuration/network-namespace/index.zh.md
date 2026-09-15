@@ -16,15 +16,10 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "network_namespaces": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+network_namespaces:
+- type: ''
+  tag: ''
 ```
 
 #### type

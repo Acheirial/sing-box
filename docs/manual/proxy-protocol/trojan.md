@@ -32,121 +32,81 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
 
 === ":material-harddisk: With local certificate"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "trojan",
-          "listen": "::",
-          "listen_port": 8080,
-          "users": [
-            {
-              "name": "example",
-              "password": "password"
-            }
-          ],
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "key_path": "/path/to/key.pem",
-            "certificate_path": "/path/to/certificate.pem"
-          },
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: trojan
+      listen: '::'
+      listen_port: 8080
+      users:
+      - name: example
+        password: password
+      tls:
+        enabled: true
+        server_name: example.org
+        key_path: /path/to/key.pem
+        certificate_path: /path/to/certificate.pem
+      multiplex:
+        enabled: true
     ```
 
 === ":material-auto-fix: With ACME"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "trojan",
-          "listen": "::",
-          "listen_port": 8080,
-          "users": [
-            {
-              "name": "example",
-              "password": "password"
-            }
-          ],
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "acme": {
-              "domain": "example.org",
-              "email": "admin@example.org"
-            }
-          },
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: trojan
+      listen: '::'
+      listen_port: 8080
+      users:
+      - name: example
+        password: password
+      tls:
+        enabled: true
+        server_name: example.org
+        acme:
+          domain: example.org
+          email: admin@example.org
+      multiplex:
+        enabled: true
     ```
 
 === ":material-cloud: With ACME and Cloudflare API"
 
-    ```json
-    {
-      "inbounds": [
-        {
-          "type": "trojan",
-          "listen": "::",
-          "listen_port": 8080,
-          "users": [
-            {
-              "name": "example",
-              "password": "password"
-            }
-          ],
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "acme": {
-              "domain": "example.org",
-              "email": "admin@example.org",
-              "dns01_challenge": {
-                "provider": "cloudflare",
-                "api_token": "my_token"
-              }
-            }
-          },
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: trojan
+      listen: '::'
+      listen_port: 8080
+      users:
+      - name: example
+        password: password
+      tls:
+        enabled: true
+        server_name: example.org
+        acme:
+          domain: example.org
+          email: admin@example.org
+          dns01_challenge:
+            provider: cloudflare
+            api_token: my_token
+      multiplex:
+        enabled: true
     ```
 
 ## :material-cellphone-link: Client Example
 
 === ":material-web-check: With valid certificate"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "trojan",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "password": "password",
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org"
-          },
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: trojan
+      server: 127.0.0.1
+      server_port: 8080
+      password: password
+      tls:
+        enabled: true
+        server_name: example.org
+      multiplex:
+        enabled: true
     ```
 
 === ":material-check: With self-sign certificate"
@@ -155,46 +115,32 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
         
         Use `sing-box merge` command to merge configuration and certificate into one file.
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "trojan",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "password": "password",
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "certificate_path": "/path/to/certificate.pem"
-          },
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: trojan
+      server: 127.0.0.1
+      server_port: 8080
+      password: password
+      tls:
+        enabled: true
+        server_name: example.org
+        certificate_path: /path/to/certificate.pem
+      multiplex:
+        enabled: true
     ```
 
 === ":material-alert: Ignore certificate verification"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "trojan",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "password": "password",
-          "tls": {
-            "enabled": true,
-            "server_name": "example.org",
-            "insecure": true
-          },
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: trojan
+      server: 127.0.0.1
+      server_port: 8080
+      password: password
+      tls:
+        enabled: true
+        server_name: example.org
+        insecure: true
+      multiplex:
+        enabled: true
     ```

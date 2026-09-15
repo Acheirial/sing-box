@@ -65,173 +65,123 @@ icon: material/alert-decagram
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "rules": [
-      {
-        "inbound": [
-          "mixed-in"
-        ],
-        "ip_version": 6,
-        "query_type": [
-          "A",
-          "HTTPS",
-          32768
-        ],
-        "query_client_subnet": [
-          "10.0.0.0/24",
-          "192.168.0.1"
-        ],
-        "query_dnssec": false,
-        "network": "tcp",
-        "auth_user": [
-          "usera",
-          "userb"
-        ],
-        "protocol": [
-          "tls",
-          "http",
-          "quic"
-        ],
-        "domain": [
-          "test.com"
-        ],
-        "domain_suffix": [
-          ".cn"
-        ],
-        "domain_keyword": [
-          "test"
-        ],
-        "domain_regex": [
-          "^stun\\..+"
-        ],
-        "source_ip_cidr": [
-          "10.0.0.0/24",
-          "192.168.0.1"
-        ],
-        "source_ip_is_private": false,
-        "source_port": [
-          12345
-        ],
-        "source_port_range": [
-          "1000:2000",
-          ":3000",
-          "4000:"
-        ],
-        "port": [
-          80,
-          443
-        ],
-        "port_range": [
-          "1000:2000",
-          ":3000",
-          "4000:"
-        ],
-        "process_name": [
-          "curl"
-        ],
-        "process_path": [
-          "/usr/bin/curl"
-        ],
-        "process_path_regex": [
-          "^/usr/bin/.+"
-        ],
-        "package_name": [
-          "com.termux"
-        ],
-        "package_name_regex": [
-          "^com\\.termux.*"
-        ],
-        "user": [
-          "sekai"
-        ],
-        "user_id": [
-          1000
-        ],
-        "clash_mode": "direct",
-        "network_type": [
-          "wifi"
-        ],
-        "network_is_expensive": false,
-        "network_is_constrained": false,
-        "interface_address": {
-          "en0": [
-            "2000::/3"
-          ]
-        },
-        "network_interface_address": {
-          "wifi": [
-            "2000::/3"
-          ]
-        },
-        "default_interface_address": [
-          "2000::/3"
-        ],
-        "source_mac_address": [
-          "00:11:22:33:44:55"
-        ],
-        "source_hostname": [
-          "my-device"
-        ],
-        "preferred_by": [
-          "local",
-          "ts-dns"
-        ],
-        "wifi_ssid": [
-          "My WIFI"
-        ],
-        "wifi_bssid": [
-          "00:00:00:00:00:00"
-        ],
-        "rule_set": [
-          "geoip-cn",
-          "geosite-cn"
-        ],
-        "rule_set_ip_cidr_match_source": false,
-        "match_response": false,
-        "ip_cidr": [
-          "10.0.0.0/24",
-          "192.168.0.1"
-        ],
-        "ip_is_private": false,
-        "ip_accept_any": false,
-        "response_rcode": "",
-        "response_answer": [],
-        "response_ns": [],
-        "response_extra": [],
-        "invert": false,
-        "outbound": [
-          "direct"
-        ],
-        "action": "route",
-        "server": "local",
-
-        // 已弃用
-
-        "rule_set_ip_cidr_accept_empty": false,
-        "rule_set_ipcidr_match_source": false,
-        "geosite": [
-          "cn"
-        ],
-        "source_geoip": [
-          "private"
-        ],
-        "geoip": [
-          "cn"
-        ]
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [],
-        "action": "route",
-        "server": "local"
-      }
-    ]
-  }
-}
-
+```yaml
+dns:
+  rules:
+  - inbound:
+    - mixed-in
+    ip_version: 6
+    query_type:
+    - A
+    - HTTPS
+    - 32768
+    query_client_subnet:
+    - 10.0.0.0/24
+    - 192.168.0.1
+    query_dnssec: false
+    network: tcp
+    auth_user:
+    - usera
+    - userb
+    protocol:
+    - tls
+    - http
+    - quic
+    domain:
+    - test.com
+    domain_suffix:
+    - .cn
+    domain_keyword:
+    - test
+    domain_regex:
+    - ^stun\..+
+    source_ip_cidr:
+    - 10.0.0.0/24
+    - 192.168.0.1
+    source_ip_is_private: false
+    source_port:
+    - 12345
+    source_port_range:
+    - 1000:2000
+    - :3000
+    - '4000:'
+    port:
+    - 80
+    - 443
+    port_range:
+    - 1000:2000
+    - :3000
+    - '4000:'
+    process_name:
+    - curl
+    process_path:
+    - /usr/bin/curl
+    process_path_regex:
+    - ^/usr/bin/.+
+    package_name:
+    - com.termux
+    package_name_regex:
+    - ^com\.termux.*
+    user:
+    - sekai
+    user_id:
+    - 1000
+    clash_mode: direct
+    network_type:
+    - wifi
+    network_is_expensive: false
+    network_is_constrained: false
+    interface_address:
+      en0:
+      - 2000::/3
+    network_interface_address:
+      wifi:
+      - 2000::/3
+    default_interface_address:
+    - 2000::/3
+    source_mac_address:
+    - 00:11:22:33:44:55
+    source_hostname:
+    - my-device
+    preferred_by:
+    - local
+    - ts-dns
+    wifi_ssid:
+    - My WIFI
+    wifi_bssid:
+    - 00:00:00:00:00:00
+    rule_set:
+    - geoip-cn
+    - geosite-cn
+    rule_set_ip_cidr_match_source: false
+    match_response: false
+    ip_cidr:
+    - 10.0.0.0/24
+    - 192.168.0.1
+    ip_is_private: false
+    ip_accept_any: false
+    response_rcode: ''
+    response_answer: []
+    response_ns: []
+    response_extra: []
+    invert: false
+    outbound:
+    - direct
+    action: route
+    server: local
+    rule_set_ip_cidr_accept_empty: false
+    rule_set_ipcidr_match_source: false
+    geosite:
+    - cn
+    source_geoip:
+    - private
+    geoip:
+    - cn
+  - type: logical
+    mode: and
+    rules: []
+    action: route
+    server: local
 ```
 
 !!! note ""

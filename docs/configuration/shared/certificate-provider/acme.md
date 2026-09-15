@@ -17,30 +17,26 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "acme",
-  "tag": "",
-
-  "domain": [],
-  "data_directory": "",
-  "default_server_name": "",
-  "email": "",
-  "provider": "",
-  "account_key": "",
-  "disable_http_challenge": false,
-  "disable_tls_alpn_challenge": false,
-  "alternative_http_port": 0,
-  "alternative_tls_port": 0,
-  "external_account": {
-    "key_id": "",
-    "mac_key": ""
-  },
-  "dns01_challenge": {},
-  "key_type": "",
-  "profile": "",
-  "http_client": "" // or {}
-}
+```yaml
+type: acme
+tag: ''
+domain: []
+data_directory: ''
+default_server_name: ''
+email: ''
+provider: ''
+account_key: ''
+disable_http_challenge: false
+disable_tls_alpn_challenge: false
+alternative_http_port: 0
+alternative_tls_port: 0
+external_account:
+  key_id: ''
+  mac_key: ''
+dns01_challenge: {}
+key_type: ''
+profile: ''
+http_client: ''
 ```
 
 ### Fields

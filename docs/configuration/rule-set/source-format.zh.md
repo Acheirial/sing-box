@@ -22,11 +22,9 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "version": 3,
-  "rules": []
-}
+```yaml
+version: 3
+rules: []
 ```
 
 ### 编译

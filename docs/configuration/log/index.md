@@ -2,16 +2,12 @@
 
 ### Structure
 
-```json
-{
-  "log": {
-    "disabled": false,
-    "level": "info",
-    "output": "box.log",
-    "timestamp": true
-  }
-}
-
+```yaml
+log:
+  disabled: false
+  level: info
+  output: box.log
+  timestamp: true
 ```
 
 ### Fields

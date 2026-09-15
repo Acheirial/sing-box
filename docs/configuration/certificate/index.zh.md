@@ -12,13 +12,11 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "store": "",
-  "certificate": [],
-  "certificate_path": [],
-  "certificate_directory_path": []
-}
+```yaml
+store: ''
+certificate: []
+certificate_path: []
+certificate_directory_path: []
 ```
 
 !!! note ""

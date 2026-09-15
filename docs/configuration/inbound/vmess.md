@@ -1,23 +1,15 @@
 ### Structure
 
-```json
-{
-  "type": "vmess",
-  "tag": "vmess-in",
-
-  ... // Listen Fields
-
-  "users": [
-    {
-      "name": "sekai",
-      "uuid": "bf000d23-0752-40b4-affe-68f7707a9661",
-      "alterId": 0
-    }
-  ],
-  "tls": {},
-  "multiplex": {},
-  "transport": {}
-}
+```yaml
+type: vmess
+tag: vmess-in
+users:
+- name: sekai
+  uuid: bf000d23-0752-40b4-affe-68f7707a9661
+  alterId: 0
+tls: {}
+multiplex: {}
+transport: {}
 ```
 
 ### Listen Fields

@@ -1,22 +1,17 @@
 ### 结构
 
-```json
-{
-  "type": "shadowsocks",
-  "tag": "ss-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "plugin": "",
-  "plugin_opts": "",
-  "network": "udp",
-  "udp_over_tcp": false | {},
-  "multiplex": {},
-
-  ... // 拨号字段
-}
+```yaml
+type: shadowsocks
+tag: ss-out
+server: 127.0.0.1
+server_port: 1080
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+plugin: ''
+plugin_opts: ''
+network: udp
+udp_over_tcp: false
+multiplex: {}
 ```
 
 ### 字段

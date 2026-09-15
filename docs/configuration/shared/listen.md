@@ -28,31 +28,26 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "listen": "",
-  "listen_port": 0,
-  "bind_interface": "",
-  "routing_mark": 0,
-  "reuse_addr": false,
-  "netns": "",
-  "tcp_fast_open": false,
-  "tcp_multi_path": false,
-  "disable_tcp_keep_alive": false,
-  "tcp_keep_alive": "",
-  "tcp_keep_alive_interval": "",
-  "udp_fragment": false,
-  "udp_timeout": "",
-  "detour": "",
-
-  // Deprecated
-  
-  "sniff": false,
-  "sniff_override_destination": false,
-  "sniff_timeout": "",
-  "domain_strategy": "",
-  "udp_disable_domain_unmapping": false
-}
+```yaml
+listen: ''
+listen_port: 0
+bind_interface: ''
+routing_mark: 0
+reuse_addr: false
+netns: ''
+tcp_fast_open: false
+tcp_multi_path: false
+disable_tcp_keep_alive: false
+tcp_keep_alive: ''
+tcp_keep_alive_interval: ''
+udp_fragment: false
+udp_timeout: ''
+detour: ''
+sniff: false
+sniff_override_destination: false
+sniff_timeout: ''
+domain_strategy: ''
+udp_disable_domain_unmapping: false
 ```
 
 ### Fields

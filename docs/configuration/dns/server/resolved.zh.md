@@ -6,20 +6,13 @@ icon: material/new-box
 
 # Resolved
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "resolved",
-        "tag": "",
-
-        "service": "resolved",
-        "accept_default_resolvers": false
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: resolved
+    tag: ''
+    service: resolved
+    accept_default_resolvers: false
 ```
 
 ### 字段
@@ -44,69 +37,41 @@ icon: material/new-box
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "local",
-                "tag": "local"
-              },
-              {
-                "type": "resolved",
-                "tag": "resolved",
-                "service": "resolved"
-              }
-            ],
-            "rules": [
-              {
-                "preferred_by": "resolved",
-                "action": "route",
-                "server": "resolved"
-              }
-            ]
-          }
-        }
-        ```
+```yaml
+dns:
+  servers:
+  - type: local
+    tag: local
+  - type: resolved
+    tag: resolved
+    service: resolved
+  rules:
+  - preferred_by: resolved
+    action: route
+    server: resolved
+```
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "local",
-                "tag": "local"
-              },
-              {
-                "type": "resolved",
-                "tag": "resolved",
-                "service": "resolved"
-              }
-            ],
-            "rules": [
-              {
-                "ip_accept_any": true,
-                "server": "resolved"
-              }
-            ]
-          }
-        }
-        ```
+```yaml
+dns:
+  servers:
+  - type: local
+    tag: local
+  - type: resolved
+    tag: resolved
+    service: resolved
+  rules:
+  - ip_accept_any: true
+    server: resolved
+```
 
 === "用作全局 DNS"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "type": "resolved",
-            "service": "resolved",
-            "accept_default_resolvers": true
-          }
-        ]
-      }
-    }
-    ```
+```yaml
+dns:
+  servers:
+  - type: resolved
+    service: resolved
+    accept_default_resolvers: true
+```

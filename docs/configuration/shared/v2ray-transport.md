@@ -3,10 +3,8 @@ as `trojan-grpc` in clash.
 
 ### Structure
 
-```json
-{
-  "type": ""
-}
+```yaml
+type: ''
 ```
 
 Available transports:
@@ -30,16 +28,14 @@ Available transports:
 
 ### HTTP
 
-```json
-{
-  "type": "http",
-  "host": [],
-  "path": "",
-  "method": "",
-  "headers": {},
-  "idle_timeout": "15s",
-  "ping_timeout": "15s"
-}
+```yaml
+type: http
+host: []
+path: ''
+method: ''
+headers: {}
+idle_timeout: 15s
+ping_timeout: 15s
 ```
 
 !!! warning "Difference from v2ray-core"
@@ -101,14 +97,12 @@ The default timeout duration is 15 seconds.
 
 ### WebSocket
 
-```json
-{
-  "type": "ws",
-  "path": "",
-  "headers": {},
-  "max_early_data": 0,
-  "early_data_header_name": ""
-}
+```yaml
+type: ws
+path: ''
+headers: {}
+max_early_data: 0
+early_data_header_name: ''
 ```
 
 #### path
@@ -137,10 +131,8 @@ It needs to be consistent with the server.
 
 ### QUIC
 
-```json
-{
-  "type": "quic"
-}
+```yaml
+type: quic
 ```
 
 !!! warning "Difference from v2ray-core"
@@ -154,14 +146,12 @@ It needs to be consistent with the server.
 
     standard gRPC has good compatibility but poor performance and is not included by default, see [Installation](/installation/build-from-source/#build-tags).
 
-```json
-{
-  "type": "grpc",
-  "service_name": "TunService",
-  "idle_timeout": "15s",
-  "ping_timeout": "15s",
-  "permit_without_stream": false
-}
+```yaml
+type: grpc
+service_name: TunService
+idle_timeout: 15s
+ping_timeout: 15s
+permit_without_stream: false
 ```
 
 #### service_name
@@ -202,13 +192,11 @@ Disabled by default.
 
 ### HTTPUpgrade
 
-```json
-{
-  "type": "httpupgrade",
-  "host": "",
-  "path": "",
-  "headers": {}
-}
+```yaml
+type: httpupgrade
+host: ''
+path: ''
+headers: {}
 ```
 
 #### host
@@ -233,14 +221,12 @@ The server will write in response if not empty.
 
 !!! question "Since sing-box 1.15.0"
 
-```json
-{
-  "type": "xhttp",
-  "host": "",
-  "path": "",
-  "mode": "",
-  "extra": {}
-}
+```yaml
+type: xhttp
+host: ''
+path: ''
+mode: ''
+extra: {}
 ```
 
 #### host

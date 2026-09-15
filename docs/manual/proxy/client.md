@@ -86,181 +86,108 @@ flowchart TB
 
 === ":material-numeric-4-box: IPv4 only"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "tag": "google",
-            "type": "tls",
-            "server": "8.8.8.8"
-          },
-          {
-            "tag": "local",
-            "type": "udp",
-            "server": "223.5.5.5"
-          }
-        ],
-        "strategy": "ipv4_only"
-      },
-      "inbounds": [
-        {
-          "type": "tun",
-          "address": ["172.19.0.1/30"],
-          "auto_route": true,
-          // "auto_redirect": true, // On linux
-          "strict_route": true
-        }
-      ],
-      "outbounds": [
-        // ...
-        {
-          "type": "direct",
-          "tag": "direct"
-        }
-      ],
-      "route": {
-        "rules": [
-          {
-            "action": "sniff"
-          },
-          {
-            "protocol": "dns",
-            "action": "hijack-dns"
-          },
-          {
-            "ip_is_private": true,
-            "outbound": "direct"
-          }
-        ],
-        "default_domain_resolver": "local",
-        "auto_detect_interface": true
-      }
-    }
+    ```yaml
+    dns:
+      servers:
+      - tag: google
+        type: tls
+        server: 8.8.8.8
+      - tag: local
+        type: udp
+        server: 223.5.5.5
+      strategy: ipv4_only
+    inbounds:
+    - type: tun
+      address:
+      - 172.19.0.1/30
+      auto_route: true
+      strict_route: true
+    outbounds:
+    - type: direct
+      tag: direct
+    route:
+      rules:
+      - action: sniff
+      - protocol: dns
+        action: hijack-dns
+      - ip_is_private: true
+        outbound: direct
+      default_domain_resolver: local
+      auto_detect_interface: true
     ```
 
 === ":material-numeric-6-box: IPv4 & IPv6"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "tag": "google",
-            "type": "tls",
-            "server": "8.8.8.8"
-          },
-          {
-            "tag": "local",
-            "type": "udp",
-            "server": "223.5.5.5"
-          }
-        ]
-      },
-      "inbounds": [
-        {
-          "type": "tun",
-          "address": ["172.19.0.1/30", "fdfe:dcba:9876::1/126"],
-          "auto_route": true,
-          // "auto_redirect": true, // On linux
-          "strict_route": true
-        }
-      ],
-      "outbounds": [
-        // ...
-        {
-          "type": "direct",
-          "tag": "direct"
-        }
-      ],
-      "route": {
-        "rules": [
-          {
-            "action": "sniff"
-          },
-          {
-            "protocol": "dns",
-            "action": "hijack-dns"
-          },
-          {
-            "ip_is_private": true,
-            "outbound": "direct"
-          }
-        ],
-        "default_domain_resolver": "local",
-        "auto_detect_interface": true
-      }
-    }
+    ```yaml
+    dns:
+      servers:
+      - tag: google
+        type: tls
+        server: 8.8.8.8
+      - tag: local
+        type: udp
+        server: 223.5.5.5
+    inbounds:
+    - type: tun
+      address:
+      - 172.19.0.1/30
+      - fdfe:dcba:9876::1/126
+      auto_route: true
+      strict_route: true
+    outbounds:
+    - type: direct
+      tag: direct
+    route:
+      rules:
+      - action: sniff
+      - protocol: dns
+        action: hijack-dns
+      - ip_is_private: true
+        outbound: direct
+      default_domain_resolver: local
+      auto_detect_interface: true
     ```
 
 === ":material-domain-switch: FakeIP"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "tag": "google",
-            "type": "tls",
-            "server": "8.8.8.8"
-          },
-          {
-            "tag": "local",
-            "type": "udp",
-            "server": "223.5.5.5"
-          },
-          {
-            "tag": "remote",
-            "type": "fakeip",
-            "inet4_range": "198.18.0.0/15",
-            "inet6_range": "fc00::/18"
-          }
-        ],
-        "rules": [
-          {
-            "query_type": [
-              "A",
-              "AAAA"
-            ],
-            "server": "remote"
-          }
-        ],
-        "independent_cache": true
-      },
-      "inbounds": [
-        {
-          "type": "tun",
-          "address": ["172.19.0.1/30","fdfe:dcba:9876::1/126"],
-          "auto_route": true,
-          // "auto_redirect": true, // On linux
-          "strict_route": true
-        }
-      ],
-      "outbounds": [
-        // ...
-        {
-          "type": "direct",
-          "tag": "direct"
-        }
-      ],
-      "route": {
-        "rules": [
-          {
-            "action": "sniff"
-          },
-          {
-            "protocol": "dns",
-            "action": "hijack-dns"
-          },
-          {
-            "ip_is_private": true,
-            "outbound": "direct"
-          }
-        ],
-        "default_domain_resolver": "local",
-        "auto_detect_interface": true
-      }
-    }
+    ```yaml
+    dns:
+      servers:
+      - tag: google
+        type: tls
+        server: 8.8.8.8
+      - tag: local
+        type: udp
+        server: 223.5.5.5
+      - tag: remote
+        type: fakeip
+        inet4_range: 198.18.0.0/15
+        inet6_range: fc00::/18
+      rules:
+      - query_type:
+        - A
+        - AAAA
+        server: remote
+      independent_cache: true
+    inbounds:
+    - type: tun
+      address:
+      - 172.19.0.1/30
+      - fdfe:dcba:9876::1/126
+      auto_route: true
+      strict_route: true
+    outbounds:
+    - type: direct
+      tag: direct
+    route:
+      rules:
+      - action: sniff
+      - protocol: dns
+        action: hijack-dns
+      - ip_is_private: true
+        outbound: direct
+      default_domain_resolver: local
+      auto_detect_interface: true
     ```
 
 ### Traffic bypass usage for Chinese users
@@ -269,233 +196,134 @@ flowchart TB
 
     === ":material-shield-off: With DNS leaks"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "tag": "google",
-                "type": "tls",
-                "server": "8.8.8.8"
-              },
-              {
-                "tag": "local",
-                "type": "https",
-                "server": "223.5.5.5"
-              }
-            ],
-            "rules": [
-              {
-                "rule_set": "geosite-geolocation-cn",
-                "server": "local"
-              },
-              {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                  {
-                    "rule_set": "geosite-geolocation-!cn",
-                    "invert": true
-                  },
-                  {
-                    "rule_set": "geoip-cn"
-                  }
-                ],
-                "server": "local"
-              }
-            ]
-          },
-          "route": {
-            "default_domain_resolver": "local",
-            "rule_set": [
-              {
-                "type": "remote",
-                "tag": "geosite-geolocation-cn",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
-              },
-              {
-                "type": "remote",
-                "tag": "geosite-geolocation-!cn",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
-              },
-              {
-                "type": "remote",
-                "tag": "geoip-cn",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
-              }
-            ]
-          },
-          "experimental": {
-            "cache_file": {
-              "enabled": true,
-              "store_rdrc": true
-            },
-            "clash_api": {
-              "default_mode": "Enhanced"
-            }
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - tag: google
+            type: tls
+            server: 8.8.8.8
+          - tag: local
+            type: https
+            server: 223.5.5.5
+          rules:
+          - rule_set: geosite-geolocation-cn
+            server: local
+          - type: logical
+            mode: and
+            rules:
+            - rule_set: geosite-geolocation-!cn
+              invert: true
+            - rule_set: geoip-cn
+            server: local
+        route:
+          default_domain_resolver: local
+          rule_set:
+          - type: remote
+            tag: geosite-geolocation-cn
+            format: binary
+            url: https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs
+          - type: remote
+            tag: geosite-geolocation-!cn
+            format: binary
+            url: https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs
+          - type: remote
+            tag: geoip-cn
+            format: binary
+            url: https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs
+        experimental:
+          cache_file:
+            enabled: true
+            store_rdrc: true
+          clash_api:
+            default_mode: Enhanced
         ```
 
     === ":material-security: Without DNS leaks, but slower"
     
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "tag": "google",
-                "type": "tls",
-                "server": "8.8.8.8"
-              },
-              {
-                "tag": "local",
-                "type": "https",
-                "server": "223.5.5.5"
-              }
-            ],
-            "rules": [
-              {
-                "rule_set": "geosite-geolocation-cn",
-                "server": "local"
-              },
-              {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                  {
-                    "rule_set": "geosite-geolocation-!cn",
-                    "invert": true
-                  },
-                  {
-                    "rule_set": "geoip-cn"
-                  }
-                ],
-                "server": "google",
-                "client_subnet": "114.114.114.114/24" // Any China client IP address
-              }
-            ]
-          },
-          "route": {
-            "default_domain_resolver": "local",
-            "rule_set": [
-              {
-                "type": "remote",
-                "tag": "geosite-geolocation-cn",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
-              },
-              {
-                "type": "remote",
-                "tag": "geosite-geolocation-!cn",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
-              },
-              {
-                "type": "remote",
-                "tag": "geoip-cn",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
-              }
-            ]
-          },
-          "experimental": {
-            "cache_file": {
-              "enabled": true,
-              "store_rdrc": true
-            },
-            "clash_api": {
-              "default_mode": "Enhanced"
-            }
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+          - tag: google
+            type: tls
+            server: 8.8.8.8
+          - tag: local
+            type: https
+            server: 223.5.5.5
+          rules:
+          - rule_set: geosite-geolocation-cn
+            server: local
+          - type: logical
+            mode: and
+            rules:
+            - rule_set: geosite-geolocation-!cn
+              invert: true
+            - rule_set: geoip-cn
+            server: google
+            client_subnet: 114.114.114.114/24
+        route:
+          default_domain_resolver: local
+          rule_set:
+          - type: remote
+            tag: geosite-geolocation-cn
+            format: binary
+            url: https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs
+          - type: remote
+            tag: geosite-geolocation-!cn
+            format: binary
+            url: https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs
+          - type: remote
+            tag: geoip-cn
+            format: binary
+            url: https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs
+        experimental:
+          cache_file:
+            enabled: true
+            store_rdrc: true
+          clash_api:
+            default_mode: Enhanced
         ```
 
 === ":material-router-network: Route rules"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "direct",
-          "tag": "direct"
-        }
-      ],
-      "route": {
-        "rules": [
-          {
-            "action": "sniff"
-          },
-          {
-            "type": "logical",
-            "mode": "or",
-            "rules": [
-              {
-                "protocol": "dns"
-              },
-              {
-                "port": 53
-              }
-            ],
-            "action": "hijack-dns"
-          },
-          {
-            "ip_is_private": true,
-            "outbound": "direct"
-          },
-          {
-            "type": "logical",
-            "mode": "or",
-            "rules": [
-              {
-                "port": 853
-              },
-              {
-                "network": "udp",
-                "port": 443
-              },
-              {
-                "protocol": "stun"
-              }
-            ],
-            "action": "reject"
-          },
-          {
-            "rule_set": "geosite-geolocation-cn",
-            "outbound": "direct"
-          },
-          {
-            "type": "logical",
-            "mode": "and",
-            "rules": [
-              {
-                "rule_set": "geoip-cn"
-              },
-              {
-                "rule_set": "geosite-geolocation-!cn",
-                "invert": true
-              }
-            ],
-            "outbound": "direct"
-          }
-        ],
-        "rule_set": [
-          {
-            "type": "remote",
-            "tag": "geoip-cn",
-            "format": "binary",
-            "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
-          },
-          {
-            "type": "remote",
-            "tag": "geosite-geolocation-cn",
-            "format": "binary",
-            "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
-          }
-        ]
-      }
-    }
+    ```yaml
+    outbounds:
+    - type: direct
+      tag: direct
+    route:
+      rules:
+      - action: sniff
+      - type: logical
+        mode: or
+        rules:
+        - protocol: dns
+        - port: 53
+        action: hijack-dns
+      - ip_is_private: true
+        outbound: direct
+      - type: logical
+        mode: or
+        rules:
+        - port: 853
+        - network: udp
+          port: 443
+        - protocol: stun
+        action: reject
+      - rule_set: geosite-geolocation-cn
+        outbound: direct
+      - type: logical
+        mode: and
+        rules:
+        - rule_set: geoip-cn
+        - rule_set: geosite-geolocation-!cn
+          invert: true
+        outbound: direct
+      rule_set:
+      - type: remote
+        tag: geoip-cn
+        format: binary
+        url: https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs
+      - type: remote
+        tag: geosite-geolocation-cn
+        format: binary
+        url: https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs
     ```

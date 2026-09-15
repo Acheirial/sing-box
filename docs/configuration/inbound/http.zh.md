@@ -1,21 +1,13 @@
 ### 结构
 
-```json
-{
-  "type": "http",
-  "tag": "http-in",
-
-  ... // 监听字段
-
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin"
-    }
-  ],
-  "tls": {},
-  "set_system_proxy": false
-}
+```yaml
+type: http
+tag: http-in
+users:
+- username: admin
+  password: admin
+tls: {}
+set_system_proxy: false
 ```
 
 ### 监听字段

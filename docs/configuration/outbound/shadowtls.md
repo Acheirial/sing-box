@@ -1,18 +1,13 @@
 ### Structure
 
-```json
-{
-  "type": "shadowtls",
-  "tag": "st-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": 3,
-  "password": "fuck me till the daylight",
-  "tls": {},
-
-  ... // Dial Fields
-}
+```yaml
+type: shadowtls
+tag: st-out
+server: 127.0.0.1
+server_port: 1080
+version: 3
+password: fuck me till the daylight
+tls: {}
 ```
 
 ### Fields

@@ -6,22 +6,17 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "anytls",
-  "tag": "anytls-out",
-
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "idle_session_check_interval": "30s",
-  "idle_session_timeout": "30s",
-  "min_idle_session": 5,
-  "client_metadata": "",
-  "tls": {},
-
-  ... // 拨号字段
-}
+```yaml
+type: anytls
+tag: anytls-out
+server: 127.0.0.1
+server_port: 1080
+password: 8JCsPssfgS8tiRwiMlhARg==
+idle_session_check_interval: 30s
+idle_session_timeout: 30s
+min_idle_session: 5
+client_metadata: ''
+tls: {}
 ```
 
 ### 字段

@@ -11,16 +11,11 @@ icon: material/alert-decagram
 
 ### Structure
 
-```json
-{
-  "type": "direct",
-  "tag": "direct-out",
-  
-  "override_address": "1.0.0.1",
-  "override_port": 53,
-  
-  ... // Dial Fields
-}
+```yaml
+type: direct
+tag: direct-out
+override_address: 1.0.0.1
+override_port: 53
 ```
 
 ### Fields

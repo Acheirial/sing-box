@@ -11,10 +11,8 @@ sing-box 为配置文件提供 JSON Schema Draft 2020-12。
 
 ### 结构
 
-```json
-{
-  "$schema": "https://sing-box.sagernet.org/schema.json"
-}
+```yaml
+$schema: https://sing-box.sagernet.org/schema.json
 ```
 
 ### 字段
@@ -40,8 +38,6 @@ sing-box schema -o schema.json
 
 之后可从配置文件中引用本地 Schema：
 
-```json
-{
-  "$schema": "./schema.json"
-}
+```yaml
+$schema: ./schema.json
 ```

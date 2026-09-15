@@ -47,122 +47,99 @@ icon: material/new-box
 
 ### 入站
 
-```json
-{
-  "enabled": true,
-  "server_name": "",
-  "alpn": [],
-  "min_version": "",
-  "max_version": "",
-  "cipher_suites": [],
-  "curve_preferences": [],
-  "certificate": [],
-  "certificate_path": "",
-  "client_authentication": "",
-  "client_certificate": [],
-  "client_certificate_path": [],
-  "client_certificate_public_key_sha256": [],
-  "key": [],
-  "key_path": "",
-  "kernel_tx": false,
-  "kernel_rx": false,
-  "handshake_timeout": "",
-  "certificate_provider": "",
-
-  // 废弃的
-
-  "acme": {
-    "domain": [],
-    "data_directory": "",
-    "default_server_name": "",
-    "email": "",
-    "provider": "",
-    "disable_http_challenge": false,
-    "disable_tls_alpn_challenge": false,
-    "alternative_http_port": 0,
-    "alternative_tls_port": 0,
-    "external_account": {
-      "key_id": "",
-      "mac_key": ""
-    },
-    "dns01_challenge": {}
-  },
-  "ech": {
-    "enabled": false,
-    "key": [],
-    "key_path": "",
-
-    // 废弃的
-    
-    "pq_signature_schemes_enabled": false,
-    "dynamic_record_sizing_disabled": false
-  },
-  "reality": {
-    "enabled": false,
-    "handshake": {
-      "server": "google.com",
-      "server_port": 443,
-      
-      ... // 拨号字段
-    },
-    "private_key": "UuMBgl7MXTPx9inmQp2UC7Jcnwc6XYbwDNebonM-FCc",
-    "short_id": [
-      "0123456789abcdef"
-    ],
-    "max_time_difference": "1m"
-  }
-}
+```yaml
+enabled: true
+server_name: ''
+alpn: []
+min_version: ''
+max_version: ''
+cipher_suites: []
+curve_preferences: []
+certificate: []
+certificate_path: ''
+client_authentication: ''
+client_certificate: []
+client_certificate_path: []
+client_certificate_public_key_sha256: []
+key: []
+key_path: ''
+kernel_tx: false
+kernel_rx: false
+handshake_timeout: ''
+certificate_provider: ''
+acme:
+  domain: []
+  data_directory: ''
+  default_server_name: ''
+  email: ''
+  provider: ''
+  disable_http_challenge: false
+  disable_tls_alpn_challenge: false
+  alternative_http_port: 0
+  alternative_tls_port: 0
+  external_account:
+    key_id: ''
+    mac_key: ''
+  dns01_challenge: {}
+ech:
+  enabled: false
+  key: []
+  key_path: ''
+  pq_signature_schemes_enabled: false
+  dynamic_record_sizing_disabled: false
+reality:
+  enabled: false
+  handshake:
+    server: google.com
+    server_port: 443
+  private_key: UuMBgl7MXTPx9inmQp2UC7Jcnwc6XYbwDNebonM-FCc
+  short_id:
+  - 0123456789abcdef
+  max_time_difference: 1m
 ```
 
 ### 出站
 
-```json
-{
-  "enabled": true,
-  "engine": "",
-  "disable_sni": false,
-  "server_name": "",
-  "insecure": false,
-  "alpn": [],
-  "min_version": "",
-  "max_version": "",
-  "cipher_suites": [],
-  "curve_preferences": [],
-  "certificate": "",
-  "certificate_path": "",
-  "certificate_public_key_sha256": [],
-  "client_certificate": [],
-  "client_certificate_path": "",
-  "client_key": [],
-  "client_key_path": "",
-  "fragment": false,
-  "fragment_fallback_delay": "",
-  "record_fragment": false,
-  "spoof": "",
-  "spoof_method": "",
-  "kernel_tx": false,
-  "kernel_rx": false,
-  "handshake_timeout": "",
-  "ech": {
-    "enabled": false,
-    "config": [],
-    "config_path": "",
-    "query_server_name": "",
-
-    // 废弃的
-    "pq_signature_schemes_enabled": false,
-    "dynamic_record_sizing_disabled": false
-  },
-  "utls": {
-    "enabled": false,
-    "fingerprint": ""
-  },
-  "reality": {
-    "enabled": false,
-    "public_key": "jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0",
-    "short_id": "0123456789abcdef"
-  }
-}
+```yaml
+enabled: true
+engine: ''
+disable_sni: false
+server_name: ''
+insecure: false
+alpn: []
+min_version: ''
+max_version: ''
+cipher_suites: []
+curve_preferences: []
+certificate: ''
+certificate_path: ''
+certificate_public_key_sha256: []
+client_certificate: []
+client_certificate_path: ''
+client_key: []
+client_key_path: ''
+fragment: false
+fragment_fallback_delay: ''
+record_fragment: false
+spoof: ''
+spoof_method: ''
+kernel_tx: false
+kernel_rx: false
+handshake_timeout: ''
+ech:
+  enabled: false
+  config: []
+  config_path: ''
+  query_server_name: ''
+  pq_signature_schemes_enabled: false
+  dynamic_record_sizing_disabled: false
+utls:
+  enabled: false
+  fingerprint: ''
+reality:
+  enabled: false
+  public_key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0
+  short_id: 0123456789abcdef
 ```
 
 TLS 版本值：
@@ -883,12 +860,10 @@ Base64（RawURL）编码的 ML-DSA-65 种子（32 字节），供服务器对临
 
 #### Reality 回落限制字段
 
-```json
-{
-  "after_bytes": 0,
-  "bytes_per_sec": 0,
-  "burst_bytes_per_sec": 0
-}
+```yaml
+after_bytes: 0
+bytes_per_sec: 0
+burst_bytes_per_sec: 0
 ```
 
 ##### after_bytes

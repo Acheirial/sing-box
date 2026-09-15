@@ -12,19 +12,14 @@ It handles OAuth authentication with OpenAI's API on your local machine while al
 
 ### Structure
 
-```json
-{
-  "type": "ocm",
-
-  ... // Listen Fields
-
-  "credential_path": "",
-  "usages_path": "",
-  "users": [],
-  "headers": {},
-  "detour": "",
-  "tls": {}
-}
+```yaml
+type: ocm
+credential_path: ''
+usages_path: ''
+users: []
+headers: {}
+detour: ''
+tls: {}
 ```
 
 ### Listen Fields
@@ -66,11 +61,9 @@ If empty, no authentication is required.
 
 Object format:
 
-```json
-{
-  "name": "",
-  "token": ""
-}
+```yaml
+name: ''
+token: ''
 ```
 
 Object fields:
@@ -96,16 +89,11 @@ TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
 #### Server
 
-```json
-{
-  "services": [
-    {
-      "type": "ocm",
-      "listen": "127.0.0.1",
-      "listen_port": 8080
-    }
-  ]
-}
+```yaml
+services:
+- type: ocm
+  listen: 127.0.0.1
+  listen_port: 8080
 ```
 
 #### Client
@@ -136,27 +124,17 @@ codex --profile ocm
 
 #### Server
 
-```json
-{
-  "services": [
-    {
-      "type": "ocm",
-      "listen": "0.0.0.0",
-      "listen_port": 8080,
-      "usages_path": "./codex-usages.json",
-      "users": [
-        {
-          "name": "alice",
-          "token": "sk-ocm-hello-world"
-        },
-        {
-          "name": "bob",
-          "token": "sk-ocm-hello-bob"
-        }
-      ]
-    }
-  ]
-}
+```yaml
+services:
+- type: ocm
+  listen: 0.0.0.0
+  listen_port: 8080
+  usages_path: ./codex-usages.json
+  users:
+  - name: alice
+    token: sk-ocm-hello-world
+  - name: bob
+    token: sk-ocm-hello-bob
 ```
 
 #### Client

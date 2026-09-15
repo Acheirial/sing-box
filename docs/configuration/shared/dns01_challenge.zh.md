@@ -18,17 +18,13 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "ttl": "",
-  "propagation_delay": "",
-  "propagation_timeout": "",
-  "resolvers": [],
-  "override_domain": "",
-  "provider": "",
-
-  ... // 提供商字段
-}
+```yaml
+ttl: ''
+propagation_delay: ''
+propagation_timeout: ''
+resolvers: []
+override_domain: ''
+provider: ''
 ```
 
 ### 字段
@@ -75,14 +71,12 @@ DNS 提供商。提供商专有字段见下文。
 
 #### Alibaba Cloud DNS
 
-```json
-{
-  "provider": "alidns",
-  "access_key_id": "",
-  "access_key_secret": "",
-  "region_id": "",
-  "security_token": ""
-}
+```yaml
+provider: alidns
+access_key_id: ''
+access_key_secret: ''
+region_id: ''
+security_token: ''
 ```
 
 ##### security_token
@@ -93,12 +87,10 @@ DNS 提供商。提供商专有字段见下文。
 
 #### Cloudflare
 
-```json
-{
-  "provider": "cloudflare",
-  "api_token": "",
-  "zone_token": ""
-}
+```yaml
+provider: cloudflare
+api_token: ''
+zone_token: ''
 ```
 
 ##### zone_token
@@ -113,14 +105,12 @@ DNS 提供商。提供商专有字段见下文。
 
 !!! question "自 sing-box 1.13.0 起"
 
-```json
-{
-  "provider": "acmedns",
-  "username": "",
-  "password": "",
-  "subdomain": "",
-  "server_url": ""
-}
+```yaml
+provider: acmedns
+username: ''
+password: ''
+subdomain: ''
+server_url: ''
 ```
 
 参阅 [ACME-DNS](https://github.com/joohoi/acme-dns)。

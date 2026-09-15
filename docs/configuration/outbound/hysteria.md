@@ -9,37 +9,26 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "hysteria",
-  "tag": "hysteria-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "server_ports": [
-    "2080:3000"
-  ],
-  "hop_interval": "",
-  "up": "100 Mbps",
-  "up_mbps": 100,
-  "down": "100 Mbps",
-  "down_mbps": 100,
-  "obfs": "fuck me till the daylight",
-  "auth": "",
-  "auth_str": "password",
-  "network": "",
-  "tls": {},
-
-  ... // QUIC Fields
-
-  ... // Dial Fields
-
-  // Deprecated
-
-  "recv_window_conn": 0,
-  "recv_window": 0,
-  "disable_mtu_discovery": false
-}
+```yaml
+type: hysteria
+tag: hysteria-out
+server: 127.0.0.1
+server_port: 1080
+server_ports:
+- 2080:3000
+hop_interval: ''
+up: 100 Mbps
+up_mbps: 100
+down: 100 Mbps
+down_mbps: 100
+obfs: fuck me till the daylight
+auth: ''
+auth_str: password
+network: ''
+tls: {}
+recv_window_conn: 0
+recv_window: 0
+disable_mtu_discovery: false
 ```
 
 ### Fields

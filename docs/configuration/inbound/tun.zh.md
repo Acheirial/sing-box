@@ -75,128 +75,92 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "tun",
-  "tag": "tun-in",
-  "interface_name": "tun0",
-  "address": [
-    "172.18.0.1/30",
-    "fdfe:dcba:9876::1/126"
-  ],
-  "mtu": 9000,
-  "dns_mode": "hijack",
-  "dns_address": [
-    "172.18.0.2",
-    "fdfe:dcba:9876::2"
-  ],
-  "auto_route": true,
-  "iproute2_table_index": 2022,
-  "iproute2_rule_index": 9000,
-  "auto_redirect": true,
-  "auto_redirect_input_mark": "0x2023",
-  "auto_redirect_output_mark": "0x2024",
-  "auto_redirect_reset_mark": "0x2025",
-  "auto_redirect_tproxy_mark": "0x2026",
-  "auto_redirect_nfqueue": 100,
-  "auto_redirect_iproute2_fallback_rule_index": 32768,
-  "exclude_mptcp": false,
-  "loopback_address": [
-    "10.7.0.1"
-  ],
-  "strict_route": true,
-  "route_address": [
-    "0.0.0.0/1",
-    "128.0.0.0/1",
-    "::/1",
-    "8000::/1"
-  ],
-
-  "route_exclude_address": [
-    "192.168.0.0/16",
-    "fc00::/7"
-  ],
-  "route_address_set": [
-    "geoip-cloudflare"
-  ],
-  "route_exclude_address_set": [
-    "geoip-cn"
-  ],
-  "endpoint_independent_nat": false,
-
-  ... // UDP NAT 字段
-
-  "multi_queue": false,
-  "include_interface": [
-    "lan0"
-  ],
-  "exclude_interface": [
-    "lan1"
-  ],
-  "include_uid": [
-    0
-  ],
-  "include_uid_range": [
-    "1000:99999"
-  ],
-  "exclude_uid": [
-    1000
-  ],
-  "exclude_uid_range": [
-    "1000:99999"
-  ],
-  "include_android_user": [
-    0,
-    10
-  ],
-  "include_package": [
-    "com.android.chrome"
-  ],
-  "exclude_package": [
-    "com.android.captiveportallogin"
-  ],
-  "include_mac_address": [
-    "00:11:22:33:44:55"
-  ],
-  "exclude_mac_address": [
-    "66:77:88:99:aa:bb"
-  ],
-  "platform": {
-    "http_proxy": {
-      "enabled": false,
-      "server": "127.0.0.1",
-      "server_port": 8080,
-      "bypass_domain": [],
-      "match_domain": []
-    }
-  },
-
-  // 已弃用
-  "stack": "system",
-  "gso": false,
-  "inet4_address": [
-    "172.19.0.1/30"
-  ],
-  "inet6_address": [
-    "fdfe:dcba:9876::1/126"
-  ],
-  "inet4_route_address": [
-    "0.0.0.0/1",
-    "128.0.0.0/1"
-  ],
-  "inet6_route_address": [
-    "::/1",
-    "8000::/1"
-  ],
-  "inet4_route_exclude_address": [
-    "192.168.0.0/16"
-  ],
-  "inet6_route_exclude_address": [
-    "fc00::/7"
-  ],
-  
-  ... // 监听字段
-}
+```yaml
+type: tun
+tag: tun-in
+interface_name: tun0
+address:
+- 172.18.0.1/30
+- fdfe:dcba:9876::1/126
+mtu: 9000
+dns_mode: hijack
+dns_address:
+- 172.18.0.2
+- fdfe:dcba:9876::2
+auto_route: true
+iproute2_table_index: 2022
+iproute2_rule_index: 9000
+auto_redirect: true
+auto_redirect_input_mark: '0x2023'
+auto_redirect_output_mark: '0x2024'
+auto_redirect_reset_mark: '0x2025'
+auto_redirect_tproxy_mark: '0x2026'
+auto_redirect_nfqueue: 100
+auto_redirect_iproute2_fallback_rule_index: 32768
+exclude_mptcp: false
+loopback_address:
+- 10.7.0.1
+strict_route: true
+route_address:
+- 0.0.0.0/1
+- 128.0.0.0/1
+- ::/1
+- 8000::/1
+route_exclude_address:
+- 192.168.0.0/16
+- fc00::/7
+route_address_set:
+- geoip-cloudflare
+route_exclude_address_set:
+- geoip-cn
+endpoint_independent_nat: false
+multi_queue: false
+include_interface:
+- lan0
+exclude_interface:
+- lan1
+include_uid:
+- 0
+include_uid_range:
+- 1000:99999
+exclude_uid:
+- 1000
+exclude_uid_range:
+- 1000:99999
+include_android_user:
+- 0
+- 10
+include_package:
+- com.android.chrome
+exclude_package:
+- com.android.captiveportallogin
+include_mac_address:
+- 00:11:22:33:44:55
+exclude_mac_address:
+- 66:77:88:99:aa:bb
+platform:
+  http_proxy:
+    enabled: false
+    server: 127.0.0.1
+    server_port: 8080
+    bypass_domain: []
+    match_domain: []
+stack: system
+gso: false
+inet4_address:
+- 172.19.0.1/30
+inet6_address:
+- fdfe:dcba:9876::1/126
+inet4_route_address:
+- 0.0.0.0/1
+- 128.0.0.0/1
+inet6_route_address:
+- ::/1
+- 8000::/1
+inet4_route_exclude_address:
+- 192.168.0.0/16
+inet6_route_exclude_address:
+- fc00::/7
 ```
 
 !!! note ""

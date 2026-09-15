@@ -7,18 +7,12 @@ synchronization is not possible.
 
 ### Structure
 
-```json
-{
-  "ntp": {
-    "enabled": false,
-    "server": "time.apple.com",
-    "server_port": 123,
-    "interval": "30m",
-    
-    ... // Dial Fields
-  }
-}
-
+```yaml
+ntp:
+  enabled: false
+  server: time.apple.com
+  server_port: 123
+  interval: 30m
 ```
 
 ### Fields

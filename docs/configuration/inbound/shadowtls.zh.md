@@ -8,38 +8,23 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "shadowtls",
-  "tag": "st-in",
-
-  ... // 监听字段
-
-  "version": 3,
-  "password": "fuck me till the daylight",
-  "users": [
-    {
-      "name": "sekai",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
-    }
-  ],
-  "handshake": {
-    "server": "google.com",
-    "server_port": 443,
-
-    ... // 拨号字段
-  },
-  "handshake_for_server_name": {
-    "example.com": {
-      "server": "example.com",
-      "server_port": 443,
-      
-      ... // 拨号字段
-    }
-  },
-  "strict_mode": false,
-  "wildcard_sni": ""
-}
+```yaml
+type: shadowtls
+tag: st-in
+version: 3
+password: fuck me till the daylight
+users:
+- name: sekai
+  password: 8JCsPssfgS8tiRwiMlhARg==
+handshake:
+  server: google.com
+  server_port: 443
+handshake_for_server_name:
+  example.com:
+    server: example.com
+    server_port: 443
+strict_mode: false
+wildcard_sni: ''
 ```
 
 ### 监听字段

@@ -1,19 +1,13 @@
 ### Structure
 
-```json
-{
-  "type": "tor",
-  "tag": "tor-out",
-  
-  "executable_path": "/usr/bin/tor",
-  "extra_args": [],
-  "data_directory": "$HOME/.cache/tor",
-  "torrc": {
-    "ClientOnly": 1
-  },
-
-  ... // Dial Fields
-}
+```yaml
+type: tor
+tag: tor-out
+executable_path: /usr/bin/tor
+extra_args: []
+data_directory: $HOME/.cache/tor
+torrc:
+  ClientOnly: 1
 ```
 
 !!! info ""

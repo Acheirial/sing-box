@@ -12,21 +12,14 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "tailscale",
-        "tag": "",
-
-        "endpoint": "ts-ep",
-        "accept_default_resolvers": false,
-        "accept_search_domain": false
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: tailscale
+    tag: ''
+    endpoint: ts-ep
+    accept_default_resolvers: false
+    accept_search_domain: false
 ```
 
 ### 字段
@@ -57,69 +50,41 @@ icon: material/new-box
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "local",
-                "tag": "local"
-              },
-              {
-                "type": "tailscale",
-                "tag": "ts",
-                "endpoint": "ts-ep"
-              }
-            ],
-            "rules": [
-              {
-                "preferred_by": "ts",
-                "action": "route",
-                "server": "ts"
-              }
-            ]
-          }
-        }
-        ```
+```yaml
+dns:
+  servers:
+  - type: local
+    tag: local
+  - type: tailscale
+    tag: ts
+    endpoint: ts-ep
+  rules:
+  - preferred_by: ts
+    action: route
+    server: ts
+```
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                "type": "local",
-                "tag": "local"
-              },
-              {
-                "type": "tailscale",
-                "tag": "ts",
-                "endpoint": "ts-ep"
-              }
-            ],
-            "rules": [
-              {
-                "ip_accept_any": true,
-                "server": "ts"
-              }
-            ]
-          }
-        }
-        ```
+```yaml
+dns:
+  servers:
+  - type: local
+    tag: local
+  - type: tailscale
+    tag: ts
+    endpoint: ts-ep
+  rules:
+  - ip_accept_any: true
+    server: ts
+```
 
 === "用作全局 DNS"
 
-    ```json
-    {
-      "dns": {
-        "servers": [
-          {
-            "type": "tailscale",
-            "endpoint": "ts-ep",
-            "accept_default_resolvers": true
-          }
-        ]
-      }
-    }
-    ```
+```yaml
+dns:
+  servers:
+  - type: tailscale
+    endpoint: ts-ep
+    accept_default_resolvers: true
+```

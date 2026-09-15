@@ -2,21 +2,16 @@
 
 ### 结构
 
-```json
-{
-  "type": "http",
-  "tag": "http-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "username": "sekai",
-  "password": "admin",
-  "path": "",
-  "headers": {},
-  "tls": {},
-
-  ... // 拨号字段
-}
+```yaml
+type: http
+tag: http-out
+server: 127.0.0.1
+server_port: 1080
+username: sekai
+password: admin
+path: ''
+headers: {}
+tls: {}
 ```
 
 ### 字段

@@ -31,32 +31,26 @@ icon: material/alert-decagram
 
 ### Structure
 
-```json
-{
-  "route": {
-    "rules": [],
-    "rule_set": [],
-    "final": "",
-    "auto_detect_interface": false,
-    "override_android_vpn": false,
-    "default_interface": "",
-    "default_mark": 0,
-    "find_process": false,
-    "find_neighbor": false,
-    "dhcp_lease_files": [],
-    "default_http_client": "",
-    "default_domain_resolver": "", // or {}
-    "default_network_strategy": "",
-    "default_network_type": [],
-    "default_fallback_network_type": [],
-    "default_fallback_delay": "",
-    
-    // Removed
-
-    "geoip": {},
-    "geosite": {}
-  }
-}
+```yaml
+route:
+  rules: []
+  rule_set: []
+  final: ''
+  auto_detect_interface: false
+  override_android_vpn: false
+  default_interface: ''
+  default_mark: 0
+  find_process: false
+  find_neighbor: false
+  dhcp_lease_files: []
+  default_http_client: ''
+  default_domain_resolver: ''
+  default_network_strategy: ''
+  default_network_type: []
+  default_fallback_network_type: []
+  default_fallback_delay: ''
+  geoip: {}
+  geosite: {}
 ```
 
 !!! note ""

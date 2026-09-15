@@ -8,21 +8,12 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "dhcp",
-        "tag": "",
-
-        "interface": "",
-
-        // 拨号字段
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: dhcp
+    tag: ''
+    interface: ''
 ```
 
 ### 字段

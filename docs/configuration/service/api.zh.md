@@ -15,24 +15,18 @@ sing-box API 服务是用于观察与控制正在运行的 sing-box 实例的 gR
 
 ### 结构
 
-```json
-{
-  "type": "api",
-  
-  ... // 监听字段
-  
-  "secret": "",
-  "access_control_allow_origin": [],
-  "access_control_allow_private_network": false,
-  "dashboard": {
-    "enabled": true,
-    "path": "",
-    "download_url": "",
-    "http_client": "", // 或 {}
-    "update_interval": ""
-  },
-  "tls": {}
-}
+```yaml
+type: api
+secret: ''
+access_control_allow_origin: []
+access_control_allow_private_network: false
+dashboard:
+  enabled: true
+  path: ''
+  download_url: ''
+  http_client: ''
+  update_interval: ''
+tls: {}
 ```
 
 ### 监听字段

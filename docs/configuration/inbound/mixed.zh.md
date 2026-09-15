@@ -2,21 +2,13 @@
 
 ### 结构
 
-```json
-{
-  "type": "mixed",
-  "tag": "mixed-in",
-
-  ... // 监听字段
-
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin"
-    }
-  ],
-  "set_system_proxy": false
-}
+```yaml
+type: mixed
+tag: mixed-in
+users:
+- username: admin
+  password: admin
+set_system_proxy: false
 ```
 
 ### 监听字段

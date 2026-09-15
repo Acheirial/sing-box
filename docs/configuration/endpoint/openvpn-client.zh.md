@@ -8,108 +8,93 @@
 
 ## 结构
 
-```json
-{
-  "type": "openvpn-client",
-  "tag": "ovpn-client",
-
-  "mode": "tls",
-  "server": "127.0.0.1",
-  "server_port": 1194,
-  "servers": [
-    {
-      "server": "127.0.0.1",
-      "server_port": 1194,
-      "network": "udp"
-    }
-  ],
-  "remote_random": false,
-  "network": "udp",
-  "address": [],
-  "peer_address": "",
-  "peer_address_ipv6": "",
-  "topology": "",
-  "username": "",
-  "password": "",
-  "auth_retry": "none",
-  "static_challenge": "",
-  "static_challenge_echo": false,
-  "static_key": [],
-  "static_key_path": "",
-  "key_direction": "",
-  "tls": {
-    "server_name": "",
-    "server_name_type": "name",
-    "certificate": [],
-    "certificate_path": "",
-    "client_certificate": [],
-    "client_certificate_path": "",
-    "client_key": [],
-    "client_key_path": "",
-    "peer_fingerprint": [],
-    "crl_path": "",
-    "remote_certificate_ku": [],
-    "remote_certificate_eku": "",
-    "remote_certificate_tls": "",
-    "certificate_profile": "",
-    "ns_certificate_type": "",
-    "version_min": "1.2",
-    "version_max": "",
-    "cipher": "",
-    "groups": "",
-    "control_wrap": {
-      "type": "",
-      "key": [],
-      "key_path": "",
-      "direction": ""
-    }
-  },
-  "cipher": "",
-  "data_ciphers": [],
-  "data_ciphers_fallback": "",
-  "auth": "",
-  "mss_fix": 0,
-  "mss_fix_disabled": false,
-  "mss_fix_mode": "",
-  "fragment": 0,
-  "replay_window": 0,
-  "replay_window_time": "",
-  "compression": "",
-  "compression_lzo": "",
-  "allow_compression": "no",
-  "route_no_pull": false,
-  "pull_filters": [
-    {
-      "action": "ignore",
-      "text": "route "
-    }
-  ],
-  "routes": [],
-  "route_gateway": "",
-  "route_metric": 0,
-  "redirect_gateway": false,
-  "redirect_gateway_flags": [],
-  "redirect_private": false,
-  "block_ipv6": false,
-  "ping_interval": "",
-  "ping_restart": "",
-  "ping_restart_disabled": false,
-  "renegotiate_interval": "",
-  "renegotiate_disabled": false,
-  "renegotiate_bytes": 0,
-  "renegotiate_packets": 0,
-  "tls_timeout": "",
-  "handshake_window": "",
-  "explicit_exit_notify": 0,
-  "system": false,
-  "name": "",
-  "mtu": 1500,
-  "on_demand": false,
-
-  ... // UDP NAT 字段
-
-  ... // 拨号字段
-}
+```yaml
+type: openvpn-client
+tag: ovpn-client
+mode: tls
+server: 127.0.0.1
+server_port: 1194
+servers:
+- server: 127.0.0.1
+  server_port: 1194
+  network: udp
+remote_random: false
+network: udp
+address: []
+peer_address: ''
+peer_address_ipv6: ''
+topology: ''
+username: ''
+password: ''
+auth_retry: none
+static_challenge: ''
+static_challenge_echo: false
+static_key: []
+static_key_path: ''
+key_direction: ''
+tls:
+  server_name: ''
+  server_name_type: name
+  certificate: []
+  certificate_path: ''
+  client_certificate: []
+  client_certificate_path: ''
+  client_key: []
+  client_key_path: ''
+  peer_fingerprint: []
+  crl_path: ''
+  remote_certificate_ku: []
+  remote_certificate_eku: ''
+  remote_certificate_tls: ''
+  certificate_profile: ''
+  ns_certificate_type: ''
+  version_min: '1.2'
+  version_max: ''
+  cipher: ''
+  groups: ''
+  control_wrap:
+    type: ''
+    key: []
+    key_path: ''
+    direction: ''
+cipher: ''
+data_ciphers: []
+data_ciphers_fallback: ''
+auth: ''
+mss_fix: 0
+mss_fix_disabled: false
+mss_fix_mode: ''
+fragment: 0
+replay_window: 0
+replay_window_time: ''
+compression: ''
+compression_lzo: ''
+allow_compression: 'no'
+route_no_pull: false
+pull_filters:
+- action: ignore
+  text: 'route '
+routes: []
+route_gateway: ''
+route_metric: 0
+redirect_gateway: false
+redirect_gateway_flags: []
+redirect_private: false
+block_ipv6: false
+ping_interval: ''
+ping_restart: ''
+ping_restart_disabled: false
+renegotiate_interval: ''
+renegotiate_disabled: false
+renegotiate_bytes: 0
+renegotiate_packets: 0
+tls_timeout: ''
+handshake_window: ''
+explicit_exit_notify: 0
+system: false
+name: ''
+mtu: 1500
+on_demand: false
 ```
 
 !!! note ""

@@ -20,25 +20,21 @@ icon: material/alert-decagram
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [],
-    "rules": [],
-    "final": "",
-    "strategy": "",
-    "disable_cache": false,
-    "disable_expire": false,
-    "independent_cache": false,
-    "cache_capacity": 0,
-    "optimistic": false, // or {}
-    "timeout": "",
-    "reverse_mapping": false,
-    "client_subnet": "",
-    "fakeip": {}
-  }
-}
-
+```yaml
+dns:
+  servers: []
+  rules: []
+  final: ''
+  strategy: ''
+  disable_cache: false
+  disable_expire: false
+  independent_cache: false
+  cache_capacity: 0
+  optimistic: false
+  timeout: ''
+  reverse_mapping: false
+  client_subnet: ''
+  fakeip: {}
 ```
 
 ### 字段
@@ -99,11 +95,9 @@ LRU 缓存容量。
 
 接受布尔值或对象。当设置为 `true` 时，使用默认超时 `3d`。
 
-```json
-{
-  "enabled": true,
-  "timeout": "3d"
-}
+```yaml
+enabled: true
+timeout: 3d
 ```
 
 ##### enabled

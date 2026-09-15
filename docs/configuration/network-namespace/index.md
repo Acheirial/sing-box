@@ -16,15 +16,10 @@ referenced by tag from the [tun](/configuration/inbound/tun/#netns),
 
 ### Structure
 
-```json
-{
-  "network_namespaces": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+network_namespaces:
+- type: ''
+  tag: ''
 ```
 
 #### type

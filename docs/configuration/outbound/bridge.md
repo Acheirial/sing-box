@@ -28,16 +28,13 @@ cannot be routed.
 
 ### Structure
 
-```json
-{
-  "type": "bridge",
-  "tag": "bridge-out",
-
-  "interface": "",
-  "bridge_name": "",
-  "iproute2_table_index": 0,
-  "iproute2_rule_index": 0
-}
+```yaml
+type: bridge
+tag: bridge-out
+interface: ''
+bridge_name: ''
+iproute2_table_index: 0
+iproute2_rule_index: 0
 ```
 
 ### Fields

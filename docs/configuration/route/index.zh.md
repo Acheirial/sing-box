@@ -31,26 +31,23 @@ icon: material/alert-decagram
 
 ### 结构
 
-```json
-{
-  "route": {
-    "geoip": {},
-    "geosite": {},
-    "rules": [],
-    "rule_set": [],
-    "final": "",
-    "auto_detect_interface": false,
-    "override_android_vpn": false,
-    "default_interface": "",
-    "default_mark": 0,
-    "find_process": false,
-    "find_neighbor": false,
-    "dhcp_lease_files": [],
-    "default_http_client": "",
-    "default_network_strategy": "",
-    "default_fallback_delay": ""
-  }
-}
+```yaml
+route:
+  geoip: {}
+  geosite: {}
+  rules: []
+  rule_set: []
+  final: ''
+  auto_detect_interface: false
+  override_android_vpn: false
+  default_interface: ''
+  default_mark: 0
+  find_process: false
+  find_neighbor: false
+  dhcp_lease_files: []
+  default_http_client: ''
+  default_network_strategy: ''
+  default_fallback_delay: ''
 ```
 
 !!! note ""

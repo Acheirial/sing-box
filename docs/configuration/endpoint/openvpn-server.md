@@ -4,95 +4,82 @@
 
 ## Structure
 
-```json
-{
-  "type": "openvpn-server",
-  "tag": "ovpn-server",
-
-  ... // Listen Fields
-
-  "system": false,
-  "name": "",
-  "mtu": 1500,
-  "mode": "tls",
-  "network": "udp",
-  "remote": "",
-  "remote_port": 0,
-  "max_clients": 1024,
-  "address": [],
-  "peer_address": "",
-  "peer_address_ipv6": "",
-  "topology": "subnet",
-  "duplicate_cn": false,
-  "users": [
-    {
-      "username": "",
-      "password": ""
-    }
-  ],
-  "static_key": [],
-  "static_key_path": "",
-  "key_direction": "",
-  "tls": {
-    "certificate": [],
-    "certificate_path": "",
-    "key": [],
-    "key_path": "",
-    "client_certificate": [],
-    "client_certificate_path": "",
-    "verify_client_certificate": "require",
-    "client_name": "",
-    "client_name_type": "name",
-    "peer_fingerprint": [],
-    "crl_path": "",
-    "remote_certificate_ku": [],
-    "remote_certificate_eku": "",
-    "remote_certificate_tls": "",
-    "certificate_profile": "",
-    "ns_certificate_type": "",
-    "version_min": "1.2",
-    "version_max": "",
-    "cipher": "",
-    "groups": "",
-    "control_wrap": {
-      "type": "tls_crypt",
-      "key": [],
-      "key_path": "",
-      "direction": "",
-      "force_cookie": false
-    }
-  },
-  "cipher": "",
-  "data_ciphers": [],
-  "data_ciphers_fallback": "",
-  "auth": "",
-  "mss_fix": 0,
-  "mss_fix_disabled": false,
-  "mss_fix_mode": "",
-  "replay_window": 0,
-  "replay_window_time": "",
-  "push": {
-    "routes": [],
-    "dns": [],
-    "dns_servers": [],
-    "search_domains": [],
-    "dhcp_options": [],
-    "redirect_gateway": false,
-    "redirect_gateway_flags": [],
-    "block_outside_dns": false,
-    "ping_interval": "",
-    "ping_restart": ""
-  },
-  "ping_interval": "",
-  "ping_restart": "",
-  "renegotiate_interval": "",
-  "renegotiate_disabled": false,
-  "renegotiate_bytes": 0,
-  "renegotiate_packets": 0,
-  "handshake_window": "1m",
-
-  ... // UDP NAT Fields
-}
+```yaml
+type: openvpn-server
+tag: ovpn-server
+system: false
+name: ''
+mtu: 1500
+mode: tls
+network: udp
+remote: ''
+remote_port: 0
+max_clients: 1024
+address: []
+peer_address: ''
+peer_address_ipv6: ''
+topology: subnet
+duplicate_cn: false
+users:
+- username: ''
+  password: ''
+static_key: []
+static_key_path: ''
+key_direction: ''
+tls:
+  certificate: []
+  certificate_path: ''
+  key: []
+  key_path: ''
+  client_certificate: []
+  client_certificate_path: ''
+  verify_client_certificate: require
+  client_name: ''
+  client_name_type: name
+  peer_fingerprint: []
+  crl_path: ''
+  remote_certificate_ku: []
+  remote_certificate_eku: ''
+  remote_certificate_tls: ''
+  certificate_profile: ''
+  ns_certificate_type: ''
+  version_min: '1.2'
+  version_max: ''
+  cipher: ''
+  groups: ''
+  control_wrap:
+    type: tls_crypt
+    key: []
+    key_path: ''
+    direction: ''
+    force_cookie: false
+cipher: ''
+data_ciphers: []
+data_ciphers_fallback: ''
+auth: ''
+mss_fix: 0
+mss_fix_disabled: false
+mss_fix_mode: ''
+replay_window: 0
+replay_window_time: ''
+push:
+  routes: []
+  dns: []
+  dns_servers: []
+  search_domains: []
+  dhcp_options: []
+  redirect_gateway: false
+  redirect_gateway_flags: []
+  block_outside_dns: false
+  ping_interval: ''
+  ping_restart: ''
+ping_interval: ''
+ping_restart: ''
+renegotiate_interval: ''
+renegotiate_disabled: false
+renegotiate_bytes: 0
+renegotiate_packets: 0
+handshake_window: 1m
 ```
 
 !!! note ""

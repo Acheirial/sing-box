@@ -10,16 +10,11 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "network_namespaces": [
-    {
-      "type": "default", // 可选
-      "tag": "",
-      "path": ""
-    }
-  ]
-}
+```yaml
+network_namespaces:
+- type: default
+  tag: ''
+  path: ''
 ```
 
 ### 字段

@@ -10,11 +10,9 @@ icon: material/delete-clock
 
 ### 结构
 
-```json
-{
-  "type": "dns",
-  "tag": "dns-out"
-}
+```yaml
+type: dns
+tag: dns-out
 ```
 
 !!! note ""

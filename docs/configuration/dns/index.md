@@ -20,25 +20,21 @@ icon: material/alert-decagram
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [],
-    "rules": [],
-    "final": "",
-    "strategy": "",
-    "disable_cache": false,
-    "disable_expire": false,
-    "independent_cache": false,
-    "cache_capacity": 0,
-    "optimistic": false, // or {}
-    "timeout": "",
-    "reverse_mapping": false,
-    "client_subnet": "",
-    "fakeip": {}
-  }
-}
-
+```yaml
+dns:
+  servers: []
+  rules: []
+  final: ''
+  strategy: ''
+  disable_cache: false
+  disable_expire: false
+  independent_cache: false
+  cache_capacity: 0
+  optimistic: false
+  timeout: ''
+  reverse_mapping: false
+  client_subnet: ''
+  fakeip: {}
 ```
 
 ### Fields
@@ -100,11 +96,9 @@ Conflict with `disable_cache` and `disable_expire`.
 
 Accepts a boolean or an object. When set to `true`, the default timeout of `3d` is used.
 
-```json
-{
-  "enabled": true,
-  "timeout": "3d"
-}
+```yaml
+enabled: true
+timeout: 3d
 ```
 
 ##### enabled

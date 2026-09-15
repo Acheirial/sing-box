@@ -1,25 +1,21 @@
 ### 入站
 
-```json
-{
-  "enabled": true,
-  "padding": false,
-  "brutal": {}
-}
+```yaml
+enabled: true
+padding: false
+brutal: {}
 ```
 
 ### 出站
 
-```json
-{
-  "enabled": true,
-  "protocol": "smux",
-  "max_connections": 4,
-  "min_streams": 4,
-  "max_streams": 0,
-  "padding": false,
-  "brutal": {}
-}
+```yaml
+enabled: true
+protocol: smux
+max_connections: 4
+min_streams: 4
+max_streams: 0
+padding: false
+brutal: {}
 ```
 
 ### 入站字段

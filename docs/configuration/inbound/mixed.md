@@ -2,21 +2,13 @@
 
 ### Structure
 
-```json
-{
-  "type": "mixed",
-  "tag": "mixed-in",
-
-  ... // Listen Fields
-
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin"
-    }
-  ],
-  "set_system_proxy": false
-}
+```yaml
+type: mixed
+tag: mixed-in
+users:
+- username: admin
+  password: admin
+set_system_proxy: false
 ```
 
 ### Listen Fields

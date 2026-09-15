@@ -2,21 +2,16 @@
 
 ### 结构
 
-```json
-{
-  "type": "socks",
-  "tag": "socks-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": "5",
-  "username": "sekai",
-  "password": "admin",
-  "network": "udp",
-  "udp_over_tcp": false | {},
-
-  ... // 拨号字段
-}
+```yaml
+type: socks
+tag: socks-out
+server: 127.0.0.1
+server_port: 1080
+version: '5'
+username: sekai
+password: admin
+network: udp
+udp_over_tcp: false
 ```
 
 ### 字段

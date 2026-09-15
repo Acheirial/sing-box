@@ -8,24 +8,14 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "tls",
-        "tag": "",
-        
-        "server": "",
-        "server_port": 853,
-        
-        "tls": {},
-        
-        // Dial Fields
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: tls
+    tag: ''
+    server: ''
+    server_port: 853
+    tls: {}
 ```
 
 !!! info "Difference from legacy TLS server"

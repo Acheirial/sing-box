@@ -2,21 +2,16 @@
 
 ### Structure
 
-```json
-{
-  "type": "http",
-  "tag": "http-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "username": "sekai",
-  "password": "admin",
-  "path": "",
-  "headers": {},
-  "tls": {},
-  
-  ... // Dial Fields
-}
+```yaml
+type: http
+tag: http-out
+server: 127.0.0.1
+server_port: 1080
+username: sekai
+password: admin
+path: ''
+headers: {}
+tls: {}
 ```
 
 ### Fields

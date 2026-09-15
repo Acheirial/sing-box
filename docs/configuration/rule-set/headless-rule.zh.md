@@ -22,99 +22,69 @@ icon: material/new-box
 
 !!! question "自 sing-box 1.8.0 起"
 
-```json
-{
-  "rules": [
-    {
-      "query_type": [
-        "A",
-        "HTTPS",
-        32768
-      ],
-      "network": [
-        "tcp"
-      ],
-      "domain": [
-        "test.com"
-      ],
-      "domain_suffix": [
-        ".cn"
-      ],
-      "domain_keyword": [
-        "test"
-      ],
-      "domain_regex": [
-        "^stun\\..+"
-      ],
-      "source_ip_cidr": [
-        "10.0.0.0/24",
-        "192.168.0.1"
-      ],
-      "ip_cidr": [
-        "10.0.0.0/24",
-        "192.168.0.1"
-      ],
-      "source_port": [
-        12345
-      ],
-      "source_port_range": [
-        "1000:2000",
-        ":3000",
-        "4000:"
-      ],
-      "port": [
-        80,
-        443
-      ],
-      "port_range": [
-        "1000:2000",
-        ":3000",
-        "4000:"
-      ],
-      "process_name": [
-        "curl"
-      ],
-      "process_path": [
-        "/usr/bin/curl"
-      ],
-      "process_path_regex": [
-        "^/usr/bin/.+"
-      ],
-      "package_name": [
-        "com.termux"
-      ],
-      "package_name_regex": [
-        "^com\\.termux.*"
-      ],
-      "network_type": [
-        "wifi"
-      ],
-      "network_is_expensive": false,
-      "network_is_constrained": false,
-      "network_interface_address": {
-        "wifi": [
-          "2000::/3"
-        ]
-      },
-      "default_interface_address": [
-        "2000::/3"
-      ],
-      "wifi_ssid": [
-        "My WIFI"
-      ],
-      "wifi_bssid": [
-        "00:00:00:00:00:00"
-      ],
-      "invert": false
-    },
-    {
-      "type": "logical",
-      "mode": "and",
-      "rules": [],
-      "invert": false
-    }
-  ]
-}
+```yaml
+rules:
+- query_type:
+  - A
+  - HTTPS
+  - 32768
+  network:
+  - tcp
+  domain:
+  - test.com
+  domain_suffix:
+  - .cn
+  domain_keyword:
+  - test
+  domain_regex:
+  - ^stun\..+
+  source_ip_cidr:
+  - 10.0.0.0/24
+  - 192.168.0.1
+  ip_cidr:
+  - 10.0.0.0/24
+  - 192.168.0.1
+  source_port:
+  - 12345
+  source_port_range:
+  - 1000:2000
+  - :3000
+  - '4000:'
+  port:
+  - 80
+  - 443
+  port_range:
+  - 1000:2000
+  - :3000
+  - '4000:'
+  process_name:
+  - curl
+  process_path:
+  - /usr/bin/curl
+  process_path_regex:
+  - ^/usr/bin/.+
+  package_name:
+  - com.termux
+  package_name_regex:
+  - ^com\.termux.*
+  network_type:
+  - wifi
+  network_is_expensive: false
+  network_is_constrained: false
+  network_interface_address:
+    wifi:
+    - 2000::/3
+  default_interface_address:
+  - 2000::/3
+  wifi_ssid:
+  - My WIFI
+  wifi_bssid:
+  - 00:00:00:00:00:00
+  invert: false
+- type: logical
+  mode: and
+  rules: []
+  invert: false
 ```
 
 !!! note ""

@@ -8,22 +8,13 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "udp",
-        "tag": "",
-
-        "server": "",
-        "server_port": 53,
-
-        // 拨号字段
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: udp
+    tag: ''
+    server: ''
+    server_port: 53
 ```
 
 !!! info "与旧版 UDP 服务器的区别"

@@ -14,16 +14,11 @@ Create a new network namespace, without root privilege.
 
 ### Structure
 
-```json
-{
-  "network_namespaces": [
-    {
-      "type": "unshare",
-      "tag": "",
-      "pid_file": ""
-    }
-  ]
-}
+```yaml
+network_namespaces:
+- type: unshare
+  tag: ''
+  pid_file: ''
 ```
 
 ### Fields

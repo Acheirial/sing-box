@@ -18,18 +18,16 @@
 
 ### Structure
 
-```json
-{
-  "enabled": true,
-  "path": "",
-  "cache_id": "",
-  "store_fakeip": false,
-  "store_rdrc": false,
-  "rdrc_timeout": "",
-  "store_dns": false,
-  "buffer_size": "",
-  "flush_interval": ""
-}
+```yaml
+enabled: true
+path: ''
+cache_id: ''
+store_fakeip: false
+store_rdrc: false
+rdrc_timeout: ''
+store_dns: false
+buffer_size: ''
+flush_interval: ''
 ```
 
 ### Fields

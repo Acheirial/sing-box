@@ -18,17 +18,13 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "ttl": "",
-  "propagation_delay": "",
-  "propagation_timeout": "",
-  "resolvers": [],
-  "override_domain": "",
-  "provider": "",
-
-  ... // Provider Fields
-}
+```yaml
+ttl: ''
+propagation_delay: ''
+propagation_timeout: ''
+resolvers: []
+override_domain: ''
+provider: ''
 ```
 
 ### Fields
@@ -75,14 +71,12 @@ The DNS provider. See below for provider-specific fields.
 
 #### Alibaba Cloud DNS
 
-```json
-{
-  "provider": "alidns",
-  "access_key_id": "",
-  "access_key_secret": "",
-  "region_id": "",
-  "security_token": ""
-}
+```yaml
+provider: alidns
+access_key_id: ''
+access_key_secret: ''
+region_id: ''
+security_token: ''
 ```
 
 ##### security_token
@@ -93,12 +87,10 @@ The Security Token for STS temporary credentials.
 
 #### Cloudflare
 
-```json
-{
-  "provider": "cloudflare",
-  "api_token": "",
-  "zone_token": ""
-}
+```yaml
+provider: cloudflare
+api_token: ''
+zone_token: ''
 ```
 
 ##### zone_token
@@ -113,14 +105,12 @@ When provided, allows `api_token` to be scoped to a single zone.
 
 !!! question "Since sing-box 1.13.0"
 
-```json
-{
-  "provider": "acmedns",
-  "username": "",
-  "password": "",
-  "subdomain": "",
-  "server_url": ""
-}
+```yaml
+provider: acmedns
+username: ''
+password: ''
+subdomain: ''
+server_url: ''
 ```
 
 See [ACME-DNS](https://github.com/joohoi/acme-dns) for details.

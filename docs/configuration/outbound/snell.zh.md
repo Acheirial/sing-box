@@ -6,43 +6,33 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-out",
-
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": 4,
-  "psk": "password",
-  "userkey": "",
-  "reuse": false,
-  "network": "tcp",
-  "obfs_mode": "",
-  "obfs_host": "",
-
-  ... // 拨号字段
-}
+```yaml
+type: snell
+tag: snell-out
+server: 127.0.0.1
+server_port: 1080
+version: 4
+psk: password
+userkey: ''
+reuse: false
+network: tcp
+obfs_mode: ''
+obfs_host: ''
 ```
 
 ### 版本 6 结构
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-out",
-
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": 6,
-  "psk": "password",
-  "userkey": "",
-  "reuse": false,
-  "network": "tcp",
-  "mode": "",
-
-  ... // 拨号字段
-}
+```yaml
+type: snell
+tag: snell-out
+server: 127.0.0.1
+server_port: 1080
+version: 6
+psk: password
+userkey: ''
+reuse: false
+network: tcp
+mode: ''
 ```
 
 ### 字段

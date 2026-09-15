@@ -8,27 +8,16 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "https",
-        "tag": "",
-
-        "server": "",
-        "server_port": 443,
-
-        "path": "",
-        "headers": {},
-
-        "tls": {},
-
-        // 拨号字段
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: https
+    tag: ''
+    server: ''
+    server_port: 443
+    path: ''
+    headers: {}
+    tls: {}
 ```
 
 !!! info "与旧版 HTTPS 服务器的区别"

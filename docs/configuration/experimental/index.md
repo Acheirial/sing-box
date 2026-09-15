@@ -7,14 +7,11 @@
 
 ### Structure
 
-```json
-{
-  "experimental": {
-    "cache_file": {},
-    "clash_api": {},
-    "v2ray_api": {}
-  }
-}
+```yaml
+experimental:
+  cache_file: {}
+  clash_api: {}
+  v2ray_api: {}
 ```
 
 ### Fields

@@ -6,15 +6,10 @@ An endpoint is a protocol with inbound and outbound behavior.
 
 ### Structure
 
-```json
-{
-  "endpoints": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+endpoints:
+- type: ''
+  tag: ''
 ```
 
 ### Fields

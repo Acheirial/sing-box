@@ -16,21 +16,13 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "local",
-        "tag": "",
-        "prefer_go": false,
-        "neighbor_domain": []
-
-        // Dial Fields
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: local
+    tag: ''
+    prefer_go: false
+    neighbor_domain: []
 ```
 
 !!! info "Difference from legacy local server"

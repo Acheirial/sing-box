@@ -6,15 +6,10 @@
 
 ### 结构
 
-```json
-{
-  "endpoints": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+endpoints:
+- type: ''
+  tag: ''
 ```
 
 ### 字段

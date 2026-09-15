@@ -2,10 +2,8 @@ V2Ray Transport 是 v2ray 发明的一组私有协议，并污染了其他协议
 
 ### 结构
 
-```json
-{
-  "type": ""
-}
+```yaml
+type: ''
 ```
 
 可用的传输协议：
@@ -29,16 +27,14 @@ V2Ray Transport 是 v2ray 发明的一组私有协议，并污染了其他协议
 
 ### HTTP
 
-```json
-{
-  "type": "http",
-  "host": [],
-  "path": "",
-  "method": "",
-  "headers": {},
-  "idle_timeout": "15s",
-  "ping_timeout": "15s"
-}
+```yaml
+type: http
+host: []
+path: ''
+method: ''
+headers: {}
+idle_timeout: 15s
+ping_timeout: 15s
 ```
 
 !!! warning "与 v2ray-core 的区别"
@@ -94,14 +90,12 @@ HTTP 请求的额外标头
 
 ### WebSocket
 
-```json
-{
-  "type": "ws",
-  "path": "",
-  "headers": {},
-  "max_early_data": 0,
-  "early_data_header_name": ""
-}
+```yaml
+type: ws
+path: ''
+headers: {}
+max_early_data: 0
+early_data_header_name: ''
 ```
 
 #### path
@@ -130,10 +124,8 @@ HTTP 请求的额外标头
 
 ### QUIC
 
-```json
-{
-  "type": "quic"
-}
+```yaml
+type: quic
 ```
 
 !!! warning "与 v2ray-core 的区别"
@@ -147,14 +139,12 @@ HTTP 请求的额外标头
 
     默认安装不包含标准 gRPC (兼容性好，但性能较差), 参阅 [安装](/zh/installation/build-from-source/#构建标记)。
 
-```json
-{
-  "type": "grpc",
-  "service_name": "TunService",
-  "idle_timeout": "15s",
-  "ping_timeout": "15s",
-  "permit_without_stream": false
-}
+```yaml
+type: grpc
+service_name: TunService
+idle_timeout: 15s
+ping_timeout: 15s
+permit_without_stream: false
 ```
 
 #### service_name
@@ -191,13 +181,11 @@ gRPC 服务名称。
 
 ### HTTPUpgrade
 
-```json
-{
-  "type": "httpupgrade",
-  "host": "",
-  "path": "",
-  "headers": {}
-}
+```yaml
+type: httpupgrade
+host: ''
+path: ''
+headers: {}
 ```
 
 #### host
@@ -222,14 +210,12 @@ HTTP 请求的额外标头。
 
 !!! question "自 sing-box 1.15.0 起"
 
-```json
-{
-  "type": "xhttp",
-  "host": "",
-  "path": "",
-  "mode": "",
-  "extra": {}
-}
+```yaml
+type: xhttp
+host: ''
+path: ''
+mode: ''
+extra: {}
 ```
 
 #### host

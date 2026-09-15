@@ -12,19 +12,14 @@ It handles OAuth authentication with Claude's API on your local machine while al
 
 ### Structure
 
-```json
-{
-  "type": "ccm",
-
-  ... // Listen Fields
-
-  "credential_path": "",
-  "usages_path": "",
-  "users": [],
-  "headers": {},
-  "detour": "",
-  "tls": {}
-}
+```yaml
+type: ccm
+credential_path: ''
+usages_path: ''
+users: []
+headers: {}
+detour: ''
+tls: {}
 ```
 
 ### Listen Fields
@@ -68,11 +63,9 @@ If empty, no authentication is required.
 
 Object format:
 
-```json
-{
-  "name": "",
-  "token": ""
-}
+```yaml
+name: ''
+token: ''
 ```
 
 Object fields:
@@ -98,27 +91,17 @@ TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
 #### Server
 
-```json
-{
-  "services": [
-    {
-      "type": "ccm",
-      "listen": "0.0.0.0",
-      "listen_port": 8080,
-      "usages_path": "./claude-usages.json",
-      "users": [
-        {
-          "name": "alice",
-          "token": "ak-ccm-hello-world"
-        },
-        {
-          "name": "bob",
-          "token": "ak-ccm-hello-bob"
-        }
-      ]
-    }
-  ]
-}
+```yaml
+services:
+- type: ccm
+  listen: 0.0.0.0
+  listen_port: 8080
+  usages_path: ./claude-usages.json
+  users:
+  - name: alice
+    token: ak-ccm-hello-world
+  - name: bob
+    token: ak-ccm-hello-bob
 ```
 
 #### Client

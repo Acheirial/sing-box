@@ -1,25 +1,20 @@
 ### Structure
 
-```json
-{
-  "type": "vmess",
-  "tag": "vmess-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "uuid": "bf000d23-0752-40b4-affe-68f7707a9661",
-  "security": "auto",
-  "alter_id": 0,
-  "global_padding": false,
-  "authenticated_length": true,
-  "network": "tcp",
-  "tls": {},
-  "packet_encoding": "",
-  "transport": {},
-  "multiplex": {},
-
-  ... // Dial Fields
-}
+```yaml
+type: vmess
+tag: vmess-out
+server: 127.0.0.1
+server_port: 1080
+uuid: bf000d23-0752-40b4-affe-68f7707a9661
+security: auto
+alter_id: 0
+global_padding: false
+authenticated_length: true
+network: tcp
+tls: {}
+packet_encoding: ''
+transport: {}
+multiplex: {}
 ```
 
 ### Fields

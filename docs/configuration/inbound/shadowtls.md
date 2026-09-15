@@ -8,38 +8,23 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "shadowtls",
-  "tag": "st-in",
-
-  ... // Listen Fields
-
-  "version": 3,
-  "password": "fuck me till the daylight",
-  "users": [
-    {
-      "name": "sekai",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
-    }
-  ],
-  "handshake": {
-    "server": "google.com",
-    "server_port": 443,
-    
-    ... // Dial Fields
-  },
-  "handshake_for_server_name": {
-    "example.com": {
-      "server": "example.com",
-      "server_port": 443,
-
-      ... // Dial Fields
-    }
-  },
-  "strict_mode": false,
-  "wildcard_sni": ""
-}
+```yaml
+type: shadowtls
+tag: st-in
+version: 3
+password: fuck me till the daylight
+users:
+- name: sekai
+  password: 8JCsPssfgS8tiRwiMlhARg==
+handshake:
+  server: google.com
+  server_port: 443
+handshake_for_server_name:
+  example.com:
+    server: example.com
+    server_port: 443
+strict_mode: false
+wildcard_sni: ''
 ```
 
 ### Listen Fields

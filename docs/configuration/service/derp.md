@@ -10,22 +10,17 @@ DERP service is a Tailscale DERP server, similar to [derper](https://pkg.go.dev/
 
 ### Structure
 
-```json
-{
-  "type": "derp",
-  
-  ... // Listen Fields
-
-  "tls": {},
-  "config_path": "",
-  "verify_client_endpoint": [],
-  "verify_client_url": [],
-  "home": "",
-  "mesh_with": [],
-  "mesh_psk": "",
-  "mesh_psk_file": "",
-  "stun": {}
-}
+```yaml
+type: derp
+tls: {}
+config_path: ''
+verify_client_endpoint: []
+verify_client_url: []
+home: ''
+mesh_with: []
+mesh_psk: ''
+mesh_psk_file: ''
+stun: {}
 ```
 
 ### Listen Fields
@@ -56,18 +51,14 @@ URL to verify clients.
 
 Object format:
 
-```json
-{
-  "url": "",
-
-  ... // HTTP Client Fields
-}
+```yaml
+url: ''
 ```
 
 Setting Array value to a string `__URL__` is equivalent to configuring:
 
-```json
-{ "url": __URL__ }
+```yaml
+url: __URL__
 ```
 
 #### home
@@ -80,15 +71,11 @@ Mesh with other DERP servers.
 
 Object format:
 
-```json
-{
-  "server": "",
-  "server_port": "",
-  "host": "",
-  "tls": {},
-  
-  ... // Dial Fields
-}
+```yaml
+server: ''
+server_port: ''
+host: ''
+tls: {}
 ```
 
 Object fields:
@@ -113,12 +100,8 @@ STUN server listen options.
 
 Object format:
 
-```json
-{
-  "enabled": true,
-  
-  ... // Listen Fields
-}
+```yaml
+enabled: true
 ```
 
 Object fields:
@@ -130,6 +113,7 @@ Object fields:
 
 Setting `stun` value to a number `__PORT__` is equivalent to configuring:
 
-```json
-{ "enabled": true, "listen_port": __PORT__ }
+```yaml
+enabled: true
+listen_port: __PORT__
 ```

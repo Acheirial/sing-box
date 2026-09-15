@@ -2,15 +2,10 @@
 
 ### 结构
 
-```json
-{
-  "inbounds": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+inbounds:
+- type: ''
+  tag: ''
 ```
 
 ### 字段

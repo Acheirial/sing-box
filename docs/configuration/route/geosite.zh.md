@@ -8,16 +8,12 @@ icon: material/note-remove
 
 ### 结构
 
-```json
-{
-  "route": {
-    "geosite": {
-      "path": "",
-      "download_url": "",
-      "download_detour": ""
-    }
-  }
-}
+```yaml
+route:
+  geosite:
+    path: ''
+    download_url: ''
+    download_detour: ''
 ```
 
 ### 字段

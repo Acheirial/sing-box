@@ -6,13 +6,9 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "initial_packet_size": 0,
-  "disable_path_mtu_discovery": false,
-
-  ... // HTTP2 字段
-}
+```yaml
+initial_packet_size: 0
+disable_path_mtu_discovery: false
 ```
 
 ### 字段

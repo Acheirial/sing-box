@@ -9,26 +9,19 @@ incoming tunnel traffic (TCP, UDP, ICMP) through sing-box's routing engine.
 
 ### Structure
 
-```json
-{
-  "type": "cloudflared",
-  "tag": "",
-
-  "token": "",
-  "ha_connections": 0,
-  "protocol": "",
-  "post_quantum": false,
-  "edge_ip_version": 0,
-  "datagram_version": "",
-  "grace_period": "",
-  "region": "",
-  "control_dialer": {
-    ... // Dial Fields
-  },
-  "tunnel_dialer": {
-    ... // Dial Fields
-  }
-}
+```yaml
+type: cloudflared
+tag: ''
+token: ''
+ha_connections: 0
+protocol: ''
+post_quantum: false
+edge_ip_version: 0
+datagram_version: ''
+grace_period: ''
+region: ''
+control_dialer: {}
+tunnel_dialer: {}
 ```
 
 ### Fields

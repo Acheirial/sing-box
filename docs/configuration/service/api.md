@@ -18,24 +18,18 @@ for bidirectional streaming methods.
 
 ### Structure
 
-```json
-{
-  "type": "api",
-  
-  ... // Listen Fields
-  
-  "secret": "",
-  "access_control_allow_origin": [],
-  "access_control_allow_private_network": false,
-  "dashboard": {
-    "enabled": true,
-    "path": "",
-    "download_url": "",
-    "http_client": "", // or {}
-    "update_interval": ""
-  },
-  "tls": {}
-}
+```yaml
+type: api
+secret: ''
+access_control_allow_origin: []
+access_control_allow_private_network: false
+dashboard:
+  enabled: true
+  path: ''
+  download_url: ''
+  http_client: ''
+  update_interval: ''
+tls: {}
 ```
 
 ### Listen Fields

@@ -8,20 +8,13 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "fakeip",
-        "tag": "",
-
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: fakeip
+    tag: ''
+    inet4_range: 198.18.0.0/15
+    inet6_range: fc00::/18
 ```
 
 ### 字段

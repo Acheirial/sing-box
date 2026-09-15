@@ -14,24 +14,13 @@ Realm 只承载控制信令。打洞成功后，所有代理流量在客户端�
 
 ### 结构
 
-```json
-{
-  "type": "hysteria-realm",
-
-  ... // 监听字段
-
-  "tls": {},
-
-  ... // HTTP2 字段
-
-  "users": [
-    {
-      "name": "",
-      "token": "",
-      "max_realms": 0
-    }
-  ]
-}
+```yaml
+type: hysteria-realm
+tls: {}
+users:
+- name: ''
+  token: ''
+  max_realms: 0
 ```
 
 ### 监听字段

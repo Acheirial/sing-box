@@ -8,22 +8,13 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "udp",
-        "tag": "",
-        
-        "server": "",
-        "server_port": 53,
-        
-        // Dial Fields
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: udp
+    tag: ''
+    server: ''
+    server_port: 53
 ```
 
 !!! info "Difference from legacy UDP server"

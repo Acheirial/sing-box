@@ -6,14 +6,12 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "idle_timeout": "",
-  "keep_alive_period": "",
-  "stream_receive_window": "",
-  "connection_receive_window": "",
-  "max_concurrent_streams": 0
-}
+```yaml
+idle_timeout: ''
+keep_alive_period: ''
+stream_receive_window: ''
+connection_receive_window: ''
+max_concurrent_streams: 0
 ```
 
 ### 字段

@@ -1,21 +1,13 @@
 ### Structure
 
-```json
-{
-  "type": "http",
-  "tag": "http-in",
-  
-  ... // Listen Fields
-  
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin"
-    }
-  ],
-  "tls": {},
-  "set_system_proxy": false
-}
+```yaml
+type: http
+tag: http-in
+users:
+- username: admin
+  password: admin
+tls: {}
+set_system_proxy: false
 ```
 
 ### Listen Fields

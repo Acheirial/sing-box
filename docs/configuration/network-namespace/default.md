@@ -10,16 +10,11 @@ Attach to an existing network namespace.
 
 ### Structure
 
-```json
-{
-  "network_namespaces": [
-    {
-      "type": "default", // optional
-      "tag": "",
-      "path": ""
-    }
-  ]
-}
+```yaml
+network_namespaces:
+- type: default
+  tag: ''
+  path: ''
 ```
 
 ### Fields

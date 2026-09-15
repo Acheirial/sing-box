@@ -40,86 +40,59 @@ doing otherwise is vulnerable to passive detection.)
 
 === ":material-account: Single-user"
 
-    ```json
-     {
-      "inbounds": [
-        {
-          "type": "shadowsocks",
-          "listen": "::",
-          "listen_port": 8080,
-          "network": "tcp",
-          "method": "2022-blake3-aes-128-gcm",
-          "password": "<password>",
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: shadowsocks
+      listen: '::'
+      listen_port: 8080
+      network: tcp
+      method: 2022-blake3-aes-128-gcm
+      password: <password>
+      multiplex:
+        enabled: true
     ```
 
 === ":material-account-multiple: Multi-user"
 
-    ```json
-     {
-      "inbounds": [
-        {
-          "type": "shadowsocks",
-          "listen": "::",
-          "listen_port": 8080,
-          "network": "tcp",
-          "method": "2022-blake3-aes-128-gcm",
-          "password": "<server_password>",
-          "users": [
-            {
-              "name": "sekai",
-              "password": "<user_password>"
-            }
-          ],
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    inbounds:
+    - type: shadowsocks
+      listen: '::'
+      listen_port: 8080
+      network: tcp
+      method: 2022-blake3-aes-128-gcm
+      password: <server_password>
+      users:
+      - name: sekai
+        password: <user_password>
+      multiplex:
+        enabled: true
     ```
 
 ## :material-cellphone-link: Client Example
 
 === ":material-account: Single-user"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "shadowsocks",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "method": "2022-blake3-aes-128-gcm",
-          "password": "<pasword>",
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: shadowsocks
+      server: 127.0.0.1
+      server_port: 8080
+      method: 2022-blake3-aes-128-gcm
+      password: <pasword>
+      multiplex:
+        enabled: true
     ```
 
 === ":material-account-multiple: Multi-user"
 
-    ```json
-    {
-      "outbounds": [
-        {
-          "type": "shadowsocks",
-          "server": "127.0.0.1",
-          "server_port": 8080,
-          "method": "2022-blake3-aes-128-gcm",
-          "password": "<server_pasword>:<user_password>",
-          "multiplex": {
-            "enabled": true
-          }
-        }
-      ]
-    }
+    ```yaml
+    outbounds:
+    - type: shadowsocks
+      server: 127.0.0.1
+      server_port: 8080
+      method: 2022-blake3-aes-128-gcm
+      password: <server_pasword>:<user_password>
+      multiplex:
+        enabled: true
     ```

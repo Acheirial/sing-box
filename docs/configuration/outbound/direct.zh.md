@@ -11,16 +11,11 @@ icon: material/alert-decagram
 
 ### 结构
 
-```json
-{
-  "type": "direct",
-  "tag": "direct-out",
-  
-  "override_address": "1.0.0.1",
-  "override_port": 53,
-
-  ... // 拨号字段
-}
+```yaml
+type: direct
+tag: direct-out
+override_address: 1.0.0.1
+override_port: 53
 ```
 
 ### 字段

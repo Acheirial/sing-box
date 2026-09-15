@@ -12,22 +12,16 @@ icon: material/note-remove
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "tag": "",
-        "address": "",
-        "address_resolver": "",
-        "address_strategy": "",
-        "strategy": "",
-        "detour": "",
-        "client_subnet": ""
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - tag: ''
+    address: ''
+    address_resolver: ''
+    address_strategy: ''
+    strategy: ''
+    detour: ''
+    client_subnet: ''
 ```
 
 ### 字段

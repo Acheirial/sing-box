@@ -4,13 +4,9 @@
 
 ### 结构
 
-```json
-{
-  "type": "redirect",
-  "tag": "redirect-in",
-
-  ... // 监听字段
-}
+```yaml
+type: redirect
+tag: redirect-in
 ```
 ### 监听字段
 

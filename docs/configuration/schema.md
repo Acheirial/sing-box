@@ -11,10 +11,8 @@ Compatible editors can use it for completion and validation.
 
 ### Structure
 
-```json
-{
-  "$schema": "https://sing-box.sagernet.org/schema.json"
-}
+```yaml
+$schema: https://sing-box.sagernet.org/schema.json
 ```
 
 ### Fields
@@ -40,8 +38,6 @@ The generated schema reflects the features included in the current build.
 
 You can then reference the local schema from a configuration file:
 
-```json
-{
-  "$schema": "./schema.json"
-}
+```yaml
+$schema: ./schema.json
 ```

@@ -6,13 +6,9 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "initial_packet_size": 0,
-  "disable_path_mtu_discovery": false,
-
-  ... // HTTP2 Fields
-}
+```yaml
+initial_packet_size: 0
+disable_path_mtu_discovery: false
 ```
 
 ### Fields

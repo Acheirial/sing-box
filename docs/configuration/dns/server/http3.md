@@ -8,27 +8,16 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "h3",
-        "tag": "",
-        
-        "server": "",
-        "server_port": 443,
-        
-        "path": "",
-        "headers": {},
-        
-        "tls": {},
-        
-        // Dial Fields
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+  - type: h3
+    tag: ''
+    server: ''
+    server_port: 443
+    path: ''
+    headers: {}
+    tls: {}
 ```
 
 !!! info "Difference from legacy H3 server"

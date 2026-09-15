@@ -2,15 +2,10 @@
 
 ### Structure
 
-```json
-{
-  "outbounds": [
-    {
-      "type": "",
-      "tag": ""
-    }
-  ]
-}
+```yaml
+outbounds:
+- type: ''
+  tag: ''
 ```
 
 ### Fields

@@ -14,16 +14,11 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "network_namespaces": [
-    {
-      "type": "unshare",
-      "tag": "",
-      "pid_file": ""
-    }
-  ]
-}
+```yaml
+network_namespaces:
+- type: unshare
+  tag: ''
+  pid_file: ''
 ```
 
 ### 字段

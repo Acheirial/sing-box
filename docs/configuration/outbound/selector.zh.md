@@ -1,18 +1,14 @@
 ### 结构
 
-```json
-{
-  "type": "selector",
-  "tag": "select",
-
-  "outbounds": [
-    "proxy-a",
-    "proxy-b",
-    "proxy-c"
-  ],
-  "default": "proxy-c",
-  "interrupt_exist_connections": false
-}
+```yaml
+type: selector
+tag: select
+outbounds:
+- proxy-a
+- proxy-b
+- proxy-c
+default: proxy-c
+interrupt_exist_connections: false
 ```
 
 !!! quote ""

@@ -7,12 +7,10 @@
 
 ### 结构
 
-```json
-{
-  "enabled": true,
-  "up_mbps": 100,
-  "down_mbps": 100
-}
+```yaml
+enabled: true
+up_mbps: 100
+down_mbps: 100
 ```
 
 ### 字段

@@ -27,13 +27,9 @@ icon: material/new-box
 
 ### route
 
-```json
-{
-  "action": "route", // 默认
-  "outbound": "",
-  
-  ... // route-options 字段
-}
+```yaml
+action: route
+outbound: ''
 ```
 
 `route` 继承了将连接路由到指定出站的经典规则动作。
@@ -56,13 +52,9 @@ icon: material/new-box
 
     仅支持 Linux，且需要启用 `auto_redirect`。
 
-```json
-{
-  "action": "bypass",
-  "outbound": "",
-
-  ... // route-options 字段
-}
+```yaml
+action: bypass
+outbound: ''
 ```
 
 `bypass` 在预匹配中为 auto redirect 连接在内核层面绕过 sing-box。
@@ -85,12 +77,10 @@ icon: material/new-box
 
     自 sing-box 1.13.0 起，您可以通过 `reject` 动作拒绝（或直接回复）ICMP 回显（ping）请求。
 
-```json
-{
-  "action": "reject",
-  "method": "default",  // 默认
-  "no_drop": false
-}
+```yaml
+action: reject
+method: default
+no_drop: false
 ```
 
 `reject` 拒绝连接。
@@ -120,10 +110,8 @@ icon: material/new-box
 
 ### hijack-dns
 
-```json
-{
-  "action": "hijack-dns"
-}
+```yaml
+action: hijack-dns
 ```
 
 `hijack-dns` 劫持 DNS 请求至 sing-box DNS 模块。
@@ -132,22 +120,20 @@ icon: material/new-box
 
 ### route-options
 
-```json
-{
-  "action": "route-options",
-  "override_address": "",
-  "override_port": 0,
-  "network_strategy": "",
-  "fallback_delay": "",
-  "udp_disable_domain_unmapping": false,
-  "udp_connect": false,
-  "udp_timeout": "",
-  "tls_fragment": false,
-  "tls_fragment_fallback_delay": "",
-  "tls_record_fragment": false,
-  "tls_spoof": "",
-  "tls_spoof_method": ""
-}
+```yaml
+action: route-options
+override_address: ''
+override_port: 0
+network_strategy: ''
+fallback_delay: ''
+udp_disable_domain_unmapping: false
+udp_connect: false
+udp_timeout: ''
+tls_fragment: false
+tls_fragment_fallback_delay: ''
+tls_record_fragment: false
+tls_spoof: ''
+tls_spoof_method: ''
 ```
 
 !!! note ""
@@ -266,12 +252,10 @@ UDP 连接超时时间。
 
 ### sniff
 
-```json
-{
-  "action": "sniff",
-  "sniffer": [],
-  "timeout": ""
-}
+```yaml
+action: sniff
+sniffer: []
+timeout: ''
 ```
 
 `sniff` 对连接执行协议嗅探。
@@ -294,17 +278,15 @@ UDP 连接超时时间。
 
 ### resolve
 
-```json
-{
-  "action": "resolve",
-  "server": "",
-  "strategy": "",
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null
-}
+```yaml
+action: resolve
+server: ''
+strategy: ''
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ''
+client_subnet: null
 ```
 
 `resolve` 将请求的目标从域名解析为 IP 地址。

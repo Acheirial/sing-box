@@ -9,26 +9,19 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "cloudflared",
-  "tag": "",
-
-  "token": "",
-  "ha_connections": 0,
-  "protocol": "",
-  "post_quantum": false,
-  "edge_ip_version": 0,
-  "datagram_version": "",
-  "grace_period": "",
-  "region": "",
-  "control_dialer": {
-    ... // 拨号字段
-  },
-  "tunnel_dialer": {
-    ... // 拨号字段
-  }
-}
+```yaml
+type: cloudflared
+tag: ''
+token: ''
+ha_connections: 0
+protocol: ''
+post_quantum: false
+edge_ip_version: 0
+datagram_version: ''
+grace_period: ''
+region: ''
+control_dialer: {}
+tunnel_dialer: {}
 ```
 
 ### 字段

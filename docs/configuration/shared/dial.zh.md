@@ -29,34 +29,28 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "detour": "",
-  "bind_interface": "",
-  "inet4_bind_address": "",
-  "inet6_bind_address": "",
-  "bind_address_no_port": false,
-  "routing_mark": 0,
-  "reuse_addr": false,
-  "netns": "",
-  "connect_timeout": "",
-  "tcp_fast_open": false,
-  "tcp_multi_path": false,
-  "disable_tcp_keep_alive": false,
-  "tcp_keep_alive": "",
-  "tcp_keep_alive_interval": "",
-  "udp_fragment": false,
-
-  "domain_resolver": "", // 或 {}
-  "network_strategy": "",
-  "network_type": [],
-  "fallback_network_type": [],
-  "fallback_delay": "",
-  
-  // 废弃的
-
-  "domain_strategy": ""
-}
+```yaml
+detour: ''
+bind_interface: ''
+inet4_bind_address: ''
+inet6_bind_address: ''
+bind_address_no_port: false
+routing_mark: 0
+reuse_addr: false
+netns: ''
+connect_timeout: ''
+tcp_fast_open: false
+tcp_multi_path: false
+disable_tcp_keep_alive: false
+tcp_keep_alive: ''
+tcp_keep_alive_interval: ''
+udp_fragment: false
+domain_resolver: ''
+network_strategy: ''
+network_type: []
+fallback_network_type: []
+fallback_delay: ''
+domain_strategy: ''
 ```
 
 !!! note ""
