@@ -44,6 +44,21 @@ Trojan 密码。
 
 TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
 
+!!! question "自 sing-box 1.15.0 起"
+
+支持可选的 `jls` 和 `restls` TLS 附加层。
+
+两者均要求 `tls.enabled` 已启用，且配置在出站 TLS 选项中。
+参阅 [TLS](/zh/configuration/shared/tls/#自定义-tls-支持)。
+
+```yaml
+tls:
+  enabled: true
+  server_name: example.org
+  restls:
+    password: pass
+```
+
 #### multiplex
 
 参阅 [多路复用](/zh/configuration/shared/multiplex#出站)。

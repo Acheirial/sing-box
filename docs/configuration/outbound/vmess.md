@@ -79,6 +79,22 @@ Both is enabled by default.
 
 TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
+!!! question "Since sing-box 1.15.0"
+
+Supports the optional `jls` and `restls` TLS add-on layers.
+
+Both layers require `tls.enabled` and are configured in the outbound TLS
+options. See [TLS](/configuration/shared/tls/#custom-tls-support) for details.
+
+```yaml
+tls:
+  enabled: true
+  server_name: example.org
+  jls:
+    username: user
+    password: pass
+```
+
 #### packet_encoding
 
 UDP packet encoding.

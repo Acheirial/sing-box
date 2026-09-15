@@ -66,7 +66,18 @@ Shadowsocks 密码。
 
 Shadowsocks SIP003 插件，由内部实现。
 
-仅支持 `obfs-local` 和 `v2ray-plugin`。
+支持的插件：
+
+* `obfs-local`
+* `v2ray-plugin`
+* `restls`
+* `jls`
+* `kcptun`
+
+对于 `restls` 插件，`plugin_opts` 支持以下选项：`password`、
+`version_hint`（`tls12` 或 `tls13`，默认为 `tls13`）、`restls_script`，
+以及可选的 `skip_cert_verify`、`force_tls12`、`fingerprint`、
+`name_cert_verify` 和 `host`。
 
 #### plugin_opts
 

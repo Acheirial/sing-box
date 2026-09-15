@@ -7,6 +7,7 @@ server: 127.0.0.1
 server_port: 1080
 uuid: bf000d23-0752-40b4-affe-68f7707a9661
 flow: xtls-rprx-vision
+testseed: []
 network: tcp
 tls: {}
 packet_encoding: ''
@@ -42,6 +43,31 @@ VLESS 子协议。
 可用值：
 
 * `xtls-rprx-vision`
+
+#### testseed
+
+!!! question "自 sing-box 1.15.0 起"
+
+Vision 流填充参数，包含 4 个 uint32 值的列表。
+
+仅在 `flow` 为 `xtls-rprx-vision` 时生效。
+
+| 索引 | 含义                   | 默认值 |
+|----|----------------------|-----|
+| 0  | 触发长填充的内容长度阈值      | 900 |
+| 1  | 长填充大小的随机范围         | 500 |
+| 2  | 长填充的基数             | 900 |
+| 3  | 短填充大小的随机范围         | 256 |
+
+```yaml
+testseed:
+  - 900
+  - 500
+  - 900
+  - 256
+```
+
+元素少于 4 个时回退到默认值。与 Xray 相同，不做其他校验。
 
 #### network
 

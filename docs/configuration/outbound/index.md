@@ -34,6 +34,16 @@ outbounds:
 | `selector`     | [Selector](./selector/)         |
 | `urltest`      | [URLTest](./urltest/)           |
 | `naive`        | [NaiveProxy](./naive/)          |
+| `shadowsocksr` | [ShadowsocksR](./shadowsocksr/) |
+| `gost`         | [Gost](./gost/)                 |
+| `mieru`        | [Mieru](./mieru/)               |
+| `sudoku`       | [Sudoku](./sudoku/)             |
+| `shadowquic`   | [ShadowQUIC](./shadowquic/)     |
+| `masque`       | [MASQUE](./masque/)             |
+| `trust-tunnel` | [TrustTunnel](./trust-tunnel/)  |
+| `tls-mirror`   | [TLS Mirror](./tls-mirror/)     |
+| `zerotier`     | [ZeroTier](./zerotier/)         |
+| `easytier`     | [EasyTier](./easytier/)         |
 
 #### tag
 

@@ -553,6 +553,74 @@ Available fingerprint values:
 
 Chrome fingerprint will be used if empty.
 
+#### jls
+
+!!! question "Since sing-box 1.15.0"
+
+==Client only==
+
+JLS is an optional TLS add-on layer based on the JLS v3 protocol.
+
+Only supported by the `vmess`, `vless` and `trojan` outbounds, and requires
+`tls.enabled` to be set. When enabled, the TLS connection is wrapped with an
+additional JLS authentication layer, and unauthenticated handshakes fall back
+to a plausible HTTPS exchange.
+
+```yaml
+jls:
+  username: ''
+  password: ''
+```
+
+##### username
+
+==Required==
+
+The JLS username.
+
+##### password
+
+==Required==
+
+The JLS password.
+
+#### restls
+
+!!! question "Since sing-box 1.15.0"
+
+==Client only==
+
+RestLS is an optional TLS add-on layer that obfuscates TLS records with a
+password-derived key.
+
+Only supported by the `vmess`, `vless` and `trojan` outbounds, and requires
+`tls.enabled` to be set.
+
+```yaml
+restls:
+  password: ''
+  version_hint: tls13
+  restls_script: ''
+```
+
+##### password
+
+==Required==
+
+The RestLS password.
+
+##### version_hint
+
+The TLS version hint, one of `tls12` `tls13`.
+
+Defaults to `tls13`.
+
+##### restls_script
+
+The RestLS record splitting script.
+
+Defaults to `250?100<1,350~100<1,600~100,300~200,300~100`.
+
 ### ECH Fields
 
 ECH (Encrypted Client Hello) is a TLS extension that allows a client to encrypt the first part of its ClientHello

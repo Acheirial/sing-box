@@ -64,9 +64,20 @@ The shadowsocks password.
 
 #### plugin
 
-Shadowsocks SIP003 plugin, implemented in internal.
+Shadowsocks SIP003 plugin, implemented internally.
 
-Only `obfs-local` and `v2ray-plugin` are supported.
+Supported plugins:
+
+* `obfs-local`
+* `v2ray-plugin`
+* `restls`
+* `jls`
+* `kcptun`
+
+For the `restls` plugin, the following options are supported in `plugin_opts`:
+`password`, `version_hint` (`tls12` or `tls13`, defaults to `tls13`),
+`restls_script`, plus optional `skip_cert_verify`, `force_tls12`,
+`fingerprint`, `name_cert_verify` and `host`.
 
 #### plugin_opts
 

@@ -550,6 +550,71 @@ uTLS 是 "crypto/tls" 的一个分支，它提供了 ClientHello 指纹识别阻
 
 默认使用 chrome 指纹。
 
+#### jls
+
+!!! question "自 sing-box 1.15.0 起"
+
+==仅客户端==
+
+JLS 是一个基于 JLS v3 协议的可选 TLS 附加层。
+
+仅被 `vmess`、`vless` 和 `trojan` 出站支持，且必须设置 `tls.enabled`。
+启用后，TLS 连接会被附加一层 JLS 身份验证，未通过验证的握手将回退为
+看似正常的 HTTPS 交换。
+
+```yaml
+jls:
+  username: ''
+  password: ''
+```
+
+##### username
+
+==必填==
+
+JLS 用户名。
+
+##### password
+
+==必填==
+
+JLS 密码。
+
+#### restls
+
+!!! question "自 sing-box 1.15.0 起"
+
+==仅客户端==
+
+RestLS 是一个使用密码派生密钥混淆 TLS 记录的可选 TLS 附加层。
+
+仅被 `vmess`、`vless` 和 `trojan` 出站支持，且必须设置 `tls.enabled`。
+
+```yaml
+restls:
+  password: ''
+  version_hint: tls13
+  restls_script: ''
+```
+
+##### password
+
+==必填==
+
+RestLS 密码。
+
+##### version_hint
+
+TLS 版本提示，`tls12` 或 `tls13`。
+
+默认为 `tls13`。
+
+##### restls_script
+
+RestLS 记录拆分脚本。
+
+默认为 `250?100<1,350~100<1,600~100,300~200,300~100`。
+
 ### ECH 字段
 
 ECH (Encrypted Client Hello) 是一个 TLS 扩展，它允许客户端加密其 ClientHello 的第一部分信息。

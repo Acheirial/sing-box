@@ -7,6 +7,7 @@ server: 127.0.0.1
 server_port: 1080
 uuid: bf000d23-0752-40b4-affe-68f7707a9661
 flow: xtls-rprx-vision
+testseed: []
 network: tcp
 tls: {}
 packet_encoding: ''
@@ -42,6 +43,31 @@ VLESS Sub-protocol.
 Available values:
 
 * `xtls-rprx-vision`
+
+#### testseed
+
+!!! question "Since sing-box 1.15.0"
+
+Vision flow padding parameters, a list of 4 uint32 values.
+
+Only takes effect when `flow` is `xtls-rprx-vision`.
+
+| Index | Meaning                                            | Default |
+|-------|----------------------------------------------------|---------|
+| 0     | Content length threshold for long padding          | 900     |
+| 1     | Random range of the long padding size              | 500     |
+| 2     | Base size of the long padding                      | 900     |
+| 3     | Random range of the short padding size             | 256     |
+
+```yaml
+testseed:
+  - 900
+  - 500
+  - 900
+  - 256
+```
+
+A seed with fewer than 4 elements falls back to the defaults. As in Xray, no other validation is applied.
 
 #### network
 

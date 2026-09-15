@@ -204,6 +204,16 @@ nav:
           - DNS: configuration/outbound/dns.md
           - Selector: configuration/outbound/selector.md
           - URLTest: configuration/outbound/urltest.md
+          - ShadowsocksR: configuration/outbound/shadowsocksr.md
+          - Gost: configuration/outbound/gost.md
+          - Mieru: configuration/outbound/mieru.md
+          - Sudoku: configuration/outbound/sudoku.md
+          - ShadowQUIC: configuration/outbound/shadowquic.md
+          - MASQUE: configuration/outbound/masque.md
+          - TrustTunnel: configuration/outbound/trust-tunnel.md
+          - TLS Mirror: configuration/outbound/tls-mirror.md
+          - ZeroTier: configuration/outbound/zerotier.md
+          - EasyTier: configuration/outbound/easytier.md
       - Service:
           - configuration/service/index.md
           - sing-box API: configuration/service/api.md
