@@ -5,11 +5,10 @@ import (
 	"net"
 	"os"
 
-	boxtls "github.com/sagernet/sing-box/common/tls"
-
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/adapter/outbound"
 	"github.com/sagernet/sing-box/common/dialer"
+	boxtls "github.com/sagernet/sing-box/common/tls"
 	"github.com/sagernet/sing-box/common/tlsmirror"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/log"

@@ -15,11 +15,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"golang.org/x/net/http2"
-
 	"github.com/sagernet/sing-box/common/tls"
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
+
+	"golang.org/x/net/http2"
 )
 
 type ClientOptions struct {

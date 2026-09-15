@@ -4,9 +4,8 @@ package trusttunnel
 
 import (
 	"context"
-	"runtime"
-
 	cryptoTLS "crypto/tls"
+	"runtime"
 
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/http3"
