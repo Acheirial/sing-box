@@ -2,6 +2,7 @@ package httpmask
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/base64"
 	"errors"
 	"fmt"
@@ -12,8 +13,6 @@ import (
 	"net/url"
 	"strings"
 	"time"
-
-	"crypto/tls"
 
 	"github.com/gobwas/ws"
 )
