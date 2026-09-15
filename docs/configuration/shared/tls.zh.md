@@ -2,6 +2,14 @@
 icon: material/new-box
 ---
 
+!!! quote "sing-box 1.15.0 中的更改"
+
+    :material-plus: [reality.use_mlkem](#use_mlkem)  
+    :material-plus: [reality.mldsa65_verify](#mldsa65_verify)  
+    :material-plus: [reality.mldsa65_seed](#mldsa65_seed)  
+    :material-plus: [reality.limit_fallback_upload](#limit_fallback_upload)  
+    :material-plus: [reality.limit_fallback_download](#limit_fallback_download)
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [certificate_provider](#certificate_provider)  
@@ -820,3 +828,77 @@ ACME DNS01 验证字段。如果配置，将禁用其他验证方法。
 服务器和客户端之间的最大时间差。
 
 如果为空则禁用检查。
+
+#### use_mlkem
+
+!!! question "自 sing-box 1.15.0 起"
+
+==仅客户端==
+
+保留所选 uTLS 指纹的 X25519MLKEM768（混合后量子）群组和密钥份额，而不是将其过滤掉，与 Xray 当前行为一致。
+
+服务器必须支持后量子密钥交换。
+
+#### mldsa65_verify
+
+!!! question "自 sing-box 1.15.0 起"
+
+==仅客户端==
+
+Base64（RawURL）编码的 ML-DSA-65 公钥（1952 字节），用于额外验证服务器。该密钥带外分发，类似 Xray 的 `mldsa65Verify`。
+
+#### mldsa65_seed
+
+!!! question "自 sing-box 1.15.0 起"
+
+==仅服务器==
+
+Base64（RawURL）编码的 ML-DSA-65 种子（32 字节），供服务器对临时证书进行额外签名，使客户端可以通过 `mldsa65_verify` 使用带外分发的公钥验证服务器。
+
+必须与 `private_key` 不同。
+
+!!! failure "此构建不支持"
+
+    服务器端 ML-DSA 签名需要基于 xtls/reality 的服务器。此字段为保留字段；配置它会在启动时报错。
+
+#### limit_fallback_upload
+
+!!! question "自 sing-box 1.15.0 起"
+
+==仅服务器==
+
+限制从客户端转发到回落目标的（未授权）流量带宽。
+
+参阅 [Reality 回落限制字段](#reality-回落限制字段)。
+
+#### limit_fallback_download
+
+!!! question "自 sing-box 1.15.0 起"
+
+==仅服务器==
+
+限制从回落目标转发到客户端的（未授权）流量带宽。
+
+参阅 [Reality 回落限制字段](#reality-回落限制字段)。
+
+#### Reality 回落限制字段
+
+```json
+{
+  "after_bytes": 0,
+  "bytes_per_sec": 0,
+  "burst_bytes_per_sec": 0
+}
+```
+
+##### after_bytes
+
+速率限制生效前已传输的数据量。
+
+##### bytes_per_sec
+
+持续传输速率，单位为字节每秒。为零则禁用限制。
+
+##### burst_bytes_per_sec
+
+最大传输速率，单位为字节每秒。默认为 `bytes_per_sec`。

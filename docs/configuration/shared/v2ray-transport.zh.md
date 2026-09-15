@@ -15,6 +15,7 @@ V2Ray Transport 是 v2ray 发明的一组私有协议，并污染了其他协议
 * QUIC
 * gRPC
 * HTTPUpgrade
+* XHTTP
 
 !!! warning "与 v2ray-core 的区别"
 
@@ -216,3 +217,48 @@ HTTP 请求路径
 HTTP 请求的额外标头。
 
 如果设置，服务器将写入响应。
+
+### XHTTP
+
+!!! question "自 sing-box 1.15.0 起"
+
+```json
+{
+  "type": "xhttp",
+  "host": "",
+  "path": "",
+  "mode": "",
+  "extra": {}
+}
+```
+
+#### host
+
+主机域名。
+
+#### path
+
+HTTP 请求路径。
+
+#### mode
+
+XHTTP 传输模式。
+
+`auto` `packet-up` `stream-up` `stream-one` 之一。
+
+默认使用 `auto`。为 `auto` 时，配合 REALITY 使用 `stream-one`，配合 REALITY 和 `download_settings` 使用
+`stream-up`，否则使用 `packet-up`。
+
+#### extra
+
+一个在解析后叠加到传输配置上的对象。`extra` 中设置的字段会覆盖对应的顶层字段，为较新的 Xray 选项提供前向兼容。
+
+`host`、`path` 和 `mode` 不受覆盖影响。未知的键将被忽略。
+
+#### server_max_header_bytes
+
+==仅服务器==
+
+服务器接受的 HTTP 请求标头的最大大小，单位为字节。
+
+默认使用 `8192`。小于或等于零的值将重置为默认值。

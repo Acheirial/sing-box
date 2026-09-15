@@ -12,6 +12,7 @@
   "network": "tcp",
   "tls": {},
   "packet_encoding": "",
+  "encryption": "",
   "multiplex": {},
   "transport": {},
   
@@ -54,6 +55,22 @@ VLESS 子协议。
 `tcp` 或 `udp`。
 
 默认所有。
+
+#### encryption
+
+!!! question "自 sing-box 1.15.0 起"
+
+VLESS 加密，即 Xray 的 `mlkem768x25519plus` 方案。
+
+为空或 `none` 时禁用加密。
+
+格式：`mlkem768x25519plus.<mode>.<rtt>.<key>...`
+
+* `mode`：`native` `xorpub` `random` 之一。
+* `rtt`：`1rtt` 或 `0rtt`。为 `0rtt` 时，客户端不缓存票证。
+* 其后的段为 Base64（RawURL）编码的密钥（32 字节 X25519 或 1184 字节 ML-KEM-768 材料）或较短的填充片段。
+
+服务端通过入站的 `decryption` 字段配置对应项。在入站 `users[]` 中设置 `encryption` 会报错。
 
 #### tls
 

@@ -2,6 +2,14 @@
 icon: material/new-box
 ---
 
+!!! quote "Changes in sing-box 1.15.0"
+
+    :material-plus: [reality.use_mlkem](#use_mlkem)  
+    :material-plus: [reality.mldsa65_verify](#mldsa65_verify)  
+    :material-plus: [reality.mldsa65_seed](#mldsa65_seed)  
+    :material-plus: [reality.limit_fallback_upload](#limit_fallback_upload)  
+    :material-plus: [reality.limit_fallback_download](#limit_fallback_download)
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [certificate_provider](#certificate_provider)  
@@ -832,3 +840,81 @@ A hexadecimal string with zero to eight digits.
 The maximum time difference between the server and the client.
 
 Check disabled if empty.
+
+#### use_mlkem
+
+!!! question "Since sing-box 1.15.0"
+
+==Client only==
+
+Keep the X25519MLKEM768 (hybrid post-quantum) group and key share of the chosen uTLS fingerprint instead of filtering
+it out, matching Xray's current behavior.
+
+The server must support the post-quantum key exchange.
+
+#### mldsa65_verify
+
+!!! question "Since sing-box 1.15.0"
+
+==Client only==
+
+Base64 (RawURL) encoded ML-DSA-65 public key (1952 bytes) used to additionally verify the server. The key is
+distributed out of band, like Xray's `mldsa65Verify`.
+
+#### mldsa65_seed
+
+!!! question "Since sing-box 1.15.0"
+
+==Server only==
+
+Base64 (RawURL) encoded ML-DSA-65 seed (32 bytes) intended for the server to additionally sign the temporary
+certificate, so that a client can verify the server via `mldsa65_verify` against a public key distributed out of band.
+
+Must differ from `private_key`.
+
+!!! failure "Not supported by this build"
+
+    Server-side ML-DSA signing requires a xtls/reality-based server. This field is reserved; configuring it results
+    in an error at startup.
+
+#### limit_fallback_upload
+
+!!! question "Since sing-box 1.15.0"
+
+==Server only==
+
+Limits the bandwidth of forwarded (non-authorized) traffic from the client to the fallback destination.
+
+See [Reality Limit Fallback Fields](#reality-limit-fallback-fields).
+
+#### limit_fallback_download
+
+!!! question "Since sing-box 1.15.0"
+
+==Server only==
+
+Limits the bandwidth of forwarded (non-authorized) traffic from the fallback destination to the client.
+
+See [Reality Limit Fallback Fields](#reality-limit-fallback-fields).
+
+#### Reality Limit Fallback Fields
+
+```json
+{
+  "after_bytes": 0,
+  "bytes_per_sec": 0,
+  "burst_bytes_per_sec": 0
+}
+```
+
+##### after_bytes
+
+The amount of data transferred before the rate limit takes effect.
+
+##### bytes_per_sec
+
+The sustained transfer rate, in bytes per second. Zero disables limiting.
+
+##### burst_bytes_per_sec
+
+The maximum transfer rate, in bytes per second. Defaults to `bytes_per_sec`.

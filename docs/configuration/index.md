@@ -1,6 +1,6 @@
 # Introduction
 
-sing-box uses JSON for configuration files.
+sing-box uses JSON for configuration files. YAML configuration files are also supported, see [YAML](./yaml/).
 ### Structure
 
 ```json

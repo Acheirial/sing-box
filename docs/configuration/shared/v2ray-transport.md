@@ -16,6 +16,7 @@ Available transports:
 * QUIC
 * gRPC
 * HTTPUpgrade
+* XHTTP
 
 !!! warning "Difference from v2ray-core"
 
@@ -227,3 +228,49 @@ The server will verify.
 Extra headers of HTTP request.
 
 The server will write in response if not empty.
+
+### XHTTP
+
+!!! question "Since sing-box 1.15.0"
+
+```json
+{
+  "type": "xhttp",
+  "host": "",
+  "path": "",
+  "mode": "",
+  "extra": {}
+}
+```
+
+#### host
+
+Host domain.
+
+#### path
+
+Path of HTTP request.
+
+#### mode
+
+XHTTP transport mode.
+
+One of `auto` `packet-up` `stream-up` `stream-one`.
+
+`auto` is used by default. With `auto`, `stream-one` is used with REALITY, `stream-up` with REALITY and
+`download_settings`, otherwise `packet-up`.
+
+#### extra
+
+An overlay object applied over the transport configuration after parsing. Fields set in `extra` override the
+corresponding top-level fields, providing forward compatibility with newer Xray options.
+
+`host`, `path` and `mode` are immune to override. Unknown keys are ignored.
+
+#### server_max_header_bytes
+
+==Server only==
+
+The maximum size of HTTP request headers accepted by the server, in bytes.
+
+`8192` is used by default. Values less than or equal to zero reset to the default.

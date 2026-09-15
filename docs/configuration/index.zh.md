@@ -1,6 +1,6 @@
 # 引言
 
-sing-box 使用 JSON 作为配置文件格式。
+sing-box 使用 JSON 作为配置文件格式。同时支持 YAML 配置文件，参阅 [YAML](./yaml/)。
 ### 结构
 
 ```json

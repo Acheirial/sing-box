@@ -81,6 +81,7 @@ nav:
           - AnyTLS client metadata: manual/misc/anytls-client-metadata.md
   - Configuration:
       - configuration/index.md
+      - YAML: configuration/yaml.md
       - JSON Schema: configuration/schema.md
       - Log:
           - configuration/log/index.md
@@ -284,6 +285,7 @@ plugins:
             General: 通用
             Privacy policy: 隐私政策
 
+            YAML: YAML
             Configuration: 配置
             Log: 日志
             DNS Server: DNS 服务器
