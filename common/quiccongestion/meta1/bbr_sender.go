@@ -133,7 +133,7 @@ type bbrSender struct {
 	// The initial value of the |congestion_window_|.
 	initialCongestionWindow congestion.ByteCount
 	// The smallest value the |congestion_window_| can achieve.
-	//minCongestionWindow congestion.ByteCount
+	// minCongestionWindow congestion.ByteCount
 	// The pacing gain applied during the STARTUP phase.
 	highGain float64
 	// The CWND gain applied during the STARTUP phase.

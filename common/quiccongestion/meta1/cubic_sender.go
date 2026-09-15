@@ -12,11 +12,10 @@ const (
 	renoBeta                   = 0.7 // Reno backoff factor.
 	minCongestionWindowPackets = 2
 	initialCongestionWindow    = 32
+	InvalidPacketNumber        = congestion.PacketNumber(-1)
+	MaxCongestionWindowPackets = 20000
+	MaxByteCount               = congestion.ByteCount(1<<62 - 1)
 )
-
-const InvalidPacketNumber congestion.PacketNumber = -1
-const MaxCongestionWindowPackets = 20000
-const MaxByteCount = congestion.ByteCount(1<<62 - 1)
 
 type cubicSender struct {
 	hybridSlowStart HybridSlowStart
