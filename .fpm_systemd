@@ -3,10 +3,10 @@
 --category net
 --license GPL-3.0-or-later
 --description "The universal proxy platform."
---url "https://sing-box.sagernet.org/"
---vendor SagerNet
+--url "https://github.com/Acheirial/sing-box"
+--vendor Acheirial
 --maintainer "nekohasekai <contact-git@sekai.icu>"
---deb-field "Bug: https://github.com/SagerNet/sing-box/issues"
+--deb-field "Bug: https://github.com/Acheirial/sing-box/issues"
 --no-deb-generate-changes
 --config-files /etc/sing-box/config.json
 --after-install release/config/sing-box.postinst

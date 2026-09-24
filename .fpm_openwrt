@@ -3,7 +3,7 @@
 --category net
 --license GPL-3.0-or-later
 --description "The universal proxy platform."
---url "https://sing-box.sagernet.org/"
+--url "https://github.com/Acheirial/sing-box"
 --maintainer "nekohasekai <contact-git@sekai.icu>"
 --no-deb-generate-changes
 
