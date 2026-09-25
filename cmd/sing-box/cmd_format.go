@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 
 	"github.com/sagernet/sing-box/log"
+	"github.com/sagernet/sing-box/option"
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/json"
 	"github.com/sagernet/sing/common/json/badjson"
@@ -51,22 +52,29 @@ func format() error {
 		if err != nil {
 			return E.Cause(err, "encode config")
 		}
+		outputContent := buffer.Bytes()
+		if optionsEntry.format == option.ConfigFormatYAML {
+			outputContent, err = option.JSONToYAML(outputContent)
+			if err != nil {
+				return E.Cause(err, "encode config")
+			}
+		}
 		outputPath, _ := filepath.Abs(optionsEntry.path)
 		if !commandFormatFlagWrite {
 			if len(optionsList) > 1 {
 				os.Stdout.WriteString(outputPath + "\n")
 			}
-			os.Stdout.WriteString(buffer.String() + "\n")
+			os.Stdout.Write(outputContent)
 			continue
 		}
-		if bytes.Equal(optionsEntry.content, buffer.Bytes()) {
+		if bytes.Equal(optionsEntry.content, outputContent) {
 			continue
 		}
 		output, err := os.Create(optionsEntry.path)
 		if err != nil {
 			return E.Cause(err, "open output")
 		}
-		_, err = output.Write(buffer.Bytes())
+		_, err = output.Write(outputContent)
 		output.Close()
 		if err != nil {
 			return E.Cause(err, "write output")

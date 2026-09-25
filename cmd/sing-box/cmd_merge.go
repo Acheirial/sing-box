@@ -49,8 +49,15 @@ func merge(outputPath string) error {
 	if err != nil {
 		return E.Cause(err, "encode config")
 	}
-	if existsContent, err := os.ReadFile(outputPath); err != nil {
-		if string(existsContent) == buffer.String() {
+	outputContent := buffer.Bytes()
+	if option.DetectConfigFormat(outputPath, outputContent) == option.ConfigFormatYAML {
+		outputContent, err = option.JSONToYAML(outputContent)
+		if err != nil {
+			return E.Cause(err, "encode config")
+		}
+	}
+	if existsContent, err := os.ReadFile(outputPath); err == nil {
+		if bytes.Equal(existsContent, outputContent) {
 			return nil
 		}
 	}
@@ -58,7 +65,7 @@ func merge(outputPath string) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile(outputPath, buffer.Bytes(), 0o644)
+	err = os.WriteFile(outputPath, outputContent, 0o644)
 	if err != nil {
 		return err
 	}
