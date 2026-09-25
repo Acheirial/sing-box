@@ -10,7 +10,6 @@ import (
 	"github.com/sagernet/sing-box/common/urltest"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/experimental/clashmode"
-	"github.com/sagernet/sing-box/experimental/deprecated"
 	"github.com/sagernet/sing-box/experimental/locale"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
@@ -83,7 +82,6 @@ func (s *StartedService) newInstance(ctx context.Context, profileContent string,
 	selectedLocale := locale.FromContext(ctx)
 	ctx, _ = locale.ContextWithLocale(s.ctx, selectedLocale.Locale)
 	ctx = service.ExtendContext(ctx)
-	service.MustRegister[deprecated.Manager](ctx, new(deprecatedManager))
 	ctx, cancel := context.WithCancel(ctx)
 	options, err := parseConfig(ctx, profileContent)
 	if err != nil {
@@ -181,7 +179,9 @@ func (i *Instance) TrafficManager() *trafficcontrol.Manager {
 }
 
 func parseConfig(ctx context.Context, configContent string) (option.Options, error) {
-	options, err := json.UnmarshalExtendedContext[option.Options](ctx, []byte(configContent))
+	content := []byte(configContent)
+	format := option.DetectConfigFormat("", content)
+	options, err := option.UnmarshalConfig(ctx, content, format)
 	if err != nil {
 		return option.Options{}, E.Cause(err, "decode config")
 	}
