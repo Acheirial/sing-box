@@ -51,17 +51,19 @@ jobs:
           go-version: 1.26.8
           cache: false
       - name: Cache Go modules
-        uses: actions/cache/restore@v4
+        uses: actions/cache@v4
         with:
           path: ~/go/pkg/mod
           key: go-mod-linux-${{ hashFiles('go.sum') }}
           restore-keys: go-mod-linux-
       - name: Cache Go tool builds
-        uses: actions/cache/restore@v4
+        uses: actions/cache@v4
         with:
           path: ~/.cache/go-build
           key: go-build-tools-linux-${{ hashFiles('go.sum') }}
           restore-keys: go-build-tools-linux-
+      - name: Download Go modules
+        run: go mod download
       - name: Check input version
         if: github.event_name == 'workflow_dispatch'
         run: |-
@@ -82,7 +84,6 @@ jobs:
     needs:
       - calculate_version
     strategy:
-      max-parallel: 13
       matrix:
         include:
           - { os: linux, arch: amd64, variant: purego, naive: true }
@@ -189,8 +190,19 @@ jobs:
           rm -f ~/cronet-go/naiveproxy/src/build/linux/sysroot_scripts/keyring.gpg
           cd ~/cronet-go
           GPG_TTY=/dev/null ./naiveproxy/src/build/linux/sysroot_scripts/generate_keyring.sh
-      - name: Download Chromium toolchain
+      - name: Cache Chromium toolchain
         if: matrix.naive && matrix.variant != 'purego'
+        id: cache-chromium-toolchain
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/cronet-go/naiveproxy/src/third_party/llvm-build/
+            ~/cronet-go/naiveproxy/src/gn/out/
+            ~/cronet-go/naiveproxy/src/chrome/build/pgo_profiles/
+            ~/cronet-go/naiveproxy/src/out/sysroot-build/
+          key: chromium-toolchain-${{ matrix.arch }}-${{ matrix.variant }}-${{ hashFiles('.github/CRONET_GO_VERSION') }}
+      - name: Download Chromium toolchain
+        if: matrix.naive && matrix.variant != 'purego' && steps.cache-chromium-toolchain.outputs.cache-hit != 'true'
         run: |
           set -xeuo pipefail
           cd ~/cronet-go
@@ -347,11 +359,19 @@ jobs:
           PKG_VERSION="${{ needs.calculate_version.outputs.version }}"
           PKG_VERSION="${PKG_VERSION//-/\~}"
           echo "PKG_VERSION=${PKG_VERSION}" >> "${GITHUB_ENV}"
+      - name: Install fpm and packaging tools
+        if: matrix.debian != '' || matrix.rpm != '' || matrix.pacman != '' || matrix.openwrt != ''
+        run: |
+          set -xeuo pipefail
+          sudo gem install fpm
+          if [[ -n "${{ matrix.pacman }}" ]]; then
+            sudo apt-get update || true
+            sudo apt-get install -y --no-install-recommends libarchive-tools
+          fi
       - name: Package DEB
         if: matrix.debian != ''
         run: |
           set -xeuo pipefail
-          sudo gem install fpm
           cp .fpm_systemd .fpm
           fpm -t deb \
             -v "$PKG_VERSION" \
@@ -362,7 +382,6 @@ jobs:
         if: matrix.rpm != ''
         run: |-
           set -xeuo pipefail
-          sudo gem install fpm
           echo '%_rpmformat 4' > "$HOME/.rpmmacros"
           cp .fpm_systemd .fpm
           fpm -t rpm \
@@ -374,9 +393,6 @@ jobs:
         if: matrix.pacman != ''
         run: |-
           set -xeuo pipefail
-          sudo gem install fpm
-          sudo apt-get update || true
-          sudo apt-get install -y libarchive-tools
           cp .fpm_pacman .fpm
           fpm -t pacman \
             -v "$PKG_VERSION" \
@@ -387,7 +403,6 @@ jobs:
         if: matrix.openwrt != ''
         run: |-
           set -xeuo pipefail
-          sudo gem install fpm
           cp .fpm_openwrt .fpm
           fpm -t deb \
             -v "$PKG_VERSION" \
