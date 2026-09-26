@@ -46,8 +46,7 @@ The device source provider.
 
 - `default`: Exports the local devices matched by `devices`. The default value.
 - `dynamic`: Devices are provided at runtime through a [sing-box API](/configuration/service/api/)
-  client instead of from configuration, on supported platforms: the sing-box graphical clients on
-  [macOS](/clients/apple/) and [Android](/clients/android/), and Chromium-based browsers with
+  client instead of from configuration, on supported platforms: Chromium-based browsers with
   [sing-box Dashboard](https://github.com/SagerNet/sing-box-dashboard).
 
 !!! quote ""

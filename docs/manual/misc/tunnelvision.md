@@ -17,7 +17,7 @@ Android does not handle DHCP option 121 and is not affected.
 
 ### Apple platforms
 
-Update [sing-box graphical client](/clients/apple/#download) to `1.9.0-rc.16` or newer,
+Update sing-box for Apple to `1.9.0-rc.16` or newer,
 then enable `includeAllNetworks` in `Settings` — `Packet Tunnel` and you will be unaffected.
 
 Note: when `includeAllNetworks` is enabled, the default TUN stack is changed to `gvisor`,
