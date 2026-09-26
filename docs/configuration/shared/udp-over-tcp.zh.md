@@ -6,11 +6,9 @@ UDP over TCP 协议用于在 TCP 中传输 UDP 数据包。
 
 ### 结构
 
-```json
-{
-  "enabled": true,
-  "version": 2
-}
+```yaml
+enabled: true
+version: 2
 ```
 
 !!! info ""

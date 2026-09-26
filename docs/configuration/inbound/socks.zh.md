@@ -2,20 +2,15 @@
 
 ### 结构
 
-```json
-{
-  "type": "socks",
-  "tag": "socks-in",
+```yaml
+type: socks
+tag: socks-in
 
-  ... // 监听字段
+# ... 监听字段
 
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin"
-    }
-  ]
-}
+users:
+  - username: admin
+    password: admin
 ```
 
 ### 监听字段

@@ -8,12 +8,10 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "tailscale",
-  "tag": "ts-cert",
-  "endpoint": "ts-ep"
-}
+```yaml
+type: tailscale
+tag: ts-cert
+endpoint: ts-ep
 ```
 
 ### Fields

@@ -2,10 +2,8 @@ V2Ray Transport 是 v2ray 发明的一组私有协议，并污染了其他协议
 
 ### 结构
 
-```json
-{
-  "type": ""
-}
+```yaml
+type: ""
 ```
 
 可用的传输协议：
@@ -25,20 +23,18 @@ V2Ray Transport 是 v2ray 发明的一组私有协议，并污染了其他协议
 
 !!! note ""
 
-    当内容只有一项时，可以忽略 JSON 数组 [] 标签。
+    当内容只有一项时，可以直接使用单个值，无需数组。
 
 ### HTTP
 
-```json
-{
-  "type": "http",
-  "host": [],
-  "path": "",
-  "method": "",
-  "headers": {},
-  "idle_timeout": "15s",
-  "ping_timeout": "15s"
-}
+```yaml
+type: http
+host: []
+path: ""
+method: ""
+headers: {}
+idle_timeout: 15s
+ping_timeout: 15s
 ```
 
 !!! warning "与 v2ray-core 的区别"
@@ -94,14 +90,12 @@ HTTP 请求的额外标头
 
 ### WebSocket
 
-```json
-{
-  "type": "ws",
-  "path": "",
-  "headers": {},
-  "max_early_data": 0,
-  "early_data_header_name": ""
-}
+```yaml
+type: ws
+path: ""
+headers: {}
+max_early_data: 0
+early_data_header_name: ""
 ```
 
 #### path
@@ -127,15 +121,17 @@ WebSocket 握手请求中允许携带的最大有效负载。非零时启用。
 
 ### XHTTP
 
-```json
-{
-  "type": "xhttp",
-  "host": "",
-  "path": "",
-  "mode": "auto",
-  "x_padding_bytes": { "from": 100, "to": 1000 },
-  "sc_max_each_post_bytes": { "from": 1000000, "to": 1000000 }
-}
+```yaml
+type: xhttp
+host: ""
+path: ""
+mode: auto
+x_padding_bytes:
+  from: 100
+  to: 1000
+sc_max_each_post_bytes:
+  from: 1000000
+  to: 1000000
 ```
 
 XHTTP 与 Xray 的 XHTTP 传输层兼容。它把一个逻辑双向连接拆分为流式下行，以及
@@ -318,21 +314,17 @@ XHTTP 服务端接受的 HTTP 请求标头最大长度，默认 `8192` 字节；
 字段。`server` 和 `server_port` 必填，不支持嵌套 `download_settings`。两个目标必须
 到达同一个服务端 XHTTP session。
 
-```json
-{
-  "type": "xhttp",
-  "path": "/upload",
-  "download_settings": {
-    "server": "download.example.com",
-    "server_port": 443,
-    "tls": {
-      "enabled": true,
-      "server_name": "download.example.com"
-    },
-    "path": "/download",
-    "mode": "packet-up"
-  }
-}
+```yaml
+type: xhttp
+path: /upload
+download_settings:
+  server: download.example.com
+  server_port: 443
+  tls:
+    enabled: true
+    server_name: download.example.com
+  path: /download
+  mode: packet-up
 ```
 
 `download_settings` 内嵌另一套 XHTTP 配置，并附带其 `server`、`server_port`
@@ -346,23 +338,18 @@ HTTP/3 设置。须使用 `with_quic` 构建 sing-box，并将外层入站或出
 `connection_receive_window`、`max_concurrent_streams`、`initial_packet_size`
 和 `disable_path_mtu_discovery`。
 
-```json
-{
-  "type": "xhttp",
-  "path": "/xhttp/",
-  "quic": {
-    "keep_alive_period": "15s",
-    "max_concurrent_streams": 32
-  }
-}
+```yaml
+type: xhttp
+path: /xhttp/
+quic:
+  keep_alive_period: 15s
+  max_concurrent_streams: 32
 ```
 
 ### QUIC
 
-```json
-{
-  "type": "quic"
-}
+```yaml
+type: quic
 ```
 
 !!! warning "与 v2ray-core 的区别"
@@ -376,14 +363,12 @@ HTTP/3 设置。须使用 `with_quic` 构建 sing-box，并将外层入站或出
 
     默认安装不包含标准 gRPC (兼容性好，但性能较差), 参阅 [安装](/zh/installation/build-from-source/#构建标记)。
 
-```json
-{
-  "type": "grpc",
-  "service_name": "TunService",
-  "idle_timeout": "15s",
-  "ping_timeout": "15s",
-  "permit_without_stream": false
-}
+```yaml
+type: grpc
+service_name: TunService
+idle_timeout: 15s
+ping_timeout: 15s
+permit_without_stream: false
 ```
 
 #### service_name
@@ -420,13 +405,11 @@ gRPC 服务名称。
 
 ### HTTPUpgrade
 
-```json
-{
-  "type": "httpupgrade",
-  "host": "",
-  "path": "",
-  "headers": {}
-}
+```yaml
+type: httpupgrade
+host: ""
+path: ""
+headers: {}
 ```
 
 #### host

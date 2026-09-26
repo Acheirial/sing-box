@@ -4,13 +4,11 @@
 
 ### Structure
 
-```json
-{
-  "type": "redirect",
-  "tag": "redirect-in",
+```yaml
+type: redirect
+tag: redirect-in
 
-  ... // Listen Fields
-}
+# ... Listen Fields
 ```
 
 ### Listen Fields

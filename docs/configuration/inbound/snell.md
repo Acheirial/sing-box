@@ -6,44 +6,34 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-in",
+```yaml
+type: snell
+tag: snell-in
 
-  ... // Listen Fields
+# ... Listen Fields
 
-  "version": 5,
-  "psk": "password",
-  "users": [
-    {
-      "name": "sekai",
-      "userkey": "user-password"
-    }
-  ],
-  "obfs_mode": ""
-}
+version: 5
+psk: password
+users:
+  - name: sekai
+    userkey: user-password
+obfs_mode: ""
 ```
 
 ### Version 6 Structure
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-in",
+```yaml
+type: snell
+tag: snell-in
 
-  ... // Listen Fields
+# ... Listen Fields
 
-  "version": 6,
-  "psk": "password",
-  "users": [
-    {
-      "name": "sekai",
-      "userkey": "user-password"
-    }
-  ],
-  "mode": ""
-}
+version: 6
+psk: password
+users:
+  - name: sekai
+    userkey: user-password
+mode: ""
 ```
 
 ### Listen Fields

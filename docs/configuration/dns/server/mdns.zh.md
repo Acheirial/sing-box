@@ -8,21 +8,15 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "mdns",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: mdns
+      tag: ""
 
-        "interface": [],
+      interface: []
 
-        // 拨号字段
-      }
-    ]
-  }
-}
+      # 拨号字段
 ```
 
 !!! info ""

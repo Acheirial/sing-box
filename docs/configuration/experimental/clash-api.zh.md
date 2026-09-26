@@ -15,57 +15,50 @@
 
 === "结构"
 
-    ```json
-    {
-      "external_controller": "127.0.0.1:9090",
-      "external_ui": "",
-      "external_ui_download_url": "",
-      "external_ui_download_detour": "",
-      "secret": "",
-      "default_mode": "",
-      "access_control_allow_origin": [],
-      "access_control_allow_private_network": false,
-      
-      // Deprecated
-      
-      "store_mode": false,
-      "store_selected": false,
-      "store_fakeip": false,
-      "cache_file": "",
-      "cache_id": ""
-    }
+    ```yaml
+    external_controller: 127.0.0.1:9090
+    external_ui: ""
+    external_ui_download_url: ""
+    external_ui_download_detour: ""
+    secret: ""
+    default_mode: ""
+    access_control_allow_origin: []
+    access_control_allow_private_network: false
+
+    # Deprecated
+
+    store_mode: false
+    store_selected: false
+    store_fakeip: false
+    cache_file: ""
+    cache_id: ""
     ```
 
 === "示例 (在线)"
 
     !!! question "自 sing-box 1.10.0 起"
 
-    ```json
-    {
-      "external_controller": "127.0.0.1:9090",
-      "access_control_allow_origin": [
-        "http://127.0.0.1",
-        "http://yacd.haishan.me"
-      ],
-      "access_control_allow_private_network": true
-    }
+    ```yaml
+    external_controller: 127.0.0.1:9090
+    access_control_allow_origin:
+      - http://127.0.0.1
+      - http://yacd.haishan.me
+    access_control_allow_private_network: true
     ```
 
 === "示例 (下载)"
 
     !!! question "自 sing-box 1.10.0 起"
 
-    ```json
-    {
-      "external_controller": "0.0.0.0:9090",
-      "external_ui": "dashboard"
-      // "external_ui_download_detour": "direct"
-    }
+    ```yaml
+    external_controller: 0.0.0.0:9090
+    external_ui: dashboard
+    # external_ui_download_detour: direct
     ```
 
 !!! note ""
 
-    当内容只有一项时，可以忽略 JSON 数组 [] 标签
+    当内容只有一项时，可以直接使用单个值，无需数组
 
 ### Fields
 

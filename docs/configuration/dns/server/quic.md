@@ -8,24 +8,18 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "quic",
-        "tag": "",
-        
-        "server": "",
-        "server_port": 853,
-        
-        "tls": {},
-        
-        // Dial Fields
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+    - type: quic
+      tag: ""
+
+      server: ""
+      server_port: 853
+
+      tls: {}
+
+      # Dial Fields
 ```
 
 !!! info "Difference from legacy QUIC server"

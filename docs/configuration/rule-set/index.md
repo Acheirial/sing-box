@@ -19,23 +19,19 @@
 
     !!! question "Since sing-box 1.10.0"
 
-    ```json
-    {
-      "type": "inline", // optional
-      "tag": "",
-      "rules": []
-    }
+    ```yaml
+    type: inline  # optional
+    tag: ""
+    rules: []
     ```
 
 === "Local File"
 
-    ```json
-    {
-      "type": "local",
-      "tag": "", // or []
-      "format": "source", // or binary
-      "path": ""
-    }
+    ```yaml
+    type: local
+    tag: ""  # or []
+    format: source  # or binary
+    path: ""
     ```
 
 === "Remote File"
@@ -44,20 +40,18 @@
     
         Remote rule-set will be cached if `experimental.cache_file.enabled`.
 
-    ```json
-    {
-      "type": "remote",
-      "tag": "", // or []
-      "format": "source", // or binary
-      "url": "",
-      "initial_path": "",
-      "http_client": "", // or {}
-      "update_interval": "",
+    ```yaml
+    type: remote
+    tag: ""  # or []
+    format: source  # or binary
+    url: ""
+    initial_path: ""
+    http_client: ""  # or {}
+    update_interval: ""
 
-      // Deprecated
+    # Deprecated
 
-      "download_detour": ""
-    }
+    download_detour: ""
     ```
 
 ### Fields

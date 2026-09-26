@@ -29,39 +29,37 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "detour": "",
-  "bind_interface": "",
-  "inet4_bind_address": "",
-  "inet6_bind_address": "",
-  "bind_address_no_port": false,
-  "routing_mark": 0,
-  "reuse_addr": false,
-  "netns": "",
-  "connect_timeout": "",
-  "tcp_fast_open": false,
-  "tcp_multi_path": false,
-  "disable_tcp_keep_alive": false,
-  "tcp_keep_alive": "",
-  "tcp_keep_alive_interval": "",
-  "udp_fragment": false,
+```yaml
+detour: ""
+bind_interface: ""
+inet4_bind_address: ""
+inet6_bind_address: ""
+bind_address_no_port: false
+routing_mark: 0
+reuse_addr: false
+netns: ""
+connect_timeout: ""
+tcp_fast_open: false
+tcp_multi_path: false
+disable_tcp_keep_alive: false
+tcp_keep_alive: ""
+tcp_keep_alive_interval: ""
+udp_fragment: false
 
-  "domain_resolver": "", // or {}
-  "network_strategy": "",
-  "network_type": [],
-  "fallback_network_type": [],
-  "fallback_delay": "",
+domain_resolver: ""  # or {}
+network_strategy: ""
+network_type: []
+fallback_network_type: []
+fallback_delay: ""
 
-  // Deprecated
-  
-  "domain_strategy": ""
-}
+# Deprecated
+
+domain_strategy: ""
 ```
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 ### Fields
 

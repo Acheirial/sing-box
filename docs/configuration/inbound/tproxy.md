@@ -10,17 +10,15 @@
 
 ### Structure
 
-```json
-{
-  "type": "tproxy",
-  "tag": "tproxy-in",
+```yaml
+type: tproxy
+tag: tproxy-in
 
-  ... // Listen Fields
+# ... Listen Fields
 
-  "network": "udp",
+network: udp
 
-  ... // UDP NAT Fields
-}
+# ... UDP NAT Fields
 ```
 
 ### Listen Fields

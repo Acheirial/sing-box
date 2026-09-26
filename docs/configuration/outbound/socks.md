@@ -2,21 +2,19 @@
 
 ### Structure
 
-```json
-{
-  "type": "socks",
-  "tag": "socks-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": "5",
-  "username": "sekai",
-  "password": "admin",
-  "network": "udp",
-  "udp_over_tcp": false | {},
+```yaml
+type: socks
+tag: socks-out
 
-  ... // Dial Fields
-}
+server: 127.0.0.1
+server_port: 1080
+version: "5"
+username: sekai
+password: admin
+network: udp
+udp_over_tcp: false  # or {}
+
+# ... Dial Fields
 ```
 
 ### Fields

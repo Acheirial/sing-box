@@ -8,40 +8,38 @@
 
 ### 结构
 
-```json
-{
-  "type": "wireguard",
-  "tag": "wg-ep",
+```yaml
+type: wireguard
+tag: wg-ep
 
-  "system": false,
-  "name": "",
-  "mtu": 1408,
-  "address": [],
-  "private_key": "",
-  "listen_port": 10000,
-  "peers": [
-    {
-      "address": "127.0.0.1",
-      "port": 10001,
-      "public_key": "",
-      "pre_shared_key": "",
-      "allowed_ips": [],
-      "persistent_keepalive_interval": 0,
-      "reserved": [0, 0, 0]
-    }
-  ],
+system: false
+name: ""
+mtu: 1408
+address: []
+private_key: ""
+listen_port: 10000
+peers:
+  - address: 127.0.0.1
+    port: 10001
+    public_key: ""
+    pre_shared_key: ""
+    allowed_ips: []
+    persistent_keepalive_interval: 0
+    reserved:
+      - 0
+      - 0
+      - 0
 
-  ... // UDP NAT 字段
+# ... UDP NAT 字段
 
-  "workers": 0,
+workers: 0
 
-  ... // 拨号字段
-}
+# ... 拨号字段
 ```
 
 !!! note ""
 
-    当内容只有一项时，可以忽略 JSON 数组 [] 标签
+    当内容只有一项时，可以直接使用单个值，无需数组
 
 ### 字段
 

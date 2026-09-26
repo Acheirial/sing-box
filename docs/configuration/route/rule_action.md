@@ -27,18 +27,16 @@ icon: material/new-box
 
 ### route
 
-```json
-{
-  "action": "route", // default
-  "outbound": "",
- 
-  ... // route-options Fields
-}
+```yaml
+action: route  # default
+outbound: ""
+
+# ... route-options Fields
 ```
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 `route` inherits the classic rule behavior of routing connection to the specified outbound.
 
@@ -60,13 +58,11 @@ See `route-options` fields below.
 
     Only supported on Linux with `auto_redirect` enabled.
 
-```json
-{
-  "action": "bypass",
-  "outbound": "",
+```yaml
+action: bypass
+outbound: ""
 
-  ... // route-options Fields
-}
+# ... route-options Fields
 ```
 
 `bypass` bypasses sing-box at the kernel level for auto redirect connections in pre-match.
@@ -92,12 +88,10 @@ See `route-options` fields below.
 
     Since sing-box 1.13.0, you can reject (or directly reply to) ICMP echo (ping) requests using `reject` action.
 
-```json
-{
-  "action": "reject",
-  "method": "default", // default
-  "no_drop": false
-}
+```yaml
+action: reject
+method: default  # default
+no_drop: false
 ```
 
 `reject` reject connections
@@ -127,10 +121,8 @@ Not available when `method` is set to drop.
 
 ### hijack-dns
 
-```json
-{
-  "action": "hijack-dns"
-}
+```yaml
+action: hijack-dns
 ```
 
 `hijack-dns` hijack DNS requests to the sing-box DNS module.
@@ -139,22 +131,20 @@ Not available when `method` is set to drop.
 
 ### route-options
 
-```json
-{
-  "action": "route-options",
-  "override_address": "",
-  "override_port": 0,
-  "network_strategy": "",
-  "fallback_delay": "",
-  "udp_disable_domain_unmapping": false,
-  "udp_connect": false,
-  "udp_timeout": "",
-  "tls_fragment": false,
-  "tls_fragment_fallback_delay": "",
-  "tls_record_fragment": "",
-  "tls_spoof": "",
-  "tls_spoof_method": ""
-}
+```yaml
+action: route-options
+override_address: ""
+override_port: 0
+network_strategy: ""
+fallback_delay: ""
+udp_disable_domain_unmapping: false
+udp_connect: false
+udp_timeout: ""
+tls_fragment: false
+tls_fragment_fallback_delay: ""
+tls_record_fragment: ""
+tls_spoof: ""
+tls_spoof_method: ""
 ```
 
 `route-options` set options for routing.
@@ -276,12 +266,10 @@ of accepted values and platform notes.
 
 ### sniff
 
-```json
-{
-  "action": "sniff",
-  "sniffer": [],
-  "timeout": ""
-}
+```yaml
+action: sniff
+sniffer: []
+timeout: ""
 ```
 
 `sniff` performs protocol sniffing on connections.
@@ -304,17 +292,15 @@ Timeout for sniffing.
 
 ### resolve
 
-```json
-{
-  "action": "resolve",
-  "server": "",
-  "strategy": "",
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null
-}
+```yaml
+action: resolve
+server: ""
+strategy: ""
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ""
+client_subnet: null
 ```
 
 `resolve` resolve request destination from domain to IP addresses.

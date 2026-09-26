@@ -8,24 +8,18 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "tls",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: tls
+      tag: ""
 
-        "server": "",
-        "server_port": 853,
+      server: ""
+      server_port: 853
 
-        "tls": {},
+      tls: {}
 
-        // 拨号字段
-      }
-    ]
-  }
-}
+      # 拨号字段
 ```
 
 !!! info "与旧版 TLS 服务器的区别"

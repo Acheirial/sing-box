@@ -15,15 +15,13 @@ requires disabling System Integrity Protection). Not available on iOS.
 
 ### Structure
 
-```json
-{
-  "type": "usbip-server",
+```yaml
+type: usbip-server
 
-  ... // Listen Fields
+# ... Listen Fields
 
-  "provider": "",
-  "devices": []
-}
+provider: ""
+devices: []
 ```
 
 !!! info "Difference from the official USB/IP protocol"
@@ -62,13 +60,11 @@ List of device matches selecting which local USB devices to export.
 
 Object format:
 
-```json
-{
-  "bus_id": "",
-  "vendor_id": 0,
-  "product_id": 0,
-  "serial": ""
-}
+```yaml
+bus_id: ""
+vendor_id: 0
+product_id: 0
+serial: ""
 ```
 
 Object fields:

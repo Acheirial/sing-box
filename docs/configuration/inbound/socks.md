@@ -2,20 +2,15 @@
 
 ### Structure
 
-```json
-{
-  "type": "socks",
-  "tag": "socks-in",
+```yaml
+type: socks
+tag: socks-in
 
-  ... // Listen Fields
+# ... Listen Fields
 
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin"
-    }
-  ]
-}
+users:
+  - username: admin
+    password: admin
 ```
 
 ### Listen Fields

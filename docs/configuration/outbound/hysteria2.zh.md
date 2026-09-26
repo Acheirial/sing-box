@@ -13,54 +13,48 @@
 
 ### 结构
 
-```json
-{
-  "type": "hysteria2",
-  "tag": "hy2-out",
+```yaml
+type: hysteria2
+tag: hy2-out
 
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "server_ports": [
-    "2080:3000"
-  ],
-  "hop_interval": "",
-  "hop_interval_max": "",
-  "up_mbps": 100,
-  "down_mbps": 100,
-  "obfs": {
-    "type": "salamander",
-    "password": "cry_me_a_r1ver"
-  },
-  "password": "goofy_ahh_password",
-  "network": "tcp",
-  "tls": {},
+server: 127.0.0.1
+server_port: 1080
+server_ports:
+  - "2080:3000"
+hop_interval: ""
+hop_interval_max: ""
+up_mbps: 100
+down_mbps: 100
+obfs:
+  type: salamander
+  password: cry_me_a_r1ver
+password: goofy_ahh_password
+network: tcp
+tls: {}
 
-  ... // QUIC 字段
+# ... QUIC 字段
 
-  "bbr_profile": "",
-  "brutal_debug": false,
-  "disable_chrome_parrot": false,
-  "realm": {
-    "server_url": "https://realm.example.com",
-    "token": "",
-    "realm_id": "",
-    "stun_servers": [],
-    "ip_version": 0,
-    "port_mapping": {
-      "enabled": false,
-      "timeout": "",
-      "lifetime": ""
-    },
-    "http_client": {}
-  },
+bbr_profile: ""
+brutal_debug: false
+disable_chrome_parrot: false
+realm:
+  server_url: https://realm.example.com
+  token: ""
+  realm_id: ""
+  stun_servers: []
+  ip_version: 0
+  port_mapping:
+    enabled: false
+    timeout: ""
+    lifetime: ""
+  http_client: {}
 
-  ... // 拨号字段
-}
+# ... 拨号字段
 ```
 
 !!! note ""
 
-    当内容只有一项时，可以忽略 JSON 数组 [] 标签
+    当内容只有一项时，可以直接使用单个值，无需数组
 
 !!! warning "与官方 Hysteria2 的区别"
 

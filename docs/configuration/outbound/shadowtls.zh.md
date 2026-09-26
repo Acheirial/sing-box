@@ -1,18 +1,16 @@
 ### 结构
 
-```json
-{
-  "type": "shadowtls",
-  "tag": "st-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "version": 3,
-  "password": "fuck me till the daylight",
-  "tls": {},
+```yaml
+type: shadowtls
+tag: st-out
 
-  ... // 拨号字段
-}
+server: 127.0.0.1
+server_port: 1080
+version: 3
+password: fuck me till the daylight
+tls: {}
+
+# ... 拨号字段
 ```
 
 ### 字段

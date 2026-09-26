@@ -8,19 +8,17 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "cloudflare-origin-ca",
-  "tag": "",
+```yaml
+type: cloudflare-origin-ca
+tag: ""
 
-  "domain": [],
-  "data_directory": "",
-  "api_token": "",
-  "origin_ca_key": "",
-  "request_type": "",
-  "requested_validity": 0,
-  "http_client": "" // or {}
-}
+domain: []
+data_directory: ""
+api_token: ""
+origin_ca_key: ""
+request_type: ""
+requested_validity: 0
+http_client: ""  # or {}
 ```
 
 ### Fields

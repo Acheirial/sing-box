@@ -12,15 +12,13 @@ USB/IP Server 服务通过 [USB/IP](https://usbip.sourceforge.net/) 导出本地
 
 ### 结构
 
-```json
-{
-  "type": "usbip-server",
+```yaml
+type: usbip-server
 
-  ... // 监听字段
+# ... 监听字段
 
-  "provider": "",
-  "devices": []
-}
+provider: ""
+devices: []
 ```
 
 !!! info "与官方 USB/IP 协议的区别"
@@ -54,13 +52,11 @@ USB/IP Server 服务通过 [USB/IP](https://usbip.sourceforge.net/) 导出本地
 
 对象格式：
 
-```json
-{
-  "bus_id": "",
-  "vendor_id": 0,
-  "product_id": 0,
-  "serial": ""
-}
+```yaml
+bus_id: ""
+vendor_id: 0
+product_id: 0
+serial: ""
 ```
 
 对象字段：

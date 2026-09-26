@@ -1,20 +1,18 @@
 ### 结构
 
-```json
-{
-  "type": "trojan",
-  "tag": "trojan-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "network": "tcp",
-  "tls": {},
-  "multiplex": {},
-  "transport": {},
+```yaml
+type: trojan
+tag: trojan-out
 
-  ... // 拨号字段
-}
+server: 127.0.0.1
+server_port: 1080
+password: 8JCsPssfgS8tiRwiMlhARg==
+network: tcp
+tls: {}
+multiplex: {}
+transport: {}
+
+# ... 拨号字段
 ```
 
 ### 字段

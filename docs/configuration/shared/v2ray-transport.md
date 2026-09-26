@@ -3,10 +3,8 @@ as `trojan-grpc` in clash.
 
 ### Structure
 
-```json
-{
-  "type": ""
-}
+```yaml
+type: ""
 ```
 
 Available transports:
@@ -26,20 +24,18 @@ Available transports:
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 ### HTTP
 
-```json
-{
-  "type": "http",
-  "host": [],
-  "path": "",
-  "method": "",
-  "headers": {},
-  "idle_timeout": "15s",
-  "ping_timeout": "15s"
-}
+```yaml
+type: http
+host: []
+path: ""
+method: ""
+headers: {}
+idle_timeout: 15s
+ping_timeout: 15s
 ```
 
 !!! warning "Difference from v2ray-core"
@@ -101,14 +97,12 @@ The default timeout duration is 15 seconds.
 
 ### WebSocket
 
-```json
-{
-  "type": "ws",
-  "path": "",
-  "headers": {},
-  "max_early_data": 0,
-  "early_data_header_name": ""
-}
+```yaml
+type: ws
+path: ""
+headers: {}
+max_early_data: 0
+early_data_header_name: ""
 ```
 
 #### path
@@ -135,15 +129,17 @@ ends.
 
 ### XHTTP
 
-```json
-{
-  "type": "xhttp",
-  "host": "",
-  "path": "",
-  "mode": "auto",
-  "x_padding_bytes": { "from": 100, "to": 1000 },
-  "sc_max_each_post_bytes": { "from": 1000000, "to": 1000000 }
-}
+```yaml
+type: xhttp
+host: ""
+path: ""
+mode: auto
+x_padding_bytes:
+  from: 100
+  to: 1000
+sc_max_each_post_bytes:
+  from: 1000000
+  to: 1000000
 ```
 
 XHTTP is compatible with Xray's XHTTP transport. It carries one logical
@@ -349,21 +345,17 @@ and every XHTTP field in this section except another `download_settings`.
 `server` and `server_port` are required; nested `download_settings` is not
 supported. Both targets must reach the same server-side XHTTP session.
 
-```json
-{
-  "type": "xhttp",
-  "path": "/upload",
-  "download_settings": {
-    "server": "download.example.com",
-    "server_port": 443,
-    "tls": {
-      "enabled": true,
-      "server_name": "download.example.com"
-    },
-    "path": "/download",
-    "mode": "packet-up"
-  }
-}
+```yaml
+type: xhttp
+path: /upload
+download_settings:
+  server: download.example.com
+  server_port: 443
+  tls:
+    enabled: true
+    server_name: download.example.com
+  path: /download
+  mode: packet-up
 ```
 
 `download_settings` embeds another XHTTP configuration, plus its `server`,
@@ -378,23 +370,18 @@ REALITY are unavailable. The object uses the normal QUIC fields:
 `connection_receive_window`, `max_concurrent_streams`, `initial_packet_size`,
 and `disable_path_mtu_discovery`.
 
-```json
-{
-  "type": "xhttp",
-  "path": "/xhttp/",
-  "quic": {
-    "keep_alive_period": "15s",
-    "max_concurrent_streams": 32
-  }
-}
+```yaml
+type: xhttp
+path: /xhttp/
+quic:
+  keep_alive_period: 15s
+  max_concurrent_streams: 32
 ```
 
 ### QUIC
 
-```json
-{
-  "type": "quic"
-}
+```yaml
+type: quic
 ```
 
 !!! warning "Difference from v2ray-core"
@@ -408,14 +395,12 @@ and `disable_path_mtu_discovery`.
 
     standard gRPC has good compatibility but poor performance and is not included by default, see [Installation](/installation/build-from-source/#build-tags).
 
-```json
-{
-  "type": "grpc",
-  "service_name": "TunService",
-  "idle_timeout": "15s",
-  "ping_timeout": "15s",
-  "permit_without_stream": false
-}
+```yaml
+type: grpc
+service_name: TunService
+idle_timeout: 15s
+ping_timeout: 15s
+permit_without_stream: false
 ```
 
 #### service_name
@@ -456,13 +441,11 @@ Disabled by default.
 
 ### HTTPUpgrade
 
-```json
-{
-  "type": "httpupgrade",
-  "host": "",
-  "path": "",
-  "headers": {}
-}
+```yaml
+type: httpupgrade
+host: ""
+path: ""
+headers: {}
 ```
 
 #### host

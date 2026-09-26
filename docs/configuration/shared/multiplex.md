@@ -1,25 +1,21 @@
 ### Inbound
 
-```json
-{
-  "enabled": true,
-  "padding": false,
-  "brutal": {}
-}
+```yaml
+enabled: true
+padding: false
+brutal: {}
 ```
 
 ### Outbound
 
-```json
-{
-  "enabled": true,
-  "protocol": "smux",
-  "max_connections": 4,
-  "min_streams": 4,
-  "max_streams": 0,
-  "padding": false,
-  "brutal": {}
-}
+```yaml
+enabled: true
+protocol: smux
+max_connections: 4
+min_streams: 4
+max_streams: 0
+padding: false
+brutal: {}
 ```
 
 

@@ -31,37 +31,34 @@ icon: material/alert-decagram
 
 ### Structure
 
-```json
-{
-  "route": {
-    "rules": [],
-    "rule_set": [],
-    "final": "",
-    "auto_detect_interface": false,
-    "override_android_vpn": false,
-    "default_interface": "",
-    "default_mark": 0,
-    "find_process": false,
-    "find_neighbor": false,
-    "dhcp_lease_files": [],
-    "default_http_client": "",
-    "default_domain_resolver": "", // or {}
-    "default_network_strategy": "",
-    "default_network_type": [],
-    "default_fallback_network_type": [],
-    "default_fallback_delay": "",
-    
-    // Removed
+```yaml
+route:
+  rules: []
+  rule_set: []
+  final: ""
+  auto_detect_interface: false
+  override_android_vpn: false
+  default_interface: ""
+  default_mark: 0
+  find_process: false
+  find_neighbor: false
+  dhcp_lease_files: []
+  default_http_client: ""
+  default_domain_resolver: ""  # or {}
+  default_network_strategy: ""
+  default_network_type: []
+  default_fallback_network_type: []
+  default_fallback_delay: ""
 
-    "geoip": {},
-    "geosite": {}
-  }
-}
+  # Removed
+
+  geoip: {}
+  geosite: {}
 ```
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 ### Fields
 

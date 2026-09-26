@@ -29,39 +29,37 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "detour": "",
-  "bind_interface": "",
-  "inet4_bind_address": "",
-  "inet6_bind_address": "",
-  "bind_address_no_port": false,
-  "routing_mark": 0,
-  "reuse_addr": false,
-  "netns": "",
-  "connect_timeout": "",
-  "tcp_fast_open": false,
-  "tcp_multi_path": false,
-  "disable_tcp_keep_alive": false,
-  "tcp_keep_alive": "",
-  "tcp_keep_alive_interval": "",
-  "udp_fragment": false,
+```yaml
+detour: ""
+bind_interface: ""
+inet4_bind_address: ""
+inet6_bind_address: ""
+bind_address_no_port: false
+routing_mark: 0
+reuse_addr: false
+netns: ""
+connect_timeout: ""
+tcp_fast_open: false
+tcp_multi_path: false
+disable_tcp_keep_alive: false
+tcp_keep_alive: ""
+tcp_keep_alive_interval: ""
+udp_fragment: false
 
-  "domain_resolver": "", // 或 {}
-  "network_strategy": "",
-  "network_type": [],
-  "fallback_network_type": [],
-  "fallback_delay": "",
-  
-  // 废弃的
+domain_resolver: ""  # 或 {}
+network_strategy: ""
+network_type: []
+fallback_network_type: []
+fallback_delay: ""
 
-  "domain_strategy": ""
-}
+# 废弃的
+
+domain_strategy: ""
 ```
 
 !!! note ""
 
-    当内容只有一项时，可以忽略 JSON 数组 [] 标签
+    当内容只有一项时，可以直接使用单个值，无需数组
 
 ### 字段
 

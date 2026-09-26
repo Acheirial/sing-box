@@ -12,18 +12,16 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "store": "",
-  "certificate": [],
-  "certificate_path": [],
-  "certificate_directory_path": []
-}
+```yaml
+store: ""
+certificate: []
+certificate_path: []
+certificate_directory_path: []
 ```
 
 !!! note ""
 
-    当内容只有一项时，可以忽略 JSON 数组 [] 标签
+    当内容只有一项时，可以直接使用单个值，无需数组
 
 ### 字段
 

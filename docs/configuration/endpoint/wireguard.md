@@ -8,40 +8,38 @@
 
 ### Structure
 
-```json
-{
-  "type": "wireguard",
-  "tag": "wg-ep",
-  
-  "system": false,
-  "name": "",
-  "mtu": 1408,
-  "address": [],
-  "private_key": "",
-  "listen_port": 10000,
-  "peers": [
-    {
-      "address": "127.0.0.1",
-      "port": 10001,
-      "public_key": "",
-      "pre_shared_key": "",
-      "allowed_ips": [],
-      "persistent_keepalive_interval": 0,
-      "reserved": [0, 0, 0]
-    }
-  ],
+```yaml
+type: wireguard
+tag: wg-ep
 
-  ... // UDP NAT Fields
+system: false
+name: ""
+mtu: 1408
+address: []
+private_key: ""
+listen_port: 10000
+peers:
+  - address: 127.0.0.1
+    port: 10001
+    public_key: ""
+    pre_shared_key: ""
+    allowed_ips: []
+    persistent_keepalive_interval: 0
+    reserved:
+      - 0
+      - 0
+      - 0
 
-  "workers": 0,
- 
-  ... // Dial Fields
-}
+# ... UDP NAT Fields
+
+workers: 0
+
+# ... Dial Fields
 ```
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 ### Fields
 

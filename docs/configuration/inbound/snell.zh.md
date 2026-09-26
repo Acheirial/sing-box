@@ -6,44 +6,34 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-in",
+```yaml
+type: snell
+tag: snell-in
 
-  ... // 监听字段
+# ... 监听字段
 
-  "version": 5,
-  "psk": "password",
-  "users": [
-    {
-      "name": "sekai",
-      "userkey": "user-password"
-    }
-  ],
-  "obfs_mode": ""
-}
+version: 5
+psk: password
+users:
+  - name: sekai
+    userkey: user-password
+obfs_mode: ""
 ```
 
 ### 版本 6 结构
 
-```json
-{
-  "type": "snell",
-  "tag": "snell-in",
+```yaml
+type: snell
+tag: snell-in
 
-  ... // 监听字段
+# ... 监听字段
 
-  "version": 6,
-  "psk": "password",
-  "users": [
-    {
-      "name": "sekai",
-      "userkey": "user-password"
-    }
-  ],
-  "mode": ""
-}
+version: 6
+psk: password
+users:
+  - name: sekai
+    userkey: user-password
+mode: ""
 ```
 
 ### 监听字段

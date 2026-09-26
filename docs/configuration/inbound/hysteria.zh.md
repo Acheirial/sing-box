@@ -1,37 +1,32 @@
 ### 结构
 
-```json
-{
-  "type": "hysteria",
-  "tag": "hysteria-in",
-  
-  ... // 监听字段
+```yaml
+type: hysteria
+tag: hysteria-in
 
-  "up": "100 Mbps",
-  "up_mbps": 100,
-  "down": "100 Mbps",
-  "down_mbps": 100,
-  "obfs": "fuck me till the daylight",
+# ... 监听字段
 
-  "users": [
-    {
-      "name": "sekai",
-      "auth": "",
-      "auth_str": "password"
-    }
-  ],
+up: 100 Mbps
+up_mbps: 100
+down: 100 Mbps
+down_mbps: 100
+obfs: fuck me till the daylight
 
-  "tls": {},
+users:
+  - name: sekai
+    auth: ""
+    auth_str: password
 
-  ... // QUIC 字段
+tls: {}
 
-  // 废弃的
+# ... QUIC 字段
 
-  "recv_window_conn": 0,
-  "recv_window_client": 0,
-  "max_conn_client": 0,
-  "disable_mtu_discovery": false
-}
+# 废弃的
+
+recv_window_conn: 0
+recv_window_client: 0
+max_conn_client: 0
+disable_mtu_discovery: false
 ```
 
 ### 监听字段

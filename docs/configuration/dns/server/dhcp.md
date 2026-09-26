@@ -8,21 +8,15 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "dhcp",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: dhcp
+      tag: ""
 
-        "interface": "",
-        
-        // Dial Fields
-      }
-    ]
-  }
-}
+      interface: ""
+
+      # Dial Fields
 ```
 
 ### Fields

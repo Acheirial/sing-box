@@ -15,16 +15,14 @@ The server must be a sing-box (or sing-usbip) server.
 
 ### Structure
 
-```json
-{
-  "type": "usbip-client",
+```yaml
+type: usbip-client
 
-  ... // Dial Fields
+# ... Dial Fields
 
-  "server": "",
-  "server_port": 0,
-  "devices": []
-}
+server: ""
+server_port: 0
+devices: []
 ```
 
 !!! info "Difference from the official USB/IP protocol"
@@ -58,13 +56,11 @@ are imported.
 
 Object format:
 
-```json
-{
-  "bus_id": "",
-  "vendor_id": 0,
-  "product_id": 0,
-  "serial": ""
-}
+```yaml
+bus_id: ""
+vendor_id: 0
+product_id: 0
+serial: ""
 ```
 
 Object fields:

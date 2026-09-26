@@ -8,22 +8,16 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "tcp",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: tcp
+      tag: ""
 
-        "server": "",
-        "server_port": 53,
+      server: ""
+      server_port: 53
 
-        // 拨号字段
-      }
-    ]
-  }
-}
+      # 拨号字段
 ```
 
 !!! info "与旧版 TCP 服务器的区别"

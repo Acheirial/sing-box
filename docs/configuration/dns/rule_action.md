@@ -22,13 +22,11 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "action": "",
-  "race": false,
+```yaml
+action: ""
+race: false
 
-  ... // Action Fields
-}
+# ... Action Fields
 ```
 
 #### action
@@ -59,19 +57,17 @@ matched. The result may therefore depend on server speed only among race rules.
 
 ### route
 
-```json
-{
-  "action": "route",  // default
-  "server": "",
-  "speculative": false,
-  "strategy": "",
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null,
-  "remove_client_subnet": false
-}
+```yaml
+action: route  # default
+server: ""
+speculative: false
+strategy: ""
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ""
+client_subnet: null
+remove_client_subnet: false
 ```
 
 `route` inherits the classic rule behavior of routing DNS requests to the specified server.
@@ -149,19 +145,17 @@ Conflict with `client_subnet`.
 
 !!! question "Since sing-box 1.14.0"
 
-```json
-{
-  "action": "evaluate",
-  "server": "",
-  "tag": "",
-  "speculative": false,
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null,
-  "remove_client_subnet": false
-}
+```yaml
+action: evaluate
+server: ""
+tag: ""
+speculative: false
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ""
+client_subnet: null
+remove_client_subnet: false
 ```
 
 `evaluate` sends a DNS query to the specified server and saves the evaluated response for subsequent rules
@@ -240,10 +234,8 @@ Conflict with `client_subnet`.
 
 !!! question "Since sing-box 1.14.0"
 
-```json
-{
-  "action": "respond"
-}
+```yaml
+action: respond
 ```
 
 `respond` terminates rule evaluation and returns the evaluated response from a preceding [`evaluate`](/configuration/dns/rule_action/#evaluate) action.
@@ -254,28 +246,24 @@ Only allowed after a preceding top-level `evaluate` rule. If the action is reach
 
 ### route-options
 
-```json
-{
-  "action": "route-options",
-  "disable_cache": false,
-  "disable_optimistic_cache": false,
-  "rewrite_ttl": null,
-  "timeout": "",
-  "client_subnet": null,
-  "remove_client_subnet": false
-}
+```yaml
+action: route-options
+disable_cache: false
+disable_optimistic_cache: false
+rewrite_ttl: null
+timeout: ""
+client_subnet: null
+remove_client_subnet: false
 ```
 
 `route-options` set options for routing.
 
 ### reject
 
-```json
-{
-  "action": "reject",
-  "method": "",
-  "no_drop": false
-}
+```yaml
+action: reject
+method: ""
+no_drop: false
 ```
 
 `reject` reject DNS requests.
@@ -297,14 +285,12 @@ Not available when `method` is set to drop.
 
 !!! question "Since sing-box 1.12.0"
 
-```json
-{
-  "action": "predefined",
-  "rcode": "",
-  "answer": [],
-  "ns": [],
-  "extra": []
-}
+```yaml
+action: predefined
+rcode: ""
+answer: []
+ns: []
+extra: []
 ```
 
 `predefined` responds with predefined DNS records.

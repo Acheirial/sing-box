@@ -6,11 +6,9 @@ icon: material/delete-clock
 
 ### 结构
 
-```json
-{
-  "type": "block",
-  "tag": "block"
-}
+```yaml
+type: block
+tag: block
 ```
 
 ### 字段

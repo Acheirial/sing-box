@@ -23,16 +23,14 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "type": "bridge",
-  "tag": "bridge-out",
+```yaml
+type: bridge
+tag: bridge-out
 
-  "interface": "",
-  "bridge_name": "",
-  "iproute2_table_index": 0,
-  "iproute2_rule_index": 0
-}
+interface: ""
+bridge_name: ""
+iproute2_table_index: 0
+iproute2_rule_index: 0
 ```
 
 ### 字段

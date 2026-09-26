@@ -12,19 +12,17 @@ icon: material/new-box
 
 当为对象时：
 
-```json
-{
-  "engine": "",
-  "version": 0,
-  "disable_version_fallback": false,
-  "headers": {},
+```yaml
+engine: ""
+version: 0
+disable_version_fallback: false
+headers: {}
 
-  ... // HTTP2 字段
+# ... HTTP2 字段
 
-  "tls": {},
+tls: {}
 
-  ... // 拨号字段
-}
+# ... 拨号字段
 ```
 
 ### 字段

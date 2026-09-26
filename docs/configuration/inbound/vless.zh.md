@@ -1,23 +1,18 @@
 ### 结构
 
-```json
-{
-  "type": "vless",
-  "tag": "vless-in",
+```yaml
+type: vless
+tag: vless-in
 
-  ... // 监听字段
+# ... 监听字段
 
-  "users": [
-    {
-      "name": "sekai",
-      "uuid": "bf000d23-0752-40b4-affe-68f7707a9661",
-      "flow": ""
-    }
-  ],
-  "tls": {},
-  "multiplex": {},
-  "transport": {}
-}
+users:
+  - name: sekai
+    uuid: bf000d23-0752-40b4-affe-68f7707a9661
+    flow: ""
+tls: {}
+multiplex: {}
+transport: {}
 ```
 
 ### 监听字段

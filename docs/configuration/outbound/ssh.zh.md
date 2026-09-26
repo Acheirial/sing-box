@@ -6,29 +6,26 @@
 
 ### 结构
 
-```json
-{
-  "type": "ssh",
-  "tag": "ssh-out",
+```yaml
+type: ssh
+tag: ssh-out
 
-  "server": "127.0.0.1",
-  "server_port": 22,
-  "user": "root",
-  "password": "admin",
-  "private_key": "",
-  "private_key_path": "$HOME/.ssh/id_rsa",
-  "private_key_passphrase": "",
-  "host_key": [
-    "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdH..."
-  ],
-  "host_key_algorithms": [],
-  "client_version": "SSH-2.0-OpenSSH_7.4p1",
-  "cipher": [],
-  "mac": [],
-  "kex_algorithm": [],
+server: 127.0.0.1
+server_port: 22
+user: root
+password: admin
+private_key: ""
+private_key_path: $HOME/.ssh/id_rsa
+private_key_passphrase: ""
+host_key:
+  - ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdH...
+host_key_algorithms: []
+client_version: SSH-2.0-OpenSSH_7.4p1
+cipher: []
+mac: []
+kex_algorithm: []
 
-  ... // 拨号字段
-}
+# ... 拨号字段
 ```
 
 ### 字段

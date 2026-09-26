@@ -6,22 +6,17 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "type": "anytls",
-  "tag": "anytls-in",
+```yaml
+type: anytls
+tag: anytls-in
 
-  ... // Listen Fields
+# ... Listen Fields
 
-  "users": [
-    {
-      "name": "sekai",
-      "password": "8JCsPssfgS8tiRwiMlhARg=="
-    }
-  ],
-  "padding_scheme": [],
-  "tls": {}
-}
+users:
+  - name: sekai
+    password: 8JCsPssfgS8tiRwiMlhARg==
+padding_scheme: []
+tls: {}
 ```
 
 ### Listen Fields
@@ -42,18 +37,16 @@ AnyTLS padding scheme line array.
 
 Default padding scheme:
 
-```json
-[
-  "stop=8",
-  "0=30-30",
-  "1=100-400",
-  "2=400-500,c,500-1000,c,500-1000,c,500-1000,c,500-1000",
-  "3=9-9,500-1000",
-  "4=500-1000",
-  "5=500-1000",
-  "6=500-1000",
-  "7=500-1000"
-]
+```yaml
+- stop=8
+- 0=30-30
+- 1=100-400
+- 2=400-500,c,500-1000,c,500-1000,c,500-1000,c,500-1000
+- 3=9-9,500-1000
+- 4=500-1000
+- 5=500-1000
+- 6=500-1000
+- 7=500-1000
 ```
 
 #### tls

@@ -8,27 +8,21 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "h3",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: h3
+      tag: ""
 
-        "server": "",
-        "server_port": 443,
+      server: ""
+      server_port: 443
 
-        "path": "",
-        "headers": {},
+      path: ""
+      headers: {}
 
-        "tls": {},
+      tls: {}
 
-        // 拨号字段
-      }
-    ]
-  }
-}
+      # 拨号字段
 ```
 
 !!! info "与旧版 H3 服务器的区别"

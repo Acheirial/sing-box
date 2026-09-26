@@ -10,22 +10,20 @@ DERP 服务是一个 Tailscale DERP 服务器，类似于 [derper](https://pkg.g
 
 ### 结构
 
-```json
-{
-  "type": "derp",
+```yaml
+type: derp
 
-  ... // 监听字段
+# ... 监听字段
 
-  "tls": {},
-  "config_path": "",
-  "verify_client_endpoint": [],
-  "verify_client_url": [],
-  "home": "",
-  "mesh_with": [],
-  "mesh_psk": "",
-  "mesh_psk_file": "",
-  "stun": {}
-}
+tls: {}
+config_path: ""
+verify_client_endpoint: []
+verify_client_url: []
+home: ""
+mesh_with: []
+mesh_psk: ""
+mesh_psk_file: ""
+stun: {}
 ```
 
 ### 监听字段
@@ -56,18 +54,16 @@ Derper 配置文件路径。
 
 对象格式：
 
-```json
-{
-  "url": "",
+```yaml
+url: ""
 
-  ... // HTTP 客户端字段
-}
+# ... HTTP 客户端字段
 ```
 
 将数组值设置为字符串 `__URL__` 等同于配置：
 
-```json
-{ "url": __URL__ }
+```yaml
+url: __URL__
 ```
 
 #### home
@@ -80,15 +76,13 @@ Derper 配置文件路径。
 
 对象格式：
 
-```json
-{
-  "server": "",
-  "server_port": "",
-  "host": "",
-  "tls": {},
+```yaml
+server: ""
+server_port: ""
+host: ""
+tls: {}
 
-  ... // 拨号字段
-}
+# ... 拨号字段
 ```
 
 对象字段：
@@ -113,12 +107,10 @@ STUN 服务器监听选项。
 
 对象格式：
 
-```json
-{
-  "enabled": true,
+```yaml
+enabled: true
 
-  ... // 监听字段
-}
+# ... 监听字段
 ```
 
 对象字段：
@@ -130,6 +122,7 @@ STUN 服务器监听选项。
 
 将 `stun` 值设置为数字 `__PORT__` 等同于配置：
 
-```json
-{ "enabled": true, "listen_port": __PORT__ }
+```yaml
+enabled: true
+listen_port: __PORT__
 ```

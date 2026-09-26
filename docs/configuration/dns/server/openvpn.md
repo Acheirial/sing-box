@@ -8,21 +8,15 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "openvpn",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: openvpn
+      tag: ""
 
-        "endpoint": "ovpn-client",
-        "accept_default_resolvers": false,
-        "accept_search_domain": false
-      }
-    ]
-  }
-}
+      endpoint: ovpn-client
+      accept_default_resolvers: false
+      accept_search_domain: false
 ```
 
 ### Fields
@@ -53,30 +47,19 @@ If no search domain is available, the original single-label query follows normal
 
 ### Example
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "local",
-        "tag": "local"
-      },
-      {
-        "type": "openvpn",
-        "tag": "ovpn-dns",
-        "endpoint": "ovpn-client",
-        "accept_default_resolvers": true,
-        "accept_search_domain": true
-      }
-    ],
-    "rules": [
-      {
-        "preferred_by": "ovpn-dns",
-        "action": "route",
-        "server": "ovpn-dns"
-      }
-    ],
-    "final": "local"
-  }
-}
+```yaml
+dns:
+  servers:
+    - type: local
+      tag: local
+    - type: openvpn
+      tag: ovpn-dns
+      endpoint: ovpn-client
+      accept_default_resolvers: true
+      accept_search_domain: true
+  rules:
+    - preferred_by: ovpn-dns
+      action: route
+      server: ovpn-dns
+  final: local
 ```

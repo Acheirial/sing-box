@@ -12,18 +12,16 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "store": "",
-  "certificate": [],
-  "certificate_path": [],
-  "certificate_directory_path": []
-}
+```yaml
+store: ""
+certificate: []
+certificate_path: []
+certificate_directory_path: []
 ```
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 ### Fields
 

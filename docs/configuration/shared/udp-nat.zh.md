@@ -10,13 +10,11 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "udp_timeout": "5m",
-  "udp_mapping": "endpoint_independent",
-  "udp_filtering": "endpoint_independent",
-  "udp_nat_max": 0
-}
+```yaml
+udp_timeout: 5m
+udp_mapping: endpoint_independent
+udp_filtering: endpoint_independent
+udp_nat_max: 0
 ```
 
 ### 字段

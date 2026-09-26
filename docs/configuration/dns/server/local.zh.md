@@ -16,21 +16,15 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "local",
-        "tag": "",
-        "prefer_go": false,
-        "neighbor_domain": [],
+```yaml
+dns:
+  servers:
+    - type: local
+      tag: ""
+      prefer_go: false
+      neighbor_domain: []
 
-        // 拨号字段
-      }
-    ]
-  }
-}
+      # 拨号字段
 ```
 
 !!! info "与旧版本地服务器的区别"

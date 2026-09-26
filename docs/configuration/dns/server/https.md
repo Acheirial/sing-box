@@ -8,27 +8,21 @@ icon: material/new-box
 
 ### Structure
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "https",
-        "tag": "",
-        
-        "server": "",
-        "server_port": 443,
-        
-        "path": "",
-        "headers": {},
-        
-        "tls": {},
-        
-        // Dial Fields
-      }
-    ]
-  }
-}
+```yaml
+dns:
+  servers:
+    - type: https
+      tag: ""
+
+      server: ""
+      server_port: 443
+
+      path: ""
+      headers: {}
+
+      tls: {}
+
+      # Dial Fields
 ```
 
 !!! info "Difference from legacy HTTPS server"

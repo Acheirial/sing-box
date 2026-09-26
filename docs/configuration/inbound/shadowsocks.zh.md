@@ -1,52 +1,40 @@
 ### 结构
 
-```json
-{
-  "type": "shadowsocks",
-  "tag": "ss-in",
+```yaml
+type: shadowsocks
+tag: ss-in
 
-  ... // 监听字段
+# ... 监听字段
 
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "managed": false,
-  "multiplex": {}
-}
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+managed: false
+multiplex: {}
 ```
 
 ### 多用户结构
 
-```json
-{
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "users": [
-    {
-      "name": "sekai",
-      "password": "PCD2Z4o12bKUoFa3cC97Hw=="
-    }
-  ],
-  "multiplex": {}
-}
+```yaml
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+users:
+  - name: sekai
+    password: PCD2Z4o12bKUoFa3cC97Hw==
+multiplex: {}
 ```
 
 ### 中转结构
 
-```json
-{
-  "type": "shadowsocks",
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "destinations": [
-    {
-      "name": "test",
-      "server": "example.com",
-      "server_port": 8080,
-      "password": "PCD2Z4o12bKUoFa3cC97Hw=="
-    }
-  ],
-  "multiplex": {}
-}
+```yaml
+type: shadowsocks
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+destinations:
+  - name: test
+    server: example.com
+    server_port: 8080
+    password: PCD2Z4o12bKUoFa3cC97Hw==
+multiplex: {}
 ```
 
 ### 监听字段

@@ -4,23 +4,18 @@
 
 ### 结构
 
-```json
-{
-"type": "naive",
-"tag": "naive-in",
-"network": "udp",
+```yaml
+type: naive
+tag: naive-in
+network: udp
 
-... // 监听字段
+# ... 监听字段
 
-"users": [
-{
-"username": "sekai",
-"password": "password"
-}
-],
-"quic_congestion_control": "",
-"tls": {}
-}
+users:
+  - username: sekai
+    password: password
+quic_congestion_control: ""
+tls: {}
 ```
 
 ### 监听字段

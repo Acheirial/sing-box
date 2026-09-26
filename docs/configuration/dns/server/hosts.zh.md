@@ -8,25 +8,19 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "hosts",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: hosts
+      tag: ""
 
-        "path": [],
-        "predefined": {}
-      }
-    ]
-  }
-}
+      path: []
+      predefined: {}
 ```
 
 !!! note ""
 
-    当内容只有一项时，可以忽略 JSON 数组 [] 标签
+    当内容只有一项时，可以直接使用单个值，无需数组
 
 ### 字段
 
@@ -40,15 +34,12 @@ hosts 文件路径列表。
 
 示例：
 
-```json
-{
-  // "path": "/etc/hosts"
+```yaml
+# path: /etc/hosts
 
-  "path": [
-    "/etc/hosts",
-    "$HOME/.hosts"
-  ]
-}
+path:
+  - /etc/hosts
+  - $HOME/.hosts
 ```
 
 #### predefined
@@ -57,16 +48,12 @@ hosts 文件路径列表。
 
 示例：
 
-```json
-{
-  "predefined": {
-    "www.google.com": "127.0.0.1",
-    "localhost": [
-      "127.0.0.1",
-      "::1"
-    ]
-  }
-}
+```yaml
+predefined:
+  www.google.com: 127.0.0.1
+  localhost:
+    - 127.0.0.1
+    - "::1"
 ```
 
 ### 示例
@@ -75,49 +62,27 @@ hosts 文件路径列表。
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                ...
-              },
-              {
-                "type": "hosts",
-                "tag": "hosts"
-              }
-            ],
-            "rules": [
-              {
-                "preferred_by": "hosts",
-                "action": "route",
-                "server": "hosts"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+            # ...
+            - type: hosts
+              tag: hosts
+          rules:
+            - preferred_by: hosts
+              action: route
+              server: hosts
         ```
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```json
-        {
-          "dns": {
-            "servers": [
-              {
-                ...
-              },
-              {
-                "type": "hosts",
-                "tag": "hosts"
-              }
-            ],
-            "rules": [
-              {
-                "ip_accept_any": true,
-                "server": "hosts"
-              }
-            ]
-          }
-        }
+        ```yaml
+        dns:
+          servers:
+            # ...
+            - type: hosts
+              tag: hosts
+          rules:
+            - ip_accept_any: true
+              server: hosts
         ```

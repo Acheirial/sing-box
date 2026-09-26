@@ -4,11 +4,9 @@ icon: material/delete-clock
 
 ### Structure
 
-```json
-{
-  "type": "block",
-  "tag": "block"
-}
+```yaml
+type: block
+tag: block
 ```
 
 ### Fields

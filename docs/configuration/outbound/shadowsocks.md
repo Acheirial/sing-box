@@ -1,22 +1,20 @@
 ### Structure
 
-```json
-{
-  "type": "shadowsocks",
-  "tag": "ss-out",
-  
-  "server": "127.0.0.1",
-  "server_port": 1080,
-  "method": "2022-blake3-aes-128-gcm",
-  "password": "8JCsPssfgS8tiRwiMlhARg==",
-  "plugin": "",
-  "plugin_opts": "",
-  "network": "udp",
-  "udp_over_tcp": false | {},
-  "multiplex": {},
+```yaml
+type: shadowsocks
+tag: ss-out
 
-  ... // Dial Fields
-}
+server: 127.0.0.1
+server_port: 1080
+method: 2022-blake3-aes-128-gcm
+password: 8JCsPssfgS8tiRwiMlhARg==
+plugin: ""
+plugin_opts: ""
+network: udp
+udp_over_tcp: false  # or {}
+multiplex: {}
+
+# ... Dial Fields
 ```
 
 ### Fields

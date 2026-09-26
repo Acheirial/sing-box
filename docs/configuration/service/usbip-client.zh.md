@@ -14,16 +14,14 @@ USB/IP Client 服务通过 [USB/IP](https://usbip.sourceforge.net/) 导入由 [U
 
 ### 结构
 
-```json
-{
-  "type": "usbip-client",
+```yaml
+type: usbip-client
 
-  ... // 拨号字段
+# ... 拨号字段
 
-  "server": "",
-  "server_port": 0,
-  "devices": []
-}
+server: ""
+server_port: 0
+devices: []
 ```
 
 !!! info "与官方 USB/IP 协议的区别"
@@ -54,13 +52,11 @@ USB/IP Client 服务通过 [USB/IP](https://usbip.sourceforge.net/) 导入由 [U
 
 对象格式：
 
-```json
-{
-  "bus_id": "",
-  "vendor_id": 0,
-  "product_id": 0,
-  "serial": ""
-}
+```yaml
+bus_id: ""
+vendor_id: 0
+product_id: 0
+serial: ""
 ```
 
 对象字段：

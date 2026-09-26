@@ -13,12 +13,10 @@ See also: [Resolved DNS Server](/configuration/dns/server/resolved/)
 
 ### Structure
 
-```json
-{
-  "type": "resolved",
-  
-  ... // Listen Fields
-}
+```yaml
+type: resolved
+
+# ... Listen Fields
 ```
 
 ### Listen Fields

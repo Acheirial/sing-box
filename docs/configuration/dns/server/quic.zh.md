@@ -8,24 +8,18 @@ icon: material/new-box
 
 ### 结构
 
-```json
-{
-  "dns": {
-    "servers": [
-      {
-        "type": "quic",
-        "tag": "",
+```yaml
+dns:
+  servers:
+    - type: quic
+      tag: ""
 
-        "server": "",
-        "server_port": 853,
+      server: ""
+      server_port: 853
 
-        "tls": {},
+      tls: {}
 
-        // 拨号字段
-      }
-    ]
-  }
-}
+      # 拨号字段
 ```
 
 !!! info "与旧版 QUIC 服务器的区别"

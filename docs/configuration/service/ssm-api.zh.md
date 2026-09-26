@@ -12,16 +12,14 @@ SSM API 服务是一个用于管理 Shadowsocks 服务器的 RESTful API 服务�
 
 ### 结构
 
-```json
-{
-  "type": "ssm-api",
+```yaml
+type: ssm-api
 
-  ... // 监听字段
+# ... 监听字段
 
-  "servers": {},
-  "cache_path": "",
-  "tls": {}
-}
+servers: {}
+cache_path: ""
+tls: {}
 ```
 
 ### 监听字段
@@ -40,12 +38,9 @@ SSM API 服务是一个用于管理 Shadowsocks 服务器的 RESTful API 服务�
 
 示例：
 
-```json
-{
-  "servers": {
-    "/": "ss-in"
-  }
-}
+```yaml
+servers:
+  /: ss-in
 ```
 
 #### cache_path

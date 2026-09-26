@@ -6,11 +6,9 @@ The UDP over TCP protocol is used to transmit UDP packets in TCP.
 
 ### Structure
 
-```json
-{
-  "enabled": true,
-  "version": 2
-}
+```yaml
+enabled: true
+version: 2
 ```
 
 !!! info ""

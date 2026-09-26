@@ -12,19 +12,17 @@ When string, the tag of a shared [HTTP Client](/configuration/shared/http-client
 
 When object:
 
-```json
-{
-  "engine": "",
-  "version": 0,
-  "disable_version_fallback": false,
-  "headers": {},
+```yaml
+engine: ""
+version: 0
+disable_version_fallback: false
+headers: {}
 
-  ... // HTTP2 Fields
+# ... HTTP2 Fields
 
-  "tls": {},
+tls: {}
 
-  ... // Dial Fields
-}
+# ... Dial Fields
 ```
 
 ### Fields

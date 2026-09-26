@@ -39,123 +39,110 @@ icon: material/new-box
 
 ### Inbound
 
-```json
-{
-  "enabled": true,
-  "server_name": "",
-  "alpn": [],
-  "min_version": "",
-  "max_version": "",
-  "cipher_suites": [],
-  "curve_preferences": [],
-  "certificate": [],
-  "certificate_path": "",
-  "client_authentication": "",
-  "client_certificate": [],
-  "client_certificate_path": [],
-  "client_certificate_public_key_sha256": [],
-  "key": [],
-  "key_path": "",
-  "kernel_tx": false,
-  "kernel_rx": false,
-  "handshake_timeout": "",
-  "certificate_provider": "",
+```yaml
+enabled: true
+server_name: ""
+alpn: []
+min_version: ""
+max_version: ""
+cipher_suites: []
+curve_preferences: []
+certificate: []
+certificate_path: ""
+client_authentication: ""
+client_certificate: []
+client_certificate_path: []
+client_certificate_public_key_sha256: []
+key: []
+key_path: ""
+kernel_tx: false
+kernel_rx: false
+handshake_timeout: ""
+certificate_provider: ""
 
-  // Deprecated
+# Deprecated
 
-  "acme": {
-    "domain": [],
-    "data_directory": "",
-    "default_server_name": "",
-    "email": "",
-    "provider": "",
-    "disable_http_challenge": false,
-    "disable_tls_alpn_challenge": false,
-    "alternative_http_port": 0,
-    "alternative_tls_port": 0,
-    "external_account": {
-      "key_id": "",
-      "mac_key": ""
-    },
-    "dns01_challenge": {}
-  },
-  "ech": {
-    "enabled": false,
-    "key": [],
-    "key_path": "",
+acme:
+  domain: []
+  data_directory: ""
+  default_server_name: ""
+  email: ""
+  provider: ""
+  disable_http_challenge: false
+  disable_tls_alpn_challenge: false
+  alternative_http_port: 0
+  alternative_tls_port: 0
+  external_account:
+    key_id: ""
+    mac_key: ""
+  dns01_challenge: {}
+ech:
+  enabled: false
+  key: []
+  key_path: ""
 
-    // Deprecated
-    
-    "pq_signature_schemes_enabled": false,
-    "dynamic_record_sizing_disabled": false
-  },
-  "reality": {
-    "enabled": false,
-    "handshake": {
-      "server": "google.com",
-      "server_port": 443,
+  # Deprecated
 
-      ... // Dial Fields
-    },
-    "private_key": "UuMBgl7MXTPx9inmQp2UC7Jcnwc6XYbwDNebonM-FCc",
-    "short_id": [
-      "0123456789abcdef"
-    ],
-    "max_time_difference": "1m"
-  }
-}
+  pq_signature_schemes_enabled: false
+  dynamic_record_sizing_disabled: false
+reality:
+  enabled: false
+  handshake:
+    server: google.com
+    server_port: 443
+
+    # ... Dial Fields
+  private_key: UuMBgl7MXTPx9inmQp2UC7Jcnwc6XYbwDNebonM-FCc
+  short_id:
+    - 0123456789abcdef
+  max_time_difference: 1m
 ```
 
 ### Outbound
 
-```json
-{
-  "enabled": true,
-  "engine": "",
-  "disable_sni": false,
-  "server_name": "",
-  "insecure": false,
-  "alpn": [],
-  "min_version": "",
-  "max_version": "",
-  "cipher_suites": [],
-  "curve_preferences": [],
-  "certificate": "",
-  "certificate_path": "",
-  "certificate_public_key_sha256": [],
-  "client_certificate": [],
-  "client_certificate_path": "",
-  "client_key": [],
-  "client_key_path": "",
-  "fragment": false,
-  "fragment_fallback_delay": "",
-  "record_fragment": false,
-  "spoof": "",
-  "spoof_method": "",
-  "kernel_tx": false,
-  "kernel_rx": false,
-  "handshake_timeout": "",
-  "ech": {
-    "enabled": false,
-    "config": [],
-    "config_path": "",
-    "query_server_name": "",
+```yaml
+enabled: true
+engine: ""
+disable_sni: false
+server_name: ""
+insecure: false
+alpn: []
+min_version: ""
+max_version: ""
+cipher_suites: []
+curve_preferences: []
+certificate: ""
+certificate_path: ""
+certificate_public_key_sha256: []
+client_certificate: []
+client_certificate_path: ""
+client_key: []
+client_key_path: ""
+fragment: false
+fragment_fallback_delay: ""
+record_fragment: false
+spoof: ""
+spoof_method: ""
+kernel_tx: false
+kernel_rx: false
+handshake_timeout: ""
+ech:
+  enabled: false
+  config: []
+  config_path: ""
+  query_server_name: ""
 
-    // Deprecated
-    "pq_signature_schemes_enabled": false,
-    "dynamic_record_sizing_disabled": false
-  },
-  "utls": {
-    "enabled": false,
-    "fingerprint": ""
-  },
-  "reality": {
-    "enabled": false,
-    "public_key": "jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0",
-    "short_id": "0123456789abcdef",
-    "mldsa65_verify": ""
-  }
-}
+  # Deprecated
+  pq_signature_schemes_enabled: false
+  dynamic_record_sizing_disabled: false
+utls:
+  enabled: false
+  fingerprint: ""
+reality:
+  enabled: false
+  public_key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0
+  short_id: 0123456789abcdef
+  mldsa65_verify: ""
 ```
 
 TLS version values:
@@ -187,7 +174,7 @@ Cipher suite values:
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 ### Fields
 

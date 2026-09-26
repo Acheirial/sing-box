@@ -2,17 +2,15 @@
 
 ### Structure
 
-```json
-{
-  "type": "direct",
-  "tag": "direct-in",
-  
-  ... // Listen Fields
+```yaml
+type: direct
+tag: direct-in
 
-  "network": "udp",
-  "override_address": "1.0.0.1",
-  "override_port": 53
-}
+# ... Listen Fields
+
+network: udp
+override_address: 1.0.0.1
+override_port: 53
 ```
 
 ### Listen Fields
