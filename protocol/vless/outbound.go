@@ -54,6 +54,14 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 		dialer:     outboundDialer,
 		serverAddr: options.ServerOptions.Build(),
 	}
+	if options.Flow != "" {
+		if options.Flow != vless.FlowVision {
+			return nil, E.New("unknown flow: ", options.Flow)
+		}
+		if options.TLS == nil || !options.TLS.Enabled {
+			return nil, E.New("TLS is required by flow ", options.Flow)
+		}
+	}
 	if options.TLS != nil {
 		outbound.tlsConfig, err = tls.NewClientWithOptions(tls.ClientOptions{
 			Context:       ctx,

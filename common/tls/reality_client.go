@@ -30,13 +30,13 @@ import (
 	"github.com/sagernet/sing-box/adapter"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/debug"
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/logger"
 	"github.com/sagernet/sing/common/ntp"
 	aTLS "github.com/sagernet/sing/common/tls"
 
+	"github.com/cloudflare/circl/sign/mldsa/mldsa65"
 	utls "github.com/metacubex/utls"
 	"golang.org/x/crypto/hkdf"
 	"golang.org/x/net/http2"
@@ -45,10 +45,12 @@ import (
 var _ ConfigCompat = (*RealityClientConfig)(nil)
 
 type RealityClientConfig struct {
-	ctx       context.Context
-	uClient   *UTLSClientConfig
-	publicKey []byte
-	shortID   [8]byte
+	ctx           context.Context
+	logger        logger.ContextLogger
+	uClient       *UTLSClientConfig
+	publicKey     []byte
+	shortID       [8]byte
+	mldsa65Verify []byte
 }
 
 func NewRealityClient(ctx context.Context, logger logger.ContextLogger, serverAddress string, options option.OutboundTLSOptions) (Config, error) {
@@ -84,7 +86,18 @@ func newRealityClient(ctx context.Context, logger logger.ContextLogger, serverAd
 		return nil, E.New("invalid short_id")
 	}
 
-	var config Config = &RealityClientConfig{ctx, uClient.(*UTLSClientConfig), publicKey, shortID}
+	var mldsa65Verify []byte
+	if options.Reality.Mldsa65Verify != "" {
+		mldsa65Verify, err = base64.RawURLEncoding.DecodeString(options.Reality.Mldsa65Verify)
+		if err != nil {
+			return nil, E.Cause(err, "decode mldsa65_verify")
+		}
+		if len(mldsa65Verify) != 1952 {
+			return nil, E.New("invalid mldsa65_verify")
+		}
+	}
+
+	var config Config = &RealityClientConfig{ctx, logger, uClient.(*UTLSClientConfig), publicKey, shortID, mldsa65Verify}
 	if options.KernelRx || options.KernelTx {
 		if !C.IsLinux {
 			return nil, E.New("kTLS is only supported on Linux")
@@ -133,7 +146,9 @@ func (e *RealityClientConfig) Client(conn net.Conn) (Conn, error) {
 
 func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn) (aTLS.Conn, error) {
 	verifier := &realityVerifier{
-		serverName: e.uClient.ServerName(),
+		serverName:    e.uClient.ServerName(),
+		mldsa65Verify: e.mldsa65Verify,
+		logger:        e.logger,
 	}
 	uConfig := e.uClient.config.Clone()
 	uConfig.InsecureSkipVerify = true
@@ -142,22 +157,6 @@ func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn
 	uConn := utls.UClient(conn, uConfig, e.uClient.id)
 	verifier.UConn = uConn
 	err := uConn.BuildHandshakeState()
-	if err != nil {
-		return nil, err
-	}
-	for _, extension := range uConn.Extensions {
-		if ce, ok := extension.(*utls.SupportedCurvesExtension); ok {
-			ce.Curves = common.Filter(ce.Curves, func(curveID utls.CurveID) bool {
-				return curveID != utls.X25519MLKEM768
-			})
-		}
-		if ks, ok := extension.(*utls.KeyShareExtension); ok {
-			ks.KeyShares = common.Filter(ks.KeyShares, func(share utls.KeyShare) bool {
-				return share.Group != utls.X25519MLKEM768
-			})
-		}
-	}
-	err = uConn.BuildHandshakeState()
 	if err != nil {
 		return nil, err
 	}
@@ -201,7 +200,10 @@ func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn
 	}
 	ecdheKey := keyShareKeys.Ecdhe
 	if ecdheKey == nil {
-		return nil, E.New("nil ecdheKey")
+		ecdheKey = keyShareKeys.MlkemEcdhe
+	}
+	if ecdheKey == nil {
+		return nil, E.New("Current fingerprint ", e.uClient.id.Client, e.uClient.id.Version, " does not support TLS 1.3, REALITY handshake cannot establish.")
 	}
 	authKey, err := ecdheKey.ECDH(publicKey)
 	if err != nil {
@@ -268,28 +270,78 @@ func realityClientFallback(ctx context.Context, uConn net.Conn, serverName strin
 func (e *RealityClientConfig) Clone() Config {
 	return &RealityClientConfig{
 		e.ctx,
+		e.logger,
 		e.uClient.Clone().(*UTLSClientConfig),
 		e.publicKey,
 		e.shortID,
+		e.mldsa65Verify,
 	}
 }
 
 type realityVerifier struct {
 	*utls.UConn
-	serverName string
-	authKey    []byte
-	verified   bool
+	serverName    string
+	authKey       []byte
+	verified      bool
+	mldsa65Verify []byte
+	logger        logger.ContextLogger
 }
 
 func (c *realityVerifier) VerifyPeerCertificate(rawCerts [][]byte, verifiedChains [][]*x509.Certificate) error {
+	if c.logger != nil && c.HandshakeState.ServerHello != nil && c.HandshakeState.ServerHello.ServerShare.Group != 0 {
+		c.logger.Trace("REALITY: is using X25519MLKEM768 for TLS communication: ", c.HandshakeState.ServerHello.ServerShare.Group == utls.X25519MLKEM768)
+		c.logger.Trace("REALITY: is using ML-DSA-65 for cert's extra verification: ", len(c.mldsa65Verify) > 0)
+	}
+	if debug.Enabled && c.HandshakeState.ServerHello != nil && c.HandshakeState.ServerHello.ServerShare.Group != 0 {
+		fmt.Printf("REALITY: is using X25519MLKEM768 for TLS communication: %v\n", c.HandshakeState.ServerHello.ServerShare.Group == utls.X25519MLKEM768)
+		fmt.Printf("REALITY: is using ML-DSA-65 for cert's extra verification: %v\n", len(c.mldsa65Verify) > 0)
+	}
 	p, _ := reflect.TypeFor[utls.Conn]().FieldByName("peerCertificates")
 	certs := *(*([]*x509.Certificate))(unsafe.Add(unsafe.Pointer(c.Conn), p.Offset))
 	if pub, ok := certs[0].PublicKey.(ed25519.PublicKey); ok {
 		h := hmac.New(sha512.New, c.authKey)
 		h.Write(pub)
 		if bytes.Equal(h.Sum(nil), certs[0].Signature) {
-			c.verified = true
-			return nil
+			if len(c.mldsa65Verify) > 0 {
+				if c.logger != nil {
+					c.logger.Trace("REALITY: verifying certificate with ML-DSA-65")
+				}
+				if debug.Enabled {
+					fmt.Printf("REALITY: verifying certificate with ML-DSA-65\n")
+				}
+				if len(certs[0].Extensions) > 0 {
+					h.Write(c.HandshakeState.Hello.Raw)
+					h.Write(c.HandshakeState.ServerHello.Raw)
+					verify, err := mldsa65.Scheme().UnmarshalBinaryPublicKey(c.mldsa65Verify)
+					if err != nil {
+						if c.logger != nil {
+							c.logger.Trace("REALITY: failed to unmarshal ML-DSA-65 public key")
+						}
+						return E.Cause(err, "unmarshal ML-DSA-65 public key")
+					}
+					if mldsa65.Verify(verify.(*mldsa65.PublicKey), h.Sum(nil), nil, certs[0].Extensions[0].Value) {
+						if c.logger != nil {
+							c.logger.Trace("REALITY: ML-DSA-65 verification succeeded")
+						}
+						if debug.Enabled {
+							fmt.Printf("REALITY: ML-DSA-65 verification succeeded\n")
+						}
+						c.verified = true
+						return nil
+					} else {
+						if c.logger != nil {
+							c.logger.Trace("REALITY: ML-DSA-65 verification failed")
+						}
+					}
+				} else {
+					if c.logger != nil {
+						c.logger.Trace("REALITY: certificate has no extensions for ML-DSA-65 signature")
+					}
+				}
+			} else {
+				c.verified = true
+				return nil
+			}
 		}
 	}
 	opts := x509.VerifyOptions{

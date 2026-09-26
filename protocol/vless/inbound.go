@@ -58,6 +58,16 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 	if err != nil {
 		return nil, err
 	}
+	for _, user := range options.Users {
+		if user.Flow != "" {
+			if user.Flow != vless.FlowVision {
+				return nil, E.New("unknown flow: ", user.Flow)
+			}
+			if options.TLS == nil || !options.TLS.Enabled {
+				return nil, E.New("TLS is required by flow ", user.Flow)
+			}
+		}
+	}
 	service := vless.NewService[int](logger, adapter.NewUpstreamContextHandler(inbound.newConnectionEx, inbound.newPacketConnectionEx))
 	service.UpdateUsers(common.MapIndexed(inbound.users, func(index int, _ option.VLESSUser) int {
 		return index
