@@ -1,14 +1,10 @@
 # 出站
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 outbounds:
   - type: ""
     tag: ""
 ```
-
-### 字段
 
 | 类型             | 格式                             |
 |----------------|--------------------------------|
@@ -35,12 +31,12 @@ outbounds:
 | `urltest`      | [URLTest](./urltest/)           |
 | `naive`        | [NaiveProxy](./naive/)          |
 
-#### tag
+## tag
 
 出站的标签。
 
-### 特性
+## 特性
 
-#### 支持 IP 连接的出站
+### 支持 IP 连接的出站
 
 * `WireGuard`

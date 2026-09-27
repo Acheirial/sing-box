@@ -1,6 +1,6 @@
-### 结构
+# Shadowsocks
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowsocks
 tag: ss-in
 
@@ -12,9 +12,9 @@ managed: false
 multiplex: {}
 ```
 
-### 多用户结构
+## 多用户结构
 
-```yaml
+```{.yaml linenums="1"}
 method: 2022-blake3-aes-128-gcm
 password: 8JCsPssfgS8tiRwiMlhARg==
 users:
@@ -23,9 +23,9 @@ users:
 multiplex: {}
 ```
 
-### 中转结构
+## 中转结构
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowsocks
 method: 2022-blake3-aes-128-gcm
 password: 8JCsPssfgS8tiRwiMlhARg==
@@ -37,21 +37,19 @@ destinations:
 multiplex: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
-
-#### network
+## network
 
 监听的网络协议，`tcp` `udp` 之一。
 
 默认所有。
 
-#### method
+## method
 
-==必填==
+**必填。**
 
 | 方法                            | 密钥长度 |
 |-------------------------------|------|
@@ -65,9 +63,9 @@ multiplex: {}
 | chacha20-ietf-poly1305        | /    |
 | xchacha20-ietf-poly1305       | /    |
 
-#### password
+## password
 
-==必填==
+**必填。**
 
 | 方法            | 密码格式                                     |
 |---------------|------------------------------------------|
@@ -75,10 +73,10 @@ multiplex: {}
 | 2022 methods  | `sing-box generate rand --base64 <密钥长度>` |
 | other methods | 任意字符串                                    |
 
-#### managed
+## managed
 
 默认为 `false`。当该入站需要由 [SSM API](/zh/configuration/service/ssm-api) 管理用户时必须启用此字段。
 
-#### multiplex
+## multiplex
 
 参阅 [多路复用](/zh/configuration/shared/multiplex#入站)。

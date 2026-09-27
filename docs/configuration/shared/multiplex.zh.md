@@ -1,14 +1,16 @@
-### 入站
+# 多路复用
 
-```yaml
+## 入站
+
+```{.yaml linenums="1"}
 enabled: true
 padding: false
 brutal: {}
 ```
 
-### 出站
+## 出站
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 protocol: smux
 max_connections: 4
@@ -18,27 +20,27 @@ padding: false
 brutal: {}
 ```
 
-### 入站字段
+## 入站字段
 
-#### enabled
+### enabled
 
 启用多路复用支持。
 
-#### padding
+### padding
 
 如果启用，将拒绝非填充连接。
 
-#### brutal
+### brutal
 
 参阅 [TCP Brutal](/zh/configuration/shared/tcp-brutal/)。
 
-### 出站字段
+## 出站字段
 
-#### enabled
+### enabled
 
 启用多路复用。
 
-#### protocol
+### protocol
 
 多路复用协议
 
@@ -50,25 +52,25 @@ brutal: {}
 
 默认使用 h2mux。
 
-#### max_connections
+### max_connections
 
 最大连接数量。
 
 与 `max_streams` 冲突。
 
-#### min_streams
+### min_streams
 
 在打开新连接之前，连接中的最小多路复用流数量。
 
 与 `max_streams` 冲突。
 
-#### max_streams
+### max_streams
 
 在打开新连接之前，连接中的最大多路复用流数量。
 
 与 `max_connections` 和 `min_streams` 冲突。
 
-#### padding
+### padding
 
 !!! info
 
@@ -76,6 +78,6 @@ brutal: {}
 
 启用填充。
 
-#### brutal
+### brutal
 
 参阅 [TCP Brutal](/zh/configuration/shared/tcp-brutal/)。

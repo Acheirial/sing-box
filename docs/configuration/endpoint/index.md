@@ -1,18 +1,14 @@
-!!! question "Since sing-box 1.11.0"
-
 # Endpoint
+
+!!! question "Since sing-box 1.11.0"
 
 An endpoint is a protocol with inbound and outbound behavior.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 endpoints:
   - type: ""
     tag: ""
 ```
-
-### Fields
 
 | Type             | Format                                  |
 |------------------|-----------------------------------------|
@@ -22,6 +18,6 @@ endpoints:
 | `openvpn-client` | [OpenVPN Client](./openvpn-client/)     |
 | `openvpn-server` | [OpenVPN Server](./openvpn-server/)     |
 
-#### tag
+## tag
 
 The tag of the endpoint.

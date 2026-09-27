@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# TLS
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [certificate_provider](#certificate_provider)  
@@ -37,9 +39,9 @@ icon: material/new-box
 
     :material-alert-decagram: [utls](#utls)
 
-### 入站
+## 入站
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 server_name: ""
 alpn: []
@@ -98,9 +100,9 @@ reality:
   max_time_difference: 1m
 ```
 
-### 出站
+## 出站
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 engine: ""
 disable_sni: false
@@ -176,19 +178,16 @@ TLS 版本值：
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-### 字段
 
-#### enabled
+## enabled
 
 启用 TLS
 
-#### engine
+## engine
 
 !!! question "自 sing-box 1.14.0 起"
 
-==仅客户端==
-
-要使用的 TLS 引擎。
+**仅客户端。**要使用的 TLS 引擎。
 
 可用值：
 
@@ -252,25 +251,21 @@ TLS 版本值：
 * `utls`
 * `reality`
 
-#### disable_sni
+## disable_sni
 
-==仅客户端==
+**仅客户端。**不要在 ClientHello 中发送服务器名称.
 
-不要在 ClientHello 中发送服务器名称.
-
-#### server_name
+## server_name
 
 用于验证返回证书上的主机名，除非设置不安全。
 
 它还包含在 ClientHello 中以支持虚拟主机，除非它是 IP 地址。
 
-#### insecure
+## insecure
 
-==仅客户端==
+**仅客户端。**接受任何服务器证书。
 
-接受任何服务器证书。
-
-#### alpn
+## alpn
 
 支持的应用层协议协商列表，按优先顺序排列。
 
@@ -278,25 +273,25 @@ TLS 版本值：
 
 参阅 [Application-Layer Protocol Negotiation](https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation)。
 
-#### min_version
+## min_version
 
 可接受的最低 TLS 版本。
 
 默认使用 TLS 1.2。
 
-#### max_version
+## max_version
 
 可接受的最大 TLS 版本。
 
 默认情况下，当前最高版本为 TLS 1.3。
 
-#### cipher_suites
+## cipher_suites
 
 启用的 TLS 1.0–1.2 密码套件列表。列表的顺序被忽略。请注意，TLS 1.3 的密码套件是不可配置的。
 
 如果为空，则使用安全的默认列表。默认密码套件可能会随着时间的推移而改变。
 
-#### curve_preferences
+## curve_preferences
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -310,11 +305,11 @@ TLS 版本值：
 * `X25519`
 * `X25519MLKEM768`
 
-#### certificate
+## certificate
 
 服务器证书链行数组，PEM 格式。
 
-#### certificate_path
+## certificate_path
 
 !!! note ""
 
@@ -322,59 +317,52 @@ TLS 版本值：
 
 服务器证书链路径，PEM 格式。
 
-#### certificate_public_key_sha256
+## certificate_public_key_sha256
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅客户端==
-
-服务器证书公钥的 SHA-256 哈希列表，base64 格式。
+**仅客户端。**服务器证书公钥的 SHA-256 哈希列表，base64 格式。
 
 要生成证书公钥的 SHA-256 哈希，请使用以下命令：
 
 ```bash
+
 # 对于证书文件
+
 openssl x509 -in certificate.pem -pubkey -noout | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64
 
 # 对于远程服务器的证书
+
 echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/null | openssl x509 -pubkey -noout | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64
 ```
 
-#### client_certificate
+## client_certificate
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅客户端==
+**仅客户端。**客户端证书链行数组，PEM 格式。
 
-客户端证书链行数组，PEM 格式。
-
-#### client_certificate_path
+## client_certificate_path
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅客户端==
+**仅客户端。**客户端证书链路径，PEM 格式。
 
-客户端证书链路径，PEM 格式。
-
-#### client_key
+## client_key
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅客户端==
+**仅客户端。**客户端私钥行数组，PEM 格式。
 
-客户端私钥行数组，PEM 格式。
-
-#### client_key_path
+## client_key_path
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅客户端==
+**仅客户端。**客户端私钥路径，PEM 格式。
 
-客户端私钥路径，PEM 格式。
+## key
 
-#### key
-
-==仅服务器==
+**仅服务器。**
 
 !!! note ""
 
@@ -382,9 +370,9 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 服务器 PEM 私钥行数组。
 
-#### key_path
+## key_path
 
-==仅服务器==
+**仅服务器。**
 
 !!! note ""
 
@@ -392,13 +380,11 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 服务器私钥路径，PEM 格式。
 
-#### client_authentication
+## client_authentication
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅服务器==
-
-要使用的客户端身份验证类型。
+**仅服务器。**要使用的客户端身份验证类型。
 
 可用值：
 
@@ -411,19 +397,17 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 如果此选项设置为 `verify-if-given` 或 `require-and-verify`，
 则需要 `client_certificate`、`client_certificate_path` 或 `client_certificate_public_key_sha256` 中的一个。
 
-#### client_certificate
+## client_certificate
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅服务器==
+**仅服务器。**客户端证书链行数组，PEM 格式。
 
-客户端证书链行数组，PEM 格式。
-
-#### client_certificate_path
+## client_certificate_path
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅服务器==
+**仅服务器。**
 
 !!! note ""
 
@@ -431,25 +415,26 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 客户端证书链路径列表，PEM 格式。
 
-#### client_certificate_public_key_sha256
+## client_certificate_public_key_sha256
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅服务器==
-
-客户端证书公钥的 SHA-256 哈希列表，base64 格式。
+**仅服务器。**客户端证书公钥的 SHA-256 哈希列表，base64 格式。
 
 要生成证书公钥的 SHA-256 哈希，请使用以下命令：
 
 ```bash
+
 # 对于证书文件
+
 openssl x509 -in certificate.pem -pubkey -noout | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64
 
 # 对于远程服务器的证书
+
 echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/null | openssl x509 -pubkey -noout | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64
 ```
 
-#### kernel_tx
+## kernel_tx
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -467,7 +452,7 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 启用内核 TLS 发送支持。
 
-#### kernel_rx
+## kernel_rx
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -485,7 +470,7 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 启用内核 TLS 接收支持。
 
-#### handshake_timeout
+## handshake_timeout
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -493,13 +478,11 @@ TLS 握手超时，采用 golang 的 Duration 格式。
 
 默认使用 `15s`。
 
-#### certificate_provider
+## certificate_provider
 
 !!! question "自 sing-box 1.14.0 起"
 
-==仅服务器==
-
-字符串或对象。
+**仅服务器。**字符串或对象。
 
 为字符串时，共享[证书提供者](/zh/configuration/shared/certificate-provider/)的标签。
 
@@ -511,9 +494,9 @@ TLS 握手超时，采用 golang 的 Duration 格式。
 
     只有 ECH 在 QUIC 中被支持.
 
-#### utls
+### utls
 
-==仅客户端==
+**仅客户端。**
 
 !!! failure "不推荐"
 
@@ -553,13 +536,13 @@ uTLS 是 "crypto/tls" 的一个分支，它提供了 ClientHello 指纹识别阻
 
 默认使用 chrome 指纹。
 
-### ECH 字段
+## ECH 字段
 
 ECH (Encrypted Client Hello) 是一个 TLS 扩展，它允许客户端加密其 ClientHello 的第一部分信息。
 
 ECH 密钥和配置可以通过 `sing-box generate ech-keypair` 生成。
 
-#### pq_signature_schemes_enabled
+### pq_signature_schemes_enabled
 
 !!! failure "已在 sing-box 1.12.0 废弃"
 
@@ -567,7 +550,7 @@ ECH 密钥和配置可以通过 `sing-box generate ech-keypair` 生成。
 
 启用对后量子对等证书签名方案的支持。
 
-#### dynamic_record_sizing_disabled
+### dynamic_record_sizing_disabled
 
 !!! failure "已在 sing-box 1.12.0 废弃"
 
@@ -578,15 +561,13 @@ ECH 密钥和配置可以通过 `sing-box generate ech-keypair` 生成。
 当为 true 时，总是使用最大可能的 TLS 记录大小。
 当为 false 时，可能会调整 TLS 记录的大小以尝试改善延迟。
 
-#### key
+### key
 
-==仅服务器==
+**仅服务器。**ECH 密钥行数组，PEM 格式。
 
-ECH 密钥行数组，PEM 格式。
+### key_path
 
-#### key_path
-
-==仅服务器==
+**仅服务器。**
 
 !!! note ""
 
@@ -594,39 +575,31 @@ ECH 密钥行数组，PEM 格式。
 
 ECH 密钥路径，PEM 格式。
 
-#### config
+### config
 
-==仅客户端==
-
-ECH 配置行数组，PEM 格式。
+**仅客户端。**ECH 配置行数组，PEM 格式。
 
 如果为空，将尝试从 DNS 加载。
 
-#### config_path
+### config_path
 
-==仅客户端==
-
-ECH 配置路径，PEM 格式。
+**仅客户端。**ECH 配置路径，PEM 格式。
 
 如果为空，将尝试从 DNS 加载。
 
-#### query_server_name
+### query_server_name
 
 !!! question "自 sing-box 1.13.0 起"
 
-==仅客户端==
-
-覆盖用于 ECH HTTPS 记录查询的域名。
+**仅客户端。**覆盖用于 ECH HTTPS 记录查询的域名。
 
 如果为空，使用 `server_name` 查询。
 
-#### fragment
+### fragment
 
 !!! question "自 sing-box 1.12.0 起"
 
-==仅客户端==
-
-通过分段 TLS 握手数据包来绕过防火墙。
+**仅客户端。**通过分段 TLS 握手数据包来绕过防火墙。
 
 此功能旨在规避基于**明文数据包匹配**的简单防火墙，不应该用于规避真正的审查。
 
@@ -639,29 +612,25 @@ ECH 配置路径，PEM 格式。
 此外，如果实际等待时间少于 20ms，也会回退到等待固定时间，
 因为目标被认为是本地的或在透明代理后面。
 
-#### fragment_fallback_delay
+### fragment_fallback_delay
 
 !!! question "自 sing-box 1.12.0 起"
 
-==仅客户端==
-
-当 TLS 分段无法自动确定等待时间时使用的回退值。
+**仅客户端。**当 TLS 分段无法自动确定等待时间时使用的回退值。
 
 默认使用 `500ms`。
 
-#### record_fragment
+### record_fragment
 
 !!! question "自 sing-box 1.12.0 起"
 
-==仅客户端==
+**仅客户端。**将 TLS 握手分段为多个 TLS 记录以绕过防火墙。
 
-将 TLS 握手分段为多个 TLS 记录以绕过防火墙。
-
-#### spoof
+### spoof
 
 !!! question "自 sing-box 1.14.0 起"
 
-==仅客户端==
+**仅客户端。**
 
 !!! quote ""
 
@@ -679,13 +648,11 @@ ECH 配置路径，PEM 格式。
 Windows 上首次使用时需要 Administrator 以安装内嵌的 WinDivert 内核驱动，
 不支持 Windows ARM64。
 
-#### spoof_method
+### spoof_method
 
 !!! question "自 sing-box 1.14.0 起"
 
-==仅客户端==
-
-控制伪造报文被真实服务器拒绝的方式。
+**仅客户端。**控制伪造报文被真实服务器拒绝的方式。
 
 | 取值                     | 行为                                                              |
 |--------------------------|-------------------------------------------------------------------|
@@ -695,33 +662,33 @@ Windows 上首次使用时需要 Administrator 以安装内嵌的 WinDivert 内�
 | `wrong-md5`              | 伪造报文携带 TCP-MD5 签名选项，未协商 MD5 密钥的服务器将拒绝。    |
 | `wrong-timestamp`        | 伪造报文携带回退的 TCP 时间戳，服务器按 PAWS 规则视为重放并拒绝。仅支持 Linux/Windows，不支持 macOS。 |
 
-### ACME 字段
+## ACME 字段
 
 !!! failure "已在 sing-box 1.14.0 废弃"
 
     内联 ACME 选项已在 sing-box 1.14.0 废弃且将在 sing-box 1.16.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移内联-acme-到证书提供者)。
 
-#### domain
+### domain
 
 域名列表。
 
 如果为空则禁用 ACME。
 
-#### data_directory
+### data_directory
 
 ACME 数据存储目录。
 
 如果为空则使用 `$XDG_DATA_HOME/certmagic|$HOME/.local/share/certmagic`。
 
-#### default_server_name
+### default_server_name
 
 如果 ClientHello 的 ServerName 字段为空，则选择证书时要使用的服务器名称。
 
-#### email
+### email
 
 创建或选择现有 ACME 服务器帐户时使用的电子邮件地址。
 
-#### provider
+### provider
 
 要使用的 ACME CA 供应商。
 
@@ -731,23 +698,23 @@ ACME 数据存储目录。
 | `zerossl`          | ZeroSSL       |
 | `https://...`      | 自定义           |
 
-#### disable_http_challenge
+### disable_http_challenge
 
 禁用所有 HTTP 质询。
 
-#### disable_tls_alpn_challenge
+### disable_tls_alpn_challenge
 
 禁用所有 TLS-ALPN 质询。
 
-#### alternative_http_port
+### alternative_http_port
 
 用于 ACME HTTP 质询的备用端口；如果非空，将使用此端口而不是 80 来启动 HTTP 质询的侦听器。
 
-#### alternative_tls_port
+### alternative_tls_port
 
 用于 ACME TLS-ALPN 质询的备用端口； 系统必须将 443 转发到此端口以使质询成功。
 
-#### external_account
+### external_account
 
 EAB（外部帐户绑定）包含将 ACME 帐户绑定或映射到 CA 已知的其他帐户所需的信息。
 
@@ -755,64 +722,52 @@ EAB（外部帐户绑定）包含将 ACME 帐户绑定或映射到 CA 已知的�
 
 为了启用 ACME 帐户绑定，运行 ACME 服务器的 CA 需要使用 ACME 之外的某种机制向 ACME 客户端提供 MAC 密钥和密钥标识符。§7.3.4
 
-#### external_account.key_id
+### external_account.key_id
 
 密钥标识符。
 
-#### external_account.mac_key
+### external_account.mac_key
 
 MAC 密钥。
 
-#### dns01_challenge
+### dns01_challenge
 
 ACME DNS01 验证字段。如果配置，将禁用其他验证方法。
 
 参阅 [DNS01 验证字段](/zh/configuration/shared/dns01_challenge/)。
 
-### Reality 字段
+## Reality 字段
 
-#### handshake
+### handshake
 
-==仅服务器==
+**仅服务器。**
 
-==必填==
+**必填。**握手服务器地址和 [拨号参数](/zh/configuration/shared/dial/)。
 
-握手服务器地址和 [拨号参数](/zh/configuration/shared/dial/)。
+### private_key
 
-#### private_key
+**仅服务器。**
 
-==仅服务器==
+**必填。**私钥，由 `sing-box generate reality-keypair` 生成。
 
-==必填==
+### public_key
 
-私钥，由 `sing-box generate reality-keypair` 生成。
+**仅客户端。**
 
-#### public_key
+**必填。**公钥，由 `sing-box generate reality-keypair` 生成。
 
-==仅客户端==
+### short_id
 
-==必填==
+**必填。**一个零到八位的十六进制字符串。
 
-公钥，由 `sing-box generate reality-keypair` 生成。
+### max_time_difference
 
-#### short_id
-
-==必填==
-
-一个零到八位的十六进制字符串。
-
-#### max_time_difference
-
-==仅服务器==
-
-服务器和客户端之间的最大时间差。
+**仅服务器。**服务器和客户端之间的最大时间差。
 
 如果为空则禁用检查。
 
-#### mldsa65_verify
+### mldsa65_verify
 
 !!! question "自 sing-box 1.14.0 起"
 
-==仅客户端==
-
-Base64 格式的 1952 字节 ML-DSA-65 公钥，用于验证证书第一个扩展中的额外后量子签名。
+**仅客户端。**Base64 格式的 1952 字节 ML-DSA-65 公钥，用于验证证书第一个扩展中的额外后量子签名。

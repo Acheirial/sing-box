@@ -1,6 +1,6 @@
-### 结构
+# Shadowsocks
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowsocks
 tag: ss-out
 
@@ -15,27 +15,20 @@ udp_over_tcp: false  # or {}
 multiplex: {}
 
 # ... 拨号字段
+
 ```
 
-### 字段
+## server
 
-#### server
+**必填。**服务器地址。
 
-==必填==
+## server_port
 
-服务器地址。
+**必填。**服务器端口。
 
-#### server_port
+## method
 
-==必填==
-
-服务器端口。
-
-#### method
-
-==必填==
-
-加密方法：
+**必填。**加密方法：
 
 * `2022-blake3-aes-128-gcm`
 * `2022-blake3-aes-256-gcm`
@@ -59,23 +52,21 @@ multiplex: {}
 * `chacha20-ietf`
 * `xchacha20`
 
-#### password
+## password
 
-==必填==
+**必填。**Shadowsocks 密码。
 
-Shadowsocks 密码。
-
-#### plugin
+## plugin
 
 Shadowsocks SIP003 插件，由内部实现。
 
 仅支持 `obfs-local` 和 `v2ray-plugin`。
 
-#### plugin_opts
+## plugin_opts
 
 Shadowsocks SIP003 插件参数。
 
-#### network
+## network
 
 启用的网络协议
 
@@ -83,7 +74,7 @@ Shadowsocks SIP003 插件参数。
 
 默认所有。
 
-#### udp_over_tcp
+## udp_over_tcp
 
 UDP over TCP 配置。
 
@@ -91,10 +82,10 @@ UDP over TCP 配置。
 
 与 `multiplex` 冲突。
 
-#### multiplex
+## multiplex
 
 参阅 [多路复用](/zh/configuration/shared/multiplex#出站)。
 
-### 拨号字段
+## 拨号字段
 
 参阅 [拨号字段](/zh/configuration/shared/dial/)。

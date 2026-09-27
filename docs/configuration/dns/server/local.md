@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Local
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [neighbor_domain](#neighbor_domain)
@@ -12,11 +14,7 @@ icon: material/new-box
 
 !!! question "Since sing-box 1.12.0"
 
-# Local
-
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: local
@@ -32,9 +30,7 @@ dns:
     * The old legacy local server only handles IP requests; the new one handles all types of requests and supports concurrent for IP requests.
     * The old local server uses default outbound by default unless detour is specified; the new one uses dialer just like outbound, which is equivalent to using an empty direct outbound by default.
 
-### Fields
-
-#### prefer_go
+## prefer_go
 
 !!! question "Since sing-box 1.13.0"
 
@@ -55,7 +51,7 @@ On devices running Android versions lower than 10, this interface can only resol
 2. On macOS, `local` will try DHCP first in Network Extension, since DHCP respects DIal Fields,
 it will not be disabled by `prefer_go`.
 
-#### neighbor_domain
+## neighbor_domain
 
 !!! question "Since sing-box 1.14.0"
 
@@ -68,6 +64,6 @@ single-label name such as `nas`.
 
 Example: `[".", ".lan"]`.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

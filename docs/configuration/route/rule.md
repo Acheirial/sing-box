@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Route Rule
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [source_mac_address](#source_mac_address)  
@@ -41,9 +43,7 @@ icon: material/new-box
     :material-delete-clock: [geoip](#geoip)  
     :material-delete-clock: [geosite](#geosite)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 route:
   rules:
     - inbound:
@@ -157,7 +157,7 @@ route:
 
     You can use a single value instead of an array when the content is only one item
 
-### Default Fields
+## Default Fields
 
 !!! note ""
 
@@ -170,31 +170,31 @@ route:
 
     When a rule-set contains only a single default rule without `invert`, its fields are considered merged into the outer rule per the logic above; otherwise, it is matched as an `other field`; different rule-sets always keep OR semantics.
 
-#### inbound
+### inbound
 
 Tags of [Inbound](/configuration/inbound/).
 
-#### ip_version
+### ip_version
 
 4 or 6.
 
 Not limited if empty.
 
-#### auth_user
+### auth_user
 
 Username, see each inbound for details.
 
-#### protocol
+### protocol
 
 Sniffed protocol, see [Protocol Sniff](/configuration/route/sniff/) for details.
 
-#### client
+### client
 
 !!! question "Since sing-box 1.10.0"
 
 Sniffed client type, see [Protocol Sniff](/configuration/route/sniff/) for details.
 
-#### network
+### network
 
 !!! quote "Changes in sing-box 1.13.0"
 
@@ -206,23 +206,23 @@ Match network type.
 
 `tcp`, `udp` or `icmp`.
 
-#### domain
+### domain
 
 Match full domain.
 
-#### domain_suffix
+### domain_suffix
 
 Match domain suffix.
 
-#### domain_keyword
+### domain_keyword
 
 Match domain using keyword.
 
-#### domain_regex
+### domain_regex
 
 Match domain using regular expression.
 
-#### geosite
+### geosite
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -230,7 +230,7 @@ Match domain using regular expression.
 
 Match geosite.
 
-#### source_geoip
+### source_geoip
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -238,7 +238,7 @@ Match geosite.
 
 Match source geoip.
 
-#### geoip
+### geoip
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -246,43 +246,43 @@ Match source geoip.
 
 Match geoip.
 
-#### source_ip_cidr
+### source_ip_cidr
 
 Match source IP CIDR.
 
-#### ip_is_private
+### ip_is_private
 
 !!! question "Since sing-box 1.8.0"
 
 Match non-public IP.
 
-#### ip_cidr
+### ip_cidr
 
 Match IP CIDR.
 
-#### source_ip_is_private
+### source_ip_is_private
 
 !!! question "Since sing-box 1.8.0"
 
 Match non-public source IP.
 
-#### source_port
+### source_port
 
 Match source port.
 
-#### source_port_range
+### source_port_range
 
 Match source port range.
 
-#### port
+### port
 
 Match port.
 
-#### port_range
+### port_range
 
 Match port range.
 
-#### process_name
+### process_name
 
 !!! quote ""
 
@@ -290,7 +290,7 @@ Match port range.
 
 Match process name.
 
-#### process_path
+### process_path
 
 !!! quote ""
 
@@ -298,7 +298,7 @@ Match process name.
 
 Match process path.
 
-#### process_path_regex
+### process_path_regex
 
 !!! question "Since sing-box 1.10.0"
 
@@ -308,17 +308,17 @@ Match process path.
 
 Match process path using regular expression.
 
-#### package_name
+### package_name
 
 Match android package name.
 
-#### package_name_regex
+### package_name_regex
 
 !!! question "Since sing-box 1.14.0"
 
 Match android package name using regular expression.
 
-#### user
+### user
 
 !!! quote ""
 
@@ -326,7 +326,7 @@ Match android package name using regular expression.
 
 Match user name.
 
-#### user_id
+### user_id
 
 !!! quote ""
 
@@ -334,11 +334,11 @@ Match user name.
 
 Match user id.
 
-#### clash_mode
+### clash_mode
 
 Match Clash mode.
 
-#### network_type
+### network_type
 
 !!! question "Since sing-box 1.11.0"
 
@@ -350,7 +350,7 @@ Match network type.
 
 Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
-#### network_is_expensive
+### network_is_expensive
 
 !!! question "Since sing-box 1.11.0"
 
@@ -361,7 +361,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 Match if network is considered Metered (on Android) or considered expensive,
 such as Cellular or a Personal Hotspot (on Apple platforms).
 
-#### network_is_constrained
+### network_is_constrained
 
 !!! question "Since sing-box 1.11.0"
 
@@ -371,7 +371,7 @@ such as Cellular or a Personal Hotspot (on Apple platforms).
 
 Match if network is in Low Data Mode.
 
-#### interface_address
+### interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -381,7 +381,7 @@ Match if network is in Low Data Mode.
 
 Match interface address.
 
-#### network_interface_address
+### network_interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -391,7 +391,7 @@ Match interface address.
 
 Matches network interface (same values as `network_type`) address.
 
-#### default_interface_address
+### default_interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -401,19 +401,19 @@ Matches network interface (same values as `network_type`) address.
 
 Match default interface address.
 
-#### wifi_ssid
+### wifi_ssid
 
 Match WiFi SSID.
 
 See [Wi-Fi State](/configuration/shared/wifi-state/) for details.
 
-#### wifi_bssid
+### wifi_bssid
 
 Match WiFi BSSID.
 
 See [Wi-Fi State](/configuration/shared/wifi-state/) for details.
 
-#### preferred_by
+### preferred_by
 
 !!! question "Since sing-box 1.13.0"
 
@@ -425,7 +425,7 @@ Match specified outbounds' preferred routes.
 | `wireguard` | Match peers's allowed IPs                          |
 | `bridge`    | Match all addresses except local addresses of the machine, only in [pre-match](/configuration/shared/pre-match/) |
 
-#### source_mac_address
+### source_mac_address
 
 !!! question "Since sing-box 1.14.0"
 
@@ -435,7 +435,7 @@ Match specified outbounds' preferred routes.
 
 Match source device MAC address.
 
-#### source_hostname
+### source_hostname
 
 !!! question "Since sing-box 1.14.0"
 
@@ -445,13 +445,13 @@ Match source device MAC address.
 
 Match source device hostname from DHCP leases.
 
-#### rule_set
+### rule_set
 
 !!! question "Since sing-box 1.8.0"
 
 Match [rule-set](/configuration/route/#rule_set).
 
-#### rule_set_ipcidr_match_source
+### rule_set_ipcidr_match_source
 
 !!! question "Since sing-box 1.8.0"
 
@@ -461,42 +461,36 @@ Match [rule-set](/configuration/route/#rule_set).
 
 Make `ip_cidr` in rule-sets match the source IP.
 
-#### rule_set_ip_cidr_match_source
+### rule_set_ip_cidr_match_source
 
 !!! question "Since sing-box 1.10.0"
 
 Make `ip_cidr` in rule-sets match the source IP.
 
-#### invert
+### invert
 
 Invert match result.
 
-#### action
+### action
 
-==Required==
+**Required.** See [Rule Actions](../rule_action/) for details.
 
-See [Rule Actions](../rule_action/) for details.
-
-#### outbound
+### outbound
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
     Moved to [Rule Action](../rule_action#route).
 
-### Logical Fields
+## Logical Fields
 
-#### type
+### type
 
 `logical`
 
-#### mode
+### mode
 
-==Required==
+**Required.** `and` or `or`
 
-`and` or `or`
+### rules
 
-#### rules
-
-==Required==
-
-Included rules.
+**Required.** Included rules.

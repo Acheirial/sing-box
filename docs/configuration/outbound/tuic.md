@@ -1,6 +1,6 @@
-### Structure
+# TUIC
 
-```yaml
+```{.yaml linenums="1"}
 type: tuic
 tag: tuic-out
 
@@ -19,33 +19,26 @@ tls: {}
 # ... QUIC Fields
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
+## uuid
 
-==Required==
+**Required.** TUIC user uuid
 
-The server port.
-
-#### uuid
-
-==Required==
-
-TUIC user uuid
-
-#### password
+## password
 
 TUIC user password
 
-#### congestion_control
+## congestion_control
 
 QUIC congestion control algorithm
 
@@ -53,7 +46,7 @@ One of: `cubic`, `new_reno`, `bbr`
 
 `cubic` is used by default.
 
-#### udp_relay_mode
+## udp_relay_mode
 
 UDP packet relay mode
 
@@ -66,7 +59,7 @@ UDP packet relay mode
 
 Conflict with `udp_over_stream`.
 
-#### udp_over_stream
+## udp_over_stream
 
 This is the TUIC port of the [UDP over TCP protocol](/configuration/shared/udp-over-tcp/), designed to provide a QUIC
 stream based UDP relay mode that TUIC does not provide. Since it is an add-on protocol, you will need to use sing-box or
@@ -77,7 +70,7 @@ traffic (basically QUIC streams).
 
 Conflict with `udp_relay_mode`.
 
-#### network
+## network
 
 Enabled network
 
@@ -85,16 +78,14 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### tls
+## tls
 
-==Required==
+**Required.** TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
-
-### QUIC Fields
+## QUIC Fields
 
 See [QUIC Fields](/configuration/shared/quic/) for details.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

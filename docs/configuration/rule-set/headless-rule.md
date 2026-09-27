@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Headless Rule
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [package_name_regex](#package_name_regex)  
@@ -18,11 +20,9 @@ icon: material/new-box
     :material-plus: [network_is_expensive](#network_is_expensive)  
     :material-plus: [network_is_constrained](#network_is_constrained)
 
-### Structure
-
 !!! question "Since sing-box 1.8.0"
 
-```yaml
+```{.yaml linenums="1"}
 rules:
   - query_type:
       - A
@@ -91,7 +91,7 @@ rules:
 
     You can use a single value instead of an array when the content is only one item
 
-### Default Fields
+## Default Fields
 
 !!! note ""
 
@@ -101,7 +101,7 @@ rules:
     (`source_port` || `source_port_range`) &&  
     `other fields`
 
-#### query_type
+### query_type
 
 !!! quote "Changes in sing-box 1.14.0"
 
@@ -119,31 +119,31 @@ rules:
 
 DNS query type. Values can be integers or type name strings.
 
-#### network
+### network
 
 `tcp` or `udp`.
 
-#### domain
+### domain
 
 Match full domain.
 
-#### domain_suffix
+### domain_suffix
 
 Match domain suffix.
 
-#### domain_keyword
+### domain_keyword
 
 Match domain using keyword.
 
-#### domain_regex
+### domain_regex
 
 Match domain using regular expression.
 
-#### source_ip_cidr
+### source_ip_cidr
 
 Match source IP CIDR.
 
-#### ip_cidr
+### ip_cidr
 
 !!! info ""
 
@@ -151,23 +151,23 @@ Match source IP CIDR.
 
 Match IP CIDR.
 
-#### source_port
+### source_port
 
 Match source port.
 
-#### source_port_range
+### source_port_range
 
 Match source port range.
 
-#### port
+### port
 
 Match port.
 
-#### port_range
+### port_range
 
 Match port range.
 
-#### process_name
+### process_name
 
 !!! quote ""
 
@@ -175,7 +175,7 @@ Match port range.
 
 Match process name.
 
-#### process_path
+### process_path
 
 !!! quote ""
 
@@ -183,7 +183,7 @@ Match process name.
 
 Match process path.
 
-#### process_path_regex
+### process_path_regex
 
 !!! question "Since sing-box 1.10.0"
 
@@ -193,17 +193,17 @@ Match process path.
 
 Match process path using regular expression.
 
-#### package_name
+### package_name
 
 Match android package name.
 
-#### package_name_regex
+### package_name_regex
 
 !!! question "Since sing-box 1.14.0"
 
 Match android package name using regular expression.
 
-#### network_type
+### network_type
 
 !!! question "Since sing-box 1.11.0"
 
@@ -215,7 +215,7 @@ Match network type.
 
 Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
-#### network_is_expensive
+### network_is_expensive
 
 !!! question "Since sing-box 1.11.0"
 
@@ -226,7 +226,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 Match if network is considered Metered (on Android) or considered expensive,
 such as Cellular or a Personal Hotspot (on Apple platforms).
 
-#### network_is_constrained
+### network_is_constrained
 
 !!! question "Since sing-box 1.11.0"
 
@@ -236,7 +236,7 @@ such as Cellular or a Personal Hotspot (on Apple platforms).
 
 Match if network is in Low Data Mode.
 
-#### network_interface_address
+### network_interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -246,7 +246,7 @@ Match if network is in Low Data Mode.
 
 Matches network interface (same values as `network_type`) address.
 
-#### default_interface_address
+### default_interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -256,7 +256,7 @@ Matches network interface (same values as `network_type`) address.
 
 Match default interface address.
 
-#### wifi_ssid
+### wifi_ssid
 
 !!! quote ""
 
@@ -264,7 +264,7 @@ Match default interface address.
 
 Match WiFi SSID.
 
-#### wifi_bssid
+### wifi_bssid
 
 !!! quote ""
 
@@ -272,24 +272,20 @@ Match WiFi SSID.
 
 Match WiFi BSSID.
 
-#### invert
+### invert
 
 Invert match result.
 
-### Logical Fields
+## Logical Fields
 
-#### type
+### type
 
 `logical`
 
-#### mode
+### mode
 
-==Required==
+**Required.** `and` or `or`
 
-`and` or `or`
+### rules
 
-#### rules
-
-==Required==
-
-Included rules.
+**Required.** Included rules.

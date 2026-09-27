@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.13.0"
-
 # OCM
+
+!!! question "Since sing-box 1.13.0"
 
 OCM (OpenAI Codex Multiplexer) service is a multiplexing service that allows you to access your local OpenAI Codex subscription remotely through custom tokens.
 
 It handles OAuth authentication with OpenAI's API on your local machine while allowing remote clients to authenticate using custom tokens.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: ocm
 
 # ... Listen Fields
@@ -25,13 +23,11 @@ detour: ""
 tls: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### credential_path
+## credential_path
 
 Path to the OpenAI OAuth credentials file.
 
@@ -41,7 +37,7 @@ If not specified, defaults to:
 
 Refreshed tokens are automatically written back to the same location.
 
-#### usages_path
+## usages_path
 
 Path to the file for storing aggregated API usage statistics.
 
@@ -56,7 +52,7 @@ Statistics are organized by model and optionally by user when authentication is 
 
 The statistics file is automatically saved every minute and upon service shutdown.
 
-#### users
+## users
 
 List of authorized users for token authentication.
 
@@ -64,7 +60,7 @@ If empty, no authentication is required.
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 name: ""
 token: ""
 ```
@@ -74,36 +70,37 @@ Object fields:
 - `name`: Username identifier for tracking purposes.
 - `token`: Bearer token for authentication. Clients authenticate by setting the `Authorization: Bearer <token>` header.
 
-#### headers
+## headers
 
 Custom HTTP headers to send to the OpenAI API.
 
 These headers will override any existing headers with the same name.
 
-#### detour
+## detour
 
 Outbound tag for connecting to the OpenAI API.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-### Example
+## Example
 
-#### Server
+### Server
 
-```yaml
+```{.yaml linenums="1"}
 services:
   - type: ocm
     listen: 127.0.0.1
     listen_port: 8080
 ```
 
-#### Client
+### Client
 
 Add to `~/.codex/config.toml`:
 
 ```toml
+
 # profile = "ocm"                # set as default profile
 
 [model_providers.ocm]
@@ -113,8 +110,11 @@ supports_websockets = true
 
 [profiles.ocm]
 model_provider = "ocm"
+
 # model = "gpt-5.4"              # if the latest model is not yet publicly released
+
 # model_reasoning_effort = "xhigh"
+
 ```
 
 Then run:
@@ -123,11 +123,11 @@ Then run:
 codex --profile ocm
 ```
 
-### Example with Authentication
+## Example with Authentication
 
-#### Server
+### Server
 
-```yaml
+```{.yaml linenums="1"}
 services:
   - type: ocm
     listen: 0.0.0.0
@@ -140,11 +140,12 @@ services:
         token: sk-ocm-hello-bob
 ```
 
-#### Client
+### Client
 
 Add to `~/.codex/config.toml`:
 
 ```toml
+
 # profile = "ocm"                # set as default profile
 
 [model_providers.ocm]
@@ -155,8 +156,11 @@ experimental_bearer_token = "sk-ocm-hello-world"
 
 [profiles.ocm]
 model_provider = "ocm"
+
 # model = "gpt-5.4"              # if the latest model is not yet publicly released
+
 # model_reasoning_effort = "xhigh"
+
 ```
 
 Then run:

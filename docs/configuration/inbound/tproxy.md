@@ -1,3 +1,5 @@
+# TProxy
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [udp_mapping](/configuration/shared/udp-nat/#udp_mapping)  
@@ -8,9 +10,7 @@
 
     Only supported on Linux.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: tproxy
 tag: tproxy-in
 
@@ -19,20 +19,19 @@ tag: tproxy-in
 network: udp
 
 # ... UDP NAT Fields
+
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### network
+## network
 
 Listen network, one of `tcp` `udp`.
 
 Both if empty.
 
-### UDP NAT Fields
+## UDP NAT Fields
 
 See [UDP NAT Fields](/configuration/shared/udp-nat/) for details.

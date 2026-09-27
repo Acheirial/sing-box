@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.12.0 起"
-
 # Resolved
 
-```yaml
+!!! question "自 sing-box 1.12.0 起"
+
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: resolved
@@ -16,15 +16,11 @@ dns:
       accept_default_resolvers: false
 ```
 
-### 字段
+## service
 
-#### service
+**必填。**[Resolved 服务](/zh/configuration/service/resolved) 的标签。
 
-==必填==
-
-[Resolved 服务](/zh/configuration/service/resolved) 的标签。
-
-#### accept_default_resolvers
+## accept_default_resolvers
 
 指示是否除了匹配域名外，还应接受默认 DNS 解析器以进行回退查询。
 
@@ -32,13 +28,13 @@ dns:
 
 如果未启用，对于不匹配搜索域或匹配域的请求，将返回 `NXDOMAIN`。
 
-### 示例
+## 示例
 
 === "仅分割 DNS"
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -54,7 +50,7 @@ dns:
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -69,7 +65,7 @@ dns:
 
 === "用作全局 DNS"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: resolved

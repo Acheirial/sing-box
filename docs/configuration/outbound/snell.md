@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
+# Snell
+
 !!! question "Since sing-box 1.14.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: snell
 tag: snell-out
 
@@ -21,11 +21,12 @@ obfs_mode: ""
 obfs_host: ""
 
 # ... Dial Fields
+
 ```
 
-### Version 6 Structure
+## Version 6 Structure
 
-```yaml
+```{.yaml linenums="1"}
 type: snell
 tag: snell-out
 
@@ -39,27 +40,20 @@ network: tcp
 mode: ""
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
+## version
 
-==Required==
-
-The server port.
-
-#### version
-
-==Required==
-
-The Snell protocol version, one of `4` `6`.
+**Required.** The Snell protocol version, one of `4` `6`.
 
 Version `4` supports HTTP obfuscation (`obfs_mode` / `obfs_host`); version `6`
 replaces it with traffic shaping (`mode`) and requires a `psk` of 12 to 255
@@ -70,21 +64,19 @@ bytes.
     Since we intentionally do not support the QUIC proxy mode of Snell v5, the v5 wire protocol
     is effectively identical to v4, so no separate v4 server or v5 client is provided.
 
-#### psk
+## psk
 
-==Required==
+**Required.** The pre-shared key.
 
-The pre-shared key.
-
-#### userkey
+## userkey
 
 The user key, used to authenticate against a multi-user server.
 
-#### reuse
+## reuse
 
 Enable connection reuse (the Snell v2 `CONNECT` command).
 
-#### network
+## network
 
 Enabled network
 
@@ -92,30 +84,24 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### obfs_mode
+## obfs_mode
 
-==Version 4 only==
-
-HTTP obfuscation mode, one of `none` `http`.
+**Version 4 only.** HTTP obfuscation mode, one of `none` `http`.
 
 `none` is used by default.
 
-#### obfs_host
+## obfs_host
 
-==Version 4 only==
-
-The HTTP `Host` header sent when `obfs_mode` is `http`.
+**Version 4 only.** The HTTP `Host` header sent when `obfs_mode` is `http`.
 
 `bing.com` is used by default.
 
-#### mode
+## mode
 
-==Version 6 only==
-
-Traffic shaping mode, one of `default` `unshaped` `unsafe-raw`.
+**Version 6 only.** Traffic shaping mode, one of `default` `unshaped` `unsafe-raw`.
 
 `default` is used by default.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

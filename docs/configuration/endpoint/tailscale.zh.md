@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Tailscale
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [listen_port](#listen_port)  
@@ -19,9 +21,7 @@ icon: material/new-box
 
 !!! question "自 sing-box 1.12.0 起"
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: tailscale
 tag: ts-ep
 state_directory: ""
@@ -46,11 +46,10 @@ ssh_server: false
 taildrop_directory: ""
 
 # ... 拨号字段
+
 ```
 
-### 字段
-
-#### state_directory
+## state_directory
 
 存储 Tailscale 状态的目录。
 
@@ -58,7 +57,7 @@ taildrop_directory: ""
 
 示例：`$HOME/.tailscale`
 
-#### auth_key
+## auth_key
 
 !!! note
 
@@ -66,17 +65,17 @@ taildrop_directory: ""
 
 用于创建节点的认证密钥。如果节点已经创建（从之前存储的状态），则不使用此字段。
 
-#### control_url
+## control_url
 
 协调服务器 URL。
 
 默认使用 `https://controlplane.tailscale.com`。
 
-#### ephemeral
+## ephemeral
 
 指示实例是否应注册为临时节点 (https://tailscale.com/s/ephemeral-nodes)。
 
-#### hostname
+## hostname
 
 节点的主机名。
 
@@ -88,15 +87,15 @@ taildrop_directory: ""
 
 示例：`localhost`
 
-#### accept_routes
+## accept_routes
 
 指示节点是否应接受其他节点通告的路由。
 
-#### exit_node
+## exit_node
 
 要使用的出口节点名称或 IP 地址。
 
-#### exit_node_allow_lan_access
+## exit_node_allow_lan_access
 
 !!! note
 
@@ -104,17 +103,17 @@ taildrop_directory: ""
 
 指示本地可访问的子网应该直接路由还是通过出口节点路由。
 
-#### advertise_routes
+## advertise_routes
 
 通告到 Tailscale 网络的 CIDR 前缀，作为可通过当前节点访问的路由。
 
 示例：`["192.168.1.1/24"]`
 
-#### advertise_exit_node
+## advertise_exit_node
 
 指示节点是否应将自己通告为出口节点。
 
-#### advertise_tags
+## advertise_tags
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -122,7 +121,7 @@ taildrop_directory: ""
 
 示例：`["tag:server"]`
 
-#### listen_port
+## listen_port
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -130,43 +129,43 @@ taildrop_directory: ""
 
 默认自动选择端口。
 
-#### relay_server_port
+## relay_server_port
 
 !!! question "自 sing-box 1.13.0 起"
 
 监听来自其他 Tailscale 节点的中继连接的端口。
 
-#### relay_server_static_endpoints
+## relay_server_static_endpoints
 
 !!! question "自 sing-box 1.13.0 起"
 
 为中继服务器通告的静态端点。
 
-#### system_interface
+## system_interface
 
 !!! question "自 sing-box 1.13.0 起"
 
 为 Tailscale 创建系统 TUN 接口。
 
-#### system_interface_name
+## system_interface_name
 
 !!! question "自 sing-box 1.13.0 起"
 
 自定义 TUN 接口名。默认使用 `tailscale`（macOS 上为 `utun`）。
 
-#### system_interface_mtu
+## system_interface_mtu
 
 !!! question "自 sing-box 1.13.0 起"
 
 覆盖 TUN 的 MTU。默认使用 Tailscale 自己的 MTU。
 
-#### udp_timeout
+## udp_timeout
 
 UDP NAT 过期时间。
 
 默认使用 `5m`。
 
-#### ssh_server
+## ssh_server
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -183,7 +182,7 @@ UDP NAT 过期时间。
 
 对象格式：
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 disable_pty: false
 disable_sftp: false
@@ -192,23 +191,23 @@ disable_forwarding: false
 
 将 `ssh_server` 值设置为 `true` 等同于 `{ "enabled": true }`。
 
-#### ssh_server.enabled
+## ssh_server.enabled
 
 启用 SSH 服务器。
 
-#### ssh_server.disable_pty
+## ssh_server.disable_pty
 
 拒绝 PTY 分配请求。
 
-#### ssh_server.disable_sftp
+## ssh_server.disable_sftp
 
 拒绝 SFTP 子系统。
 
-#### ssh_server.disable_forwarding
+## ssh_server.disable_forwarding
 
 拒绝本地和远程的 TCP 与 Unix 套接字转发，包括 SSH agent 转发。
 
-#### taildrop_directory
+## taildrop_directory
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -218,7 +217,7 @@ disable_forwarding: false
 
 默认使用 `Taildrop`。
 
-### 拨号字段
+## 拨号字段
 
 !!! note
 
@@ -226,6 +225,6 @@ disable_forwarding: false
 
 参阅 [拨号字段](/zh/configuration/shared/dial/) 了解详情。
 
-### 交互式认证
+## 交互式认证
 
 在 sing-box dashboard 或任意 sing-box 图形客户端的 `工具` > `端点` 中认证和管理 endpoint。

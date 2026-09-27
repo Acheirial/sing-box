@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.12.0"
-
 # SSM API
+
+!!! question "Since sing-box 1.12.0"
 
 SSM API service is a RESTful API server for managing Shadowsocks servers.
 
 See https://github.com/Shadowsocks-NET/shadowsocks-specs/blob/main/2023-1-shadowsocks-server-management-api-v1.md
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: ssm-api
 
 # ... Listen Fields
@@ -22,32 +20,28 @@ cache_path: ""
 tls: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
+## servers
 
-#### servers
-
-==Required==
-
-A mapping Object from HTTP endpoints to [Shadowsocks Inbound](/configuration/inbound/shadowsocks) tags.
+**Required.** A mapping Object from HTTP endpoints to [Shadowsocks Inbound](/configuration/inbound/shadowsocks) tags.
 
 Selected Shadowsocks inbounds must be configured with [managed](/configuration/inbound/shadowsocks#managed) enabled.
 
 Example:
 
-```yaml
+```{.yaml linenums="1"}
 servers:
   /: ss-in
 ```
 
-#### cache_path
+## cache_path
 
 If set, when the server is about to stop, traffic and user state will be saved to the specified JSON file
 to be restored on the next startup.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).

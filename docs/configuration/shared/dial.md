@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Dial Fields
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-alert: [domain_resolver](#domain_resolver)  
@@ -27,9 +29,7 @@ icon: material/new-box
     :material-alert: [network_type](#network_type)  
     :material-alert: [fallback_network_type](#fallback_network_type)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 detour: ""
 bind_interface: ""
 inet4_bind_address: ""
@@ -61,27 +61,25 @@ domain_strategy: ""
 
     You can use a single value instead of an array when the content is only one item
 
-### Fields
-
-#### detour
+## detour
 
 The tag of the upstream outbound.
 
 If enabled, all other fields will be ignored.
 
-#### bind_interface
+## bind_interface
 
 The network interface to bind to.
 
-#### inet4_bind_address
+## inet4_bind_address
 
 The IPv4 address to bind to.
 
-#### inet6_bind_address
+## inet6_bind_address
 
 The IPv6 address to bind to.
 
-#### bind_address_no_port
+## bind_address_no_port
 
 !!! question "Since sing-box 1.13.0"
 
@@ -93,7 +91,7 @@ Do not reserve a port when binding to a source address.
 
 This allows reusing the same source port for multiple connections if the full 4-tuple (source IP, source port, destination IP, destination port) remains unique.
 
-#### routing_mark
+## routing_mark
 
 !!! quote ""
 
@@ -103,11 +101,11 @@ Set netfilter routing mark.
 
 Integers (e.g. `1234`) and string hexadecimals (e.g. `"0x1234"`) are supported.
 
-#### reuse_addr
+## reuse_addr
 
 Reuse listener address.
 
-#### netns
+## netns
 
 !!! question "Since sing-box 1.12.0"
 
@@ -120,7 +118,7 @@ Set network namespace, name or path.
 Since sing-box 1.14.0, the tag of a [network namespace](/configuration/network-namespace/) can also be used.
 Referencing an `unshare` network namespace should be avoided, since its only route out is the tun interface managed by sing-box itself.
 
-#### connect_timeout
+## connect_timeout
 
 Connect timeout, in golang's Duration format.
 
@@ -129,11 +127,11 @@ decimal numbers, each with optional fraction and a unit suffix,
 such as "300ms", "-1.5h" or "2h45m".
 Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
 
-#### tcp_fast_open
+## tcp_fast_open
 
 Enable TCP Fast Open.
 
-#### tcp_multi_path
+## tcp_multi_path
 
 !!! warning ""
 
@@ -141,13 +139,13 @@ Enable TCP Fast Open.
 
 Enable TCP Multi Path.
 
-#### disable_tcp_keep_alive
+## disable_tcp_keep_alive
 
 !!! question "Since sing-box 1.13.0"
 
 Disable TCP keep alive.
 
-#### tcp_keep_alive
+## tcp_keep_alive
 
 !!! question "Since sing-box 1.13.0"
 
@@ -157,7 +155,7 @@ TCP keep alive initial period.
 
 `5m` will be used by default.
 
-#### tcp_keep_alive_interval
+## tcp_keep_alive_interval
 
 !!! question "Since sing-box 1.13.0"
 
@@ -165,11 +163,11 @@ TCP keep alive interval.
 
 `75s` will be used by default.
 
-#### udp_fragment
+## udp_fragment
 
 Enable UDP fragmentation.
 
-#### domain_resolver
+## domain_resolver
 
 !!! warning ""
 
@@ -190,7 +188,7 @@ Setting this option directly to a string is equivalent to setting `server` of th
 | `direct`           | Domain in request        | 
 | others             | Domain in server address |
 
-#### network_strategy
+## network_strategy
 
 !!! question "Since sing-box 1.11.0"
 
@@ -212,7 +210,7 @@ and exit immediately if preferred networks recover.
 
 Conflicts with `bind_interface`, `inet4_bind_address` and `inet6_bind_address`.
 
-#### network_type
+## network_type
 
 !!! question "Since sing-box 1.11.0"
 
@@ -227,7 +225,7 @@ Available values: `wifi`, `cellular`, `ethernet`, `other`.
 
 Device's default network is used by default.
 
-#### fallback_network_type
+## fallback_network_type
 
 !!! question "Since sing-box 1.11.0"
 
@@ -239,7 +237,7 @@ Fallback network types when preferred networks are unavailable or timeout when u
 
 All other networks expect preferred are used by default.
 
-#### fallback_delay
+## fallback_delay
 
 !!! question "Since sing-box 1.11.0"
 
@@ -259,7 +257,7 @@ Only take effect when `domain_strategy` or `network_strategy` is set.
 
 `300ms` is used by default.
 
-#### domain_strategy
+## domain_strategy
 
 !!! failure "Deprecated in sing-box 1.12.0"
 
@@ -273,4 +271,3 @@ If set, the requested domain name will be resolved to IP before connect.
 |----------|--------------------------|-------------------------------------------|
 | `direct` | Domain in request        | Take `inbound.domain_strategy` if not set | 
 | others   | Domain in server address | /                                         |
-

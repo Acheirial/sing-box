@@ -2,13 +2,13 @@
 icon: material/new-box
 ---
 
+# ShadowTLS
+
 !!! quote "Changes in sing-box 1.12.0"
 
     :material-plus: [wildcard_sni](#wildcard_sni)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: shadowtls
 tag: st-in
 
@@ -34,13 +34,11 @@ strict_mode: false
 wildcard_sni: ""
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### version
+## version
 
 ShadowTLS protocol version.
 
@@ -50,39 +48,37 @@ ShadowTLS protocol version.
 | `2`           | [ShadowTLS v2](https://github.com/ihciah/shadow-tls/blob/master/docs/protocol-en.md#v2) |
 | `3`           | [ShadowTLS v3](https://github.com/ihciah/shadow-tls/blob/master/docs/protocol-v3-en.md) |
 
-#### password
+## password
 
 ShadowTLS password.
 
 Only available in the ShadowTLS protocol 2.
 
-#### users
+## users
 
 ShadowTLS users.
 
 Only available in the ShadowTLS protocol 3.
 
-#### handshake
+## handshake
 
-==Required==
-
-When `wildcard_sni` is configured to `all`, the server address is optional.
+**Required.** When `wildcard_sni` is configured to `all`, the server address is optional.
 
 Handshake server address and [Dial Fields](/configuration/shared/dial/).
 
-#### handshake_for_server_name
+## handshake_for_server_name
 
 Handshake server address and [Dial Fields](/configuration/shared/dial/) for specific server name.
 
 Only available in the ShadowTLS protocol 2/3.
 
-#### strict_mode
+## strict_mode
 
 ShadowTLS strict mode.
 
 Only available in the ShadowTLS protocol 3.
 
-#### wildcard_sni
+## wildcard_sni
 
 !!! question "Since sing-box 1.12.0"
 

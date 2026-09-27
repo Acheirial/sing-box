@@ -2,15 +2,13 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.12.0 起"
-
 # DERP
+
+!!! question "自 sing-box 1.12.0 起"
 
 DERP 服务是一个 Tailscale DERP 服务器，类似于 [derper](https://pkg.go.dev/tailscale.com/cmd/derper)。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: derp
 
 # ... 监听字段
@@ -26,63 +24,61 @@ mesh_psk_file: ""
 stun: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/) 了解详情。
 
-### 字段
-
-#### tls
+## tls
 
 TLS 配置，参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
-#### config_path
+## config_path
 
-==必填==
-
-Derper 配置文件路径。
+**必填。**Derper 配置文件路径。
 
 示例：`derper.key`
 
-#### verify_client_endpoint
+## verify_client_endpoint
 
 用于验证客户端的 Tailscale 端点标签。
 
-#### verify_client_url
+## verify_client_url
 
 用于验证客户端的 URL。
 
 对象格式：
 
-```yaml
+```{.yaml linenums="1"}
 url: ""
 
 # ... HTTP 客户端字段
+
 ```
 
 将数组值设置为字符串 `__URL__` 等同于配置：
 
-```yaml
+```{.yaml linenums="1"}
 url: __URL__
 ```
 
-#### home
+## home
 
 在根路径提供的内容。可以留空（默认值，显示默认主页）、`blank` 显示空白页面，或一个重定向的 URL。
 
-#### mesh_with
+## mesh_with
 
 与其他 DERP 服务器组网。
 
 对象格式：
 
-```yaml
+```{.yaml linenums="1"}
 server: ""
 server_port: ""
 host: ""
 tls: {}
 
 # ... 拨号字段
+
 ```
 
 对象字段：
@@ -93,24 +89,25 @@ tls: {}
 - `tls`：[TLS](/zh/configuration/shared/tls/#出站)
 - `拨号字段`：[拨号字段](/zh/configuration/shared/dial/)
 
-#### mesh_psk
+## mesh_psk
 
 DERP 组网的预共享密钥。
 
-#### mesh_psk_file
+## mesh_psk_file
 
 DERP 组网的预共享密钥文件。
 
-#### stun
+## stun
 
 STUN 服务器监听选项。
 
 对象格式：
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 
 # ... 监听字段
+
 ```
 
 对象字段：
@@ -122,7 +119,7 @@ enabled: true
 
 将 `stun` 值设置为数字 `__PORT__` 等同于配置：
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 listen_port: __PORT__
 ```

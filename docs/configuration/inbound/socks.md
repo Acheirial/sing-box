@@ -1,8 +1,8 @@
+# SOCKS
+
 `socks` inbound is a socks4, socks4a, socks5 server.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: socks
 tag: socks-in
 
@@ -13,13 +13,11 @@ users:
     password: admin
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### users
+## users
 
 SOCKS users.
 

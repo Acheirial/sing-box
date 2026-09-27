@@ -1,6 +1,6 @@
-### 结构
+# HTTP
 
-```yaml
+```{.yaml linenums="1"}
 type: http
 tag: http-in
 
@@ -13,23 +13,21 @@ tls: {}
 set_system_proxy: false
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
-
-#### tls
+## tls
 
 TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
-#### users
+## users
 
 HTTP 用户
 
 如果为空则不需要验证。
 
-#### set_system_proxy
+## set_system_proxy
 
 !!! quote ""
 

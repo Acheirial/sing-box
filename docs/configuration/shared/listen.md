@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Listen Fields
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-alert: [netns](#netns)
@@ -26,9 +28,7 @@ icon: material/new-box
     :material-delete-clock: [domain_strategy](#domain_strategy)  
     :material-delete-clock: [udp_disable_domain_unmapping](#udp_disable_domain_unmapping)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 listen: ""
 listen_port: 0
 bind_interface: ""
@@ -53,25 +53,21 @@ domain_strategy: ""
 udp_disable_domain_unmapping: false
 ```
 
-### Fields
+## listen
 
-#### listen
+**Required.** Listen address.
 
-==Required==
-
-Listen address.
-
-#### listen_port
+## listen_port
 
 Listen port.
 
-#### bind_interface
+## bind_interface
 
 !!! question "Since sing-box 1.12.0"
 
 The network interface to bind to.
 
-#### routing_mark
+## routing_mark
 
 !!! question "Since sing-box 1.12.0"
 
@@ -83,13 +79,13 @@ Set netfilter routing mark.
 
 Integers (e.g. `1234`) and string hexadecimals (e.g. `"0x1234"`) are supported.
 
-#### reuse_addr
+## reuse_addr
 
 !!! question "Since sing-box 1.12.0"
 
 Reuse listener address.
 
-#### netns
+## netns
 
 !!! question "Since sing-box 1.12.0"
 
@@ -101,11 +97,11 @@ Set network namespace, name or path.
 
 Since sing-box 1.14.0, the tag of a [network namespace](/configuration/network-namespace/) can also be used.
 
-#### tcp_fast_open
+## tcp_fast_open
 
 Enable TCP Fast Open.
 
-#### tcp_multi_path
+## tcp_multi_path
 
 !!! warning ""
 
@@ -113,13 +109,13 @@ Enable TCP Fast Open.
 
 Enable TCP Multi Path.
 
-#### disable_tcp_keep_alive
+## disable_tcp_keep_alive
 
 !!! question "Since sing-box 1.13.0"
 
 Disable TCP keep alive.
 
-#### tcp_keep_alive
+## tcp_keep_alive
 
 !!! question "Since sing-box 1.13.0"
 
@@ -129,29 +125,29 @@ TCP keep alive initial period.
 
 `5m` will be used by default.
 
-#### tcp_keep_alive_interval
+## tcp_keep_alive_interval
 
 TCP keep alive interval.
 
 `75s` will be used by default.
 
-#### udp_fragment
+## udp_fragment
 
 Enable UDP fragmentation.
 
-#### udp_timeout
+## udp_timeout
 
 UDP NAT expiration time.
 
 `5m` will be used by default.
 
-#### detour
+## detour
 
 If set, connections will be forwarded to the specified inbound.
 
-Requires target inbound support, see [Injectable](/configuration/inbound/#fields).
+Requires target inbound support, see [Injectable](/configuration/inbound/).
 
-#### sniff
+## sniff
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
@@ -161,7 +157,7 @@ Enable sniffing.
 
 See [Protocol Sniff](/configuration/route/sniff/) for details.
 
-#### sniff_override_destination
+## sniff_override_destination
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
@@ -171,7 +167,7 @@ Override the connection destination address with the sniffed domain.
 
 If the domain name is invalid (like tor), this will not work.
 
-#### sniff_timeout
+## sniff_timeout
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
@@ -181,7 +177,7 @@ Timeout for sniffing.
 
 `300ms` is used by default.
 
-#### domain_strategy
+## domain_strategy
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
@@ -193,7 +189,7 @@ If set, the requested domain name will be resolved to IP before routing.
 
 If `sniff_override_destination` is in effect, its value will be taken as a fallback.
 
-#### udp_disable_domain_unmapping
+## udp_disable_domain_unmapping
 
 !!! failure "Deprecated in sing-box 1.11.0"
 

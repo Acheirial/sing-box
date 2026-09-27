@@ -1,3 +1,5 @@
+# rule-set
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [http_client](#http_client)  
@@ -9,17 +11,13 @@
 
     :material-plus: `type: inline`
 
-# rule-set
-
 !!! question "Since sing-box 1.8.0"
-
-### Structure
 
 === "Inline"
 
     !!! question "Since sing-box 1.10.0"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     type: inline  # optional
     tag: ""
     rules: []
@@ -27,7 +25,7 @@
 
 === "Local File"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     type: local
     tag: ""  # or []
     format: source  # or binary
@@ -40,7 +38,7 @@
     
         Remote rule-set will be cached if `experimental.cache_file.enabled`.
 
-    ```yaml
+    ```{.yaml linenums="1"}
     type: remote
     tag: ""  # or []
     format: source  # or binary
@@ -54,19 +52,13 @@
     download_detour: ""
     ```
 
-### Fields
+## type
 
-#### type
+**Required.** Type of rule-set, `local` or `remote`.
 
-==Required==
+## tag
 
-Type of rule-set, `local` or `remote`.
-
-#### tag
-
-==Required==
-
-Tag of rule-set.
+**Required.** Tag of rule-set.
 
 !!! question "Since sing-box 1.14.0"
 
@@ -77,31 +69,27 @@ Tag of rule-set.
 
     Multiple tags conflict with `type: inline`.
 
-### Inline Fields
+## Inline Fields
 
 !!! question "Since sing-box 1.10.0"
 
-#### rules
+### rules
 
-==Required==
+**Required.** List of [Headless Rule](./headless-rule/).
 
-List of [Headless Rule](./headless-rule/).
+## Local or Remote Fields
 
-### Local or Remote Fields
+### format
 
-#### format
-
-==Required==
-
-Format of rule-set file, `source` or `binary`.
+**Required.** Format of rule-set file, `source` or `binary`.
 
 Optional when `path` or `url` uses `json` or `srs` as extension.
 
-### Local Fields
+## Local Fields
 
-#### path
+### path
 
-==Required==
+**Required.**
 
 !!! note ""
 
@@ -109,15 +97,13 @@ Optional when `path` or `url` uses `json` or `srs` as extension.
 
 File path of rule-set.
 
-### Remote Fields
+## Remote Fields
 
-#### url
+### url
 
-==Required==
+**Required.** Download URL of rule-set.
 
-Download URL of rule-set.
-
-#### initial_path
+### initial_path
 
 !!! question "Since sing-box 1.14.0"
 
@@ -127,7 +113,7 @@ Read once at startup when no cached rule-set is available, so startup is not
 blocked by the initial download. The rule-set is still updated in the background
 immediately after startup.
 
-#### http_client
+### http_client
 
 !!! question "Since sing-box 1.14.0"
 
@@ -146,13 +132,13 @@ When empty, the default HTTP client is used: the one named by
     deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0; define
     `http_clients` instead.
 
-#### update_interval
+### update_interval
 
 Update interval of rule-set.
 
 `1d` will be used if empty.
 
-#### download_detour
+### download_detour
 
 !!! failure "Deprecated in sing-box 1.14.0"
 

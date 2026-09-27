@@ -5,9 +5,7 @@ Built-in NTP client service.
 If enabled, it will provide time for protocols like TLS/Shadowsocks/VMess, which is useful for environments where time
 synchronization is not possible.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 ntp:
   enabled: false
   server: time.apple.com
@@ -17,30 +15,26 @@ ntp:
   # ... Dial Fields
 ```
 
-### Fields
-
-#### enabled
+## enabled
 
 Enable NTP service.
 
-#### server
+## server
 
-==Required==
+**Required.** NTP server address.
 
-NTP server address.
-
-#### server_port
+## server_port
 
 NTP server port.
 
 123 is used by default.
 
-#### interval
+## interval
 
 Time synchronization interval.
 
 30 minutes is used by default.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

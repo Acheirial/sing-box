@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
+# Tailscale
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [accept_search_domain](#accept_search_domain)
 
 !!! question "Since sing-box 1.12.0"
 
-# Tailscale
-
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: tailscale
@@ -23,21 +21,17 @@ dns:
       accept_search_domain: false
 ```
 
-### Fields
+## endpoint
 
-#### endpoint
+**Required.** The tag of the [Tailscale Endpoint](/configuration/endpoint/tailscale).
 
-==Required==
-
-The tag of the [Tailscale Endpoint](/configuration/endpoint/tailscale).
-
-#### accept_default_resolvers
+## accept_default_resolvers
 
 Indicates whether default DNS resolvers should be accepted for fallback queries in addition to MagicDNS。
 
 if not enabled, `NXDOMAIN` will be returned for non-Tailscale domain queries.
 
-#### accept_search_domain
+## accept_search_domain
 
 !!! question "Since sing-box 1.14.0"
 
@@ -45,13 +39,13 @@ When enabled, single-label queries (e.g. `my-device`) are retried against each T
 
 Default resolvers are not consulted for single-label queries regardless of `accept_default_resolvers`.
 
-### Examples
+## Examples
 
 === "MagicDNS only"
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -67,7 +61,7 @@ Default resolvers are not consulted for single-label queries regardless of `acce
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -82,7 +76,7 @@ Default resolvers are not consulted for single-label queries regardless of `acce
 
 === "Use as global DNS"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: tailscale

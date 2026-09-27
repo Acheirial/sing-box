@@ -11,7 +11,7 @@ icon: material/new-box
 
 sing-box 可以监控 Wi-Fi 状态，以启用基于 `wifi_ssid` 和 `wifi_bssid` 的路由规则。
 
-### 平台支持
+## 平台支持
 
 | 平台            | 支持              | 备注           |
 |-----------------|------------------|----------------|
@@ -21,7 +21,7 @@ sing-box 可以监控 Wi-Fi 状态，以启用基于 `wifi_ssid` 和 `wifi_bssid
 | Windows         | :material-check: | WLAN API       |
 | 其他            | :material-close: |                |
 
-### Linux
+## Linux
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -34,7 +34,7 @@ sing-box 可以监控 Wi-Fi 状态，以启用基于 `wifi_ssid` 和 `wifi_bssid
 | wpa_supplicant   | Unix socket |
 | ConnMan          | D-Bus       |
 
-### Windows
+## Windows
 
 !!! question "自 sing-box 1.13.0 起"
 

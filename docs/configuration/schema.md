@@ -2,22 +2,18 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # JSON Schema
+
+!!! question "Since sing-box 1.14.0"
 
 sing-box provides a JSON Schema Draft 2020-12 for configuration files.
 Compatible editors can use it for completion and validation.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 $schema: https://sing-box.sagernet.org/schema.json
 ```
 
-### Fields
-
-#### $schema
+## $schema
 
 The schema URI used by compatible editors.
 This field does not affect sing-box runtime behavior.
@@ -25,7 +21,7 @@ This field does not affect sing-box runtime behavior.
 The schema published with this documentation is available at
 [sing-box.sagernet.org/schema.json](https://sing-box.sagernet.org/schema.json).
 
-### Generate
+## Generate
 
 Use the following command to generate a schema matching the installed binary:
 
@@ -38,6 +34,6 @@ The generated schema reflects the features included in the current build.
 
 You can then reference the local schema from a configuration file:
 
-```yaml
+```{.yaml linenums="1"}
 $schema: ./schema.json
 ```

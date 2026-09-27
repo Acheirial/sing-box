@@ -1,14 +1,10 @@
 # Inbound
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 inbounds:
   - type: ""
     tag: ""
 ```
-
-### Fields
 
 | Type          | Format                        | Injectable       |
 |---------------|-------------------------------|------------------|
@@ -32,6 +28,6 @@ inbounds:
 | `tproxy`      | [TProxy](./tproxy/)           | :material-close: |
 | `cloudflared` | [Cloudflared](./cloudflared/) | :material-close: |
 
-#### tag
+## tag
 
 The tag of the inbound.

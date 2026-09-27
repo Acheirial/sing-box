@@ -1,3 +1,5 @@
+# Clash API
+
 !!! quote "Changes in sing-box 1.10.0"
 
     :material-plus: [access_control_allow_origin](#access_control_allow_origin)  
@@ -11,11 +13,9 @@
     :material-delete-alert: [cache_file](#cache_file)  
     :material-delete-alert: [cache_id](#cache_id)
 
-### Structure
-
 === "Structure"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     external_controller: 127.0.0.1:9090
     external_ui: ""
     external_ui_download_url: ""
@@ -38,7 +38,7 @@
 
     !!! question "Since sing-box 1.10.0"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     external_controller: 127.0.0.1:9090
     access_control_allow_origin:
       - http://127.0.0.1
@@ -50,7 +50,7 @@
 
     !!! question "Since sing-box 1.10.0"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     external_controller: 0.0.0.0:9090
     external_ui: dashboard
     # external_ui_download_detour: direct
@@ -60,43 +60,41 @@
 
     You can use a single value instead of an array when the content is only one item
 
-### Fields
-
-#### external_controller
+## external_controller
 
 RESTful web API listening address. Clash API will be disabled if empty.
 
-#### external_ui
+## external_ui
 
 A relative path to the configuration directory or an absolute path to a
 directory in which you put some static web resource. sing-box will then
 serve it at `http://{{external-controller}}/ui`.
 
-#### external_ui_download_url
+## external_ui_download_url
 
 ZIP download URL for the external UI, will be used if the specified `external_ui` directory is empty.
 
 `https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip` will be used if empty.
 
-#### external_ui_download_detour
+## external_ui_download_detour
 
 The tag of the outbound to download the external UI.
 
 Default outbound will be used if empty.
 
-#### secret
+## secret
 
 Secret for the RESTful API (optional)
 Authenticate by spedifying HTTP header `Authorization: Bearer ${secret}`
 ALWAYS set a secret if RESTful API is listening on 0.0.0.0
 
-#### default_mode
+## default_mode
 
 Default mode in clash, `Rule` will be used if empty.
 
 This setting has no direct effect, but can be used in routing and DNS rules via the `clash_mode` rule item.
 
-#### access_control_allow_origin
+## access_control_allow_origin
 
 !!! question "Since sing-box 1.10.0"
 
@@ -104,7 +102,7 @@ CORS allowed origins, `*` will be used if empty.
 
 To access the Clash API on a private network from a public website, you must explicitly specify it in `access_control_allow_origin` instead of using `*`.
 
-#### access_control_allow_private_network
+## access_control_allow_private_network
 
 !!! question "Since sing-box 1.10.0"
 
@@ -112,7 +110,7 @@ Allow access from private network.
 
 To access the Clash API on a private network from a public website, `access_control_allow_private_network` must be enabled.
 
-#### store_mode
+## store_mode
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -120,7 +118,7 @@ To access the Clash API on a private network from a public website, `access_cont
 
 Store Clash mode in cache file.
 
-#### store_selected
+## store_selected
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -132,7 +130,7 @@ Store Clash mode in cache file.
 
 Store selected outbound for the `Selector` outbound in cache file.
 
-#### store_fakeip
+## store_fakeip
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -140,7 +138,7 @@ Store selected outbound for the `Selector` outbound in cache file.
 
 Store fakeip in cache file.
 
-#### cache_file
+## cache_file
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -148,7 +146,7 @@ Store fakeip in cache file.
 
 Cache file path, `cache.db` will be used if empty.
 
-#### cache_id
+## cache_id
 
 !!! failure "Deprecated in sing-box 1.8.0"
 

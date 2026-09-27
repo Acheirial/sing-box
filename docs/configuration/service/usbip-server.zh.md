@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.14.0 起"
-
 # USB/IP Server
+
+!!! question "自 sing-box 1.14.0 起"
 
 USB/IP Server 服务通过 [USB/IP](https://usbip.sourceforge.net/) 导出本地 USB 设备，供 [USB/IP Client](/zh/configuration/service/usbip-client/) 或标准 USB/IP 客户端导入。
 
 可用于 Linux、Windows 和 macOS（macOS 需要使用 CGO 构建，且导出设备需要禁用系统完整性保护）。不支持 iOS。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: usbip-server
 
 # ... 监听字段
@@ -25,15 +23,13 @@ devices: []
 
     sing-box 使用 [sing-usbip](https://github.com/SagerNet/sing-usbip)，它使用一套附加协议来支持热插拔等增强功能，但仍然可以与标准 USB/IP 互操作。
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/) 了解详情。
 
 `listen_port` 默认为 `3240`。
 
-### 字段
-
-#### provider
+## provider
 
 设备来源提供者。
 
@@ -44,15 +40,15 @@ devices: []
 
     `default` 提供者仅支持通过 CLI 直接运行在 Linux、Windows 和 macOS 上，并且需要提升的权限。
 
-#### devices
+## devices
 
-使用 `default` 提供者时 ==必填==。
+使用 `default` 提供者时 **必填**。
 
 设备匹配列表，用于选择要导出的本地 USB 设备。
 
 对象格式：
 
-```yaml
+```{.yaml linenums="1"}
 bus_id: ""
 vendor_id: 0
 product_id: 0

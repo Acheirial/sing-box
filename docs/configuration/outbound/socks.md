@@ -1,8 +1,8 @@
+# SOCKS
+
 `socks` outbound is a socks4/socks4a/socks5 client.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: socks
 tag: socks-out
 
@@ -15,37 +15,32 @@ network: udp
 udp_over_tcp: false  # or {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
-
-==Required==
-
-The server port.
-
-#### version
+## version
 
 The SOCKS version, one of `4` `4a` `5`.
 
 SOCKS5 used by default.
 
-#### username
+## username
 
 SOCKS username.
 
-#### password
+## password
 
 SOCKS5 password.
 
-#### network
+## network
 
 Enabled network
 
@@ -53,12 +48,12 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### udp_over_tcp
+## udp_over_tcp
 
 UDP over TCP protocol settings.
 
 See [UDP Over TCP](/configuration/shared/udp-over-tcp/) for details.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

@@ -1,6 +1,6 @@
-### 结构
+# Trojan
 
-```yaml
+```{.yaml linenums="1"}
 type: trojan
 tag: trojan-in
 
@@ -21,23 +21,19 @@ multiplex: {}
 transport: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
+## users
 
-#### users
+**必填。**Trojan 用户。
 
-==必填==
-
-Trojan 用户。
-
-#### tls
+## tls
 
 TLS 配置，参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
-#### fallback
+## fallback
 
 !!! failure ""
 
@@ -45,16 +41,16 @@ TLS 配置，参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
 回退服务器配置。如果 `fallback` 和 `fallback_for_alpn` 为空，则禁用回退。
 
-#### fallback_for_alpn
+## fallback_for_alpn
 
 为 ALPN 指定回退服务器配置。
 
 如果不为空，ALPN 不在此列表中的 TLS 回退请求将被拒绝。
 
-#### multiplex
+## multiplex
 
 参阅 [多路复用](/zh/configuration/shared/multiplex#入站)。
 
-#### transport
+## transport
 
 V2Ray 传输配置，参阅 [V2Ray 传输层](/zh/configuration/shared/v2ray-transport/)。

@@ -5,16 +5,12 @@
     :material-plus: [cache_file](#cache_file)  
     :material-alert-decagram: [clash_api](#clash_api)
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 experimental:
   cache_file: {}
   clash_api: {}
   v2ray_api: {}
 ```
-
-### 字段
 
 | 键            | 格式                       |
 |--------------|--------------------------|

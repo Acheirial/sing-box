@@ -1,6 +1,6 @@
-### Structure
+# Hysteria
 
-```yaml
+```{.yaml linenums="1"}
 type: hysteria
 tag: hysteria-in
 
@@ -29,17 +29,13 @@ max_conn_client: 0
 disable_mtu_discovery: false
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
+## up, down
 
-#### up, down
-
-==Required==
-
-Format: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`
+**Required.** Format: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`
 
 Supported units (case sensitive, b = bits, B = bytes, 8b=1B):
 
@@ -54,59 +50,55 @@ Supported units (case sensitive, b = bits, B = bytes, 8b=1B):
     Tbps (terabits per second)
     TBps (terabytes per second)
 
-#### up_mbps, down_mbps
+## up_mbps, down_mbps
 
-==Required==
+**Required.** `up, down` in Mbps.
 
-`up, down` in Mbps.
-
-#### obfs
+## obfs
 
 Obfuscated password.
 
-#### users
+## users
 
 Hysteria users
 
-#### users.auth
+## users.auth
 
 Authentication password, in base64.
 
-#### users.auth_str
+## users.auth_str
 
 Authentication password.
 
-#### tls
+## tls
 
-==Required==
+**Required.** TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
-
-### QUIC Fields
+## QUIC Fields
 
 See [QUIC Fields](/configuration/shared/quic/) for details.
 
-### Deprecated Fields
+## Deprecated Fields
 
-#### recv_window_conn
+### recv_window_conn
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
     Use QUIC fields `stream_receive_window` instead.
 
-#### recv_window_client
+### recv_window_client
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
     Use QUIC fields `connection_receive_window` instead.
 
-#### max_conn_client
+### max_conn_client
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
     Use QUIC fields `max_concurrent_streams` instead.
 
-#### disable_mtu_discovery
+### disable_mtu_discovery
 
 !!! failure "Deprecated in sing-box 1.14.0"
 

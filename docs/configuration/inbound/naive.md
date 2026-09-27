@@ -1,14 +1,16 @@
+# Naive
+
 !!! quote "Changes in sing-box 1.13.0"
 
     :material-plus: [quic_congestion_control](#quic_congestion_control)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: naive
 tag: naive-in
 network: udp
+
 # ...
+
 # Listen Fields
 
 users:
@@ -18,25 +20,21 @@ quic_congestion_control: ""
 tls: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### network
+## network
 
 Listen network, one of `tcp` `udp`.
 
 Both if empty.
 
-#### users
+## users
 
-==Required==
+**Required.** Naive users.
 
-Naive users.
-
-#### quic_congestion_control
+## quic_congestion_control
 
 !!! question "Since sing-box 1.13.0"
 
@@ -50,6 +48,6 @@ QUIC congestion control algorithm.
 
 `bbr` is used by default.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).

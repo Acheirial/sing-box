@@ -1,6 +1,6 @@
-### Structure
+# Selector
 
-```yaml
+```{.yaml linenums="1"}
 type: selector
 tag: select
 
@@ -16,19 +16,15 @@ interrupt_exist_connections: false
 
     The selector can only be controlled through the [Clash API](/configuration/experimental#clash-api-fields) currently.
 
-### Fields
+## outbounds
 
-#### outbounds
+**Required.** List of outbound tags to select.
 
-==Required==
-
-List of outbound tags to select.
-
-#### default
+## default
 
 The default outbound tag. The first outbound will be used if empty.
 
-#### interrupt_exist_connections
+## interrupt_exist_connections
 
 Interrupt existing connections when the selected outbound has changed.
 

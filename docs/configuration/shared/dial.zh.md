@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# 拨号字段
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-alert: [domain_resolver](#domain_resolver)  
@@ -27,9 +29,8 @@ icon: material/new-box
     :material-alert: [network_type](#network_type)  
     :material-alert: [fallback_network_type](#fallback_network_type)
 
-### 结构
 
-```yaml
+```{.yaml linenums="1"}
 detour: ""
 bind_interface: ""
 inet4_bind_address: ""
@@ -61,27 +62,26 @@ domain_strategy: ""
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-### 字段
 
-#### detour
+## detour
 
 上游出站的标签。
 
 启用时，其他拨号字段将被忽略。
 
-#### bind_interface
+## bind_interface
 
 要绑定到的网络接口。
 
-#### inet4_bind_address
+## inet4_bind_address
 
 要绑定的 IPv4 地址。
 
-#### inet6_bind_address
+## inet6_bind_address
 
 要绑定的 IPv6 地址。
 
-#### bind_address_no_port
+## bind_address_no_port
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -93,7 +93,7 @@ domain_strategy: ""
 
 这允许在完整的四元组（源 IP、源端口、目标 IP、目标端口）保持唯一的情况下，为多个连接复用同一源端口。
 
-#### routing_mark
+## routing_mark
 
 !!! quote ""
 
@@ -103,11 +103,11 @@ domain_strategy: ""
 
 支持数字 (如 `1234`) 和十六进制字符串 (如 `"0x1234"`)。
 
-#### reuse_addr
+## reuse_addr
 
 重用监听地址。
 
-#### netns
+## netns
 
 !!! question "自 sing-box 1.12.0 起"
 
@@ -120,18 +120,18 @@ domain_strategy: ""
 自 sing-box 1.14.0 起，也可以使用[网络命名空间](/zh/configuration/network-namespace/)的标签。
 应避免引用 `unshare` 类型的网络命名空间，因为其唯一出口是由 sing-box 自身管理的 tun 接口。
 
-#### connect_timeout
+## connect_timeout
 
 连接超时，采用 golang 的 Duration 格式。
 
 持续时间字符串是一个可能有符号的序列十进制数，每个都有可选的分数和单位后缀， 例如 "300ms"、"-1.5h" 或 "2h45m"。
 有效时间单位为 "ns"、"us"（或 "µs"）、"ms"、"s"、"m"、"h"。
 
-#### tcp_fast_open
+## tcp_fast_open
 
 启用 TCP Fast Open。
 
-#### tcp_multi_path
+## tcp_multi_path
 
 !!! warning ""
 
@@ -139,13 +139,13 @@ domain_strategy: ""
 
 启用 TCP Multi Path。
 
-#### disable_tcp_keep_alive
+## disable_tcp_keep_alive
 
 !!! question "自 sing-box 1.13.0 起"
 
 禁用 TCP keep alive。
 
-#### tcp_keep_alive
+## tcp_keep_alive
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -155,7 +155,7 @@ TCP keep alive 初始周期。
 
 默认使用 `5m`。
 
-#### tcp_keep_alive_interval
+## tcp_keep_alive_interval
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -163,11 +163,11 @@ TCP keep alive 间隔。
 
 默认使用 `75s`。
 
-#### udp_fragment
+## udp_fragment
 
 启用 UDP 分段。
 
-#### domain_resolver
+## domain_resolver
 
 !!! warning ""
 
@@ -188,7 +188,7 @@ TCP keep alive 间隔。
 | `direct`       | 请求中的域名                | 
 | 其他类型        | 服务器地址中的域名           |
 
-#### network_strategy
+## network_strategy
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -210,7 +210,7 @@ TCP keep alive 间隔。
 
 与 `bind_interface`, `bind_inet4_address` 和 `bind_inet6_address` 冲突。
 
-#### network_type
+## network_type
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -224,7 +224,7 @@ TCP keep alive 间隔。
 
 默认使用设备默认网络。
 
-#### fallback_network_type
+## fallback_network_type
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -236,7 +236,7 @@ TCP keep alive 间隔。
 
 默认使用除首选网络外的所有其他网络。
 
-#### fallback_delay
+## fallback_delay
 
 在生成 RFC 6555 快速回退连接之前等待的时间长度。
 
@@ -248,7 +248,7 @@ TCP keep alive 间隔。
 
 默认使用 `300ms`。
 
-#### domain_strategy
+## domain_strategy
 
 !!! failure "已在 sing-box 1.12.0 废弃"
 

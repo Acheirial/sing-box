@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.14.0 起"
-
 # sing-box API
+
+!!! question "自 sing-box 1.14.0 起"
 
 sing-box API 服务是用于观察与控制正在运行的 sing-box 实例的 gRPC 服务器。
 
@@ -13,9 +13,7 @@ sing-box API 服务是用于观察与控制正在运行的 sing-box 实例的 gR
 服务器同时接受 [gRPC-Web](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md) 请求,
 包括用于双向流方法的 [@improbable-eng/grpc-web](https://github.com/improbable-eng/grpc-web) WebSocket 传输。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: api
 
 # ... 监听字段
@@ -32,13 +30,11 @@ dashboard:
 tls: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
-
-#### secret
+## secret
 
 API 密钥。
 
@@ -46,15 +42,15 @@ API 密钥。
 
 默认无需认证。
 
-#### access_control_allow_origin
+## access_control_allow_origin
 
 允许的 CORS 来源,默认使用 `*`。
 
-#### access_control_allow_private_network
+## access_control_allow_private_network
 
 允许从私有网络访问。
 
-#### dashboard
+## dashboard
 
 下载并通过 API 监听器在 `/dashboard/` 提供的 Web 仪表板；其他浏览器请求将被重定向到该路径。
 
@@ -63,11 +59,11 @@ API 密钥。
     该对象可以替换为布尔值（等同于 `{ "enabled": <bool> }`），
     或字符串路径（等同于 `{ "enabled": true, "path": "<string>" }`）。
 
-##### enabled
+### enabled
 
 启用仪表板。
 
-##### path
+### path
 
 存放仪表板文件的目录。
 
@@ -76,13 +72,13 @@ API 密钥。
 如果目录为空，将下载仪表板，并在其中存放 `.etag` 文件以跳过未变更的更新。
 非空且不含 `.etag` 文件的目录将按原样提供，且不会自动更新。
 
-##### download_url
+### download_url
 
 仪表板压缩包（zip）的下载 URL。
 
 默认使用 `https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip`。
 
-##### http_client
+### http_client
 
 用于下载仪表板的 HTTP 客户端。
 
@@ -90,12 +86,12 @@ API 密钥。
 
 当仪表板目录包含用户提供的文件时不使用。
 
-##### update_interval
+### update_interval
 
 仪表板的更新间隔。
 
 默认使用 `1d`。
 
-#### tls
+## tls
 
 TLS 配置,参阅 [TLS](/zh/configuration/shared/tls/#inbound)。

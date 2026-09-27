@@ -29,9 +29,7 @@ icon: material/alert-decagram
     :material-delete-clock: [geoip](#geoip)  
     :material-delete-clock: [geosite](#geosite)
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 route:
   geoip: {}
   geosite: {}
@@ -54,28 +52,26 @@ route:
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-### 字段
-
 | 键         | 格式                    |
 |-----------|-----------------------|
 | `geoip`   | [GeoIP](./geoip/)     |
 | `geosite` | [Geosite](./geosite/) |
 
-#### rule
+## rule
 
 一组 [路由规则](./rule/)    。
 
-#### rule_set
+## rule_set
 
 !!! question "自 sing-box 1.8.0 起"
 
 一组 [规则集](/zh/configuration/rule-set/)。
 
-#### final
+## final
 
 默认出站标签。如果为空，将使用第一个可用于对应协议的出站。
 
-#### auto_detect_interface
+## auto_detect_interface
 
 !!! quote ""
 
@@ -85,7 +81,7 @@ route:
 
 如果设置了 `outbound.bind_interface` 设置，则不生效。
 
-#### override_android_vpn
+## override_android_vpn
 
 !!! quote ""
 
@@ -93,7 +89,7 @@ route:
 
 启用 `auto_detect_interface` 时接受 Android VPN 作为上游网卡。
 
-#### default_interface
+## default_interface
 
 !!! quote ""
 
@@ -103,7 +99,7 @@ route:
 
 如果设置了 `auto_detect_interface` 设置，则不生效。
 
-#### default_mark
+## default_mark
 
 !!! quote ""
 
@@ -113,7 +109,7 @@ route:
 
 如果设置了 `outbound.routing_mark` 设置，则不生效。
 
-#### find_process
+## find_process
 
 !!! quote ""
 
@@ -121,7 +117,7 @@ route:
 
 在没有 `process_name`、`process_path`、`package_name`、`user` 或 `user_id` 规则时启用进程搜索以输出日志。
 
-#### find_neighbor
+## find_neighbor
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -133,7 +129,7 @@ route:
 
 参阅 [邻居解析](/configuration/shared/neighbor/) 了解设置方法。
 
-#### dhcp_lease_files
+## dhcp_lease_files
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -145,7 +141,7 @@ route:
 
 为空时自动从常见 DHCP 服务器（dnsmasq、odhcpd、ISC dhcpd、Kea）检测。
 
-#### default_http_client
+## default_http_client
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -153,7 +149,7 @@ route:
 
 如果为空且 `http_clients` 已定义，将使用第一个 HTTP 客户端。
 
-#### default_domain_resolver
+## default_domain_resolver
 
 !!! question "自 sing-box 1.12.0 起"
 
@@ -161,7 +157,7 @@ route:
 
 可以被 `outbound.domain_resolver` 覆盖。
 
-#### network_strategy
+## network_strategy
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -173,19 +169,19 @@ route:
 
 与 `default_interface` 冲突。
 
-#### default_network_type
+## default_network_type
 
 !!! question "自 sing-box 1.11.0 起"
 
 详情参阅 [拨号字段](/zh/configuration/shared/dial/#default_network_type)。
 
-#### default_fallback_network_type
+## default_fallback_network_type
 
 !!! question "自 sing-box 1.11.0 起"
 
 详情参阅 [拨号字段](/zh/configuration/shared/dial/#default_fallback_network_type)。
 
-#### default_fallback_delay
+## default_fallback_delay
 
 !!! question "自 sing-box 1.11.0 起"
 

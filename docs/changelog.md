@@ -2,15 +2,17 @@
 icon: material/alert-decagram
 ---
 
-#### 1.14.2
+# Change Log
+
+## 1.14.2
 
 * Fixes and improvements
 
-#### 1.14.1
+## 1.14.1
 
 * Fixes and improvements
 
-#### 1.14.0
+## 1.14.0
 
 Important changes since 1.13:
 
@@ -480,23 +482,23 @@ and `sing-box-oldstable` / `latest-oldstable` (previous stable branch).
 
 Due to maintenance difficulties, sing-box 1.14.0 requires at least Go 1.25 to compile.
 
-#### 1.14.0-rc.5
+## 1.14.0-rc.5
 
 * Fixes and improvements
 
-#### 1.13.21
+## 1.13.21
 
 * Fixes and improvements
 
-#### 1.14.0-rc.4
+## 1.14.0-rc.4
 
 * Fixes and improvements
 
-#### 1.13.20
+## 1.13.20
 
 * Fixes and improvements
 
-#### 1.14.0-rc.2
+## 1.14.0-rc.2
 
 * Migrate Apple platform clients to a new Apple developer account **1**
 * Fixes and improvements
@@ -506,19 +508,19 @@ Due to maintenance difficulties, sing-box 1.14.0 requires at least Go 1.25 to co
 For the macOS standalone client, profiles and settings are not inherited, see
 [Migration](/migration/#migrate-the-macos-standalone-client-data).
 
-#### 1.14.0-rc.1
+## 1.14.0-rc.1
 
 * Fixes and improvements
 
-#### 1.13.19
+## 1.13.19
 
 * Fixes and improvements
 
-#### 1.14.0-beta.16
+## 1.14.0-beta.16
 
 * Fixes and improvements
 
-#### 1.14.0-beta.15
+## 1.14.0-beta.15
 
 * Add `api` command **1**
 * Add Taildrop support **2**
@@ -541,20 +543,20 @@ the new
 option (`Taildrop` by default). Files can be sent and managed through the
 graphical clients, the Dashboard, or the new `sing-box api` command.
 
-#### 1.14.0-beta.14
+## 1.14.0-beta.14
 
 * Fixes and improvements
 
-#### 1.13.18
+## 1.13.18
 
 * Update naiveproxy to v150.0.7871.63-1
 * Fixes and improvements
 
-#### 1.14.0-beta.10
+## 1.14.0-beta.10
 
 * Fixes and improvements
 
-#### 1.14.0-beta.7
+## 1.14.0-beta.7
 
 * Add Hysteria2 Chrome QUIC fingerprint parroting **1**
 * Update quic-go to v0.61.0
@@ -570,7 +572,7 @@ Chrome does not declare support for Ed25519, servers using Ed25519
 certificates will fail the handshake; see
 [disable_chrome_parrot](/configuration/outbound/hysteria2/#disable_chrome_parrot).
 
-#### 1.14.0-beta.5
+## 1.14.0-beta.5
 
 * Remove client metadata from AnyTLS requests by default **1**
 * Update naiveproxy to v150.0.7871.63-1
@@ -584,7 +586,7 @@ it to profile and discriminate against users. We now leave it empty by default
 and allow you to customize it, see
 [AnyTLS client metadata](/manual/misc/anytls-client-metadata/).
 
-#### 1.13.16
+## 1.13.16
 
 * Remove client metadata from AnyTLS requests by default **1**
 * Fixes and improvements
@@ -597,15 +599,15 @@ it to profile and discriminate against users. We now leave it empty by default
 and allow you to customize it, see
 [AnyTLS client metadata](/manual/misc/anytls-client-metadata/).
 
-#### 1.14.0-beta.4
+## 1.14.0-beta.4
 
 * Fixes and improvements
 
-#### 1.13.15
+## 1.13.15
 
 * Fixes and improvements
 
-#### 1.14.0-beta.2
+## 1.14.0-beta.2
 
 * Add [JSON Schema](/configuration/schema/) support **1**
 * Fixes and improvements
@@ -621,7 +623,7 @@ binary and its build tags.
 We have also improved the JSON editor experience in the graphical clients on
 macOS, Android, Windows, and Linux, and added schema-based completion support.
 
-#### 1.14.0-beta.1
+## 1.14.0-beta.1
 
 * Correct undefined rule-set matching semantics **1**
 * Add search domain rule items **2**
@@ -664,7 +666,7 @@ the remaining queries canceled. The new `speculative` option can start
 `evaluate` and `route` queries while race rules are still pending, reducing
 latency at the cost of potentially unused queries.
 
-#### 1.14.0-alpha.50
+## 1.14.0-alpha.50
 
 * Improve OpenVPN interoperability **1**
 * Improve OpenConnect interoperability **2**
@@ -700,7 +702,7 @@ option. This behavior is modeled after openfortivpn and is not an OpenConnect
 feature. sing-box only submits explicitly configured values when requested by
 the Fortinet server and does not collect system information automatically.
 
-#### 1.14.0-alpha.48
+## 1.14.0-alpha.48
 
 * Add SSO support for AnyConnect **1**
 * Add Linux support for the [desktop client application](/clients/desktop/) **2**
@@ -718,7 +720,7 @@ The [sing-box for Desktop](/clients/desktop/) client is now available for Linux
 (x64 / arm64 / armv7l) from
 [GitHub Releases](https://github.com/SagerNet/sing-box/releases).
 
-#### 1.14.0-alpha.47
+## 1.14.0-alpha.47
 
 * Add OpenVPN client and server support **1**
 * Add OpenConnect client support **2**
@@ -740,7 +742,7 @@ and Juniper Network Connect VPN servers. Interactive authentication is
 available through the sing-box graphical clients and
 [Dashboard](https://github.com/SagerNet/sing-box-dashboard).
 
-#### 1.14.0-alpha.46
+## 1.14.0-alpha.46
 
 * Add multiple tags support to rule-sets **1**
 * Add new UDP NAT options **2**
@@ -761,7 +763,7 @@ The new [UDP NAT](/configuration/shared/udp-nat/) fields
 mapping and filtering behaviors and the maximum number of UDP NAT sessions for
 TUN and TProxy inbounds and the WireGuard endpoint.
 
-#### 1.14.0-alpha.45
+## 1.14.0-alpha.45
 
 * Improve the Windows client application **1**
 * Fixes and improvements
@@ -777,7 +779,7 @@ line client remains limited to the user sing-box runs as. Additionally,
 configurations that use privileges unrelated to networking are now rejected by
 default; an insecure mode is available to allow them.
 
-#### 1.14.0-alpha.44
+## 1.14.0-alpha.44
 
 * Introducing our [new Windows client application](/clients/desktop/) **1**
 * Fixes and improvements
@@ -790,7 +792,7 @@ other standard sing-box graphical clients, is available for Windows 10+
 [GitHub Releases](https://github.com/SagerNet/sing-box/releases)
 (`SFW-<version>-<architecture>.exe`).
 
-#### 1.14.0-alpha.43
+## 1.14.0-alpha.43
 
 * Add network namespace support **1**
 * Fixes and improvements
@@ -808,11 +810,11 @@ namespace at startup without requiring root privileges: a rootless sing-box can
 provide a tun (including `auto_route` and `auto_redirect`) inside a namespace,
 which can be entered with `nsenter`.
 
-#### 1.14.0-alpha.42
+## 1.14.0-alpha.42
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.41
+## 1.14.0-alpha.41
 
 * Add windows bridge **1**
 * Add `preferred_by` support for bridge **2**
@@ -846,7 +848,7 @@ inbound and outbound field maintains a UDP port mapping on the local gateway
 via UPnP or NAT-PMP, improving hole-punching reliability behind gateways that
 support it.
 
-#### 1.14.0-alpha.40
+## 1.14.0-alpha.40
 
 * Add bridge outbound **1**
 * Fixes and improvements
@@ -860,7 +862,7 @@ privileges and is supported on Linux, macOS, rooted Android, and jailbroken iOS.
 
 See [Bridge](/configuration/outbound/bridge/).
 
-#### 1.14.0-alpha.39
+## 1.14.0-alpha.39
 
 * Add L3 forwarding support **1**
 * Fixes and improvements
@@ -874,7 +876,7 @@ L3 to L4 translation.
 
 See [Pre-match](/configuration/shared/pre-match/).
 
-#### 1.14.0-alpha.38
+## 1.14.0-alpha.38
 
 * Add Snell protocol support **1**
 * Fixes and improvements
@@ -894,11 +896,11 @@ performance at least on par with it.
 See [Snell Inbound](/configuration/inbound/snell/) and
 [Snell Outbound](/configuration/outbound/snell/).
 
-#### 1.13.14
+## 1.13.14
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.33
+## 1.14.0-alpha.33
 
 * Add iOS jailbreak release **1**
 * Fixes and improvements
@@ -913,7 +915,7 @@ a [Tailscale SSH server](/configuration/endpoint/tailscale/#ssh_server) on the
 device and supports [process matching](/configuration/route/rule/#process_name)
 (`process_name`, `process_path`, `user`, and so on) in route and DNS rules.
 
-#### 1.14.0-alpha.32
+## 1.14.0-alpha.32
 
 * Add dashboard support for the API service **1**
 * Add USB/IP service **2**
@@ -939,11 +941,11 @@ System Integrity Protection). With `provider: dynamic`, devices are instead
 supplied at runtime through the API service by the graphical clients on macOS and
 Android, or the [sing-box Dashboard](https://github.com/SagerNet/sing-box-dashboard).
 
-#### 1.14.0-alpha.31
+## 1.14.0-alpha.31
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.30
+## 1.14.0-alpha.30
 
 * Introducing sing-box API service **1**
 * Apple/Android: Introducing remote control **2**
@@ -974,15 +976,15 @@ a new web client for the API service, providing almost the same
 experience as the graphical clients. A public instance is available at
 http://sing-box-dashboard.sagernet.org (shortcut: dash.sing-box.app).
 
-#### 1.14.0-alpha.29
+## 1.14.0-alpha.29
 
 * Fixes and improvements
 
-#### 1.13.13
+## 1.13.13
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.27
+## 1.14.0-alpha.27
 
 * Add Tailscale SSH server **1**
 * Fixes and improvements
@@ -999,7 +1001,7 @@ to `{ "enabled": true }`), or an object that additionally sets
 [`disable_sftp`](/configuration/endpoint/tailscale/#ssh_serverdisable_sftp), and
 [`disable_forwarding`](/configuration/endpoint/tailscale/#ssh_serverdisable_forwarding).
 
-#### 1.14.0-alpha.26
+## 1.14.0-alpha.26
 
 * Add gecko obfs for Hysteria2 **1**
 * Fixes and improvements
@@ -1015,7 +1017,7 @@ existing `salamander`. Gecko supports configurable
 [`max_packet_size`](/configuration/inbound/hysteria2/#obfsmax_packet_size)
 (default 1200) fields.
 
-#### 1.14.0-alpha.25
+## 1.14.0-alpha.25
 
 * Revert Tailscale endpoint dial fields deprecation and remove `control_http_client` **1**
 * Fixes and improvements
@@ -1027,12 +1029,12 @@ The `control_http_client` field on
 `1.14.0-alpha.13` is removed, and the deprecation of
 [Dial Fields](/configuration/endpoint/tailscale/#dial-fields) is reverted.
 
-#### 1.13.12
+## 1.13.12
 
 * Update naiveproxy to v148.0.7778.96-1
 * Fixes and improvements
 
-#### 1.14.0-alpha.22
+## 1.14.0-alpha.22
 
 * Add Hysteria Realm service and Hysteria2 NAT traversal support **1**
 * Fixes and improvements
@@ -1050,7 +1052,7 @@ learn the server's current addresses and perform UDP hole-punching to
 establish a direct QUIC connection. Once hole-punching succeeds, all
 proxy traffic flows directly between client and server.
 
-#### 1.14.0-alpha.21
+## 1.14.0-alpha.21
 
 * Allow customizing TUN DNS mode and hijack interface DNS by default **1**
 * Add mDNS DNS server **2**
@@ -1109,11 +1111,11 @@ Adds `wrong-ack`, `wrong-md5`, and `wrong-timestamp`
 [`tls_spoof_method`](/configuration/route/rule_action/#tls_spoof_method)
 to route rule actions for per-rule TLS spoofing without outbound TLS settings.
 
-#### 1.14.0-alpha.20
+## 1.14.0-alpha.20
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.19
+## 1.14.0-alpha.19
 
 * Preserve comments between formatting
 * Add cipher, MAC, and key exchange algorithm options for SSH outbound **1**
@@ -1132,7 +1134,7 @@ and [`resolve` route rule action](/configuration/route/rule_action/#timeout),
 and a `timeout` field on
 [`domain_resolver`](/configuration/shared/dial/#domain_resolver).
 
-#### 1.14.0-alpha.18
+## 1.14.0-alpha.18
 
 * Add Windows TLS engine **1**
 * Fixes and improvements
@@ -1145,12 +1147,12 @@ through Schannel via SSPI. Only available on Windows build 17763 or
 later (Windows 10 version 1809, Windows Server 2019, or newer); TLS 1.3
 is only negotiated on Windows 11 or Windows Server 2022 and newer.
 
-#### 1.13.11
+## 1.13.11
 
 * Fix process searcher failure introduced in 1.13.9
 * Fixes and improvements
 
-#### 1.14.0-alpha.16
+## 1.14.0-alpha.16
 
 * Add ACME profile support for IP address certificates **1**
 * Fixes and improvements
@@ -1159,11 +1161,11 @@ is only negotiated on Windows 11 or Windows Server 2022 and newer.
 
 See [ACME Certificate Provider](/configuration/shared/certificate-provider/acme/#profile).
 
-#### 1.13.10
+## 1.13.10
 
 * Fix process searcher failure introduced in 1.13.9
 
-#### 1.14.0-alpha.15
+## 1.14.0-alpha.15
 
 * Add search domain support for Tailscale DNS **1**
 * Fixes and improvements
@@ -1172,11 +1174,11 @@ See [ACME Certificate Provider](/configuration/shared/certificate-provider/acme/
 
 See [Tailscale DNS Server](/configuration/dns/server/tailscale/#accept_search_domain).
 
-#### 1.13.9
+## 1.13.9
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.13
+## 1.14.0-alpha.13
 
 * Unify HTTP client **1**
 * Add Apple HTTP and TLS engines **2**
@@ -1251,18 +1253,18 @@ the real handshake to fool SNI-filtering middleboxes. Requires
 Administrator privileges on Windows (ARM64 is not supported). IP-literal
 server names are rejected.
 
-#### 1.14.0-alpha.12
+## 1.14.0-alpha.12
 
 * Fix fake-ip DNS server should return SUCCESS when address type is not configured
 * Fixes and improvements
 
-#### 1.13.8
+## 1.13.8
 
 * Update naiveproxy to v147.0.7727.49-1
 * Fix fake-ip DNS server should return SUCCESS when address type is not configured
 * Fixes and improvements
 
-#### 1.14.0-alpha.11
+## 1.14.0-alpha.11
 
 * Add optimistic DNS cache **1**
 * Update NaiveProxy to 147.0.7727.49
@@ -1285,7 +1287,7 @@ always keys by transport) and the `store_rdrc` cache file option
 (replaced by `store_dns`); both will be removed in sing-box 1.16.0.
 See [Migration](/migration/#migrate-independent-dns-cache).
 
-#### 1.14.0-alpha.10
+## 1.14.0-alpha.10
 
 * Add `evaluate` DNS rule action and Response Match Fields **1**
 * `ip_version` and `query_type` now also take effect on internal DNS lookups **2**
@@ -1336,15 +1338,15 @@ See [Route Rule](/configuration/route/rule/#package_name_regex),
 
 See [Cloudflared](/configuration/inbound/cloudflared/).
 
-#### 1.13.7
+## 1.13.7
 
 * Fixes and improvement
 
-#### 1.13.6
+## 1.13.6
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.8
+## 1.14.0-alpha.8
 
 * Add BBR profile and hop interval randomization for Hysteria2 **1**
 * Fixes and improvements
@@ -1353,19 +1355,19 @@ See [Cloudflared](/configuration/inbound/cloudflared/).
 
 See [Hysteria2 Inbound](/configuration/inbound/hysteria2/#bbr_profile) and [Hysteria2 Outbound](/configuration/outbound/hysteria2/#bbr_profile).
 
-#### 1.13.5
+## 1.13.5
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.7
+## 1.14.0-alpha.7
 
 * Fixes and improvements
 
-#### 1.13.4
+## 1.13.4
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.4
+## 1.14.0-alpha.4
 
 * Refactor ACME support to certificate provider system **1**
 * Add Cloudflare Origin CA certificate provider **2**
@@ -1384,7 +1386,7 @@ See [Cloudflare Origin CA](/configuration/shared/certificate-provider/cloudflare
 
 See [Tailscale](/configuration/shared/certificate-provider/tailscale).
 
-#### 1.13.3
+## 1.13.3
 
 * Add OpenWrt and Alpine APK packages to release **1**
 * Backport to macOS 10.13 High Sierra **2**
@@ -1408,11 +1410,11 @@ from [SagerNet/go](https://github.com/SagerNet/go).
 
 See [OCM](/configuration/service/ocm).
 
-#### 1.12.24
+## 1.12.24
 
 * Fixes and improvements
 
-#### 1.14.0-alpha.2
+## 1.14.0-alpha.2
 
 * Add OpenWrt and Alpine APK packages to release **1**
 * Backport to macOS 10.13 High Sierra **2**
@@ -1436,7 +1438,7 @@ from [SagerNet/go](https://github.com/SagerNet/go).
 
 See [OCM](/configuration/service/ocm).
 
-#### 1.14.0-alpha.1
+## 1.14.0-alpha.1
 
 * Add `source_mac_address` and `source_hostname` rule items **1**
 * Add `include_mac_address` and `exclude_mac_address` TUN options **2**
@@ -1461,19 +1463,19 @@ See [TUN](/configuration/inbound/tun/#include_mac_address).
 
 This is not an official update from NaiveProxy. Instead, it's a Chromium codebase update maintained by Project S.
 
-#### 1.13.2
+## 1.13.2
 
 * Fixes and improvements
 
-#### 1.13.1
+## 1.13.1
 
 * Fixes and improvements
 
-#### 1.12.14
+## 1.12.14
 
 * Backport fixes
 
-#### 1.13.0
+## 1.13.0
 
 Important changes since 1.12:
 
@@ -1639,43 +1641,43 @@ Also, documentation has been updated with a warning about uTLS fingerprinting vu
 uTLS is not recommended for censorship circumvention due to fundamental architectural limitations;
 use NaiveProxy instead for TLS fingerprint resistance.
 
-#### 1.12.23
+## 1.12.23
 
 * Fixes and improvements
 
-#### 1.13.0-rc.5
+## 1.13.0-rc.5
 
 * Add `mipsle`, `mips64le`, `riscv64` and `loong64` support for NaiveProxy outbound
 
-#### 1.12.22
+## 1.12.22
 
 * Fixes and improvements
 
-#### 1.13.0-rc.3
+## 1.13.0-rc.3
 
 * Fixes and improvements
 
-#### 1.12.21
+## 1.12.21
 
 * Fixes and improvements
 
-#### 1.13.0-rc.2
+## 1.13.0-rc.2
 
 * Fixes and improvements
 
-#### 1.12.20
+## 1.12.20
 
 * Fixes and improvements
 
-#### 1.13.0-rc.1
+## 1.13.0-rc.1
 
 * Fixes and improvements
 
-#### 1.12.19
+## 1.12.19
 
 * Fixes and improvements
 
-#### 1.13.0-beta.8
+## 1.13.0-beta.8
 
 * Add fallback routing rule for `auto_redirect` **1**
 * Fixes and improvements
@@ -1687,7 +1689,7 @@ ensuring traffic is routed to the sing-box table when no route is found in syste
 
 The rule index can be customized via `auto_redirect_iproute2_fallback_rule_index` (default: 32768).
 
-#### 1.12.18
+## 1.12.18
 
 * Add fallback routing rule for `auto_redirect` **1**
 * Fixes and improvements
@@ -1699,7 +1701,7 @@ ensuring traffic is routed to the sing-box table when no route is found in syste
 
 The rule index can be customized via `auto_redirect_iproute2_fallback_rule_index` (default: 32768).
 
-#### 1.13.0-beta.6
+## 1.13.0-beta.6
 
 * Update uTLS to v1.8.2 **1**
 * Fixes and improvements
@@ -1712,7 +1714,7 @@ Also, documentation has been updated with a warning about uTLS fingerprinting vu
 uTLS is not recommended for censorship circumvention due to fundamental architectural limitations;
 use NaiveProxy instead for TLS fingerprint resistance.
 
-#### 1.12.17
+## 1.12.17
 
 * Update uTLS to v1.8.2 **1**
 * Fixes and improvements
@@ -1725,22 +1727,22 @@ Also, documentation has been updated with a warning about uTLS fingerprinting vu
 uTLS is not recommended for censorship circumvention due to fundamental architectural limitations;
 use NaiveProxy instead for TLS fingerprint resistance.
 
-#### 1.13.0-beta.5
+## 1.13.0-beta.5
 
 * Fixes and improvements
 
-#### 1.12.16
+## 1.12.16
 
 * Fixes and improvements
 
-#### 1.13.0-beta.4
+## 1.13.0-beta.4
 
 * Apple/Android: Add support for sharing configurations via [QRS](https://github.com/qifi-dev/qrs)
 * Android: Add support for resisting VPN detection via Xposed
 * Update quic-go to v0.59.0
 * Fixes and improvements
 
-#### 1.13.0-beta.2
+## 1.13.0-beta.2
 
 * Add `bind_address_no_port` option for dial fields **1**
 * Fixes and improvements
@@ -1753,7 +1755,7 @@ This allows reusing the same source port for multiple connections, improving sca
 
 See [Dial Fields](/configuration/shared/dial/#bind_address_no_port).
 
-#### 1.13.0-beta.1
+## 1.13.0-beta.1
 
 * Add system interface support for Tailscale endpoint **1**
 * Fixes and improvements
@@ -1764,16 +1766,16 @@ Tailscale endpoint can now create a system TUN interface to handle traffic direc
 
 See [Tailscale endpoint](/configuration/endpoint/tailscale/#system_interface).
 
-#### 1.12.15
+## 1.12.15
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.36
+## 1.13.0-alpha.36
 
 * Downgrade quic-go to v0.57.1
 * Fixes and improvements
 
-#### 1.13.0-alpha.35
+## 1.13.0-alpha.35
 
 * Add pre-match support for `auto_redirect` **1**
 * Fixes and improvements
@@ -1788,7 +1790,7 @@ This feature requires Linux with `auto_redirect` enabled.
 
 See [Pre-match](/configuration/shared/pre-match/) and [Rule Action](/configuration/route/rule_action/#bypass).
 
-#### 1.13.0-alpha.34
+## 1.13.0-alpha.34
 
 * Add Chrome Root Store certificate option **1**
 * Add new options for ACME DNS-01 challenge providers **2**
@@ -1828,15 +1830,15 @@ and only through a separate legacy build (with `-legacy-android-5` suffix).
 For standalone binaries, the minimum Android version has been raised to Android 6.0,
 since Termux requires Android 7.0 or later.
 
-#### 1.12.14
+## 1.12.14
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.33
+## 1.13.0-alpha.33
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.32
+## 1.13.0-alpha.32
 
 * Remove `certificate_public_key_sha256` option for NaiveProxy outbound **1**
 * Fixes and improvements
@@ -1846,7 +1848,7 @@ since Termux requires Android 7.0 or later.
 Self-signed certificates change traffic behavior significantly, which defeats the purpose of NaiveProxy's design to resist traffic analysis.
 For this reason, and due to maintenance costs, there is no reason to continue supporting `certificate_public_key_sha256`, which was designed to simplify the use of self-signed certificates.
 
-#### 1.13.0-alpha.31
+## 1.13.0-alpha.31
 
 * Add QUIC support for NaiveProxy outbound **1**
 * Add QUIC congestion control option for NaiveProxy **2**
@@ -1864,7 +1866,7 @@ NaiveProxy inbound and outbound now supports configurable QUIC congestion contro
 
 See [NaiveProxy inbound](/configuration/inbound/naive/#quic_congestion_control) and [NaiveProxy outbound](/configuration/outbound/naive/#quic_congestion_control).
 
-#### 1.13.0-alpha.30
+## 1.13.0-alpha.30
 
 * Add ECH support for NaiveProxy outbound **1**
 * Add `tls.ech.query_server_name` option **2**
@@ -1889,7 +1891,7 @@ Ensure this file is in the same directory as `sing-box.exe` or in a directory li
 
 See [OCM](/configuration/service/ocm).
 
-#### 1.13.0-alpha.29
+## 1.13.0-alpha.29
 
 * Add UDP over TCP support for naiveproxy outbound **1**
 * Fixes and improvements
@@ -1898,7 +1900,7 @@ See [OCM](/configuration/service/ocm).
 
 See [NaiveProxy outbound](/configuration/outbound/naive/#udp_over_tcp).
 
-#### 1.13.0-alpha.28
+## 1.13.0-alpha.28
 
 * Add naiveproxy outbound **1**
 * Add `disable_tcp_keep_alive`, `tcp_keep_alive` and `tcp_keep_alive_interval` options for dial fields **2**
@@ -1922,8 +1924,7 @@ because system extensions require signatures to function, we have had to tempora
 __We plan to fix the App Store release issue and launch a new standalone desktop client, but until then,
 only clients on TestFlight will be available (unless you have an Apple Developer Program and compile from source code).__
 
-
-#### 1.12.13
+## 1.12.13
 
 * Fix naive inbound
 * Fixes and improvements
@@ -1934,21 +1935,21 @@ because system extensions require signatures to function, we have had to tempora
 __We plan to fix the App Store release issue and launch a new standalone desktop client, but until then,
 only clients on TestFlight will be available (unless you have an Apple Developer Program and compile from source code).__
 
-#### 1.12.12
+## 1.12.12
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.26
+## 1.13.0-alpha.26
 
 * Update quic-go to v0.55.0
 * Fix memory leak in hysteria2
 * Fixes and improvements
 
-#### 1.12.11
+## 1.12.11
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.24
+## 1.13.0-alpha.24
 
 * Add Claude Code Multiplexer service **1**
 * Fixes and improvements
@@ -1959,7 +1960,7 @@ CCM (Claude Code Multiplexer) service allows you to access your local Claude Cod
 
 See [CCM](/configuration/service/ccm).
 
-#### 1.13.0-alpha.23
+## 1.13.0-alpha.23
 
 * Fix compatibility with MPTCP **1**
 * Fixes and improvements
@@ -1971,7 +1972,7 @@ but you can change it to bypass the sing-box via the new `exclude_mptcp` option.
 
 See [TUN](/configuration/inbound/tun/#exclude_mptcp).
 
-#### 1.13.0-alpha.22
+## 1.13.0-alpha.22
 
 * Update uTLS to v1.8.1 **1**
 * Fixes and improvements
@@ -1981,7 +1982,7 @@ See [TUN](/configuration/inbound/tun/#exclude_mptcp).
 This update fixes an critical issue that could cause simulated Chrome fingerprints to be detected,
 see https://github.com/refraction-networking/utls/pull/375.
 
-#### 1.12.10
+## 1.12.10
 
 * Update uTLS to v1.8.1 **1**
 * Fixes and improvements
@@ -1991,44 +1992,44 @@ see https://github.com/refraction-networking/utls/pull/375.
 This update fixes an critical issue that could cause simulated Chrome fingerprints to be detected,
 see https://github.com/refraction-networking/utls/pull/375.
 
-#### 1.13.0-alpha.21
+## 1.13.0-alpha.21
 
 * Fix missing mTLS support in client options **1**
 * Fixes and improvements
 
 See [TLS](/configuration/shared/tls/).
 
-#### 1.12.9
+## 1.12.9
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.16
+## 1.13.0-alpha.16
 
 * Add curve preferences, pinned public key SHA256 and mTLS for TLS options **1**
 * Fixes and improvements
 
 See [TLS](/configuration/shared/tls/).
 
-#### 1.13.0-alpha.15
+## 1.13.0-alpha.15
 
 * Update quic-go to v0.54.0
 * Update gVisor to v20250811
 * Update Tailscale to v1.86.5
 * Fixes and improvements
 
-#### 1.12.8
+## 1.12.8
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.11
+## 1.13.0-alpha.11
 
 * Fixes and improvements
 
-#### 1.12.5
+## 1.12.5
 
 * Fixes and improvements
 
-#### 1.13.0-alpha.10
+## 1.13.0-alpha.10
 
 * Improve kTLS support **1**
 * Fixes and improvements
@@ -2037,23 +2038,23 @@ See [TLS](/configuration/shared/tls/).
 
 kTLS is now compatible with custom TLS implementations other than uTLS.
 
-#### 1.12.4
+## 1.12.4
 
 * Fixes and improvements
 
-#### 1.12.3
+## 1.12.3
 
 * Fixes and improvements
 
-#### 1.12.2
+## 1.12.2
 
 * Fixes and improvements
 
-#### 1.12.1
+## 1.12.1
 
 * Fixes and improvements
 
-#### 1.12.0
+## 1.12.0
 
 * Refactor DNS servers **1**
 * Add domain resolver options**2**
@@ -2206,14 +2207,14 @@ We continue to experience issues updating our sing-box apps on the App Store and
 Until we rewrite and resubmit the apps, they are considered irrecoverable.
 Therefore, after this release, we will not be repeating this notice unless there is new information.
 
-### 1.11.15
+## 1.11.15
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.32
+### 1.12.0-beta.32
 
 * Improve tun performance on Apple platforms **1**
 * Fixes and improvements
@@ -2222,14 +2223,14 @@ violated the rules (TestFlight users are not affected)._
 
 We have significantly improved the performance of tun inbound on Apple platforms, especially in the gVisor stack.
 
-### 1.11.14
+## 1.11.14
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.24
+### 1.12.0-beta.24
 
 * Allow `tls_fragment` and `tls_record_fragment` to be enabled together **1**
 * Also add fragment options for TLS client configuration **2**
@@ -2245,7 +2246,7 @@ See [Route Action](/configuration/route/rule_action/#tls_fragment).
 
 See [TLS](/configuration/shared/tls/).
 
-#### 1.12.0-beta.23
+### 1.12.0-beta.23
 
 * Add loopback address support for tun **1**
 * Add cache support for ssm-api **2**
@@ -2261,7 +2262,7 @@ See [Tun](/configuration/inbound/tun/#loopback_address).
 
 See [SSM API Service](/configuration/service/ssm-api/#cache_path).
 
-#### 1.12.0-beta.21
+### 1.12.0-beta.21
 
 * Fix missing `home` option for DERP service **1**
 * Fixes and improvements
@@ -2272,19 +2273,19 @@ You can now choose what the DERP home page shows, just like with derper's `-home
 
 See [DERP](/configuration/service/derp/#home).
 
-### 1.11.13
+## 1.11.13
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.17
+### 1.12.0-beta.17
 
 * Update quic-go to v0.52.0
 * Fixes and improvements
 
-#### 1.12.0-beta.15
+### 1.12.0-beta.15
 
 * Add DERP service **1**
 * Add Resolved service and DNS server **2**
@@ -2310,14 +2311,14 @@ SSM API service is a RESTful API server for managing Shadowsocks servers.
 
 See [SSM API Service](/configuration/service/ssm-api/).
 
-### 1.11.11
+## 1.11.11
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.13
+### 1.12.0-beta.13
 
 * Add TLS record fragment route options **1**
 * Add missing `accept_routes` option for Tailscale **2**
@@ -2331,7 +2332,7 @@ See [Route Action](/configuration/route/rule_action/#tls_record_fragment).
 
 See [Tailscale](/configuration/endpoint/tailscale/#accept_routes).
 
-#### 1.12.0-beta.10
+### 1.12.0-beta.10
 
 * Add control options for listeners **1**
 * Fixes and improvements
@@ -2342,7 +2343,7 @@ You can now set `bind_interface`, `routing_mark` and `reuse_addr` in Listen Fiel
 
 See [Listen Fields](/configuration/shared/listen/).
 
-### 1.11.10
+## 1.11.10
 
 * Undeprecate the `block` outbound **1**
 * Fixes and improvements
@@ -2355,23 +2356,23 @@ we decided to temporarily undeprecate the `block` outbound until a replacement i
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.9
+### 1.12.0-beta.9
 
 * Update quic-go to v0.51.0
 * Fixes and improvements
 
-### 1.11.9
+## 1.11.9
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.5
+### 1.12.0-beta.5
 
 * Fixes and improvements
 
-### 1.11.8
+## 1.11.8
 
 * Improve `auto_redirect` **1**
 * Fixes and improvements
@@ -2384,18 +2385,18 @@ see [Tun](/configuration/inbound/tun/#auto_redirect).
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.3
+### 1.12.0-beta.3
 
 * Fixes and improvements
 
-### 1.11.7
+## 1.11.7
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-beta.1
+### 1.12.0-beta.1
 
 * Fixes and improvements
 
@@ -2404,19 +2405,19 @@ violated the rules (TestFlight users are not affected)._
 Now `auto_redirect` fixes compatibility issues between tun and Docker bridge networks,
 see [Tun](/configuration/inbound/tun/#auto_redirect).
 
-### 1.11.6
+## 1.11.6
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-alpha.19
+### 1.12.0-alpha.19
 
 * Update gVisor to 20250319.0
 * Fixes and improvements
 
-#### 1.12.0-alpha.18
+### 1.12.0-alpha.18
 
 * Add wildcard SNI support for ShadowTLS inbound **1**
 * Fixes and improvements
@@ -2425,7 +2426,7 @@ violated the rules (TestFlight users are not affected)._
 
 See [ShadowTLS](/configuration/inbound/shadowtls/#wildcard_sni).
 
-#### 1.12.0-alpha.17
+### 1.12.0-alpha.17
 
 * Add NTP sniffer **1**
 * Fixes and improvements
@@ -2434,7 +2435,7 @@ See [ShadowTLS](/configuration/inbound/shadowtls/#wildcard_sni).
 
 See [Protocol Sniff](/configuration/route/sniff/).
 
-#### 1.12.0-alpha.16
+### 1.12.0-alpha.16
 
 * Update `domain_resolver` behavior **1**
 * Fixes and improvements
@@ -2445,14 +2446,14 @@ See [Protocol Sniff](/configuration/route/sniff/).
 
 See [Dial Fields](/configuration/shared/dial/#domain_resolver).
 
-### 1.11.5
+## 1.11.5
 
 * Fixes and improvements
 
 _We are temporarily unable to update sing-box apps on the App Store because the reviewer mistakenly found that we
 violated the rules (TestFlight users are not affected)._
 
-#### 1.12.0-alpha.13
+### 1.12.0-alpha.13
 
 * Move `predefined` DNS server to DNS rule action **1**
 * Fixes and improvements
@@ -2461,15 +2462,15 @@ violated the rules (TestFlight users are not affected)._
 
 See [DNS Rule Action](/configuration/dns/rule_action/#predefined).
 
-### 1.11.4
+## 1.11.4
 
 * Fixes and improvements
 
-#### 1.12.0-alpha.11
+### 1.12.0-alpha.11
 
 * Fixes and improvements
 
-#### 1.12.0-alpha.10
+### 1.12.0-alpha.10
 
 * Add AnyTLS protocol **1**
 * Improve `resolve` route action **2**
@@ -2493,7 +2494,7 @@ See [TLS](/configuration/shared/tls).
 
 The build tag `with_ech` is no longer needed and has been removed.
 
-#### 1.12.0-alpha.7
+### 1.12.0-alpha.7
 
 * Add Tailscale DNS server **1**
 * Fixes and improvements
@@ -2502,7 +2503,7 @@ The build tag `with_ech` is no longer needed and has been removed.
 
 See [Tailscale](/configuration/dns/server/tailscale/).
 
-#### 1.12.0-alpha.6
+### 1.12.0-alpha.6
 
 * Add Tailscale endpoint **1**
 * Drop support for go1.22 **2**
@@ -2519,27 +2520,27 @@ Due to maintenance difficulties, sing-box 1.12.0 requires at least Go 1.23 to co
 For Windows 7 users, legacy binaries now continue to compile with Go 1.23 and patches
 from [MetaCubeX/go](https://github.com/MetaCubeX/go).
 
-### 1.11.3
+## 1.11.3
 
 * Fixes and improvements
 
 _This version overwrites 1.11.2, as incorrect binaries were released due to a bug in the continuous integration
 process._
 
-#### 1.12.0-alpha.5
+### 1.12.0-alpha.5
 
 * Fixes and improvements
 
-### 1.11.1
+## 1.11.1
 
 * Fixes and improvements
 
-#### 1.12.0-alpha.2
+### 1.12.0-alpha.2
 
 * Update quic-go to v0.49.0
 * Fixes and improvements
 
-#### 1.12.0-alpha.1
+### 1.12.0-alpha.1
 
 * Refactor DNS servers **1**
 * Add domain resolver options**2**
@@ -2589,7 +2590,7 @@ You can also use the Mozilla Included List instead, or add trusted certificates 
 
 See [Certificate](/configuration/certificate/).
 
-### 1.11.0
+## 1.11.0
 
 Important changes since 1.10:
 
@@ -2709,11 +2710,11 @@ See [Hysteria2](/configuration/outbound/hysteria2/).
 
 When `up_mbps` and `down_mbps` are set, `ignore_client_bandwidth` instead denies clients from using BBR CC.
 
-### 1.10.7
+## 1.10.7
 
 * Fixes and improvements
 
-#### 1.11.0-beta.20
+### 1.11.0-beta.20
 
 * Hysteria2 `ignore_client_bandwidth` behavior update **1**
 * Fixes and improvements
@@ -2724,7 +2725,7 @@ When `up_mbps` and `down_mbps` are set, `ignore_client_bandwidth` instead denies
 
 See [Hysteria2](/configuration/inbound/hysteria2/#ignore_client_bandwidth).
 
-#### 1.11.0-beta.17
+### 1.11.0-beta.17
 
 * Add port hopping support for Hysteria2 **1**
 * Fixes and improvements
@@ -2733,7 +2734,7 @@ See [Hysteria2](/configuration/inbound/hysteria2/#ignore_client_bandwidth).
 
 See [Hysteria2](/configuration/outbound/hysteria2/).
 
-#### 1.11.0-beta.14
+### 1.11.0-beta.14
 
 * Allow adding route (exclude) address sets to routes **1**
 * Fixes and improvements
@@ -2750,12 +2751,12 @@ but otherwise it works fine on all command line clients and Apple platforms.
 See [route_address_set](/configuration/inbound/tun/#route_address_set) and
 [route_exclude_address_set](/configuration/inbound/tun/#route_exclude_address_set).
 
-#### 1.11.0-beta.12
+### 1.11.0-beta.12
 
 * Add `rule-set merge` command
 * Fixes and improvements
 
-#### 1.11.0-beta.3
+### 1.11.0-beta.3
 
 * Add more masquerade options for hysteria2 **1**
 * Fixes and improvements
@@ -2764,12 +2765,12 @@ See [route_address_set](/configuration/inbound/tun/#route_address_set) and
 
 See [Hysteria2](/configuration/inbound/hysteria2/#masquerade).
 
-#### 1.11.0-alpha.25
+### 1.11.0-alpha.25
 
 * Update quic-go to v0.48.2
 * Fixes and improvements
 
-#### 1.11.0-alpha.22
+### 1.11.0-alpha.22
 
 * Add UDP timeout route option **1**
 * Fixes and improvements
@@ -2778,7 +2779,7 @@ See [Hysteria2](/configuration/inbound/hysteria2/#masquerade).
 
 See [Rule Action](/configuration/route/rule_action/#udp_timeout).
 
-#### 1.11.0-alpha.20
+### 1.11.0-alpha.20
 
 * Add UDP GSO support for WireGuard
 * Make GSO adaptive **1**
@@ -2791,7 +2792,7 @@ see [WireGuard Outbound](/configuration/outbound/wireguard/#gso).
 For TUN, GSO has been removed,
 see [Deprecated](/deprecated/#gso-option-in-tun).
 
-#### 1.11.0-alpha.19
+### 1.11.0-alpha.19
 
 * Upgrade WireGuard outbound to endpoint **1**
 * Fixes and improvements
@@ -2804,17 +2805,17 @@ and the old outbound will be removed in sing-box 1.13.0.
 See [Endpoint](/configuration/endpoint/), [WireGuard Endpoint](/configuration/endpoint/wireguard/)
 and [Migrate WireGuard outbound fields to route options](/migration/#migrate-wireguard-outbound-to-endpoint).
 
-### 1.10.2
+## 1.10.2
 
 * Add deprecated warnings
 * Fix proxying websocket connections in HTTP/mixed inbounds
 * Fixes and improvements
 
-#### 1.11.0-alpha.18
+### 1.11.0-alpha.18
 
 * Fixes and improvements
 
-#### 1.11.0-alpha.16
+### 1.11.0-alpha.16
 
 * Add `cache_capacity` DNS option **1**
 * Add `override_address` and `override_port` route options **2**
@@ -2829,7 +2830,7 @@ See [DNS](/configuration/dns/#cache_capacity).
 See [Rule Action](/configuration/route/#override_address) and
 [Migrate destination override fields to route options](/migration/#migrate-destination-override-fields-to-route-options).
 
-#### 1.11.0-alpha.15
+### 1.11.0-alpha.15
 
 * Improve multi network dialing **1**
 * Fixes and improvements
@@ -2842,7 +2843,7 @@ See [Dial Fields](/configuration/shared/dial/#network_strategy),
 [Rule Action](/configuration/route/rule_action/#network_strategy)
 and [Route](/configuration/route/#default_network_strategy).
 
-#### 1.11.0-alpha.14
+### 1.11.0-alpha.14
 
 * Add multi network dialing **1**
 * Fixes and improvements
@@ -2859,11 +2860,11 @@ See [Dial Fields](/configuration/shared/dial/#network_strategy),
 [Rule Action](/configuration/route/rule_action/#network_strategy)
 and [Route](/configuration/route/#default_network_strategy).
 
-#### 1.11.0-alpha.13
+### 1.11.0-alpha.13
 
 * Fixes and improvements
 
-#### 1.11.0-alpha.12
+### 1.11.0-alpha.12
 
 * Merge route options to route actions **1**
 * Add `network_type`, `network_is_expensive` and `network_is_constrainted` rule items **2**
@@ -2885,7 +2886,7 @@ network type (WIFI, cellular, etc.), whether the network is expensive, and wheth
 See [Route Rule](/configuration/route/rule/), [DNS Route Rule](/configuration/dns/rule/)
 and [Headless Rule](/configuration/rule-set/headless-rule/).
 
-#### 1.11.0-alpha.9
+### 1.11.0-alpha.9
 
 * Improve tun compatibility **1**
 * Fixes and improvements
@@ -2896,7 +2897,7 @@ When `gvisor` tun stack is enabled, even if the request passes routing,
 if the outbound connection establishment fails,
 the connection still does not need to be established and a TCP RST is replied.
 
-#### 1.11.0-alpha.7
+### 1.11.0-alpha.7
 
 * Introducing rule actions **1**
 
@@ -2925,27 +2926,27 @@ before connection established to improve tun's compatibility.
 
 See [Rule Action](/configuration/route/rule_action/).
 
-#### 1.11.0-alpha.6
+### 1.11.0-alpha.6
 
 * Update quic-go to v0.48.1
 * Set gateway for tun correctly
 * Fixes and improvements
 
-#### 1.11.0-alpha.2
+### 1.11.0-alpha.2
 
 * Add warnings for usage of deprecated features
 * Fixes and improvements
 
-#### 1.11.0-alpha.1
+### 1.11.0-alpha.1
 
 * Update quic-go to v0.48.0
 * Fixes and improvements
 
-### 1.10.1
+## 1.10.1
 
 * Fixes and improvements
 
-### 1.10.0
+## 1.10.0
 
 Important changes since 1.9:
 
@@ -3043,11 +3044,11 @@ see [utls](/configuration/shared/tls#utls).
 
 See [Source Format](/configuration/rule-set/source-format/#version).
 
-### 1.9.7
+## 1.9.7
 
 * Fixes and improvements
 
-#### 1.10.0-beta.11
+### 1.10.0-beta.11
 
 * Update uTLS to v1.6.7 **1**
 
@@ -3056,7 +3057,7 @@ See [Source Format](/configuration/rule-set/source-format/#version).
 Some legacy chrome fingerprints have been removed and will fallback to chrome,
 see [utls](/configuration/shared/tls#utls).
 
-#### 1.10.0-beta.10
+### 1.10.0-beta.10
 
 * Add `process_path_regex` rule item
 * Fixes and improvements
@@ -3065,11 +3066,11 @@ _The macOS standalone versions of sing-box (>=1.9.5/<1.10.0-beta.11) now silentl
 the **Full Disk Access** permission to system extension to start, probably due to Apple's changed security policy. We
 will prompt users about this in feature versions._
 
-### 1.9.6
+## 1.9.6
 
 * Fixes and improvements
 
-### 1.9.5
+## 1.9.5
 
 * Update quic-go to v0.47.0
 * Fix direct dialer not resolving domain
@@ -3089,39 +3090,39 @@ See [Migration](/migration/#bundle-identifier-updates-in-apple-platform-clients)
 We are still working on getting all sing-box apps back on the App Store, which should be completed within a week
 (SFI on the App Store and others on TestFlight are already available).
 
-#### 1.10.0-beta.8
+### 1.10.0-beta.8
 
 * Fixes and improvements
 
 _With the help of a netizen, we are in the process of getting sing-box apps back on the App Store, which should be
 completed within a month (TestFlight is already available)._
 
-#### 1.10.0-beta.7
+### 1.10.0-beta.7
 
 * Update quic-go to v0.47.0
 * Fixes and improvements
 
-#### 1.10.0-beta.6
+### 1.10.0-beta.6
 
 * Add RDP sniffer
 * Fixes and improvements
 
-#### 1.10.0-beta.5
+### 1.10.0-beta.5
 
 * Add PNA support for [Clash API](/configuration/experimental/clash-api/)
 * Fixes and improvements
 
-#### 1.10.0-beta.3
+### 1.10.0-beta.3
 
 * Add SSH sniffer
 * Fixes and improvements
 
-#### 1.10.0-beta.2
+### 1.10.0-beta.2
 
 * Build with go1.23
 * Fixes and improvements
 
-### 1.9.4
+## 1.9.4
 
 * Update quic-go to v0.46.0
 * Update Hysteria2 BBR congestion control
@@ -3141,12 +3142,12 @@ sing-box apps on Apple platforms are temporarily unavailable for download or upd
 If your company or organization is willing to help us return to the App Store,
 please [contact us](mailto:contact@sagernet.org)._
 
-#### 1.10.0-alpha.29
+### 1.10.0-alpha.29
 
 * Update quic-go to v0.46.0
 * Fixes and improvements
 
-#### 1.10.0-alpha.25
+### 1.10.0-alpha.25
 
 * Add AdGuard DNS Filter support **1**
 
@@ -3156,7 +3157,7 @@ The new feature allows you to use AdGuard DNS Filter lists in a sing-box without
 
 See [AdGuard DNS Filter](/configuration/rule-set/adguard/).
 
-#### 1.10.0-alpha.23
+### 1.10.0-alpha.23
 
 * Add Chromium support for QUIC sniffer
 * Add client type detect support for QUIC sniffer **1**
@@ -3170,7 +3171,7 @@ Chromium, Safari, Firefox, quic-go (including uquic disguised as Chrome).
 
 See [Protocol Sniff](/configuration/route/sniff/) and [Route Rule](/configuration/route/rule/#client).
 
-#### 1.10.0-alpha.22
+### 1.10.0-alpha.22
 
 * Optimize memory usages of rule-sets **1**
 * Fixes and improvements
@@ -3179,18 +3180,18 @@ See [Protocol Sniff](/configuration/route/sniff/) and [Route Rule](/configuratio
 
 See [Source Format](/configuration/rule-set/source-format/#version).
 
-#### 1.10.0-alpha.20
+### 1.10.0-alpha.20
 
 * Add DTLS sniffer
 * Fixes and improvements
 
-#### 1.10.0-alpha.19
+### 1.10.0-alpha.19
 
 * Add `rule-set decompile` command
 * Add IP address support for `rule-set match` command
 * Fixes and improvements
 
-#### 1.10.0-alpha.18
+### 1.10.0-alpha.18
 
 * Add new `inline` rule-set type **1**
 * Add auto reload support for local rule-set
@@ -3210,7 +3211,7 @@ if the target file is deleted or recreated via rename (e.g. `mv`).
 This affects all path options that support reload, including
 `tls.certificate_path`, `tls.key_path`, `tls.ech.key_path` and `rule_set.path`.
 
-#### 1.10.0-alpha.17
+### 1.10.0-alpha.17
 
 * Some chaotic changes **1**
 * `rule_set_ipcidr_match_source` rule items are renamed **2**
@@ -3231,7 +3232,7 @@ Something may be broken, please actively report problems with this version.
 
 See [DNS Rule](/configuration/dns/rule/#rule_set_ip_cidr_accept_empty).
 
-#### 1.10.0-alpha.16
+### 1.10.0-alpha.16
 
 * Add custom options for `auto-route` and `auto-redirect` **1**
 * Fixes and improvements
@@ -3243,7 +3244,7 @@ See [iproute2_table_index](/configuration/inbound/tun/#iproute2_table_index),
 [auto_redirect_input_mark](/configuration/inbound/tun/#auto_redirect_input_mark) and
 [auto_redirect_output_mark](/configuration/inbound/tun/#auto_redirect_output_mark).
 
-#### 1.10.0-alpha.13
+### 1.10.0-alpha.13
 
 * TUN address fields are merged **1**
 * Add route address set support for auto-redirect **2**
@@ -3263,24 +3264,24 @@ Specified or unspecified destinations will bypass the sing-box routes to get bet
 See [route_address_set](/configuration/inbound/tun/#route_address_set)
 and [route_exclude_address_set](/configuration/inbound/tun/#route_exclude_address_set).
 
-#### 1.10.0-alpha.12
+### 1.10.0-alpha.12
 
 * Fix auto-redirect not configuring nftables forward chain correctly
 * Fixes and improvements
 
-### 1.9.3
+## 1.9.3
 
 * Fixes and improvements
 
-#### 1.10.0-alpha.10
+### 1.10.0-alpha.10
 
 * Fixes and improvements
 
-### 1.9.2
+## 1.9.2
 
 * Fixes and improvements
 
-#### 1.10.0-alpha.8
+### 1.10.0-alpha.8
 
 * Drop support for go1.18 and go1.19 **1**
 * Update quic-go to v0.45.0
@@ -3291,15 +3292,15 @@ and [route_exclude_address_set](/configuration/inbound/tun/#route_exclude_addres
 
 Due to maintenance difficulties, sing-box 1.10.0 requires at least Go 1.20 to compile.
 
-### 1.9.1
+## 1.9.1
 
 * Fixes and improvements
 
-#### 1.10.0-alpha.7
+### 1.10.0-alpha.7
 
 * Fixes and improvements
 
-#### 1.10.0-alpha.5
+### 1.10.0-alpha.5
 
 * Improve auto-redirect **1**
 
@@ -3309,7 +3310,7 @@ nftables support and DNS hijacking has been added.
 
 Tun inbounds with `auto_route` and `auto_redirect` now works as expected on routers **without intervention**.
 
-#### 1.10.0-alpha.4
+### 1.10.0-alpha.4
 
 * Fix auto-redirect **1**
 * Improve auto-route on linux **2**
@@ -3323,7 +3324,7 @@ Tun inbounds with `auto_route` and `auto_redirect` now works as expected on rout
 Tun inbounds with `auto_route` and `strict_route` now works as expected on routers and servers,
 but the usages of [exclude_interface](/configuration/inbound/tun/#exclude_interface) need to be updated.
 
-#### 1.10.0-alpha.2
+### 1.10.0-alpha.2
 
 * Move auto-redirect to Tun **1**
 * Fixes and improvements
@@ -3334,7 +3335,7 @@ Linux support are added.
 
 See [Tun](/configuration/inbound/tun/#auto_redirect).
 
-#### 1.10.0-alpha.1
+### 1.10.0-alpha.1
 
 * Add tailing comma support in JSON configuration
 * Add simple auto-redirect for Android **1**
@@ -3354,7 +3355,7 @@ See [Redirect](/configuration/inbound/redirect/).
 
 See [Protocol Sniff](/configuration/route/sniff/).
 
-### 1.9.0
+## 1.9.0
 
 * Fixes and improvements
 
@@ -3416,21 +3417,21 @@ See [DNS Rule](/configuration/dns/rule/).
 
 See [TunnelVision](/manual/misc/tunnelvision).
 
-#### 1.9.0-rc.22
+### 1.9.0-rc.22
 
 * Fixes and improvements
 
-#### 1.9.0-rc.20
+### 1.9.0-rc.20
 
 * Prioritize `*_route_address` in linux auto-route
 * Fix `*_route_address` in darwin auto-route
 
-#### 1.8.14
+### 1.8.14
 
 * Fix hysteria2 panic
 * Fixes and improvements
 
-#### 1.9.0-rc.18
+### 1.9.0-rc.18
 
 * Add custom prefix support in EDNS0 client subnet options
 * Fix hysteria2 crash
@@ -3438,7 +3439,7 @@ See [TunnelVision](/manual/misc/tunnelvision).
 * Update quic-go to v0.43.1
 * Fixes and improvements
 
-#### 1.9.0-rc.16
+### 1.9.0-rc.16
 
 * Mitigating TunnelVision attacks **1**
 * Fixes and improvements
@@ -3447,27 +3448,27 @@ See [TunnelVision](/manual/misc/tunnelvision).
 
 See [TunnelVision](/manual/misc/tunnelvision).
 
-#### 1.9.0-rc.15
+### 1.9.0-rc.15
 
 * Fixes and improvements
 
-#### 1.8.13
+### 1.8.13
 
 * Fix fake-ip mapping
 * Fixes and improvements
 
-#### 1.9.0-rc.14
+### 1.9.0-rc.14
 
 * Fixes and improvements
 
-#### 1.9.0-rc.13
+### 1.9.0-rc.13
 
 * Update Hysteria protocol
 * Update quic-go to v0.43.0
 * Update gVisor to 20240422.0
 * Fixes and improvements
 
-#### 1.8.12
+### 1.8.12
 
 * Now we have official APT and DNF repositories **1**
 * Fix packet MTU for QUIC protocols
@@ -3477,24 +3478,24 @@ See [TunnelVision](/manual/misc/tunnelvision).
 
 Including stable and beta versions, see https://sing-box.sagernet.org/installation/package-manager/
 
-#### 1.9.0-rc.11
+### 1.9.0-rc.11
 
 * Fixes and improvements
 
-#### 1.8.11
+### 1.8.11
 
 * Fixes and improvements
 
-#### 1.8.10
+### 1.8.10
 
 * Fixes and improvements
 
-#### 1.9.0-beta.17
+### 1.9.0-beta.17
 
 * Update `quic-go` to v0.42.0
 * Fixes and improvements
 
-#### 1.9.0-beta.16
+### 1.9.0-beta.16
 
 * Fixes and improvements
 
@@ -3502,24 +3503,24 @@ _Our Testflight distribution has been temporarily blocked by Apple (possibly due
 and you cannot join the test, install or update the sing-box beta app right now.
 Please wait patiently for processing._
 
-#### 1.9.0-beta.14
+### 1.9.0-beta.14
 
 * Update gVisor to 20240212.0-65-g71212d503
 * Fixes and improvements
 
-#### 1.8.9
+### 1.8.9
 
 * Fixes and improvements
 
-#### 1.8.8
+### 1.8.8
 
 * Fixes and improvements
 
-#### 1.9.0-beta.7
+### 1.9.0-beta.7
 
 * Fixes and improvements
 
-#### 1.9.0-beta.6
+### 1.9.0-beta.6
 
 * Fix address filter DNS rule items **1**
 * Fix DNS outbound responding with wrong data
@@ -3530,34 +3531,34 @@ Please wait patiently for processing._
 Fixed an issue where address filter DNS rule was incorrectly rejected under certain circumstances.
 If you have enabled `store_rdrc` to save results, consider clearing the cache file.
 
-#### 1.8.7
+### 1.8.7
 
 * Fixes and improvements
 
-#### 1.9.0-alpha.15
+### 1.9.0-alpha.15
 
 * Fixes and improvements
 
-#### 1.9.0-alpha.14
+### 1.9.0-alpha.14
 
 * Improve DNS truncate behavior
 * Fixes and improvements
 
-#### 1.9.0-alpha.13
+### 1.9.0-alpha.13
 
 * Fixes and improvements
 
-#### 1.8.6
+### 1.8.6
 
 * Fixes and improvements
 
-#### 1.9.0-alpha.12
+### 1.9.0-alpha.12
 
 * Handle Windows power events
 * Always disable cache for fake-ip DNS transport if `dns.independent_cache` disabled
 * Fixes and improvements
 
-#### 1.9.0-alpha.11
+### 1.9.0-alpha.11
 
 * Fix missing `rule_set_ipcidr_match_source` item in DNS rules **1**
 * Fixes and improvements
@@ -3566,7 +3567,7 @@ If you have enabled `store_rdrc` to save results, consider clearing the cache fi
 
 See [DNS Rule](/configuration/dns/rule/).
 
-#### 1.9.0-alpha.10
+### 1.9.0-alpha.10
 
 * Add `bypass_domain` and `search_domain` platform HTTP proxy options **1**
 * Fixes and improvements
@@ -3575,7 +3576,7 @@ See [DNS Rule](/configuration/dns/rule/).
 
 See [TUN](/configuration/inbound/tun) inbound.
 
-#### 1.9.0-alpha.8
+### 1.9.0-alpha.8
 
 * Add rejected DNS response cache support **1**
 * Fixes and improvements
@@ -3585,21 +3586,21 @@ See [TUN](/configuration/inbound/tun) inbound.
 The new feature allows you to cache the check results of
 [Legacy Address Filter Fields](/configuration/dns/rule/#legacy-address-filter-fields) until expiration.
 
-#### 1.9.0-alpha.7
+### 1.9.0-alpha.7
 
 * Update gVisor to 20240206.0
 * Fixes and improvements
 
-#### 1.9.0-alpha.6
+### 1.9.0-alpha.6
 
 * Fixes and improvements
 
-#### 1.9.0-alpha.3
+### 1.9.0-alpha.3
 
 * Update `quic-go` to v0.41.0
 * Fixes and improvements
 
-#### 1.9.0-alpha.2
+### 1.9.0-alpha.2
 
 * Add support for `client-subnet` DNS options **1**
 * Fixes and improvements
@@ -3611,7 +3612,7 @@ See [DNS](/configuration/dns), [DNS Server](/configuration/dns/server) and [DNS 
 Since this feature makes the scenario mentioned in `alpha.1` no longer leak DNS requests,
 the [Client example](/manual/proxy/client#traffic-bypass-usage-for-chinese-users) has been updated.
 
-#### 1.9.0-alpha.1
+### 1.9.0-alpha.1
 
 * `domain_suffix` behavior update **1**
 * `process_path` format update on Windows **2**
@@ -3634,23 +3635,23 @@ See [Legacy Address Filter Fields](/configuration/dns/rule#legacy-address-filter
 
 [Client example](/manual/proxy/client#traffic-bypass-usage-for-chinese-users) updated.
 
-#### 1.8.5
+### 1.8.5
 
 * Fixes and improvements
 
-#### 1.8.4
+### 1.8.4
 
 * Fixes and improvements
 
-#### 1.8.2
+### 1.8.2
 
 * Fixes and improvements
 
-#### 1.8.1
+### 1.8.1
 
 * Fixes and improvements
 
-### 1.8.0
+## 1.8.0
 
 * Fixes and improvements
 
@@ -3735,19 +3736,19 @@ Also, starting with this release, uTLS requires at least Go 1.20.
 Updated `cloudflare-tls`, `gomobile`, `smux`, `tfo-go` and `wireguard-go` to latest, `quic-go` to `0.40.1` and  `gvisor`
 to `20231204.0`
 
-#### 1.8.0-rc.11
+### 1.8.0-rc.11
 
 * Fixes and improvements
 
-#### 1.7.8
+### 1.7.8
 
 * Fixes and improvements
 
-#### 1.8.0-rc.10
+### 1.8.0-rc.10
 
 * Fixes and improvements
 
-#### 1.7.7
+### 1.7.7
 
 * Fix V2Ray transport `path` validation behavior **1**
 * Fixes and improvements
@@ -3756,11 +3757,11 @@ to `20231204.0`
 
 See [V2Ray transport](/configuration/shared/v2ray-transport/).
 
-#### 1.8.0-rc.7
+### 1.8.0-rc.7
 
 * Fixes and improvements
 
-#### 1.8.0-rc.3
+### 1.8.0-rc.3
 
 * Fix V2Ray transport `path` validation behavior **1**
 * Fixes and improvements
@@ -3769,24 +3770,24 @@ See [V2Ray transport](/configuration/shared/v2ray-transport/).
 
 See [V2Ray transport](/configuration/shared/v2ray-transport/).
 
-#### 1.7.6
+### 1.7.6
 
 * Fixes and improvements
 
-#### 1.8.0-rc.1
+### 1.8.0-rc.1
 
 * Fixes and improvements
 
-#### 1.8.0-beta.9
+### 1.8.0-beta.9
 
 * Add simple loopback detect
 * Fixes and improvements
 
-#### 1.7.5
+### 1.7.5
 
 * Fixes and improvements
 
-#### 1.8.0-alpha.17
+### 1.8.0-alpha.17
 
 * Add GSO support for TUN and WireGuard system interface **1**
 * Update uTLS to 1.5.4 **2**
@@ -3808,18 +3809,18 @@ Updated `cloudflare-tls`, `gomobile`, `smux`, `tfo-go` and `wireguard-go` to lat
 
 This may break something, good luck!
 
-#### 1.7.4
+### 1.7.4
 
 * Fixes and improvements
 
 _Due to the long waiting time, this version is no longer waiting for approval
 by the Apple App Store, so updates to Apple Platforms will be delayed._
 
-#### 1.8.0-alpha.16
+### 1.8.0-alpha.16
 
 * Fixes and improvements
 
-#### 1.8.0-alpha.15
+### 1.8.0-alpha.15
 
 * Some chaotic changes **1**
 * Fixes and improvements
@@ -3841,11 +3842,11 @@ Designed to optimize memory usage of idle connections, may take effect on the fo
 
 At the same time, everything existing may be broken, please actively report problems with this version.
 
-#### 1.8.0-alpha.13
+### 1.8.0-alpha.13
 
 * Fixes and improvements
 
-#### 1.8.0-alpha.10
+### 1.8.0-alpha.10
 
 * Add `idle_timeout` for URLTest outbound **1**
 * Fixes and improvements
@@ -3854,11 +3855,11 @@ At the same time, everything existing may be broken, please actively report prob
 
 When URLTest is idle for a certain period of time, the scheduled delay test will be paused.
 
-#### 1.7.2
+### 1.7.2
 
 * Fixes and improvements
 
-#### 1.8.0-alpha.8
+### 1.8.0-alpha.8
 
 * Add context to JSON decode error message **1**
 * Reject internal fake-ip queries **2**
@@ -3876,15 +3877,15 @@ and the default DNS server can no longer be `fakeip`.
 
 This change is intended to break incorrect usage and essentially requires no action.
 
-#### 1.8.0-alpha.7
+### 1.8.0-alpha.7
 
 * Fixes and improvements
 
-#### 1.7.1
+### 1.7.1
 
 * Fixes and improvements
 
-#### 1.8.0-alpha.6
+### 1.8.0-alpha.6
 
 * Fix rule-set matching logic **1**
 * Fixes and improvements
@@ -3894,7 +3895,7 @@ This change is intended to break incorrect usage and essentially requires no act
 Now the rules in the `rule_set` rule item can be logically considered to be merged into the rule using rule-sets,
 rather than completely following the AND logic.
 
-#### 1.8.0-alpha.5
+### 1.8.0-alpha.5
 
 * Parallel rule-set initialization
 * Independent `source_ip_is_private` and `ip_is_private` rules **1**
@@ -3904,7 +3905,7 @@ rather than completely following the AND logic.
 The `private` GeoIP country never existed and was actually implemented inside V2Ray.
 Since GeoIP was deprecated, we made this rule independent, see [Migration](/migration/#migrate-geoip-to-rule-sets).
 
-#### 1.8.0-alpha.1
+### 1.8.0-alpha.1
 
 * Migrate cache file from Clash API to independent options **1**
 * Introducing [rule-set](/configuration/rule-set/) **2**
@@ -3941,7 +3942,7 @@ New commands manage GeoIP, Geosite and rule-set resources, and help you migrate 
 
 Logical rules in route rules, DNS rules, and the new headless rule now allow nesting of logical rules.
 
-### 1.7.0
+## 1.7.0
 
 * Fixes and improvements
 
@@ -3985,35 +3986,35 @@ see [TCP Brutal](/configuration/shared/tcp-brutal/) for details.
 
 Only supported in graphical clients on Android and Apple platforms.
 
-#### 1.7.0-rc.3
+### 1.7.0-rc.3
 
 * Fixes and improvements
 
-#### 1.6.7
+### 1.6.7
 
 * macOS: Add button for uninstall SystemExtension in the standalone graphical client
 * Fix missing UDP user context on TUIC/Hysteria2 inbounds
 * Fixes and improvements
 
-#### 1.7.0-rc.2
+### 1.7.0-rc.2
 
 * Fix missing UDP user context on TUIC/Hysteria2 inbounds
 * macOS: Add button for uninstall SystemExtension in the standalone graphical client
 
-#### 1.6.6
+### 1.6.6
 
 * Fixes and improvements
 
-#### 1.7.0-rc.1
+### 1.7.0-rc.1
 
 * Fixes and improvements
 
-#### 1.7.0-beta.5
+### 1.7.0-beta.5
 
 * Update gVisor to 20231113.0
 * Fixes and improvements
 
-#### 1.7.0-beta.4
+### 1.7.0-beta.4
 
 * Add `wifi_ssid` and `wifi_bssid` route and DNS rules **1**
 * Fixes and improvements
@@ -4022,60 +4023,60 @@ Only supported in graphical clients on Android and Apple platforms.
 
 Only supported in graphical clients on Android and Apple platforms.
 
-#### 1.7.0-beta.3
+### 1.7.0-beta.3
 
 * Fix zero TTL was incorrectly reset
 * Fixes and improvements
 
-#### 1.6.5
+### 1.6.5
 
 * Fix crash if TUIC inbound authentication failed
 * Fixes and improvements
 
-#### 1.7.0-beta.2
+### 1.7.0-beta.2
 
 * Fix crash if TUIC inbound authentication failed
 * Update quic-go to v0.40.0
 * Fixes and improvements
 
-#### 1.6.4
+### 1.6.4
 
 * Fixes and improvements
 
-#### 1.7.0-beta.1
+### 1.7.0-beta.1
 
 * Fixes and improvements
 
-#### 1.6.3
+### 1.6.3
 
 * iOS/Android: Fix profile auto update
 * Fixes and improvements
 
-#### 1.7.0-alpha.11
+### 1.7.0-alpha.11
 
 * iOS/Android: Fix profile auto update
 * Fixes and improvements
 
-#### 1.7.0-alpha.10
+### 1.7.0-alpha.10
 
 * Fix tcp-brutal not working with TLS
 * Fix Android client not closing in some cases
 * Fixes and improvements
 
-#### 1.6.2
+### 1.6.2
 
 * Fixes and improvements
 
-#### 1.6.1
+### 1.6.1
 
 * Our [Android client](/installation/clients/sfa/) is now available in the Google Play Store ▶️
 * Fixes and improvements
 
-#### 1.7.0-alpha.6
+### 1.7.0-alpha.6
 
 * Fixes and improvements
 
-#### 1.7.0-alpha.4
+### 1.7.0-alpha.4
 
 * Migrate multiplex and UoT server to inbound **1**
 * Add TCP Brutal support for multiplex **2**
@@ -4090,7 +4091,7 @@ options.
 Hysteria Brutal Congestion Control Algorithm in TCP. A kernel module needs to be installed on the Linux server,
 see [TCP Brutal](/configuration/shared/tcp-brutal/) for details.
 
-#### 1.7.0-alpha.3
+### 1.7.0-alpha.3
 
 * Add [HTTPUpgrade V2Ray transport](/configuration/shared/v2ray-transport#HTTPUpgrade) support **1**
 * Fixes and improvements
@@ -4101,7 +4102,7 @@ Introduced in V2Ray 5.10.0.
 
 The new HTTPUpgrade transport has better performance than WebSocket and is better suited for CDN abuse.
 
-### 1.6.0
+## 1.6.0
 
 * Fixes and improvements
 
@@ -4125,11 +4126,11 @@ This update is intended to address the multi-send defects of the old implementat
 Based on discussions with the original author, the brutal CC and QUIC protocol parameters of
 the old protocol (Hysteria 1) have been updated to be consistent with Hysteria 2
 
-#### 1.7.0-alpha.2
+### 1.7.0-alpha.2
 
 * Fix bugs introduced in 1.7.0-alpha.1
 
-#### 1.7.0-alpha.1
+### 1.7.0-alpha.1
 
 * Add [exclude route support](/configuration/inbound/tun/) for TUN inbound
 * Add `udp_disable_domain_unmapping` [inbound listen option](/configuration/shared/listen/) **1**
@@ -4143,7 +4144,7 @@ the original packet address will be sent in the response instead of the mapped d
 This option is used for compatibility with clients that
 do not support receiving UDP packets with domain addresses, such as Surge.
 
-#### 1.5.5
+### 1.5.5
 
 * Fix IPv6 `auto_route` for Linux **1**
 * Add legacy builds for old Windows and macOS systems **2**
@@ -4159,11 +4160,11 @@ Built using Go 1.20, the last version that will run on
 Windows 7, 8, Server 2008, Server 2012 and macOS 10.13 High
 Sierra, 10.14 Mojave.
 
-#### 1.6.0-rc.4
+### 1.6.0-rc.4
 
 * Fixes and improvements
 
-#### 1.6.0-rc.1
+### 1.6.0-rc.1
 
 * Add legacy builds for old Windows and macOS systems **1**
 * Fixes and improvements
@@ -4174,7 +4175,7 @@ Built using Go 1.20, the last version that will run on
 Windows 7, 8, Server 2008, Server 2012 and macOS 10.13 High
 Sierra, 10.14 Mojave.
 
-#### 1.6.0-beta.4
+### 1.6.0-beta.4
 
 * Fix IPv6 `auto_route` for Linux **1**
 * Fixes and improvements
@@ -4183,12 +4184,12 @@ Sierra, 10.14 Mojave.
 
 When `auto_route` is enabled and `strict_route` is disabled, the device can now be reached from external IPv6 addresses.
 
-#### 1.5.4
+### 1.5.4
 
 * Fix Clash cache crash on arm32 devices
 * Fixes and improvements
 
-#### 1.6.0-beta.3
+### 1.6.0-beta.3
 
 * Update the legacy Hysteria protocol **1**
 * Fixes and improvements
@@ -4198,7 +4199,7 @@ When `auto_route` is enabled and `strict_route` is disabled, the device can now 
 Based on discussions with the original author, the brutal CC and QUIC protocol parameters of
 the old protocol (Hysteria 1) have been updated to be consistent with Hysteria 2
 
-#### 1.6.0-beta.2
+### 1.6.0-beta.2
 
 * Add TLS self sign key pair generate command
 * Update brutal congestion control for Hysteria2
@@ -4206,7 +4207,7 @@ the old protocol (Hysteria 1) have been updated to be consistent with Hysteria 2
 * Update golang.org/x/net to v0.17.0
 * Fixes and improvements
 
-#### 1.6.0-beta.3
+### 1.6.0-beta.3
 
 * Update the legacy Hysteria protocol **1**
 * Fixes and improvements
@@ -4216,7 +4217,7 @@ the old protocol (Hysteria 1) have been updated to be consistent with Hysteria 2
 Based on discussions with the original author, the brutal CC and QUIC protocol parameters of
 the old protocol (Hysteria 1) have been updated to be consistent with Hysteria 2
 
-#### 1.6.0-beta.2
+### 1.6.0-beta.2
 
 * Add TLS self sign key pair generate command
 * Update brutal congestion control for Hysteria2
@@ -4224,16 +4225,16 @@ the old protocol (Hysteria 1) have been updated to be consistent with Hysteria 2
 * Update golang.org/x/net to v0.17.0
 * Fixes and improvements
 
-#### 1.5.3
+### 1.5.3
 
 * Fix compatibility with Android 14
 * Fixes and improvements
 
-#### 1.6.0-beta.1
+### 1.6.0-beta.1
 
 * Fixes and improvements
 
-#### 1.6.0-alpha.5
+### 1.6.0-alpha.5
 
 * Fix compatibility with Android 14
 * Update BBR congestion control for TUIC and Hysteria2 **1**
@@ -4245,29 +4246,29 @@ None of the existing Golang BBR congestion control implementations have been rev
 This update is intended to fix a memory leak flaw in the new implementation introduced in 1.6.0-alpha.1 and may
 introduce new issues.
 
-#### 1.6.0-alpha.4
+### 1.6.0-alpha.4
 
 * Add `brutal_debug` option for Hysteria2
 * Fixes and improvements
 
-#### 1.5.2
+### 1.5.2
 
 * Our [Apple tvOS client](/installation/clients/sft/) is now available in the App Store 🍎
 * Fixes and improvements
 
-#### 1.6.0-alpha.3
+### 1.6.0-alpha.3
 
 * Fixes and improvements
 
-#### 1.6.0-alpha.2
+### 1.6.0-alpha.2
 
 * Fixes and improvements
 
-#### 1.5.1
+### 1.5.1
 
 * Fixes and improvements
 
-#### 1.6.0-alpha.1
+### 1.6.0-alpha.1
 
 * Update BBR congestion control for TUIC and Hysteria2 **1**
 * Update quic-go to v0.39.0
@@ -4280,7 +4281,7 @@ introduce new issues.
 None of the existing Golang BBR congestion control implementations have been reviewed or unit tested.
 This update is intended to address the multi-send defects of the old implementation and may introduce new issues.
 
-### 1.5.0
+## 1.5.0
 
 * Fixes and improvements
 
@@ -4327,15 +4328,15 @@ and [DNS01 Challenge Fields](/configuration/shared/dns01_challenge/).
 This command also parses path resources that appear in the configuration file and replaces them with embedded
 configuration, such as TLS certificates or SSH private keys.
 
-#### 1.5.0-rc.6
+### 1.5.0-rc.6
 
 * Fixes and improvements
 
-#### 1.4.6
+### 1.4.6
 
 * Fixes and improvements
 
-#### 1.5.0-rc.5
+### 1.5.0-rc.5
 
 * Fixed an improper authentication vulnerability in the SOCKS5 inbound
 * Fixes and improvements
@@ -4349,7 +4350,7 @@ authentication in an insecure environment are advised to update immediately.
 此更新修复了 sing-box SOCKS 入站中的一个不正确身份验证漏洞。 该漏洞允许攻击者制作特殊请求来绕过用户身份验证。建议所有将使用用户认证的
 SOCKS 服务器暴露在不安全环境下的用户立更新。
 
-#### 1.4.5
+### 1.4.5
 
 * Fixed an improper authentication vulnerability in the SOCKS5 inbound
 * Fixes and improvements
@@ -4363,11 +4364,11 @@ authentication in an insecure environment are advised to update immediately.
 此更新修复了 sing-box SOCKS 入站中的一个不正确身份验证漏洞。 该漏洞允许攻击者制作特殊请求来绕过用户身份验证。建议所有将使用用户认证的
 SOCKS 服务器暴露在不安全环境下的用户立更新。
 
-#### 1.5.0-rc.3
+### 1.5.0-rc.3
 
 * Fixes and improvements
 
-#### 1.5.0-beta.12
+### 1.5.0-beta.12
 
 * Add `merge` command **1**
 * Fixes and improvements
@@ -4393,7 +4394,7 @@ Global Flags:
       --disable-color                  disable color output
 ```
 
-#### 1.5.0-beta.11
+### 1.5.0-beta.11
 
 * Add DNS01 challenge support for ACME TLS certificate issuer **1**
 * Fixes and improvements
@@ -4404,7 +4405,7 @@ Only `Alibaba Cloud DNS` and `Cloudflare` are supported,
 see [ACME Fields](/configuration/shared/tls#acme-fields)
 and [DNS01 Challenge Fields](/configuration/shared/dns01_challenge/).
 
-#### 1.5.0-beta.10
+### 1.5.0-beta.10
 
 * Add `interrupt_exist_connections` option for `Selector` and `URLTest` outbounds **1**
 * Fixes and improvements
@@ -4415,25 +4416,25 @@ Interrupt existing connections when the selected outbound has changed.
 
 Only inbound connections are affected by this setting, internal connections will always be interrupted.
 
-#### 1.4.3
+### 1.4.3
 
 * Fixes and improvements
 
-#### 1.5.0-beta.8
+### 1.5.0-beta.8
 
 * Fixes and improvements
 
-#### 1.4.2
+### 1.4.2
 
 * Fixes and improvements
 
-#### 1.5.0-beta.6
+### 1.5.0-beta.6
 
 * Fix compatibility issues with official Hysteria2 server and client
 * Fixes and improvements
 * Mark [deprecated features](/deprecated/)
 
-#### 1.5.0-beta.3
+### 1.5.0-beta.3
 
 * Fixes and improvements
 * Updated Hysteria2 documentation **1**
@@ -4443,7 +4444,7 @@ Only inbound connections are affected by this setting, internal connections will
 Added notes indicating compatibility issues with the official
 Hysteria2 server and client when using `fastOpen=false` or UDP MTU >= 1200.
 
-#### 1.5.0-beta.2
+### 1.5.0-beta.2
 
 * Add hysteria2 protocol support **1**
 * Fixes and improvements
@@ -4454,7 +4455,7 @@ See [Hysteria2 inbound](/configuration/inbound/hysteria2/) and [Hysteria2 outbou
 
 For protocol description, please refer to [https://v2.hysteria.network](https://v2.hysteria.network)
 
-#### 1.5.0-beta.1
+### 1.5.0-beta.1
 
 * Add TLS [ECH server](/configuration/shared/tls/) support
 * Improve TLS TCH client configuration
@@ -4470,11 +4471,11 @@ Command: `sing-box generate ech-keypair <plain_server_name> [--pq-signature-sche
 
 All inbounds and outbounds are supported, including `Naiveproxy`, `Hysteria`, `TUIC` and `V2ray QUIC transport`.
 
-#### 1.4.1
+### 1.4.1
 
 * Fixes and improvements
 
-### 1.4.0
+## 1.4.0
 
 * Fix bugs and update dependencies
 
@@ -4505,19 +4506,19 @@ traffic (basically QUIC streams).
 
 Requires sing-box to be compiled with Go 1.21.
 
-#### 1.4.0-rc.3
+### 1.4.0-rc.3
 
 * Fixes and improvements
 
-#### 1.4.0-rc.2
+### 1.4.0-rc.2
 
 * Fixes and improvements
 
-#### 1.4.0-rc.1
+### 1.4.0-rc.1
 
 * Fix TUIC UDP
 
-#### 1.4.0-beta.6
+### 1.4.0-beta.6
 
 * Add `udp_over_stream` option for TUIC client **1**
 * Add `include_interface` and `exclude_interface` options for tun inbound
@@ -4532,20 +4533,20 @@ another program compatible with the protocol as a server.
 This mode has no positive effect in a proper UDP proxy scenario and should only be applied to relay streaming UDP
 traffic (basically QUIC streams).
 
-#### 1.4.0-beta.5
+### 1.4.0-beta.5
 
 * Fixes and improvements
 
-#### 1.4.0-beta.4
+### 1.4.0-beta.4
 
 * Graphical clients: Persistence group expansion state
 * Fixes and improvements
 
-#### 1.4.0-beta.3
+### 1.4.0-beta.3
 
 * Fixes and improvements
 
-#### 1.4.0-beta.2
+### 1.4.0-beta.2
 
 * Add MultiPath TCP support **1**
 * Drop QUIC support for Go 1.18 and 1.19 due to upstream changes
@@ -4555,7 +4556,7 @@ traffic (basically QUIC streams).
 
 Requires sing-box to be compiled with Go 1.21.
 
-#### 1.4.0-beta.1
+### 1.4.0-beta.1
 
 * Add TUIC support **1**
 * Pause recurring tasks when no network or device idle
@@ -4566,11 +4567,11 @@ Requires sing-box to be compiled with Go 1.21.
 See [TUIC inbound](/configuration/inbound/tuic/)
 and [TUIC outbound](/configuration/outbound/tuic/)
 
-#### 1.3.6
+### 1.3.6
 
 * Fixes and improvements
 
-#### 1.3.5
+### 1.3.5
 
 * Fixes and improvements
 * Introducing our [Apple tvOS](/installation/clients/sft/) client applications **1**
@@ -4582,7 +4583,7 @@ and [TUIC outbound](/configuration/outbound/tuic/)
 Due to the requirement of tvOS 17, the app cannot be submitted to the App Store for the time being, and can only be
 downloaded through TestFlight.
 
-#### 1.3.4
+### 1.3.4
 
 * Fixes and improvements
 * We're now on the [App Store](https://apps.apple.com/us/app/sing-box/id6451272673), always free! It should be noted
@@ -4590,15 +4591,15 @@ downloaded through TestFlight.
 * We've made a standalone version of the macOS client (the original Application Extension relies on App Store
   distribution), which you can download as SFM-version-universal.zip in the release artifacts.
 
-#### 1.3.3
+### 1.3.3
 
 * Fixes and improvements
 
-#### 1.3.1-rc.1
+### 1.3.1-rc.1
 
 * Fix bugs and update dependencies
 
-#### 1.3.1-beta.3
+### 1.3.1-beta.3
 
 * Introducing our [new iOS](/installation/clients/sfi/) and [macOS](/installation/clients/sfm/) client applications **1
   **
@@ -4608,15 +4609,15 @@ downloaded through TestFlight.
 
 The old testflight link and app are no longer valid.
 
-#### 1.3.1-beta.2
+### 1.3.1-beta.2
 
 * Fix bugs and update dependencies
 
-#### 1.3.1-beta.1
+### 1.3.1-beta.1
 
 * Fixes and improvements
 
-### 1.3.0
+## 1.3.0
 
 * Fix bugs and update dependencies
 
@@ -4655,20 +4656,20 @@ See [FAQ](/faq/fakeip/) for more information.
 
 Added new `h2mux` multiplex protocol and `padding` multiplex option, see [Multiplex](/configuration/shared/multiplex/).
 
-#### 1.3-rc2
+### 1.3-rc2
 
 * Fix `local` DNS transport for Android
 * Fix bugs and update dependencies
 
-#### 1.3-rc1
+### 1.3-rc1
 
 * Fix bugs and update dependencies
 
-#### 1.3-beta14
+### 1.3-beta14
 
 * Fixes and improvements
 
-#### 1.3-beta13
+### 1.3-beta13
 
 * Fix resolving fakeip domains  **1**
 * Deprecate L3 routing
@@ -4678,18 +4679,18 @@ Added new `h2mux` multiplex protocol and `padding` multiplex option, see [Multip
 
 If the destination address of the connection is obtained from fakeip, dns rules with server type fakeip will be skipped.
 
-#### 1.3-beta12
+### 1.3-beta12
 
 * Automatically add Windows firewall rules in order for the system tun stack to work
 * Fix TLS 1.2 support for shadow-tls client
 * Add `cache_id` [option](/configuration/experimental#cache_id) for Clash cache file
 * Fixes and improvements
 
-#### 1.3-beta11
+### 1.3-beta11
 
 * Fix bugs and update dependencies
 
-#### 1.3-beta10
+### 1.3-beta10
 
 * Improve direct copy **1**
 * Improve DNS caching
@@ -4708,7 +4709,7 @@ If the destination address of the connection is obtained from fakeip, dns rules 
 
 Improved performance and reduced memory usage.
 
-#### 1.3-beta9
+### 1.3-beta9
 
 * Improve multiplex **1**
 * Fixes and improvements
@@ -4717,11 +4718,11 @@ Improved performance and reduced memory usage.
 
 Added new `h2mux` multiplex protocol and `padding` multiplex option, see [Multiplex](/configuration/shared/multiplex/).
 
-#### 1.2.6
+### 1.2.6
 
 * Fix bugs and update dependencies
 
-#### 1.3-beta8
+### 1.3-beta8
 
 * Fix `system` tun stack for ios
 * Fix network monitor for android/ios
@@ -4732,39 +4733,39 @@ Added new `h2mux` multiplex protocol and `padding` multiplex option, see [Multip
 
 This is an incompatible update for XUDP in VLESS if vision flow is enabled.
 
-#### 1.3-beta7
+### 1.3-beta7
 
 * Add `path` and `headers` options for HTTP outbound
 * Add multi-user support for Shadowsocks legacy AEAD inbound
 * Fixes and improvements
 
-#### 1.2.4
+### 1.2.4
 
 * Fixes and improvements
 
-#### 1.3-beta6
+### 1.3-beta6
 
 * Fix WireGuard reconnect
 * Perform URLTest recheck after network changes
 * Fix bugs and update dependencies
 
-#### 1.3-beta5
+### 1.3-beta5
 
 * Add Clash.Meta API compatibility for Clash API
 * Download Yacd-meta by default if the specified Clash `external_ui` directory is empty
 * Add path and headers option for HTTP outbound
 * Fixes and improvements
 
-#### 1.3-beta4
+### 1.3-beta4
 
 * Fix bugs
 
-#### 1.3-beta2
+### 1.3-beta2
 
 * Download clash-dashboard if the specified Clash `external_ui` directory is empty
 * Fix bugs and update dependencies
 
-#### 1.3-beta1
+### 1.3-beta1
 
 * Add [DNS reverse mapping](/configuration/dns#reverse_mapping) support
 * Add [L3 routing](/configuration/route/ip-rule/) support **1**
@@ -4783,7 +4784,7 @@ at the IP layer.
 
 See [FAQ](/faq/fakeip/) for more information.
 
-#### 1.2.3
+### 1.2.3
 
 * Introducing our [new Android client application](/installation/clients/sfa/)
 * Improve UDP domain destination NAT
@@ -4792,7 +4793,7 @@ See [FAQ](/faq/fakeip/) for more information.
 * Fix v2ray HTTP transport compatibility
 * Fix bugs and update dependencies
 
-#### 1.2.2
+### 1.2.2
 
 * Accept `any` outbound in dns rule **1**
 * Fix bugs and update dependencies
@@ -4802,13 +4803,13 @@ See [FAQ](/faq/fakeip/) for more information.
 Now you can use the `any` outbound rule to match server address queries instead of filling in all server domains
 to `domain` rule.
 
-#### 1.2.1
+### 1.2.1
 
 * Fix missing default host in v2ray http transport`s request
 * Flush DNS cache for macOS when tun start/close
 * Fix tun's DNS hijacking compatibility with systemd-resolved
 
-### 1.2.0
+## 1.2.0
 
 * Fix bugs and update dependencies
 
@@ -4829,11 +4830,11 @@ Important changes since 1.1:
 * Add health check support for http-based v2ray transports
 * Add multiple configuration support
 
-#### 1.2-rc1
+### 1.2-rc1
 
 * Fix bugs and update dependencies
 
-#### 1.2-beta10
+### 1.2-beta10
 
 * Add multiple configuration support **1**
 * Fix bugs and update dependencies
@@ -4846,30 +4847,30 @@ to load all configuration files in a directory.
 Loaded configuration files are sorted by name. If you want to control the merge order, add a numeric prefix to the file
 name.
 
-#### 1.1.7
+### 1.1.7
 
 * Improve the stability of the VMESS server
 * Fix `auto_detect_interface` incorrectly identifying the default interface on Windows
 * Fix bugs and update dependencies
 
-#### 1.2-beta9
+### 1.2-beta9
 
 * Introducing the [UDP over TCP protocol version 2](/configuration/shared/udp-over-tcp/)
 * Add health check support for http-based v2ray transports
 * Remove length limit on short_id for reality TLS config
 * Fix bugs and update dependencies
 
-#### 1.2-beta8
+### 1.2-beta8
 
 * Update reality and uTLS libraries
 * Fix `auto_detect_interface` incorrectly identifying the default interface on Windows
 
-#### 1.2-beta7
+### 1.2-beta7
 
 * Fix the compatibility issue between VLESS's vision sub-protocol and the Xray-core client
 * Improve the stability of the VMESS server
 
-#### 1.2-beta6
+### 1.2-beta6
 
 * Introducing our [new iOS client application](/installation/clients/sfi/)
 * Add [platform options](/configuration/inbound/tun#platform) for tun inbound
@@ -4882,13 +4883,13 @@ name.
 * Bug fixes
 * Update dependencies
 
-#### 1.2-beta5
+### 1.2-beta5
 
 * Add [VLESS server](/configuration/inbound/vless/) and [vision](/configuration/outbound/vless#flow) support
 * Add [reality TLS](/configuration/shared/tls/) support
 * Fix match private address
 
-#### 1.1.6
+### 1.1.6
 
 * Improve vmess request
 * Fix ipv6 redirect on Linux
@@ -4898,19 +4899,19 @@ name.
 * Disable vmess header protection if transport enabled
 * Update QUIC v2 version number and initial salt
 
-#### 1.2-beta4
+### 1.2-beta4
 
 * Add [NTP service](/configuration/ntp/)
 * Add Add multiple server names and multi-user support for shadowtls
 * Add strict mode support for shadowtls v3
 * Add uTLS support for shadowtls v3
 
-#### 1.2-beta3
+### 1.2-beta3
 
 * Update QUIC v2 version number and initial salt
 * Fix shadowtls v3 implementation
 
-#### 1.2-beta2
+### 1.2-beta2
 
 * Add [ShadowTLS protocol v3](https://github.com/ihciah/shadow-tls/blob/master/docs/protocol-v3-en.md)
 * Add fallback support for v2ray transport
@@ -4918,7 +4919,7 @@ name.
 * Fix socks connect response
 * Disable vmess header protection if transport enabled
 
-#### 1.2-beta1
+### 1.2-beta1
 
 * Add [DHCP DNS server](/configuration/dns/server/) support
 * Add SSH [host key validation](/configuration/outbound/ssh/) support
@@ -4929,7 +4930,7 @@ name.
 * Fix ipv6 redirect on Linux
 * Fix match geoip private
 
-#### 1.1.5
+### 1.1.5
 
 * Add Go 1.20 support
 * Fix inbound default DF value
@@ -4937,13 +4938,13 @@ name.
 * Fix gRPC lite header
 * Ignore domain case in route rules
 
-#### 1.1.4
+### 1.1.4
 
 * Fix DNS log
 * Fix write to h2 conn after closed
 * Fix create UDP DNS transport from plain IPv6 address
 
-#### 1.1.2
+### 1.1.2
 
 * Fix http proxy auth
 * Fix user from stream packet conn
@@ -4952,13 +4953,13 @@ name.
 * Skip override system proxy bypass list
 * Improve DNS log
 
-#### 1.1.1
+### 1.1.1
 
 * Fix acme config
 * Fix vmess packet conn
 * Suppress quic-go set DF error
 
-#### 1.1
+### 1.1
 
 * Fix close clash cache
 
@@ -4987,14 +4988,14 @@ Important changes since 1.0:
 * Split bind_address into ipv4 and ipv6
 * Add ShadowTLS v1 and v2 support
 
-#### 1.1-rc1
+### 1.1-rc1
 
 * Fix TLS config for h2 server
 * Fix crash when input bad method in shadowsocks multi-user inbound
 * Fix listen UDP
 * Fix check invalid packet on macOS
 
-#### 1.1-beta18
+### 1.1-beta18
 
 * Enhance defense against active probe for shadowtls server **1**
 
@@ -5002,7 +5003,7 @@ Important changes since 1.0:
 
 The `fallback_after` option has been removed.
 
-#### 1.1-beta17
+### 1.1-beta17
 
 * Fix shadowtls server **1**
 
@@ -5010,7 +5011,7 @@ The `fallback_after` option has been removed.
 
 Added [fallback_after](/configuration/inbound/shadowtls#fallback_after) option.
 
-#### 1.0.7
+### 1.0.7
 
 * Add support for new x/h2 deadline
 * Fix copy pipe
@@ -5023,13 +5024,13 @@ Added [fallback_after](/configuration/inbound/shadowtls#fallback_after) option.
 * Fix udp connect for mux client
 * Fix default dns transport strategy
 
-#### 1.1-beta16
+### 1.1-beta16
 
 * Improve shadowtls server
 * Fix default dns transport strategy
 * Update uTLS to v1.2.0
 
-#### 1.1-beta15
+### 1.1-beta15
 
 * Add support for new x/h2 deadline
 * Fix udp connect for mux client
@@ -5039,7 +5040,7 @@ Added [fallback_after](/configuration/inbound/shadowtls#fallback_after) option.
 * Fix websocket alpn
 * Fix tor geoip
 
-#### 1.1-beta14
+### 1.1-beta14
 
 * Add multi-user support for hysteria inbound **1**
 * Add custom tls client support for std grpc
@@ -5052,7 +5053,7 @@ Added [fallback_after](/configuration/inbound/shadowtls#fallback_after) option.
 
 The `auth` and `auth_str` fields have been replaced by the `users` field.
 
-#### 1.1-beta13
+### 1.1-beta13
 
 * Add custom worker count option for WireGuard outbound
 * Split bind_address into ipv4 and ipv6
@@ -5062,13 +5063,13 @@ The `auth` and `auth_str` fields have been replaced by the `users` field.
 * Fix QUIC connection migration by @HyNetwork
 * Fix handling QUIC client SNI by @HyNetwork
 
-#### 1.1-beta12
+### 1.1-beta12
 
 * Fix uTLS config
 * Update quic-go to v0.30.0
 * Update cloudflare-tls to go1.18.7
 
-#### 1.1-beta11
+### 1.1-beta11
 
 * Add option for custom wireguard reserved bytes
 * Fix shadowtls v2
@@ -5079,7 +5080,7 @@ The `auth` and `auth_str` fields have been replaced by the `users` field.
 * Suppress no network error
 * Improve local dns transport
 
-#### 1.1-beta10
+### 1.1-beta10
 
 * Add [sniff_timeout](/configuration/shared/listen#sniff_timeout) listen option
 * Add [custom route](/configuration/inbound/tun#inet4_route_address) support for tun **1**
@@ -5100,14 +5101,14 @@ The `auth` and `auth_str` fields have been replaced by the `users` field.
 
 The `strict_route` on windows is removed.
 
-#### 1.0.6
+### 1.0.6
 
 * Fix ssh outbound
 * Fix sniff fragmented quic client hello
 * Fix naive overflow
 * Check destination before udp connect
 
-#### 1.1-beta9
+### 1.1-beta9
 
 * Fix windows route **1**
 * Add [v2ray statistics api](/configuration/experimental#v2ray-api-fields)
@@ -5125,7 +5126,7 @@ The `strict_route` on windows is removed.
 See [ShadowTLS inbound](/configuration/inbound/shadowtls#version)
 and [ShadowTLS outbound](/configuration/outbound/shadowtls#version)
 
-#### 1.1-beta8
+### 1.1-beta8
 
 * Fix leaks on close
 * Improve websocket writer
@@ -5136,25 +5137,25 @@ and [ShadowTLS outbound](/configuration/outbound/shadowtls#version)
 * Fix fqdn socks5 outbound connection
 * Fix read source address from grpc-go
 
-#### 1.0.5
+### 1.0.5
 
 * Fix missing source address from transport connection
 * Fix fqdn socks5 outbound connection
 * Fix read source address from grpc-go
 
-#### 1.1-beta7
+### 1.1-beta7
 
 * Add v2ray mux and XUDP support for VMess inbound
 * Add XUDP support for VMess outbound
 * Disable DF on direct outbound by default
 * Fix bugs in 1.1-beta6
 
-#### 1.1-beta6
+### 1.1-beta6
 
 * Add [URLTest outbound](/configuration/outbound/urltest/)
 * Fix bugs in 1.1-beta5
 
-#### 1.1-beta5
+### 1.1-beta5
 
 * Print tags in version command
 * Redirect clash hello to external ui
@@ -5174,13 +5175,13 @@ The build tag `no_gvisor` is replaced by `with_gvisor`.
 
 The default tun stack is changed to system.
 
-#### 1.0.4
+### 1.0.4
 
 * Fix close grpc conn
 * Fix port rule match logic
 * Fix clash api proxy type
 
-#### 1.1-beta4
+### 1.1-beta4
 
 * Add internal simple-obfs and v2ray-plugin [Shadowsocks plugins](/configuration/outbound/shadowsocks#plugin)
 * Add [ShadowsocksR outbound](/configuration/outbound/shadowsocksr/)
@@ -5190,18 +5191,18 @@ The default tun stack is changed to system.
 * Fix hysteria inbound
 * Fix concurrent write
 
-#### 1.0.3
+### 1.0.3
 
 * Fix socks4 client
 * Fix hysteria inbound
 * Fix concurrent write
 
-#### 1.1-beta3
+### 1.1-beta3
 
 * Fix using custom TLS client in http2 client
 * Fix bugs in 1.1-beta2
 
-#### 1.1-beta2
+### 1.1-beta2
 
 * Add Clash mode and persistence support **1**
 * Add TLS ECH and uTLS support for outbound TLS options **2**
@@ -5221,12 +5222,12 @@ message, see [TLS#ECH](/configuration/shared/tls#ech).
 uTLS is a fork of "crypto/tls", which provides ClientHello fingerprinting resistance,
 see [TLS#uTLS](/configuration/shared/tls#utls).
 
-#### 1.0.2
+### 1.0.2
 
 * Fix socks4 request
 * Fix processing empty dns result
 
-#### 1.1-beta1
+### 1.1-beta1
 
 * Add support for use with android VPNService **1**
 * Add tun support for WireGuard outbound **2**
@@ -5269,13 +5270,13 @@ Including shadowsocks-libev, shadowsocks-rust and quic-go all disable segmentati
 See [Dial Fields](/configuration/shared/dial#udp_fragment)
 and [Listen Fields](/configuration/shared/listen#udp_fragment).
 
-#### 1.0.1
+### 1.0.1
 
 * Fix match 4in6 address in ip_cidr
 * Fix clash api log level format error
 * Fix clash api unknown proxy type
 
-#### 1.0
+### 1.0
 
 * Fix wireguard reconnect
 * Fix naive inbound
@@ -5284,7 +5285,7 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Fix hysteria stream error
 * Fix listener close when proxyproto failed
 
-#### 1.0-rc1
+### 1.0-rc1
 
 * Fix write log timestamp
 * Fix write zero
@@ -5294,7 +5295,7 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Add attribute support for geosite
 * Update documentation for [Dial Fields](/configuration/shared/dial/)
 
-#### 1.0-beta3
+### 1.0-beta3
 
 * Add [chained inbound](/configuration/shared/listen#detour) support
 * Add process_path rule item
@@ -5307,7 +5308,7 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Refactor inbound and outbound documentation
 * Minor fixes
 
-#### 1.0-beta2
+### 1.0-beta2
 
 * Add strict_route option for [Tun inbound](/configuration/inbound/tun#strict_route)
 * Add packetaddr support for [VMess outbound](/configuration/outbound/vmess#packet_addr)
@@ -5315,16 +5316,16 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Add [docker image](https://github.com/SagerNet/sing-box/pkgs/container/sing-box)
 * Fix sniff override destination
 
-#### 1.0-beta1
+### 1.0-beta1
 
 * Initial release
 
-##### 2022/08/26
+#### 2022/08/26
 
 * Fix ipv6 route on linux
 * Fix read DNS message
 
-##### 2022/08/25
+#### 2022/08/25
 
 * Let vmess use zero instead of auto if TLS enabled
 * Add trojan fallback for ALPN
@@ -5333,7 +5334,7 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Fix http proxy with compressed response
 * Fix route connections
 
-##### 2022/08/24
+#### 2022/08/24
 
 * Fix naive padding
 * Fix unix search path
@@ -5342,7 +5343,7 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Fix early close on windows and catch any
 * Initial zh-CN document translation
 
-##### 2022/08/23
+#### 2022/08/23
 
 * Add [V2Ray Transport](/configuration/shared/v2ray-transport/) support for VMess and Trojan
 * Allow plain http request in Naive inbound (It can now be used with nginx)
@@ -5351,17 +5352,17 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Parse X-Forward-For in HTTP requests
 * Handle SIGHUP signal
 
-##### 2022/08/22
+#### 2022/08/22
 
 * Add strategy setting for each [DNS server](/configuration/dns/server/)
 * Add bind address to outbound options
 
-##### 2022/08/21
+#### 2022/08/21
 
 * Add [Tor outbound](/configuration/outbound/tor/)
 * Add [SSH outbound](/configuration/outbound/ssh/)
 
-##### 2022/08/20
+#### 2022/08/20
 
 * Attempt to unwrap ip-in-fqdn socksaddr
 * Fix read packages in android 12
@@ -5371,52 +5372,52 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 * Skip bind connection with private destination to interface
 * Add [Trojan connection fallback](/configuration/inbound/trojan#fallback)
 
-##### 2022/08/19
+#### 2022/08/19
 
 * Add Hysteria [Inbound](/configuration/inbound/hysteria/) and [Outbund](/configuration/outbound/hysteria/)
 * Add [ACME TLS certificate issuer](/configuration/shared/tls/)
 * Allow read config from stdin (-c stdin)
 * Update gVisor to 20220815.0
 
-##### 2022/08/18
+#### 2022/08/18
 
 * Fix find process with lwip stack
 * Fix crash on shadowsocks server
 * Fix crash on darwin tun
 * Fix write log to file
 
-##### 2022/08/17
+#### 2022/08/17
 
 * Improve async dns transports
 
-##### 2022/08/16
+#### 2022/08/16
 
 * Add ip_version (route/dns) rule item
 * Add [WireGuard](/configuration/outbound/wireguard/) outbound
 
-##### 2022/08/15
+#### 2022/08/15
 
 * Add uid, android user and package rules support in [Tun](/configuration/inbound/tun/) routing.
 
-##### 2022/08/13
+#### 2022/08/13
 
 * Fix dns concurrent write
 
-##### 2022/08/12
+#### 2022/08/12
 
 * Performance improvements
 * Add UoT option for [SOCKS](/configuration/outbound/socks/) outbound
 
-##### 2022/08/11
+#### 2022/08/11
 
 * Add UoT option for [Shadowsocks](/configuration/outbound/shadowsocks/) outbound, UoT support for all inbounds
 
-##### 2022/08/10
+#### 2022/08/10
 
 * Add full-featured [Naive](/configuration/inbound/naive/) inbound
 * Fix default dns server option [#9] by iKirby
 
-##### 2022/08/09
+#### 2022/08/09
 
 No changelog before.
 

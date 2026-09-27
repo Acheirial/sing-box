@@ -1,8 +1,8 @@
+# Mixed
+
 `mixed` 入站是一个 socks4, socks4a, socks5 和 http 服务器.
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: mixed
 tag: mixed-in
 
@@ -14,19 +14,17 @@ users:
 set_system_proxy: false
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
-
-#### users
+## users
 
 SOCKS 和 HTTP 用户
 
 如果为空则不需要验证。
 
-#### set_system_proxy
+## set_system_proxy
 
 !!! quote ""
 

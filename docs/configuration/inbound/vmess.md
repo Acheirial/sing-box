@@ -1,6 +1,6 @@
-### Structure
+# VMess
 
-```yaml
+```{.yaml linenums="1"}
 type: vmess
 tag: vmess-in
 
@@ -15,17 +15,13 @@ multiplex: {}
 transport: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
+## users
 
-#### users
-
-==Required==
-
-VMess users.
+**Required.** VMess users.
 
 | Alter ID | Description             |
 |----------|-------------------------|
@@ -36,14 +32,14 @@ VMess users.
 
     Legacy protocol support (VMess MD5 Authentication) is provided for compatibility purposes only, use of alterId > 1 is not recommended.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#inbound) for details.
 
-#### transport
+## transport
 
 V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).

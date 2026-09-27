@@ -1,14 +1,10 @@
 # Outbound
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 outbounds:
   - type: ""
     tag: ""
 ```
-
-### Fields
 
 | Type           | Format                         |
 |----------------|--------------------------------|
@@ -35,12 +31,12 @@ outbounds:
 | `urltest`      | [URLTest](./urltest/)           |
 | `naive`        | [NaiveProxy](./naive/)          |
 
-#### tag
+## tag
 
 The tag of the outbound.
 
-### Features
+## Features
 
-#### Outbounds that support IP connection
+### Outbounds that support IP connection
 
 * `WireGuard`

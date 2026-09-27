@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# 无头规则
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [package_name_regex](#package_name_regex)  
@@ -18,11 +20,9 @@ icon: material/new-box
     :material-plus: [network_is_expensive](#network_is_expensive)  
     :material-plus: [network_is_constrained](#network_is_constrained)
 
-### 结构
-
 !!! question "自 sing-box 1.8.0 起"
 
-```yaml
+```{.yaml linenums="1"}
 rules:
   - query_type:
       - A
@@ -91,7 +91,7 @@ rules:
 
     当内容只有一项时，可以直接使用单个值，无需数组。
 
-### Default Fields
+## Default Fields
 
 !!! note ""
 
@@ -101,7 +101,7 @@ rules:
     (`source_port` || `source_port_range`) &&  
     `other fields`
 
-#### query_type
+### query_type
 
 !!! quote "sing-box 1.14.0 中的更改"
 
@@ -116,51 +116,51 @@ rules:
 
 DNS 查询类型。值可以为整数或者类型名称字符串。
 
-#### network
+### network
 
 `tcp` 或 `udp`。
 
-#### domain
+### domain
 
 匹配完整域名。
 
-#### domain_suffix
+### domain_suffix
 
 匹配域名后缀。
 
-#### domain_keyword
+### domain_keyword
 
 匹配域名关键字。
 
-#### domain_regex
+### domain_regex
 
 匹配域名正则表达式。
 
-#### source_ip_cidr
+### source_ip_cidr
 
 匹配源 IP CIDR。
 
-#### ip_cidr
+### ip_cidr
 
 匹配 IP CIDR。
 
-#### source_port
+### source_port
 
 匹配源端口。
 
-#### source_port_range
+### source_port_range
 
 匹配源端口范围。
 
-#### port
+### port
 
 匹配端口。
 
-#### port_range
+### port_range
 
 匹配端口范围。
 
-#### process_name
+### process_name
 
 !!! quote ""
 
@@ -168,7 +168,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配进程名称。
 
-#### process_path
+### process_path
 
 !!! quote ""
 
@@ -176,7 +176,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配进程路径。
 
-#### process_path_regex
+### process_path_regex
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -186,17 +186,17 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 使用正则表达式匹配进程路径。
 
-#### package_name
+### package_name
 
 匹配 Android 应用包名。
 
-#### package_name_regex
+### package_name_regex
 
 !!! question "自 sing-box 1.14.0 起"
 
 使用正则表达式匹配 Android 应用包名。
 
-#### network_type
+### network_type
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -208,7 +208,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
-#### network_is_expensive
+### network_is_expensive
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -219,7 +219,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 匹配如果网络被视为计费 (在 Android) 或被视为昂贵，
 像蜂窝网络或个人热点 (在 Apple 平台)。
 
-#### network_is_constrained
+### network_is_constrained
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -229,7 +229,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配如果网络在低数据模式下。
 
-#### network_interface_address
+### network_interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -239,7 +239,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配网络接口（可用值同 `network_type`）地址。
 
-#### default_interface_address
+### default_interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -249,7 +249,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配默认接口地址。
 
-#### wifi_ssid
+### wifi_ssid
 
 !!! quote ""
 
@@ -257,30 +257,26 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配 WiFi SSID。
 
-#### wifi_bssid
+### wifi_bssid
 
 !!! quote ""
 
     仅在 Android 与 Apple 平台图形客户端中支持。
 
-#### invert
+### invert
 
 反选匹配结果。
 
-### 逻辑字段
+## 逻辑字段
 
-#### type
+### type
 
 `logical`
 
-#### mode
+### mode
 
-==必填==
+**必填。** `and` 或 `or`
 
-`and` 或 `or`
+### rules
 
-#### rules
-
-==必填==
-
-包括的规则。
+**必填。**包括的规则。

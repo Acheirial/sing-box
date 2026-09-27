@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
+# HTTP Client
 
-### Structure
+!!! question "Since sing-box 1.14.0"
 
 A string or an object.
 
@@ -12,7 +12,7 @@ When string, the tag of a shared [HTTP Client](/configuration/shared/http-client
 
 When object:
 
-```yaml
+```{.yaml linenums="1"}
 engine: ""
 version: 0
 disable_version_fallback: false
@@ -23,11 +23,10 @@ headers: {}
 tls: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
-
-#### engine
+## engine
 
 HTTP engine to use.
 
@@ -71,7 +70,7 @@ Unsupported fields:
 * `tls.utls`
 * `tls.reality`
 
-#### version
+## version
 
 HTTP version.
 
@@ -81,32 +80,32 @@ Available values: `1`, `2`, `3`.
 
 When `3`, [HTTP2 Fields](#http2-fields) are replaced by [QUIC Fields](#quic-fields).
 
-#### disable_version_fallback
+## disable_version_fallback
 
 Disable automatic fallback to lower HTTP version.
 
-#### headers
+## headers
 
 Custom HTTP headers.
 
 `Host` header is used as request host.
 
-### HTTP2 Fields
+## HTTP2 Fields
 
 When `version` is `2` (default).
 
 See [HTTP2 Fields](/configuration/shared/http2/) for details.
 
-### QUIC Fields
+## QUIC Fields
 
 When `version` is `3`.
 
 See [QUIC Fields](/configuration/shared/quic/) for details.
 
-### TLS Fields
+## TLS Fields
 
 See [TLS](/configuration/shared/tls/#outbound) for details.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

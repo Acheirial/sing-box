@@ -1,6 +1,6 @@
-### 结构
+# ShadowTLS
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowtls
 tag: st-out
 
@@ -11,23 +11,18 @@ password: fuck me till the daylight
 tls: {}
 
 # ... 拨号字段
+
 ```
 
-### 字段
+## server
 
-#### server
+**必填。**服务器地址。
 
-==必填==
+## server_port
 
-服务器地址。
+**必填。**服务器端口。
 
-#### server_port
-
-==必填==
-
-服务器端口。
-
-#### version
+## version
 
 ShadowTLS 协议版本。
 
@@ -37,18 +32,16 @@ ShadowTLS 协议版本。
 | `2`           | [ShadowTLS v2](https://github.com/ihciah/shadow-tls/blob/master/docs/protocol-en.md#v2) |
 | `3`           | [ShadowTLS v3](https://github.com/ihciah/shadow-tls/blob/master/docs/protocol-v3-en.md) |
 
-#### password
+## password
 
 设置密码。
 
 仅在 ShadowTLS v2/v3 协议中可用。
 
-#### tls
+## tls
 
-==必填==
+**必填。**TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
 
-TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
-
-### 拨号字段
+## 拨号字段
 
 参阅 [拨号字段](/zh/configuration/shared/dial/)。

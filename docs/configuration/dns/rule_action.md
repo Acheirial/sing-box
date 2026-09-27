@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# DNS Rule Action
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-delete-clock: [strategy](#strategy)  
@@ -20,20 +22,19 @@ icon: material/new-box
 
 !!! question "Since sing-box 1.11.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 action: ""
 race: false
 
 # ... Action Fields
+
 ```
 
-#### action
+## action
 
 The action to perform. `route` will be used by default.
 
-#### race
+## race
 
 !!! question "Since sing-box 1.14.0"
 
@@ -55,9 +56,9 @@ Rules without `race` still take effect strictly in listed order: while a precedi
 not yet judged, the action of any other matched rule is held until none of the race rules
 matched. The result may therefore depend on server speed only among race rules.
 
-### route
+## route
 
-```yaml
+```{.yaml linenums="1"}
 action: route  # default
 server: ""
 speculative: false
@@ -72,13 +73,11 @@ remove_client_subnet: false
 
 `route` inherits the classic rule behavior of routing DNS requests to the specified server.
 
-#### server
+### server
 
-==Required==
+**Required.** Tag of target server.
 
-Tag of target server.
-
-#### speculative
+### speculative
 
 !!! question "Since sing-box 1.14.0"
 
@@ -91,7 +90,7 @@ When `speculative` is enabled, the query is sent as soon as the rule matches, in
 the pending race rules, and may be wasted: its response is still used only after none of the
 race rules matched.
 
-#### strategy
+### strategy
 
 !!! question "Since sing-box 1.12.0"
 
@@ -103,21 +102,21 @@ Set domain strategy for this query.
 
 One of `prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`.
 
-#### disable_cache
+### disable_cache
 
 Disable cache and save cache in this query.
 
-#### disable_optimistic_cache
+### disable_optimistic_cache
 
 !!! question "Since sing-box 1.14.0"
 
 Disable optimistic DNS caching in this query.
 
-#### rewrite_ttl
+### rewrite_ttl
 
 Rewrite TTL in DNS responses.
 
-#### timeout
+### timeout
 
 !!! question "Since sing-box 1.14.0"
 
@@ -125,7 +124,7 @@ Override the DNS query timeout for matched queries.
 
 Will override `dns.timeout`.
 
-#### client_subnet
+### client_subnet
 
 Append a `edns0-subnet` OPT extra record with the specified IP prefix to every query by default.
 
@@ -133,7 +132,7 @@ If value is an IP address instead of prefix, `/32` or `/128` will be appended au
 
 Will override `dns.client_subnet`.
 
-#### remove_client_subnet
+### remove_client_subnet
 
 !!! question "Since sing-box 1.14.0"
 
@@ -141,11 +140,11 @@ Remove the `edns0-subnet` OPT extra record from the query, and suppress `dns.cli
 
 Conflict with `client_subnet`.
 
-### evaluate
+## evaluate
 
 !!! question "Since sing-box 1.14.0"
 
-```yaml
+```{.yaml linenums="1"}
 action: evaluate
 server: ""
 tag: ""
@@ -167,20 +166,18 @@ Rules that use [`match_response`](/configuration/dns/rule/#match_response) or Re
 require a preceding top-level rule with `evaluate` action. A rule's own `evaluate` action
 does not satisfy this requirement, because matching happens before the action runs.
 
-#### server
+### server
 
-==Required==
+**Required.** Tag of target server.
 
-Tag of target server.
-
-#### tag
+### tag
 
 Tag of the evaluated response.
 
 A tagged response is only referenced via [`match_response`](/configuration/dns/rule/#match_response) with the tag;
 `match_response: true` references the response of the latest `evaluate` action without `tag`.
 
-#### speculative
+### speculative
 
 !!! question "Since sing-box 1.14.0"
 
@@ -192,21 +189,21 @@ holds its query, and rule matching stops there, until none of the race rules mat
 When `speculative` is enabled, the query is sent as soon as the rule matches, in parallel with
 the pending race rules, and may be wasted: rule matching continues without waiting for them.
 
-#### disable_cache
+### disable_cache
 
 Disable cache and save cache in this query.
 
-#### disable_optimistic_cache
+### disable_optimistic_cache
 
 !!! question "Since sing-box 1.14.0"
 
 Disable optimistic DNS caching in this query.
 
-#### rewrite_ttl
+### rewrite_ttl
 
 Rewrite TTL in DNS responses.
 
-#### timeout
+### timeout
 
 !!! question "Since sing-box 1.14.0"
 
@@ -214,7 +211,7 @@ Override the DNS query timeout for matched queries.
 
 Will override `dns.timeout`.
 
-#### client_subnet
+### client_subnet
 
 Append a `edns0-subnet` OPT extra record with the specified IP prefix to every query by default.
 
@@ -222,7 +219,7 @@ If value is an IP address instead of prefix, `/32` or `/128` will be appended au
 
 Will override `dns.client_subnet`.
 
-#### remove_client_subnet
+### remove_client_subnet
 
 !!! question "Since sing-box 1.14.0"
 
@@ -230,11 +227,11 @@ Remove the `edns0-subnet` OPT extra record from the query, and suppress `dns.cli
 
 Conflict with `client_subnet`.
 
-### respond
+## respond
 
 !!! question "Since sing-box 1.14.0"
 
-```yaml
+```{.yaml linenums="1"}
 action: respond
 ```
 
@@ -244,9 +241,9 @@ This action does not send a new DNS query.
 
 Only allowed after a preceding top-level `evaluate` rule. If the action is reached without an evaluated response at runtime, the request fails with an error instead of falling through to later rules.
 
-### route-options
+## route-options
 
-```yaml
+```{.yaml linenums="1"}
 action: route-options
 disable_cache: false
 disable_optimistic_cache: false
@@ -258,9 +255,9 @@ remove_client_subnet: false
 
 `route-options` set options for routing.
 
-### reject
+## reject
 
-```yaml
+```{.yaml linenums="1"}
 action: reject
 method: ""
 no_drop: false
@@ -268,24 +265,24 @@ no_drop: false
 
 `reject` reject DNS requests.
 
-#### method
+### method
 
 - `default`: Reply with REFUSED.
 - `drop`: Drop the request.
 
 `default` will be used by default.
 
-#### no_drop
+### no_drop
 
 If not enabled, `method` will be temporarily overwritten to `drop` after 50 triggers in 30s.
 
 Not available when `method` is set to drop.
 
-### predefined
+## predefined
 
 !!! question "Since sing-box 1.12.0"
 
-```yaml
+```{.yaml linenums="1"}
 action: predefined
 rcode: ""
 answer: []
@@ -295,7 +292,7 @@ extra: []
 
 `predefined` responds with predefined DNS records.
 
-#### rcode
+### rcode
 
 The response code.
 
@@ -310,7 +307,7 @@ The response code.
 
 `NOERROR` will be used by default.
 
-#### answer
+### answer
 
 List of text DNS record to respond as answers.
 
@@ -322,10 +319,10 @@ Examples:
 | `AAAA`      | `localhost. IN AAAA ::1`      |
 | `TXT`       | `localhost. IN TXT \"Hello\"` |
 
-#### ns
+### ns
 
 List of text DNS record to respond as name servers.
 
-#### extra
+### extra
 
 List of text DNS record to respond as extra records.

@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# DNS 规则
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [source_mac_address](#source_mac_address)  
@@ -63,9 +65,7 @@ icon: material/alert-decagram
     :material-delete-clock: [geoip](#geoip)  
     :material-delete-clock: [geosite](#geosite)
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   rules:
     - inbound:
@@ -191,7 +191,7 @@ dns:
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-### 默认字段
+## 默认字段
 
 !!! note ""
 
@@ -204,11 +204,11 @@ dns:
 
     当规则集仅包含一条默认规则且非 invert 时，其中字段视为按以上规则与外层规则合并；否则，作为一条 `其他字段` 匹配；不同规则集之间始终保持 or。
 
-#### inbound
+### inbound
 
 [入站](/zh/configuration/inbound/) 标签.
 
-#### ip_version
+### ip_version
 
 !!! quote "sing-box 1.14.0 中的更改"
 
@@ -227,7 +227,7 @@ dns:
 
 默认不限制。
 
-#### query_type
+### query_type
 
 !!! quote "sing-box 1.14.0 中的更改"
 
@@ -244,7 +244,7 @@ dns:
 
 DNS 查询类型。值可以为整数或者类型名称字符串。
 
-#### query_client_subnet
+### query_client_subnet
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -254,41 +254,41 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 如果值是 IP 地址而不是前缀，则会自动附加 `/32` 或 `/128`。
 
-#### query_dnssec
+### query_dnssec
 
 !!! question "自 sing-box 1.14.0 起"
 
 匹配设置了 DNSSEC OK (`DO`) 位的查询。
 
-#### network
+### network
 
 `tcp` 或 `udp`。
 
-#### auth_user
+### auth_user
 
 认证用户名，参阅入站设置。
 
-#### protocol
+### protocol
 
 探测到的协议, 参阅 [协议探测](/zh/configuration/route/sniff/)。
 
-#### domain
+### domain
 
 匹配完整域名。
 
-#### domain_suffix
+### domain_suffix
 
 匹配域名后缀。
 
-#### domain_keyword
+### domain_keyword
 
 匹配域名关键字。
 
-#### domain_regex
+### domain_regex
 
 匹配域名正则表达式。
 
-#### geosite
+### geosite
 
 !!! failure "已在 sing-box 1.12.0 中被移除"
 
@@ -296,7 +296,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配 Geosite。
 
-#### source_geoip
+### source_geoip
 
 !!! failure "已在 sing-box 1.12.0 中被移除"
 
@@ -304,33 +304,33 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配源 GeoIP。
 
-#### source_ip_cidr
+### source_ip_cidr
 
 匹配源 IP CIDR。
 
-#### source_ip_is_private
+### source_ip_is_private
 
 !!! question "自 sing-box 1.8.0 起"
 
 匹配非公开源 IP。
 
-#### source_port
+### source_port
 
 匹配源端口。
 
-#### source_port_range
+### source_port_range
 
 匹配源端口范围。
 
-#### port
+### port
 
 匹配端口。
 
-#### port_range
+### port_range
 
 匹配端口范围。
 
-#### process_name
+### process_name
 
 !!! quote ""
 
@@ -338,7 +338,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配进程名称。
 
-#### process_path
+### process_path
 
 !!! quote ""
 
@@ -346,7 +346,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配进程路径。
 
-#### process_path_regex
+### process_path_regex
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -356,17 +356,17 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 使用正则表达式匹配进程路径。
 
-#### package_name
+### package_name
 
 匹配 Android 应用包名。
 
-#### package_name_regex
+### package_name_regex
 
 !!! question "自 sing-box 1.14.0 起"
 
 使用正则表达式匹配 Android 应用包名。
 
-#### user
+### user
 
 !!! quote ""
 
@@ -374,7 +374,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配用户名。
 
-#### user_id
+### user_id
 
 !!! quote ""
 
@@ -382,11 +382,11 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 匹配用户 ID。
 
-#### clash_mode
+### clash_mode
 
 匹配 Clash 模式。
 
-#### network_type
+### network_type
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -398,7 +398,7 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
-#### network_is_expensive
+### network_is_expensive
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -409,7 +409,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 匹配如果网络被视为计费 (在 Android) 或被视为昂贵，
 像蜂窝网络或个人热点 (在 Apple 平台)。
 
-#### network_is_constrained
+### network_is_constrained
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -419,7 +419,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配如果网络在低数据模式下。
 
-#### interface_address
+### interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -429,7 +429,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配接口地址。
 
-#### network_interface_address
+### network_interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -439,7 +439,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配网络接口（可用值同 `network_type`）地址。
 
-#### default_interface_address
+### default_interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -449,7 +449,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配默认接口地址。
 
-#### source_mac_address
+### source_mac_address
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -459,7 +459,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配源设备 MAC 地址。
 
-#### source_hostname
+### source_hostname
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -469,7 +469,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配源设备从 DHCP 租约获取的主机名。
 
-#### preferred_by
+### preferred_by
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -484,7 +484,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 | `openconnect` | 匹配 VPN 服务器推送的分流 DNS 和搜索域                                  |
 | `resolved`    | 匹配 systemd-resolved 链路中的分流域名和搜索域                            |
 
-#### wifi_ssid
+### wifi_ssid
 
 !!! quote ""
 
@@ -492,7 +492,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配 WiFi SSID。
 
-#### wifi_bssid
+### wifi_bssid
 
 !!! quote ""
 
@@ -500,13 +500,13 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 匹配 WiFi BSSID。
 
-#### rule_set
+### rule_set
 
 !!! question "自 sing-box 1.8.0 起"
 
 匹配[规则集](/zh/configuration/route/#rule_set)。
 
-#### rule_set_ipcidr_match_source
+### rule_set_ipcidr_match_source
 
 !!! question "自 sing-box 1.9.0 起"
 
@@ -516,13 +516,13 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 使规则集中的 `ip_cidr` 规则匹配源 IP。
 
-#### rule_set_ip_cidr_match_source
+### rule_set_ip_cidr_match_source
 
 !!! question "自 sing-box 1.10.0 起"
 
 使规则集中的 `ip_cidr` 规则匹配源 IP。
 
-#### match_response
+### match_response
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -535,17 +535,17 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 响应匹配字段（`response_rcode`、`response_answer`、`response_ns`、`response_extra`）需要此选项。
 当与 `evaluate` 或响应匹配字段一起使用时，`ip_cidr`、`ip_is_private` 和 `ip_accept_any` 也需要此选项。
 
-#### ip_accept_any
+### ip_accept_any
 
 !!! question "自 sing-box 1.12.0 起"
 
 当 DNS 查询响应包含至少一个地址时匹配。
 
-#### invert
+### invert
 
 反选匹配结果。
 
-#### outbound
+### outbound
 
 !!! failure "已在 sing-box 1.12.0 废弃"
 
@@ -555,37 +555,35 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 `any` 可作为值用于匹配任意出站。
 
-#### action
+### action
 
-==必填==
+**必填。**参阅 [规则动作](../rule_action/)。
 
-参阅 [规则动作](../rule_action/)。
-
-#### server
+### server
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
     已移动到 [DNS 规则动作](../rule_action#route).
 
-#### disable_cache
+### disable_cache
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
     已移动到 [DNS 规则动作](../rule_action#route).
 
-#### rewrite_ttl
+### rewrite_ttl
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
     已移动到 [DNS 规则动作](../rule_action#route).
 
-#### client_subnet
+### client_subnet
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
     已移动到 [DNS 规则动作](../rule_action#route).
 
-### 旧版地址筛选字段
+## 旧版地址筛选字段
 
 !!! failure "已在 sing-box 1.14.0 废弃"
 
@@ -602,16 +600,15 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
     启用 `experimental.cache_file.store_rdrc` 以缓存结果。
 
-#### geoip
+### geoip
 
 !!! failure "已在 sing-box 1.12.0 中被移除"
 
     GeoIP 已在 sing-box 1.8.0 废弃且在 sing-box 1.12.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移-geoip-到规则集)。
 
-
 与查询响应匹配 GeoIP。
 
-#### ip_cidr
+### ip_cidr
 
 !!! question "自 sing-box 1.9.0 起"
 
@@ -620,7 +617,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 作为旧版地址筛选字段已废弃。请改为配合 `match_response` 使用，
 参阅[迁移指南](/zh/migration/#迁移地址筛选字段到响应匹配)。
 
-#### ip_is_private
+### ip_is_private
 
 !!! question "自 sing-box 1.9.0 起"
 
@@ -629,7 +626,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 作为旧版地址筛选字段已废弃。请改为配合 `match_response` 使用，
 参阅[迁移指南](/zh/migration/#迁移地址筛选字段到响应匹配)。
 
-#### rule_set_ip_cidr_accept_empty
+### rule_set_ip_cidr_accept_empty
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -640,7 +637,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 使规则集中的 `ip_cidr` 规则接受空查询响应。
 
-### 响应匹配字段
+## 响应匹配字段
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -649,44 +646,40 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 该已评估的响应也可以被后续的 [`respond`](/zh/configuration/dns/rule_action/#respond) 动作直接返回。
 
-#### response_rcode
+### response_rcode
 
 匹配 DNS 响应码。
 
 接受的值与 [predefined 动作 rcode](/zh/configuration/dns/rule_action/#rcode) 中相同。
 
-#### response_answer
+### response_answer
 
 匹配 DNS 应答记录。
 
 记录格式与 [predefined 动作 answer](/zh/configuration/dns/rule_action/#answer) 中相同。
 
-#### response_ns
+### response_ns
 
 匹配 DNS 名称服务器记录。
 
 记录格式与 [predefined 动作 ns](/zh/configuration/dns/rule_action/#ns) 中相同。
 
-#### response_extra
+### response_extra
 
 匹配 DNS 额外记录。
 
 记录格式与 [predefined 动作 extra](/zh/configuration/dns/rule_action/#extra) 中相同。
 
-### 逻辑字段
+## 逻辑字段
 
-#### type
+### type
 
 `logical`
 
-#### mode
+### mode
 
-==必填==
+**必填。**`and` 或 `or`
 
-`and` 或 `or`
+### rules
 
-#### rules
-
-==必填==
-
-包括的规则。
+**必填。**包括的规则。

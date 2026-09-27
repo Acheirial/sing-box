@@ -32,7 +32,7 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
 
 === ":material-harddisk: With local certificate"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: trojan
         listen: "::"
@@ -51,7 +51,7 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
 
 === ":material-auto-fix: With ACME"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: trojan
         listen: "::"
@@ -71,7 +71,7 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
 
 === ":material-cloud: With ACME and Cloudflare API"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: trojan
         listen: "::"
@@ -96,7 +96,7 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
 
 === ":material-web-check: With valid certificate"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: trojan
         server: 127.0.0.1
@@ -115,7 +115,7 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
         
         Use `sing-box merge` command to merge configuration and certificate into one file.
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: trojan
         server: 127.0.0.1
@@ -131,7 +131,7 @@ Trojan is the most commonly used TLS proxy made in China. It can be used in vari
 
 === ":material-alert: Ignore certificate verification"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: trojan
         server: 127.0.0.1

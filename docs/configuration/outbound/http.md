@@ -1,8 +1,8 @@
+# HTTP
+
 `http` outbound is a HTTP CONNECT proxy client.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: http
 tag: http-out
 
@@ -15,42 +15,37 @@ headers: {}
 tls: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
-
-==Required==
-
-The server port.
-
-#### username
+## username
 
 Basic authorization username.
 
-#### password
+## password
 
 Basic authorization password.
 
-#### path
+## path
 
 Path of HTTP request.
 
-#### headers
+## headers
 
 Extra headers of HTTP request.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

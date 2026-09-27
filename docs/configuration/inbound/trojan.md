@@ -1,6 +1,6 @@
-### Structure
+# Trojan
 
-```yaml
+```{.yaml linenums="1"}
 type: trojan
 tag: trojan-in
 
@@ -21,23 +21,19 @@ multiplex: {}
 transport: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
+## users
 
-#### users
+**Required.** Trojan users.
 
-==Required==
-
-Trojan users.
-
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-#### fallback
+## fallback
 
 !!! failure ""
 
@@ -45,16 +41,16 @@ TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
 Fallback server configuration. Disabled if `fallback` and `fallback_for_alpn` are empty.
 
-#### fallback_for_alpn
+## fallback_for_alpn
 
 Fallback server configuration for specified ALPN.
 
 If not empty, TLS fallback requests with ALPN not in this table will be rejected.
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#inbound) for details.
 
-#### transport
+## transport
 
 V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).

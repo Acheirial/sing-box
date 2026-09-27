@@ -2,13 +2,11 @@
 icon: material/delete-clock
 ---
 
-### Structure
+# Block
 
-```yaml
+```{.yaml linenums="1"}
 type: block
 tag: block
 ```
-
-### Fields
 
 No fields.

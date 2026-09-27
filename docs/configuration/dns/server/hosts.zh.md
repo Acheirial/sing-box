@@ -2,13 +2,11 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.12.0 起"
-
 # Hosts
 
-### 结构
+!!! question "自 sing-box 1.12.0 起"
 
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: hosts
@@ -22,9 +20,7 @@ dns:
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-### 字段
-
-#### path
+## path
 
 hosts 文件路径列表。
 
@@ -34,7 +30,8 @@ hosts 文件路径列表。
 
 示例：
 
-```yaml
+```{.yaml linenums="1"}
+
 # path: /etc/hosts
 
 path:
@@ -42,13 +39,13 @@ path:
   - $HOME/.hosts
 ```
 
-#### predefined
+## predefined
 
 预定义的 hosts。
 
 示例：
 
-```yaml
+```{.yaml linenums="1"}
 predefined:
   www.google.com: 127.0.0.1
   localhost:
@@ -56,13 +53,13 @@ predefined:
     - "::1"
 ```
 
-### 示例
+## 示例
 
 === "如果可用则使用 hosts"
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             # ...
@@ -76,7 +73,7 @@ predefined:
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             # ...

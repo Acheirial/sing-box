@@ -2,14 +2,14 @@
 icon: material/new-box
 ---
 
+# Hysteria
+
 !!! quote "Changes in sing-box 1.12.0"
 
     :material-plus: [server_ports](#server_ports)  
     :material-plus: [hop_interval](#hop_interval)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: hysteria
 tag: hysteria-out
 
@@ -39,21 +39,15 @@ recv_window: 0
 disable_mtu_discovery: false
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
-
-==Required==
-
-The server port.
-
-#### server_ports
+## server_ports
 
 !!! question "Since sing-box 1.12.0"
 
@@ -61,7 +55,7 @@ Server port range list.
 
 Conflicts with `server_port`.
 
-#### hop_interval
+## hop_interval
 
 !!! question "Since sing-box 1.12.0"
 
@@ -69,11 +63,9 @@ Port hopping interval.
 
 `30s` is used by default.
 
-#### up, down
+## up, down
 
-==Required==
-
-Format: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`
+**Required.** Format: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`
 
 Supported units (case sensitive, b = bits, B = bytes, 8b=1B):
 
@@ -88,25 +80,23 @@ Supported units (case sensitive, b = bits, B = bytes, 8b=1B):
     Tbps (terabits per second)
     TBps (terabytes per second)
 
-#### up_mbps, down_mbps
+## up_mbps, down_mbps
 
-==Required==
+**Required.** `up, down` in Mbps.
 
-`up, down` in Mbps.
-
-#### obfs
+## obfs
 
 Obfuscated password.
 
-#### auth
+## auth
 
 Authentication password, in base64.
 
-#### auth_str
+## auth_str
 
 Authentication password.
 
-#### network
+## network
 
 Enabled network
 
@@ -114,35 +104,33 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### tls
+## tls
 
-==Required==
+**Required.** TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
-
-### QUIC Fields
+## QUIC Fields
 
 See [QUIC Fields](/configuration/shared/quic/) for details.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.
 
-### Deprecated Fields
+## Deprecated Fields
 
-#### recv_window_conn
+### recv_window_conn
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
     Use QUIC fields `stream_receive_window` instead.
 
-#### recv_window
+### recv_window
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
     Use QUIC fields `connection_receive_window` instead.
 
-#### disable_mtu_discovery
+### disable_mtu_discovery
 
 !!! failure "Deprecated in sing-box 1.14.0"
 

@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
+# AnyTLS
+
 !!! question "Since sing-box 1.12.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: anytls
 tag: anytls-in
 
@@ -19,25 +19,21 @@ padding_scheme: []
 tls: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
+## users
 
-#### users
+**Required.** AnyTLS users.
 
-==Required==
-
-AnyTLS users.
-
-#### padding_scheme
+## padding_scheme
 
 AnyTLS padding scheme line array.
 
 Default padding scheme:
 
-```yaml
+```{.yaml linenums="1"}
 - stop=8
 - 0=30-30
 - 1=100-400
@@ -49,6 +45,6 @@ Default padding scheme:
 - 7=500-1000
 ```
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).

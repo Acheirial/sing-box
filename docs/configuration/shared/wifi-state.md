@@ -11,7 +11,7 @@ icon: material/new-box
 
 sing-box can monitor Wi-Fi state to enable routing rules based on `wifi_ssid` and `wifi_bssid`.
 
-### Platform Support
+## Platform Support
 
 | Platform        | Support          | Notes                    |
 |-----------------|------------------|--------------------------|
@@ -21,7 +21,7 @@ sing-box can monitor Wi-Fi state to enable routing rules based on `wifi_ssid` an
 | Windows         | :material-check: | WLAN API                 |
 | Others          | :material-close: |                          |
 
-### Linux
+## Linux
 
 !!! question "Since sing-box 1.13.0"
 
@@ -34,7 +34,7 @@ The following backends are supported and will be auto-detected in order of prior
 | wpa_supplicant   | Unix socket |
 | ConnMan          | D-Bus       |
 
-### Windows
+## Windows
 
 !!! question "Since sing-box 1.13.0"
 

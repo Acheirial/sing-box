@@ -1,8 +1,8 @@
+# Direct
+
 `direct` inbound is a tunnel server.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: direct
 tag: direct-in
 
@@ -13,22 +13,20 @@ override_address: 1.0.0.1
 override_port: 53
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### network
+## network
 
 Listen network, one of `tcp` `udp`.
 
 Both if empty.
 
-#### override_address
+## override_address
 
 Override the connection destination address.
 
-#### override_port
+## override_port
 
 Override the connection destination port.

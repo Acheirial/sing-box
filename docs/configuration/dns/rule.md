@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# DNS Rule
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [source_mac_address](#source_mac_address)  
@@ -63,9 +65,7 @@ icon: material/alert-decagram
     :material-delete-clock: [geoip](#geoip)  
     :material-delete-clock: [geosite](#geosite)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   rules:
     - inbound:
@@ -191,7 +191,7 @@ dns:
 
     You can use a single value instead of an array when the content is only one item
 
-### Default Fields
+## Default Fields
 
 !!! note ""
 
@@ -204,11 +204,11 @@ dns:
 
     When a rule-set contains only a single default rule without `invert`, its fields are considered merged into the outer rule per the logic above; otherwise, it is matched as an `other field`; different rule-sets always keep OR semantics.
 
-#### inbound
+### inbound
 
 Tags of [Inbound](/configuration/inbound/).
 
-#### ip_version
+### ip_version
 
 !!! quote "Changes in sing-box 1.14.0"
 
@@ -231,7 +231,7 @@ Tags of [Inbound](/configuration/inbound/).
 
 Not limited if empty.
 
-#### query_type
+### query_type
 
 !!! quote "Changes in sing-box 1.14.0"
 
@@ -252,7 +252,7 @@ Not limited if empty.
 
 DNS query type. Values can be integers or type name strings.
 
-#### query_client_subnet
+### query_client_subnet
 
 !!! question "Since sing-box 1.14.0"
 
@@ -262,41 +262,41 @@ A listed prefix matches when it is no more specific than the received client sub
 
 If value is an IP address instead of prefix, `/32` or `/128` will be appended automatically.
 
-#### query_dnssec
+### query_dnssec
 
 !!! question "Since sing-box 1.14.0"
 
 Match queries with the DNSSEC OK (`DO`) bit set.
 
-#### network
+### network
 
 `tcp` or `udp`.
 
-#### auth_user
+### auth_user
 
 Username, see each inbound for details.
 
-#### protocol
+### protocol
 
 Sniffed protocol, see [Sniff](/configuration/route/sniff/) for details.
 
-#### domain
+### domain
 
 Match full domain.
 
-#### domain_suffix
+### domain_suffix
 
 Match domain suffix.
 
-#### domain_keyword
+### domain_keyword
 
 Match domain using keyword.
 
-#### domain_regex
+### domain_regex
 
 Match domain using regular expression.
 
-#### geosite
+### geosite
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -304,7 +304,7 @@ Match domain using regular expression.
 
 Match geosite.
 
-#### source_geoip
+### source_geoip
 
 !!! failure "Deprecated in sing-box 1.8.0"
 
@@ -312,33 +312,33 @@ Match geosite.
 
 Match source geoip.
 
-#### source_ip_cidr
+### source_ip_cidr
 
 Match source IP CIDR.
 
-#### source_ip_is_private
+### source_ip_is_private
 
 !!! question "Since sing-box 1.8.0"
 
 Match non-public source IP.
 
-#### source_port
+### source_port
 
 Match source port.
 
-#### source_port_range
+### source_port_range
 
 Match source port range.
 
-#### port
+### port
 
 Match port.
 
-#### port_range
+### port_range
 
 Match port range.
 
-#### process_name
+### process_name
 
 !!! quote ""
 
@@ -346,7 +346,7 @@ Match port range.
 
 Match process name.
 
-#### process_path
+### process_path
 
 !!! quote ""
 
@@ -354,7 +354,7 @@ Match process name.
 
 Match process path.
 
-#### process_path_regex
+### process_path_regex
 
 !!! question "Since sing-box 1.10.0"
 
@@ -364,17 +364,17 @@ Match process path.
 
 Match process path using regular expression.
 
-#### package_name
+### package_name
 
 Match android package name.
 
-#### package_name_regex
+### package_name_regex
 
 !!! question "Since sing-box 1.14.0"
 
 Match android package name using regular expression.
 
-#### user
+### user
 
 !!! quote ""
 
@@ -382,7 +382,7 @@ Match android package name using regular expression.
 
 Match user name.
 
-#### user_id
+### user_id
 
 !!! quote ""
 
@@ -390,11 +390,11 @@ Match user name.
 
 Match user id.
 
-#### clash_mode
+### clash_mode
 
 Match Clash mode.
 
-#### network_type
+### network_type
 
 !!! question "Since sing-box 1.11.0"
 
@@ -406,7 +406,7 @@ Match network type.
 
 Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
-#### network_is_expensive
+### network_is_expensive
 
 !!! question "Since sing-box 1.11.0"
 
@@ -417,7 +417,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 Match if network is considered Metered (on Android) or considered expensive,
 such as Cellular or a Personal Hotspot (on Apple platforms).
 
-#### network_is_constrained
+### network_is_constrained
 
 !!! question "Since sing-box 1.11.0"
 
@@ -427,7 +427,7 @@ such as Cellular or a Personal Hotspot (on Apple platforms).
 
 Match if network is in Low Data Mode.
 
-#### interface_address
+### interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -437,7 +437,7 @@ Match if network is in Low Data Mode.
 
 Match interface address.
 
-#### network_interface_address
+### network_interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -447,7 +447,7 @@ Match interface address.
 
 Matches network interface (same values as `network_type`) address.
 
-#### default_interface_address
+### default_interface_address
 
 !!! question "Since sing-box 1.13.0"
 
@@ -457,7 +457,7 @@ Matches network interface (same values as `network_type`) address.
 
 Match default interface address.
 
-#### source_mac_address
+### source_mac_address
 
 !!! question "Since sing-box 1.14.0"
 
@@ -467,7 +467,7 @@ Match default interface address.
 
 Match source device MAC address.
 
-#### source_hostname
+### source_hostname
 
 !!! question "Since sing-box 1.14.0"
 
@@ -477,7 +477,7 @@ Match source device MAC address.
 
 Match source device hostname from DHCP leases.
 
-#### preferred_by
+### preferred_by
 
 !!! question "Since sing-box 1.14.0"
 
@@ -492,7 +492,7 @@ Match specified DNS servers' preferred domains.
 | `openconnect` | Match split DNS and search domains pushed by the VPN server                  |
 | `resolved`    | Match split DNS and search domains from systemd-resolved links               |
 
-#### wifi_ssid
+### wifi_ssid
 
 !!! quote ""
 
@@ -500,7 +500,7 @@ Match specified DNS servers' preferred domains.
 
 Match WiFi SSID.
 
-#### wifi_bssid
+### wifi_bssid
 
 !!! quote ""
 
@@ -508,13 +508,13 @@ Match WiFi SSID.
 
 Match WiFi BSSID.
 
-#### rule_set
+### rule_set
 
 !!! question "Since sing-box 1.8.0"
 
 Match [rule-set](/configuration/route/#rule_set).
 
-#### rule_set_ipcidr_match_source
+### rule_set_ipcidr_match_source
 
 !!! question "Since sing-box 1.9.0"
 
@@ -524,13 +524,13 @@ Match [rule-set](/configuration/route/#rule_set).
 
 Make `ip_cidr` rule items in rule-sets match the source IP.
 
-#### rule_set_ip_cidr_match_source
+### rule_set_ip_cidr_match_source
 
 !!! question "Since sing-box 1.10.0"
 
 Make `ip_cidr` rule items in rule-sets match the source IP.
 
-#### match_response
+### match_response
 
 !!! question "Since sing-box 1.14.0"
 
@@ -547,17 +547,17 @@ in a rule with a `match_response` tag, `respond` returns the tagged response.
 Required for Response Match Fields (`response_rcode`, `response_answer`, `response_ns`, `response_extra`).
 Also required for `ip_cidr`, `ip_is_private`, and `ip_accept_any` when used with `evaluate` or Response Match Fields.
 
-#### ip_accept_any
+### ip_accept_any
 
 !!! question "Since sing-box 1.12.0"
 
 Match when the DNS query response contains at least one address.
 
-#### invert
+### invert
 
 Invert match result.
 
-#### outbound
+### outbound
 
 !!! failure "Deprecated in sing-box 1.12.0"
 
@@ -567,37 +567,35 @@ Match outbound.
 
 `any` can be used as a value to match any outbound.
 
-#### action
+### action
 
-==Required==
+**Required.** See [DNS Rule Actions](../rule_action/) for details.
 
-See [DNS Rule Actions](../rule_action/) for details.
-
-#### server
+### server
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
     Moved to [DNS Rule Action](../rule_action#route).
 
-#### disable_cache
+### disable_cache
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
     Moved to [DNS Rule Action](../rule_action#route).
 
-#### rewrite_ttl
+### rewrite_ttl
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
     Moved to [DNS Rule Action](../rule_action#route).
 
-#### client_subnet
+### client_subnet
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
     Moved to [DNS Rule Action](../rule_action#route).
 
-### Legacy Address Filter Fields
+## Legacy Address Filter Fields
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
@@ -614,7 +612,7 @@ Only takes effect for address requests (A/AAAA/HTTPS). When the query results do
 
     Enable `experimental.cache_file.store_rdrc` to cache results.
 
-#### geoip
+### geoip
 
 !!! failure "Removed in sing-box 1.12.0"
 
@@ -622,7 +620,7 @@ Only takes effect for address requests (A/AAAA/HTTPS). When the query results do
 
 Match GeoIP with query response.
 
-#### ip_cidr
+### ip_cidr
 
 !!! question "Since sing-box 1.9.0"
 
@@ -631,7 +629,7 @@ Match IP CIDR with query response.
 As a Legacy Address Filter Field, deprecated. Use with `match_response` instead,
 check [Migration](/migration/#migrate-address-filter-fields-to-response-matching).
 
-#### ip_is_private
+### ip_is_private
 
 !!! question "Since sing-box 1.9.0"
 
@@ -640,7 +638,7 @@ Match private IP with query response.
 As a Legacy Address Filter Field, deprecated. Use with `match_response` instead,
 check [Migration](/migration/#migrate-address-filter-fields-to-response-matching).
 
-#### rule_set_ip_cidr_accept_empty
+### rule_set_ip_cidr_accept_empty
 
 !!! question "Since sing-box 1.10.0"
 
@@ -651,7 +649,7 @@ check [Migration](/migration/#migrate-address-filter-fields-to-response-matching
 
 Make `ip_cidr` rules in rule-sets accept empty query response.
 
-### Response Match Fields
+## Response Match Fields
 
 !!! question "Since sing-box 1.14.0"
 
@@ -660,40 +658,40 @@ and a preceding rule with [`evaluate`](/configuration/dns/rule_action/#evaluate)
 
 That evaluated response may also be returned directly by a later [`respond`](/configuration/dns/rule_action/#respond) action.
 
-#### response_rcode
+### response_rcode
 
 Match DNS response code.
 
 Accepted values are the same as in the [predefined action rcode](/configuration/dns/rule_action/#rcode).
 
-#### response_answer
+### response_answer
 
 Match DNS answer records.
 
 Record format is the same as in [predefined action answer](/configuration/dns/rule_action/#answer).
 
-#### response_ns
+### response_ns
 
 Match DNS name server records.
 
 Record format is the same as in [predefined action ns](/configuration/dns/rule_action/#ns).
 
-#### response_extra
+### response_extra
 
 Match DNS extra records.
 
 Record format is the same as in [predefined action extra](/configuration/dns/rule_action/#extra).
 
-### Logical Fields
+## Logical Fields
 
-#### type
+### type
 
 `logical`
 
-#### mode
+### mode
 
 `and` or `or`
 
-#### rules
+### rules
 
 Included rules.

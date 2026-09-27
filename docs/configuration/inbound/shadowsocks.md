@@ -1,6 +1,6 @@
-### Structure
+# Shadowsocks
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowsocks
 tag: ss-in
 
@@ -12,9 +12,9 @@ managed: false
 multiplex: {}
 ```
 
-### Multi-User Structure
+## Multi-User Structure
 
-```yaml
+```{.yaml linenums="1"}
 method: 2022-blake3-aes-128-gcm
 password: 8JCsPssfgS8tiRwiMlhARg==
 users:
@@ -23,9 +23,9 @@ users:
 multiplex: {}
 ```
 
-### Relay Structure
+## Relay Structure
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowsocks
 method: 2022-blake3-aes-128-gcm
 password: 8JCsPssfgS8tiRwiMlhARg==
@@ -37,21 +37,19 @@ destinations:
 multiplex: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### network
+## network
 
 Listen network, one of `tcp` `udp`.
 
 Both if empty.
 
-#### method
+## method
 
-==Required==
+**Required.**
 
 | Method                        | Key Length |
 |-------------------------------|------------|
@@ -65,9 +63,9 @@ Both if empty.
 | chacha20-ietf-poly1305        | /          |
 | xchacha20-ietf-poly1305       | /          |
 
-#### password
+## password
 
-==Required==
+**Required.**
 
 | Method        | Password Format                                |
 |---------------|------------------------------------------------|
@@ -75,10 +73,10 @@ Both if empty.
 | 2022 methods  | `sing-box generate rand --base64 <Key Length>` |
 | other methods | any string                                     |
 
-#### managed
+## managed
 
 Defaults to `false`. Enable this when the inbound is managed by the [SSM API](/configuration/service/ssm-api) for dynamic user.
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#inbound) for details.

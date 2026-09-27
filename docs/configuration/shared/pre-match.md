@@ -15,7 +15,7 @@ icon: material/new-box
 
 Pre-match is rule matching that runs before the connection is established.
 
-### How it works
+## How it works
 
 When an L3 inbound (TUN, WireGuard, or Tailscale) receives a connection request, the connection has not yet been established:
 for TCP connections no connection data is available, while for UDP connections only the first packet is available.
@@ -23,15 +23,15 @@ In this phase, sing-box runs the routing rules in pre-match mode.
 
 When a rule matches an action that requires more connection data than available, pre-match stops at that rule.
 
-### Supported actions
+## Supported actions
 
-#### reject
+### reject
 
 Reject with TCP RST / ICMP unreachable.
 
 See [reject](/configuration/route/rule_action/#reject) for details.
 
-#### route
+### route
 
 !!! quote "Changes in sing-box 1.14.0"
 
@@ -54,7 +54,7 @@ otherwise connections will be rejected.
 
 See [route](/configuration/route/rule_action/#route) for details.
 
-#### sniff
+### sniff
 
 !!! question "Since sing-box 1.14.0"
 
@@ -67,7 +67,7 @@ For TCP connections, pre-match always stops at that rule.
 
 See [sniff](/configuration/route/rule_action/#sniff) for details.
 
-#### bypass
+### bypass
 
 !!! question "Since sing-box 1.13.0"
 

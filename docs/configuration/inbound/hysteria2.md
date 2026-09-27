@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# Hysteria2
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [bbr_profile](#bbr_profile)  
@@ -13,9 +15,7 @@ icon: material/alert-decagram
     :material-alert: [masquerade](#masquerade)  
     :material-alert: [ignore_client_bandwidth](#ignore_client_bandwidth)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: hysteria2
 tag: hy2-in
 
@@ -58,13 +58,11 @@ realm:
     while sing-box does not provide this alias.
     To use sing-box with the official program, you need to fill in that combination as the actual password.
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### up_mbps, down_mbps
+## up_mbps, down_mbps
 
 Max bandwidth, in Mbps.
 
@@ -72,17 +70,17 @@ Not limited if empty.
 
 Conflict with `ignore_client_bandwidth`.
 
-#### obfs.type
+## obfs.type
 
 QUIC traffic obfuscator type, one of `salamander` `gecko`.
 
 Disabled if empty.
 
-#### obfs.password
+## obfs.password
 
 QUIC traffic obfuscator password.
 
-#### obfs.min_packet_size
+## obfs.min_packet_size
 
 !!! question "Since sing-box 1.14.0"
 
@@ -90,7 +88,7 @@ Minimum on-wire packet size in bytes. Gecko only.
 
 `512` is used by default.
 
-#### obfs.max_packet_size
+## obfs.max_packet_size
 
 !!! question "Since sing-box 1.14.0"
 
@@ -98,15 +96,15 @@ Maximum on-wire packet size in bytes. Gecko only.
 
 `1200` is used by default.
 
-#### users
+## users
 
 Hysteria2 users
 
-#### users.password
+## users.password
 
 Authentication password
 
-#### ignore_client_bandwidth
+## ignore_client_bandwidth
 
 *When `up_mbps` and `down_mbps` are not set*:
 
@@ -116,17 +114,15 @@ Commands clients to use the BBR CC instead of Hysteria CC.
 
 Deny clients to use the BBR CC.
 
-#### tls
+## tls
 
-==Required==
+**Required.** TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
-
-### QUIC Fields
+## QUIC Fields
 
 See [QUIC Fields](/configuration/shared/quic/) for details.
 
-#### masquerade
+### masquerade
 
 HTTP3 server behavior (URL string configuration) when authentication fails.
 
@@ -139,7 +135,7 @@ Conflict with `masquerade.type`.
 
 A 404 page will be returned if masquerade is not configured.
 
-#### masquerade.type
+### masquerade.type
 
 HTTP3 server behavior (Object configuration) when authentication fails.
 
@@ -153,31 +149,31 @@ Conflict with `masquerade`.
 
 A 404 page will be returned if masquerade is not configured.
 
-#### masquerade.directory
+### masquerade.directory
 
 File server root directory.
 
-#### masquerade.url
+### masquerade.url
 
 Reverse proxy target URL.
 
-#### masquerade.rewrite_host
+### masquerade.rewrite_host
 
 Rewrite the `Host` header to the target URL.
 
-#### masquerade.status_code
+### masquerade.status_code
 
 Fixed response status code.
 
-#### masquerade.headers
+### masquerade.headers
 
 Fixed response headers.
 
-#### masquerade.content
+### masquerade.content
 
 Fixed response content.
 
-#### bbr_profile
+### bbr_profile
 
 !!! question "Since sing-box 1.14.0"
 
@@ -185,11 +181,11 @@ BBR congestion control algorithm profile, one of `conservative` `standard` `aggr
 
 `standard` is used by default.
 
-#### brutal_debug
+### brutal_debug
 
 Enable debug information logging for Hysteria Brutal CC.
 
-#### realm
+### realm
 
 !!! question "Since sing-box 1.14.0"
 
@@ -199,33 +195,27 @@ The inbound discovers its public addresses via STUN, registers them on the realm
 
 See [Hysteria Realm](/configuration/service/hysteria-realm/) for the rendezvous service.
 
-#### realm.server_url
+### realm.server_url
 
-==Required==
+**Required.** Realm rendezvous service URL.
 
-Realm rendezvous service URL.
-
-#### realm.token
+### realm.token
 
 Bearer token for the realm. Must match one of `users[].token` configured on the realm.
 
-#### realm.realm_id
+### realm.realm_id
 
-==Required==
-
-Slot identifier on the realm.
+**Required.** Slot identifier on the realm.
 
 1–64 characters, must match `^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$`.
 
 Outbounds must use the same `realm_id` to find this server.
 
-#### realm.stun_servers
+### realm.stun_servers
 
-==Required==
+**Required.** List of STUN servers (`host` or `host:port`) used to discover public addresses.
 
-List of STUN servers (`host` or `host:port`) used to discover public addresses.
-
-#### realm.stun_domain_resolver
+### realm.stun_domain_resolver
 
 Set domain resolver to use for resolving STUN server domain names.
 
@@ -235,7 +225,7 @@ Setting this option directly to a string is equivalent to setting `server` of th
 
 If empty, the default domain resolver is used.
 
-#### realm.ip_version
+### realm.ip_version
 
 Restrict realm connections (STUN, hole punching, and the resulting QUIC path) to a single IP version.
 
@@ -243,7 +233,7 @@ Restrict realm connections (STUN, hole punching, and the resulting QUIC path) to
 
 The `listen` address must be compatible with the selected version.
 
-#### realm.port_mapping
+### realm.port_mapping
 
 Maintain a UDP port mapping on the local gateway via UPnP or NAT-PMP.
 
@@ -251,23 +241,23 @@ The mapping is established before STUN discovery and improves hole-punching reli
 
 Requires IPv4: conflicts with `"ip_version": 6`.
 
-#### realm.port_mapping.enabled
+### realm.port_mapping.enabled
 
 Enable port mapping.
 
-#### realm.port_mapping.timeout
+### realm.port_mapping.timeout
 
 Timeout for gateway discovery and mapping operations.
 
 `10s` is used by default.
 
-#### realm.port_mapping.lifetime
+### realm.port_mapping.lifetime
 
 Lease lifetime of the mapping; it is renewed at half the lifetime.
 
 `10m` is used by default.
 
-#### realm.http_client
+### realm.http_client
 
 HTTP client used to talk to the realm.
 

@@ -2,13 +2,11 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.14.0 起"
-
 # OpenVPN
 
-### 结构
+!!! question "自 sing-box 1.14.0 起"
 
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: openvpn
@@ -19,13 +17,9 @@ dns:
       accept_search_domain: false
 ```
 
-### 字段
+## endpoint
 
-#### endpoint
-
-==必填==
-
-[OpenVPN 客户端端点](/zh/configuration/endpoint/openvpn-client) 的标签。
+**必填。**[OpenVPN 客户端端点](/zh/configuration/endpoint/openvpn-client) 的标签。
 
 DNS 查询会通过该端点发送到 OpenVPN 服务器推送的解析器。现代 OpenVPN `dns server` 选项支持普通 DNS、DNS over TLS、DNS over HTTPS、自定义端口、SNI 和 `resolve-domains`。只有优先级数字最低的服务器组会生效。没有现代服务器组时，使用传统的 `dhcp-option DNS`/`DNS6` 和 `DOMAIN-ROUTE`。
 
@@ -33,21 +27,21 @@ DNS 查询会通过该端点发送到 OpenVPN 服务器推送的解析器。现�
 
 推送的 DNS 设置不会安装到操作系统中。
 
-#### accept_default_resolvers
+## accept_default_resolvers
 
 对未匹配推送的 `resolve-domains`、`DOMAIN-ROUTE` 或搜索域后缀的查询使用推送解析器。
 
 禁用时，未匹配查询返回 `NXDOMAIN`。
 
-#### accept_search_domain
+## accept_search_domain
 
 启用且存在推送的搜索域时，单标签查询（例如 `intranet`）会依次附加各个搜索域重试，直到其中一个解析成功。
 
 不存在搜索域时，原始单标签查询按普通默认解析器规则处理。
 
-### 示例
+## 示例
 
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: local

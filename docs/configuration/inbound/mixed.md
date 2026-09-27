@@ -1,8 +1,8 @@
+# Mixed
+
 `mixed` inbound is a socks4, socks4a, socks5 and http server.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: mixed
 tag: mixed-in
 
@@ -14,19 +14,17 @@ users:
 set_system_proxy: false
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### users
+## users
 
 SOCKS and HTTP users.
 
 No authentication required if empty.
 
-#### set_system_proxy
+## set_system_proxy
 
 !!! quote ""
 

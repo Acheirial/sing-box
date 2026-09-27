@@ -2,15 +2,13 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.12.0"
-
 # DERP
+
+!!! question "Since sing-box 1.12.0"
 
 DERP service is a Tailscale DERP server, similar to [derper](https://pkg.go.dev/tailscale.com/cmd/derper).
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: derp
 
 # ... Listen Fields
@@ -26,63 +24,61 @@ mesh_psk_file: ""
 stun: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-#### config_path
+## config_path
 
-==Required==
-
-Derper configuration file path.
+**Required.** Derper configuration file path.
 
 Example: `derper.key`
 
-#### verify_client_endpoint
+## verify_client_endpoint
 
 Tailscale endpoints tags to verify clients.
 
-#### verify_client_url
+## verify_client_url
 
 URL to verify clients.
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 url: ""
 
 # ... HTTP Client Fields
+
 ```
 
 Setting Array value to a string `__URL__` is equivalent to configuring:
 
-```yaml
+```{.yaml linenums="1"}
 url: __URL__
 ```
 
-#### home
+## home
 
 What to serve at the root path. It may be left empty (the default, for a default homepage), `blank` for a blank page, or a URL to redirect to
 
-#### mesh_with
+## mesh_with
 
 Mesh with other DERP servers.
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 server: ""
 server_port: ""
 host: ""
 tls: {}
 
 # ... Dial Fields
+
 ```
 
 Object fields:
@@ -93,24 +89,25 @@ Object fields:
 - `tls`: [TLS](/configuration/shared/tls/#outbound)
 - `Dial Fields`: [Dial Fields](/configuration/shared/dial/)
 
-#### mesh_psk
+## mesh_psk
 
 Pre-shared key for DERP mesh.
 
-#### mesh_psk_file
+## mesh_psk_file
 
 Pre-shared key file for DERP mesh.
 
-#### stun
+## stun
 
 STUN server listen options.
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 
 # ... Listen Fields
+
 ```
 
 Object fields:
@@ -122,7 +119,7 @@ Object fields:
 
 Setting `stun` value to a number `__PORT__` is equivalent to configuring:
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 listen_port: __PORT__
 ```

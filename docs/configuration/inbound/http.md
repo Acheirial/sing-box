@@ -1,6 +1,6 @@
-### Structure
+# HTTP
 
-```yaml
+```{.yaml linenums="1"}
 type: http
 tag: http-in
 
@@ -13,23 +13,21 @@ tls: {}
 set_system_proxy: false
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-#### users
+## users
 
 HTTP users.
 
 No authentication required if empty.
 
-#### set_system_proxy
+## set_system_proxy
 
 !!! quote ""
 

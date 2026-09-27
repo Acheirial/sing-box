@@ -2,19 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # Certificate Provider
 
-### Structure
+!!! question "Since sing-box 1.14.0"
 
-```yaml
+```{.yaml linenums="1"}
 certificate_providers:
   - type: ""
     tag: ""
 ```
-
-### Fields
 
 | Type   | Format           |
 |--------|------------------|
@@ -22,6 +18,6 @@ certificate_providers:
 | `tailscale` | [Tailscale](/configuration/shared/certificate-provider/tailscale) |
 | `cloudflare-origin-ca` | [Cloudflare Origin CA](/configuration/shared/certificate-provider/cloudflare-origin-ca) |
 
-#### tag
+## tag
 
 The tag of the certificate provider.

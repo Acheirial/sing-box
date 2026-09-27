@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Tun
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [include_mac_address](#include_mac_address)  
@@ -67,9 +69,7 @@ icon: material/new-box
 
     仅支持 Linux、Windows 和 macOS。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: tun
 tag: tun-in
 interface_name: tun0
@@ -144,6 +144,7 @@ platform:
     match_domain: []
 
 # 已弃用
+
 gso: false
 inet4_address:
   - 172.19.0.1/30
@@ -161,6 +162,7 @@ inet6_route_exclude_address:
   - fc00::/7
 
 # ... 监听字段
+
 ```
 
 !!! note ""
@@ -171,13 +173,11 @@ inet6_route_exclude_address:
 
     如果 tun 在非特权模式下运行，地址和 MTU 将不会自动配置，请确保设置正确。
 
-### Tun 字段
-
-#### interface_name
+## interface_name
 
 虚拟设备名称，默认自动选择。
 
-#### netns
+## netns
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -191,25 +191,21 @@ inet6_route_exclude_address:
 
 与 `platform` 冲突。
 
-#### address
+## address
 
 !!! question "自 sing-box 1.10.0 起"
 
-==必填==
+**必填。**tun 接口的 IPv4 和 IPv6 前缀。
 
-tun 接口的 IPv4 和 IPv6 前缀。
-
-#### inet4_address
+## inet4_address
 
 !!! failure "已在 sing-box 1.10.0 废弃"
 
     `inet4_address` 已合并到 `address` 且将在 sing-box 1.12.0 中被移除。
 
-==必填==
+**必填。**tun 接口的 IPv4 前缀。
 
-tun 接口的 IPv4 前缀。
-
-#### inet6_address
+## inet6_address
 
 !!! failure "已在 sing-box 1.10.0 废弃"
 
@@ -217,11 +213,11 @@ tun 接口的 IPv4 前缀。
 
 tun 接口的 IPv6 前缀。
 
-#### mtu
+## mtu
 
 最大传输单元。
 
-#### dns_mode
+## dns_mode
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -247,7 +243,7 @@ TUN 接口上 DNS 的处理方式。
 *Windows 启用 [`strict_route`](#strict_route) 时*：通过 WFP 过滤器阻止经由非
 TUN 接口的 53 端口流量。
 
-#### dns_address
+## dns_address
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -261,7 +257,7 @@ sing-box DNS 模块，等价于一条
 设置后，将不再自动劫持；如仍需此行为，请显式配置
 [`hijack-dns`](/zh/configuration/route/rule_action/#hijack-dns) 路由规则。
 
-#### gso
+## gso
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
@@ -275,7 +271,7 @@ sing-box DNS 模块，等价于一条
 
 启用通用分段卸载。
 
-#### auto_route
+## auto_route
 
 设置到 Tun 的默认路由。
 
@@ -291,7 +287,7 @@ sing-box DNS 模块，等价于一条
 
   在 Linux 上始终推荐使用 `auto_redirect`，它提供更好的路由， 更高的性能（优于 tproxy）， 并避免 TUN 与 Docker 桥接网络冲突。
 
-#### iproute2_table_index
+## iproute2_table_index
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -299,7 +295,7 @@ sing-box DNS 模块，等价于一条
 
 默认使用 `2022`。
 
-#### iproute2_rule_index
+## iproute2_rule_index
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -307,7 +303,7 @@ sing-box DNS 模块，等价于一条
 
 默认使用 `9000`。
 
-#### auto_redirect
+## auto_redirect
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -326,7 +322,7 @@ sing-box DNS 模块，等价于一条
 
 与 `route.default_mark` 和 `[dialOptions].routing_mark` 冲突。
 
-#### auto_redirect_input_mark
+## auto_redirect_input_mark
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -334,7 +330,7 @@ sing-box DNS 模块，等价于一条
 
 默认使用 `0x2023`。
 
-#### auto_redirect_output_mark
+## auto_redirect_output_mark
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -342,7 +338,7 @@ sing-box DNS 模块，等价于一条
 
 默认使用 `0x2024`。
 
-#### auto_redirect_reset_mark
+## auto_redirect_reset_mark
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -350,7 +346,7 @@ sing-box DNS 模块，等价于一条
 
 默认使用 `0x2025`。
 
-#### auto_redirect_nfqueue
+## auto_redirect_nfqueue
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -358,7 +354,7 @@ sing-box DNS 模块，等价于一条
 
 默认使用 `100`。
 
-#### auto_redirect_iproute2_fallback_rule_index
+## auto_redirect_iproute2_fallback_rule_index
 
 !!! question "自 sing-box 1.12.18 起"
 
@@ -369,7 +365,7 @@ sing-box DNS 模块，等价于一条
 
 默认使用 `32768`。
 
-#### exclude_mptcp
+## exclude_mptcp
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -383,7 +379,7 @@ sing-box DNS 模块，等价于一条
 
 启用时，MPTCP 连接将绕过 sing-box 直接连接，否则，将被拒绝以避免错误。
 
-#### loopback_address
+## loopback_address
 
 !!! question "自 sing-box 1.12.0 起"
 
@@ -393,7 +389,7 @@ sing-box DNS 模块，等价于一条
 
 当启用 `auto_redirect` 时，可以作为网关为局域网设备（而不仅仅是本地）实现相同的行为。
 
-#### strict_route
+## strict_route
 
 当启用 `auto_route` 时，强制执行严格的路由规则：
 
@@ -412,13 +408,13 @@ sing-box DNS 模块，等价于一条
 
 它可能会使某些 Windows 应用程序（如 VirtualBox）在某些情况下无法正常工作。
 
-#### route_address
+## route_address
 
 !!! question "自 sing-box 1.10.0 起"
 
 设置到 Tun 的自定义路由。
 
-#### inet4_route_address
+## inet4_route_address
 
 !!! failure "已在 sing-box 1.10.0 废弃"
 
@@ -426,7 +422,7 @@ sing-box DNS 模块，等价于一条
 
 启用 `auto_route` 时使用自定义路由而不是默认路由。
 
-#### inet6_route_address
+## inet6_route_address
 
 !!! failure "已在 sing-box 1.10.0 废弃"
 
@@ -434,13 +430,13 @@ sing-box DNS 模块，等价于一条
 
 启用 `auto_route` 时使用自定义路由而不是默认路由。
 
-#### route_exclude_address
+## route_exclude_address
 
 !!! question "自 sing-box 1.10.0 起"
 
 设置到 Tun 的排除自定义路由。
 
-#### inet4_route_exclude_address
+## inet4_route_exclude_address
 
 !!! failure "已在 sing-box 1.10.0 废弃"
 
@@ -448,7 +444,7 @@ sing-box DNS 模块，等价于一条
 
 启用 `auto_route` 时排除自定义路由。
 
-#### inet6_route_exclude_address
+## inet6_route_exclude_address
 
 !!! failure "已在 sing-box 1.10.0 废弃"
 
@@ -456,7 +452,7 @@ sing-box DNS 模块，等价于一条
 
 启用 `auto_route` 时排除自定义路由。
 
-#### route_address_set
+## route_address_set
 
 === "`auto_redirect` 已启用"
 
@@ -479,7 +475,7 @@ sing-box DNS 模块，等价于一条
     请注意，由于 Android VpnService 无法处理大量路由（DeadSystemException），
     因此它**在 Android 图形客户端上不起作用**，但除此之外，它在所有命令行客户端和 Apple 平台上都可以正常工作。
 
-#### route_exclude_address_set
+## route_exclude_address_set
 
 === "`auto_redirect` 已启用"
 
@@ -504,13 +500,13 @@ sing-box DNS 模块，等价于一条
     请注意，由于 Android VpnService 无法处理大量路由（DeadSystemException），
     因此它**在 Android 图形客户端上不起作用**，但除此之外，它在所有命令行客户端和 Apple 平台上都可以正常工作。
 
-#### endpoint_independent_nat
+## endpoint_independent_nat
 
 此选项自 sing-box 1.11.0 起不再生效，可从配置中移除。
 
 自 sing-box 1.14.0 起，可使用 [UDP NAT 字段](/zh/configuration/shared/udp-nat/)自定义映射和过滤行为。
 
-#### stack
+## stack
 
 !!! quote "sing-box 1.8.0 中的更改"
 
@@ -526,7 +522,7 @@ TCP/IP 栈。
 
 默认使用 `mixed` 栈如果 gVisor 构建标记已启用，否则默认使用 `system` 栈。
 
-#### include_interface
+## include_interface
 
 !!! quote ""
 
@@ -536,7 +532,7 @@ TCP/IP 栈。
 
 与 `exclude_interface` 冲突。
 
-#### exclude_interface
+## exclude_interface
 
 !!! warning ""
 
@@ -546,7 +542,7 @@ TCP/IP 栈。
 
 与 `include_interface` 冲突。
 
-#### include_uid
+## include_uid
 
 !!! quote ""
 
@@ -554,19 +550,19 @@ TCP/IP 栈。
 
 限制被路由的用户。默认不限制。
 
-#### include_uid_range
+## include_uid_range
 
 限制被路由的用户范围。
 
-#### exclude_uid
+## exclude_uid
 
 排除路由的用户。
 
-#### exclude_uid_range
+## exclude_uid_range
 
 排除路由的用户范围。
 
-#### include_android_user
+## include_android_user
 
 !!! quote ""
 
@@ -579,15 +575,15 @@ TCP/IP 栈。
 | 您    | 0  |
 | 工作资料 | 10 |
 
-#### include_package
+## include_package
 
 限制被路由的 Android 应用包名。
 
-#### exclude_package
+## exclude_package
 
 排除路由的 Android 应用包名。
 
-#### include_mac_address
+## include_mac_address
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -599,7 +595,7 @@ TCP/IP 栈。
 
 与 `exclude_mac_address` 冲突。
 
-#### exclude_mac_address
+## exclude_mac_address
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -611,31 +607,27 @@ TCP/IP 栈。
 
 与 `include_mac_address` 冲突。
 
-#### platform
+## platform
 
 平台特定的设置，由客户端应用提供。
 
-#### platform.http_proxy
+## platform.http_proxy
 
 系统 HTTP 代理设置。
 
-##### platform.http_proxy.enabled
+## platform.http_proxy.enabled
 
 启用系统 HTTP 代理。
 
-##### platform.http_proxy.server
+## platform.http_proxy.server
 
-==必填==
+**必填。**系统 HTTP 代理服务器地址。
 
-系统 HTTP 代理服务器地址。
+## platform.http_proxy.server_port
 
-##### platform.http_proxy.server_port
+**必填。**系统 HTTP 代理服务器端口。
 
-==必填==
-
-系统 HTTP 代理服务器端口。
-
-##### platform.http_proxy.bypass_domain
+## platform.http_proxy.bypass_domain
 
 !!! note ""
 
@@ -643,7 +635,7 @@ TCP/IP 栈。
 
 绕过代理的主机名列表。
 
-##### platform.http_proxy.match_domain
+## platform.http_proxy.match_domain
 
 !!! quote ""
 
@@ -651,10 +643,10 @@ TCP/IP 栈。
 
 代理的主机名列表。
 
-### UDP NAT 字段
+## UDP NAT 字段
 
 参阅 [UDP NAT 字段](/zh/configuration/shared/udp-nat/)。
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。

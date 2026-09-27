@@ -1,3 +1,5 @@
+# WireGuard
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [udp_mapping](/configuration/shared/udp-nat/#udp_mapping)  
@@ -6,9 +8,7 @@
 
 !!! question "Since sing-box 1.11.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: wireguard
 tag: wg-ep
 
@@ -35,41 +35,36 @@ peers:
 workers: 0
 
 # ... Dial Fields
+
 ```
 
 !!! note ""
 
     You can use a single value instead of an array when the content is only one item
 
-### Fields
-
-#### system
+## system
 
 Use system interface.
 
 Requires privilege and cannot conflict with exists system interfaces.
 
-#### name
+## name
 
 Custom interface name for system interface.
 
-#### mtu
+## mtu
 
 WireGuard MTU.
 
 `1408` will be used by default.
 
-#### address
+## address
 
-==Required==
+**Required.** List of IP (v4 or v6) address prefixes to be assigned to the interface.
 
-List of IP (v4 or v6) address prefixes to be assigned to the interface.
+## private_key
 
-#### private_key
-
-==Required==
-
-WireGuard requires base64-encoded public and private keys. These can be generated using the wg(8) utility:
+**Required.** WireGuard requires base64-encoded public and private keys. These can be generated using the wg(8) utility:
 
 ```shell
 wg genkey
@@ -78,56 +73,50 @@ echo "private key" || wg pubkey
 
 or `sing-box generate wg-keypair`.
 
-#### peers
+## peers
 
-==Required==
+**Required.** List of WireGuard peers.
 
-List of WireGuard peers.
-
-#### peers.address
+## peers.address
 
 WireGuard peer address.
 
-#### peers.port
+## peers.port
 
 WireGuard peer port.
 
-#### peers.public_key
+## peers.public_key
 
-==Required==
+**Required.** WireGuard peer public key.
 
-WireGuard peer public key.
-
-#### peers.pre_shared_key
+## peers.pre_shared_key
 
 WireGuard peer pre-shared key.
 
-#### peers.allowed_ips
+## peers.allowed_ips
 
-==Required==
+**Required.** WireGuard allowed IPs.
 
-WireGuard allowed IPs.
-
-#### peers.persistent_keepalive_interval
+## peers.persistent_keepalive_interval
 
 WireGuard persistent keepalive interval, in seconds.
 
 Disabled by default.
 
-#### peers.reserved
+## peers.reserved
 
 WireGuard reserved field bytes.
 
-#### workers
+## workers
 
 WireGuard worker count.
 
 CPU count is used by default.
 
-### UDP NAT Fields
+## UDP NAT Fields
 
 See [UDP NAT Fields](/configuration/shared/udp-nat/) for details.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

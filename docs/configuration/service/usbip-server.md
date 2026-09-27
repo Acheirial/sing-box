@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # USB/IP Server
+
+!!! question "Since sing-box 1.14.0"
 
 USB/IP Server service exports local USB devices over [USB/IP](https://usbip.sourceforge.net/),
 to be imported by the [USB/IP Client](/configuration/service/usbip-client/) or a standard USB/IP
@@ -13,9 +13,7 @@ client.
 Available on Linux, Windows, and macOS (macOS requires a build with CGO, and exporting devices
 requires disabling System Integrity Protection). Not available on iOS.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: usbip-server
 
 # ... Listen Fields
@@ -30,15 +28,13 @@ devices: []
     set of protocols to support enhancements such as hotplug, while remaining interoperable with
     the standard USB/IP protocol.
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
 `listen_port` defaults to `3240`.
 
-### Fields
-
-#### provider
+## provider
 
 The device source provider.
 
@@ -52,15 +48,15 @@ The device source provider.
     The `default` provider is only supported when running directly via the CLI on Linux, Windows,
     and macOS, and requires elevated privileges.
 
-#### devices
+## devices
 
-==Required== with the `default` provider.
+**Required** with the `default` provider.
 
 List of device matches selecting which local USB devices to export.
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 bus_id: ""
 vendor_id: 0
 product_id: 0

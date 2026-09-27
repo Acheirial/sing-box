@@ -1,8 +1,8 @@
+# SOCKS
+
 `socks` 出站是 socks4/socks4a/socks5 客户端
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: socks
 tag: socks-out
 
@@ -15,37 +15,32 @@ network: udp
 udp_over_tcp: false  # or {}
 
 # ... 拨号字段
+
 ```
 
-### 字段
+## server
 
-#### server
+**必填。**服务器地址。
 
-==必填==
+## server_port
 
-服务器地址。
+**必填。**服务器端口。
 
-#### server_port
-
-==必填==
-
-服务器端口。
-
-#### version
+## version
 
 SOCKS 版本, 可为 `4` `4a` `5`.
 
 默认使用 SOCKS5。
 
-#### username
+## username
 
 SOCKS 用户名。
 
-#### password
+## password
 
 SOCKS5 密码。
 
-#### network
+## network
 
 启用的网络协议
 
@@ -53,12 +48,12 @@ SOCKS5 密码。
 
 默认所有。
 
-#### udp_over_tcp
+## udp_over_tcp
 
 UDP over TCP 配置。
 
 参阅 [UDP Over TCP](/zh/configuration/shared/udp-over-tcp/)。
 
-### 拨号字段
+## 拨号字段
 
 参阅 [拨号字段](/zh/configuration/shared/dial/)。

@@ -2,17 +2,16 @@
 icon: material/new-box
 ---
 
+# 证书
+
 !!! question "自 sing-box 1.12.0 起"
 
 !!! quote "sing-box 1.13.0 中的更改"
 
     :material-plus: [Chrome Root Store](#store)
 
-# 证书
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 store: ""
 certificate: []
 certificate_path: []
@@ -23,9 +22,8 @@ certificate_directory_path: []
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-### 字段
 
-#### store
+## store
 
 默认的 X509 受信任 CA 证书列表。
 
@@ -36,11 +34,11 @@ certificate_directory_path: []
 | `chrome`          | [Chrome Root Store](https://g.co/chrome/root-policy)（已移除中国 CA 证书）                  |
 | `none`            | 空列表                                                                                     |
 
-#### certificate
+## certificate
 
 要信任的证书行数组，PEM 格式。
 
-#### certificate_path
+## certificate_path
 
 !!! note ""
 
@@ -48,7 +46,7 @@ certificate_directory_path: []
 
 要信任的证书路径，PEM 格式。
 
-#### certificate_directory_path
+## certificate_directory_path
 
 !!! note ""
 

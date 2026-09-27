@@ -1,6 +1,6 @@
-### Structure
+# VLESS
 
-```yaml
+```{.yaml linenums="1"}
 type: vless
 tag: vless-out
 
@@ -15,29 +15,22 @@ multiplex: {}
 transport: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
+## uuid
 
-==Required==
+**Required.** VLESS user id.
 
-The server port.
-
-#### uuid
-
-==Required==
-
-VLESS user id.
-
-#### flow
+## flow
 
 VLESS Sub-protocol.
 
@@ -45,7 +38,7 @@ Available values:
 
 * `xtls-rprx-vision`
 
-#### network
+## network
 
 Enabled network
 
@@ -53,11 +46,11 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-#### packet_encoding
+## packet_encoding
 
 UDP packet encoding, xudp is used by default.
 
@@ -67,14 +60,14 @@ UDP packet encoding, xudp is used by default.
 | packetaddr | Supported by v2ray 5+ |
 | xudp       | Supported by xray     |
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#outbound) for details.
 
-#### transport
+## transport
 
 V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

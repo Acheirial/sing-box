@@ -1,6 +1,6 @@
-### Structure
+# VMess
 
-```yaml
+```{.yaml linenums="1"}
 type: vmess
 tag: vmess-out
 
@@ -18,29 +18,22 @@ transport: {}
 multiplex: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
+## uuid
 
-==Required==
+**Required.** The VMess user id.
 
-The server port.
-
-#### uuid
-
-==Required==
-
-The VMess user id.
-
-#### security
+## security
 
 Encryption methods:
 
@@ -54,7 +47,7 @@ Legacy encryption methods:
 
 * `aes-128-ctr`
 
-#### alter_id
+## alter_id
 
 | Alter ID | Description         |
 |----------|---------------------|
@@ -62,15 +55,15 @@ Legacy encryption methods:
 | 1        | Use legacy protocol |
 | > 1      | Unused, same as 1   |
 
-#### global_padding
+## global_padding
 
 Protocol parameter. Will waste traffic randomly if enabled (enabled by default in v2ray and cannot be disabled).
 
-#### authenticated_length
+## authenticated_length
 
 Protocol parameter. Enable length block encryption.
 
-#### network
+## network
 
 Enabled network
 
@@ -78,11 +71,11 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-#### packet_encoding
+## packet_encoding
 
 UDP packet encoding.
 
@@ -92,14 +85,14 @@ UDP packet encoding.
 | packetaddr | Supported by v2ray 5+ |
 | xudp       | Supported by xray     |
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#outbound) for details.
 
-#### transport
+## transport
 
 V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

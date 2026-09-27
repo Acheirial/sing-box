@@ -2,13 +2,11 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.12.0"
-
 # Hosts
 
-### Structure
+!!! question "Since sing-box 1.12.0"
 
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: hosts
@@ -22,9 +20,7 @@ dns:
 
     You can use a single value instead of an array when the content is only one item
 
-### Fields
-
-#### path
+## path
 
 List of paths to hosts files.
 
@@ -34,7 +30,8 @@ List of paths to hosts files.
 
 Example:
 
-```yaml
+```{.yaml linenums="1"}
+
 # path: /etc/hosts
 
 path:
@@ -42,13 +39,13 @@ path:
   - $HOME/.hosts
 ```
 
-#### predefined
+## predefined
 
 Predefined hosts.
 
 Example:
 
-```yaml
+```{.yaml linenums="1"}
 predefined:
   www.google.com: 127.0.0.1
   localhost:
@@ -56,13 +53,13 @@ predefined:
     - "::1"
 ```
 
-### Examples
+## Examples
 
 === "Use hosts if available"
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             # ...
@@ -76,7 +73,7 @@ predefined:
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             # ...

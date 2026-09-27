@@ -2,30 +2,28 @@
 icon: material/new-box
 ---
 
+# UDP NAT Fields
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [udp_mapping](#udp_mapping)  
     :material-plus: [udp_filtering](#udp_filtering)  
     :material-plus: [udp_nat_max](#udp_nat_max)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 udp_timeout: 5m
 udp_mapping: endpoint_independent
 udp_filtering: endpoint_independent
 udp_nat_max: 0
 ```
 
-### Fields
-
-#### udp_timeout
+## udp_timeout
 
 UDP NAT expiration time.
 
 `5m` will be used by default.
 
-#### udp_mapping
+## udp_mapping
 
 !!! question "Since sing-box 1.14.0"
 
@@ -39,7 +37,7 @@ UDP NAT mapping behavior.
 
 `endpoint_independent` is used by default.
 
-#### udp_filtering
+## udp_filtering
 
 !!! question "Since sing-box 1.14.0"
 
@@ -53,7 +51,7 @@ UDP NAT filtering behavior.
 
 `endpoint_independent` is used by default.
 
-#### udp_nat_max
+## udp_nat_max
 
 !!! question "Since sing-box 1.14.0"
 

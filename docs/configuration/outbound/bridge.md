@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # Bridge
+
+!!! question "Since sing-box 1.14.0"
 
 !!! quote ""
 
@@ -26,9 +26,7 @@ as a gate in the `route` rule: it only matches in
 [pre-match](/configuration/shared/pre-match/) and excludes local addresses that
 cannot be routed.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: bridge
 tag: bridge-out
 
@@ -38,9 +36,7 @@ iproute2_table_index: 0
 iproute2_rule_index: 0
 ```
 
-### Fields
-
-#### interface
+## interface
 
 Interface name for forwarded traffic to egress.
 
@@ -48,13 +44,13 @@ The default interface will be used by default.
 
 Forwarded traffic will be dropped while the interface is unavailable.
 
-#### bridge_name
+## bridge_name
 
 Custom bridge TUN interface name prefix, `bridge` is used by default.
 
 Not effective on Apple platforms.
 
-#### iproute2_table_index
+## iproute2_table_index
 
 !!! quote ""
 
@@ -64,7 +60,7 @@ Linux iproute2 table index for pinned egress routes.
 
 `2200` + instance index is used by default.
 
-#### iproute2_rule_index
+## iproute2_rule_index
 
 !!! quote ""
 

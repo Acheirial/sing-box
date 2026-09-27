@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# 监听字段
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-alert: [netns](#netns)
@@ -26,9 +28,8 @@ icon: material/new-box
     :material-delete-clock: [domain_strategy](#domain_strategy)  
     :material-delete-clock: [udp_disable_domain_unmapping](#udp_disable_domain_unmapping)
 
-### 结构
 
-```yaml
+```{.yaml linenums="1"}
 listen: ""
 listen_port: 0
 bind_interface: ""
@@ -53,25 +54,22 @@ domain_strategy: ""
 udp_disable_domain_unmapping: false
 ```
 
-### 字段
 
-#### listen
+## listen
 
-==必填==
+**必填。**监听地址。
 
-监听地址。
-
-#### listen_port
+## listen_port
 
 监听端口。
 
-#### bind_interface
+## bind_interface
 
 !!! question "自 sing-box 1.12.0 起"
 
 要绑定到的网络接口。
 
-#### routing_mark
+## routing_mark
 
 !!! question "自 sing-box 1.12.0 起"
 
@@ -83,13 +81,13 @@ udp_disable_domain_unmapping: false
 
 支持数字 (如 `1234`) 和十六进制字符串 (如 `"0x1234"`)。
 
-#### reuse_addr
+## reuse_addr
 
 !!! question "自 sing-box 1.12.0 起"
 
 重用监听地址。
 
-#### netns
+## netns
 
 !!! question "自 sing-box 1.12.0 起"
 
@@ -101,11 +99,11 @@ udp_disable_domain_unmapping: false
 
 自 sing-box 1.14.0 起，也可以使用[网络命名空间](/zh/configuration/network-namespace/)的标签。
 
-#### tcp_fast_open
+## tcp_fast_open
 
 启用 TCP Fast Open。
 
-#### tcp_multi_path
+## tcp_multi_path
 
 !!! warning ""
 
@@ -113,13 +111,13 @@ udp_disable_domain_unmapping: false
 
 启用 TCP Multi Path。
 
-#### disable_tcp_keep_alive
+## disable_tcp_keep_alive
 
 !!! question "自 sing-box 1.13.0 起"
 
 禁用 TCP keep alive。
 
-#### tcp_keep_alive
+## tcp_keep_alive
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -129,29 +127,29 @@ TCP keep alive 初始周期。
 
 默认使用 `5m`。
 
-#### tcp_keep_alive_interval
+## tcp_keep_alive_interval
 
 TCP keep alive 间隔。
 
 默认使用 `75s`。
 
-#### udp_fragment
+## udp_fragment
 
 启用 UDP 分段。
 
-#### udp_timeout
+## udp_timeout
 
 UDP NAT 过期时间。
 
 默认使用 `5m`。
 
-#### detour
+## detour
 
 如果设置，连接将被转发到指定的入站。
 
-需要目标入站支持，参阅 [注入支持](/zh/configuration/inbound/#字段)。
+需要目标入站支持，参阅 [注入支持](/zh/configuration/inbound/)。
 
-#### sniff
+## sniff
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
@@ -161,7 +159,7 @@ UDP NAT 过期时间。
 
 参阅 [协议探测](/zh/configuration/route/sniff/)
 
-#### sniff_override_destination
+## sniff_override_destination
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
@@ -171,7 +169,7 @@ UDP NAT 过期时间。
 
 如果域名无效（如 Tor），将不生效。
 
-#### sniff_timeout
+## sniff_timeout
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
@@ -181,7 +179,7 @@ UDP NAT 过期时间。
 
 默认使用 300ms。
 
-#### domain_strategy
+## domain_strategy
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
@@ -193,7 +191,7 @@ UDP NAT 过期时间。
 
 如果 `sniff_override_destination` 生效，它的值将作为后备。
 
-#### udp_disable_domain_unmapping
+## udp_disable_domain_unmapping
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 

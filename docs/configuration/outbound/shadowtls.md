@@ -1,6 +1,6 @@
-### Structure
+# ShadowTLS
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowtls
 tag: st-out
 
@@ -11,23 +11,18 @@ password: fuck me till the daylight
 tls: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
-
-==Required==
-
-The server port.
-
-#### version
+## version
 
 ShadowTLS protocol version.
 
@@ -37,18 +32,16 @@ ShadowTLS protocol version.
 | `2`           | [ShadowTLS v2](https://github.com/ihciah/shadow-tls/blob/master/docs/protocol-en.md#v2) |
 | `3`           | [ShadowTLS v3](https://github.com/ihciah/shadow-tls/blob/master/docs/protocol-v3-en.md) |
 
-#### password
+## password
 
 Set password.
 
 Only available in the ShadowTLS v2/v3 protocol.
 
-#### tls
+## tls
 
-==Required==
+**Required.** TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
-
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

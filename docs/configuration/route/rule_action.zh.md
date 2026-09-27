@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# 规则动作
+
 !!! quote "sing-box 1.13.0 中的更改"
 
     :material-plus: [bypass](#bypass)  
@@ -27,20 +29,19 @@ icon: material/new-box
 
 ### route
 
-```yaml
+```{.yaml linenums="1"}
 action: route  # 默认
 outbound: ""
 
 # ... route-options 字段
+
 ```
 
 `route` 继承了将连接路由到指定出站的经典规则动作。
 
 #### outbound
 
-==必填==
-
-目标出站的标签。
+**必填。**目标出站的标签。
 
 #### route-options 字段
 
@@ -54,11 +55,12 @@ outbound: ""
 
     仅支持 Linux，且需要启用 `auto_redirect`。
 
-```yaml
+```{.yaml linenums="1"}
 action: bypass
 outbound: ""
 
 # ... route-options 字段
+
 ```
 
 `bypass` 在预匹配中为 auto redirect 连接在内核层面绕过 sing-box。
@@ -81,7 +83,7 @@ outbound: ""
 
     自 sing-box 1.13.0 起，您可以通过 `reject` 动作拒绝（或直接回复）ICMP 回显（ping）请求。
 
-```yaml
+```{.yaml linenums="1"}
 action: reject
 method: default  # 默认
 no_drop: false
@@ -114,7 +116,7 @@ no_drop: false
 
 ### hijack-dns
 
-```yaml
+```{.yaml linenums="1"}
 action: hijack-dns
 ```
 
@@ -124,7 +126,7 @@ action: hijack-dns
 
 ### route-options
 
-```yaml
+```{.yaml linenums="1"}
 action: route-options
 override_address: ""
 override_port: 0
@@ -256,7 +258,7 @@ UDP 连接超时时间。
 
 ### sniff
 
-```yaml
+```{.yaml linenums="1"}
 action: sniff
 sniffer: []
 timeout: ""
@@ -282,7 +284,7 @@ timeout: ""
 
 ### resolve
 
-```yaml
+```{.yaml linenums="1"}
 action: resolve
 server: ""
 strategy: ""

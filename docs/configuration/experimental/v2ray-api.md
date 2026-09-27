@@ -1,10 +1,10 @@
+# V2Ray API
+
 !!! quote ""
 
     V2Ray API is not included by default, see [Installation](/installation/build-from-source/#build-tags).
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 listen: 127.0.0.1:8080
 stats:
   enabled: true
@@ -17,28 +17,26 @@ stats:
     - sekai
 ```
 
-### Fields
-
-#### listen
+## listen
 
 gRPC API listening address. V2Ray API will be disabled if empty.
 
-#### stats
+## stats
 
 Traffic statistics service settings.
 
-#### stats.enabled
+## stats.enabled
 
 Enable statistics service.
 
-#### stats.inbounds
+## stats.inbounds
 
 Inbound list to count traffic.
 
-#### stats.outbounds
+## stats.outbounds
 
 Outbound list to count traffic.
 
-#### stats.users
+## stats.users
 
 User list to count traffic.

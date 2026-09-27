@@ -2,13 +2,13 @@
 icon: material/note-remove
 ---
 
+# Geosite
+
 !!! failure "已在 sing-box 1.12.0 中被移除"
 
     Geosite 已在 sing-box 1.8.0 废弃且在 sing-box 1.12.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移-geosite-到规则集)。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 route:
   geosite:
     path: ""
@@ -16,21 +16,19 @@ route:
     download_detour: ""
 ```
 
-### 字段
-
-#### path
+## path
 
 指定 GeoSite 资源的路径。
 
 默认 `geosite.db`。
 
-#### download_url
+## download_url
 
 指定 GeoSite 资源的下载链接。
 
 默认为 `https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db`。
 
-#### download_detour
+## download_detour
 
 用于下载 GeoSite 资源的出站的标签。
 

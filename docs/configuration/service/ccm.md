@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.13.0"
-
 # CCM
+
+!!! question "Since sing-box 1.13.0"
 
 CCM (Claude Code Multiplexer) service is a multiplexing service that allows you to access your local Claude Code subscription remotely through custom tokens.
 
 It handles OAuth authentication with Claude's API on your local machine while allowing remote Claude Code to authenticate using Auth Tokens via the `ANTHROPIC_AUTH_TOKEN` environment variable.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: ccm
 
 # ... Listen Fields
@@ -25,13 +23,11 @@ detour: ""
 tls: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### credential_path
+## credential_path
 
 Path to the Claude Code OAuth credentials file.
 
@@ -43,7 +39,7 @@ On macOS, credentials are read from the system keychain first, then fall back to
 
 Refreshed tokens are automatically written back to the same location.
 
-#### usages_path
+## usages_path
 
 Path to the file for storing aggregated API usage statistics.
 
@@ -58,7 +54,7 @@ Statistics are organized by model, context window (200k standard vs 1M premium),
 
 The statistics file is automatically saved every minute and upon service shutdown.
 
-#### users
+## users
 
 List of authorized users for token authentication.
 
@@ -66,7 +62,7 @@ If empty, no authentication is required.
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 name: ""
 token: ""
 ```
@@ -76,25 +72,25 @@ Object fields:
 - `name`: Username identifier for tracking purposes.
 - `token`: Bearer token for authentication. Claude Code authenticates by setting the `ANTHROPIC_AUTH_TOKEN` environment variable to their token value.
 
-#### headers
+## headers
 
 Custom HTTP headers to send to the Claude API.
 
 These headers will override any existing headers with the same name.
 
-#### detour
+## detour
 
 Outbound tag for connecting to the Claude API.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-### Example
+## Example
 
-#### Server
+### Server
 
-```yaml
+```{.yaml linenums="1"}
 services:
   - type: ccm
     listen: 0.0.0.0
@@ -107,7 +103,7 @@ services:
         token: ak-ccm-hello-bob
 ```
 
-#### Client
+### Client
 
 ```bash
 export ANTHROPIC_BASE_URL="http://127.0.0.1:8080"

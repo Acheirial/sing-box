@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.14.0 起"
-
 # Bridge
+
+!!! question "自 sing-box 1.14.0 起"
 
 !!! quote ""
 
@@ -21,9 +21,7 @@ icon: material/new-box
 建议使用 [`preferred_by`](/zh/configuration/route/rule/#preferred_by) 作为 `route`
 规则的门禁：它仅在[预匹配](/zh/configuration/shared/pre-match/)中匹配，且排除了无法路由的本地地址。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: bridge
 tag: bridge-out
 
@@ -33,9 +31,7 @@ iproute2_table_index: 0
 iproute2_rule_index: 0
 ```
 
-### 字段
-
-#### interface
+## interface
 
 转发流量流出的网络接口名称。
 
@@ -43,13 +39,13 @@ iproute2_rule_index: 0
 
 接口不可用期间，转发流量将被丢弃。
 
-#### bridge_name
+## bridge_name
 
 自定义 bridge TUN 接口名前缀，默认使用 `bridge`。
 
 在 Apple 平台上无效。
 
-#### iproute2_table_index
+## iproute2_table_index
 
 !!! quote ""
 
@@ -59,7 +55,7 @@ iproute2_rule_index: 0
 
 默认使用 `2200` + 实例索引。
 
-#### iproute2_rule_index
+## iproute2_rule_index
 
 !!! quote ""
 

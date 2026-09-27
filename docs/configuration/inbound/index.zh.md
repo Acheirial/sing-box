@@ -1,14 +1,10 @@
 # 入站
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 inbounds:
   - type: ""
     tag: ""
 ```
-
-### 字段
 
 | 类型            | 格式                            | 注入支持             |
 |---------------|-------------------------------|------------------|
@@ -32,6 +28,6 @@ inbounds:
 | `tproxy`      | [TProxy](./tproxy/)           | :material-close: |
 | `cloudflared` | [Cloudflared](./cloudflared/) | :material-close: |
 
-#### tag
+## tag
 
 入站的标签。

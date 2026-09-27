@@ -18,7 +18,7 @@ docker run -d \
 
 ## :material-box-shadow: Compose
 
-```yaml
+```{.yaml linenums="1"}
 version: "3.8"
 services:
   sing-box:

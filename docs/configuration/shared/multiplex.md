@@ -1,14 +1,16 @@
-### Inbound
+# Multiplex
 
-```yaml
+## Inbound
+
+```{.yaml linenums="1"}
 enabled: true
 padding: false
 brutal: {}
 ```
 
-### Outbound
+## Outbound
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 protocol: smux
 max_connections: 4
@@ -18,28 +20,27 @@ padding: false
 brutal: {}
 ```
 
+## Inbound Fields
 
-### Inbound Fields
-
-#### enabled
+### enabled
 
 Enable multiplex support.
 
-#### padding
+### padding
 
 If enabled, non-padded connections will be rejected.
 
-#### brutal
+### brutal
 
 See [TCP Brutal](/configuration/shared/tcp-brutal/) for details.
 
-### Outbound Fields
+## Outbound Fields
 
-#### enabled
+### enabled
 
 Enable multiplex.
 
-#### protocol
+### protocol
 
 Multiplex protocol.
 
@@ -51,25 +52,25 @@ Multiplex protocol.
 
 h2mux is used by default.
 
-#### max_connections
+### max_connections
 
 Maximum connections.
 
 Conflict with `max_streams`.
 
-#### min_streams
+### min_streams
 
 Minimum multiplexed streams in a connection before opening a new connection.
 
 Conflict with `max_streams`.
 
-#### max_streams
+### max_streams
 
 Maximum multiplexed streams in a connection before opening a new connection.
 
 Conflict with `max_connections` and `min_streams`.
 
-#### padding
+### padding
 
 !!! info
 
@@ -77,6 +78,6 @@ Conflict with `max_connections` and `min_streams`.
 
 Enable padding.
 
-#### brutal
+### brutal
 
 See [TCP Brutal](/configuration/shared/tcp-brutal/) for details.

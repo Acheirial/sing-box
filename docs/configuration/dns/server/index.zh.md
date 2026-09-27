@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# DNS Server
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [mdns](./mdns/)
@@ -10,18 +12,14 @@ icon: material/alert-decagram
 
     :material-plus: [type](#type)
 
-# DNS Server
-
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: ""
       tag: ""
 ```
 
-#### type
+## type
 
 DNS 服务器的类型。
 
@@ -44,6 +42,6 @@ DNS 服务器的类型。
 | `openvpn`       | [OpenVPN](./openvpn/)         |
 | `resolved`      | [Resolved](./resolved/)   |
 
-#### tag
+## tag
 
 DNS 服务器的标签。

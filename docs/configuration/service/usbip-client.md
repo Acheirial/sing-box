@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # USB/IP Client
+
+!!! question "Since sing-box 1.14.0"
 
 USB/IP Client service imports remote USB devices over [USB/IP](https://usbip.sourceforge.net/),
 exported by the [USB/IP Server](/configuration/service/usbip-server/).
@@ -13,9 +13,7 @@ Available on Linux, Windows, and macOS (macOS requires a build with CGO). Not av
 
 The server must be a sing-box (or sing-usbip) server.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: usbip-client
 
 # ... Dial Fields
@@ -31,32 +29,28 @@ devices: []
     set of protocols to support enhancements such as hotplug, while remaining interoperable with
     the standard USB/IP protocol.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.
 
 Only `detour` takes effect.
 
-### Fields
+## server
 
-#### server
+**Required.** The remote `usbip-server` address.
 
-==Required==
-
-The remote `usbip-server` address.
-
-#### server_port
+## server_port
 
 The remote `usbip-server` port. Defaults to `3240`.
 
-#### devices
+## devices
 
 List of device matches selecting which remote devices to import. If empty, all exported devices
 are imported.
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 bus_id: ""
 vendor_id: 0
 product_id: 0

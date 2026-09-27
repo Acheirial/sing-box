@@ -7,9 +7,7 @@ For `stdin` and unrecognized extensions, the format is detected from the content
 
 YAML anchors (`&`), aliases (`*`) and merge keys (`<<`) are supported.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 $schema: https://sing-box.sagernet.org/schema.json
 log: {}
 dns: {}
@@ -25,8 +23,6 @@ route: {}
 services: []
 experimental: {}
 ```
-
-### Fields
 
 | Key            | Format                          |
 |----------------|---------------------------------|
@@ -45,13 +41,13 @@ experimental: {}
 | `services`     | [Service](./service/)           |
 | `experimental` | [Experimental](./experimental/) |
 
-### Check
+## Check
 
 ```bash
 sing-box check
 ```
 
-### Format
+## Format
 
 ```bash
 sing-box format -w -c config.yaml -D config_directory
@@ -60,13 +56,13 @@ sing-box format -w -c config.yaml -D config_directory
 The output stays in YAML format, with map keys sorted alphabetically.
 Comments are not preserved.
 
-### Merge
+## Merge
 
 ```bash
 sing-box merge output.yaml -c config.yaml -D config_directory
 ```
 
-### JSON Support
+## JSON Support
 
 JSON configuration files are also supported and share the identical schema and
 validation rules with YAML.

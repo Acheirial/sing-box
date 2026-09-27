@@ -1,3 +1,5 @@
+# Hysteria2
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [hop_interval_max](#hop_interval_max)  
@@ -11,9 +13,7 @@
     :material-plus: [server_ports](#server_ports)  
     :material-plus: [hop_interval](#hop_interval)
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: hysteria2
 tag: hy2-out
 
@@ -50,6 +50,7 @@ realm:
   http_client: {}
 
 # ... 拨号字段
+
 ```
 
 !!! note ""
@@ -62,27 +63,21 @@ realm:
     本质上是将用户名与密码的组合 `<username>:<password>` 作为实际上的密码，而 sing-box 不提供此别名。
     要将 sing-box 与官方程序一起使用， 您需要填写该组合作为实际密码。
 
-### 字段
+## server
 
-#### server
-
-==必填==
-
-服务器地址。
+**必填。**服务器地址。
 
 与 `realm` 冲突。
 
-#### server_port
+## server_port
 
-==必填==
-
-服务器端口。
+**必填。**服务器端口。
 
 如果设置了 `server_ports`，则忽略此项。
 
 与 `realm` 冲突。
 
-#### server_ports
+## server_ports
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -90,7 +85,7 @@ realm:
 
 与 `server_port` 和 `realm` 冲突。
 
-#### hop_interval
+## hop_interval
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -98,7 +93,7 @@ realm:
 
 默认使用 `30s`。
 
-#### hop_interval_max
+## hop_interval_max
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -106,23 +101,23 @@ realm:
 
 如果设置，实际跳跃间隔将在 `hop_interval` 和 `hop_interval_max` 之间随机选择。
 
-#### up_mbps, down_mbps
+## up_mbps, down_mbps
 
 最大带宽。
 
 如果为空，将使用 BBR 拥塞控制算法而不是 Hysteria CC。
 
-#### obfs.type
+## obfs.type
 
 QUIC 流量混淆器类型，可选 `salamander` `gecko`。
 
 如果为空则禁用。
 
-#### obfs.password
+## obfs.password
 
 QUIC 流量混淆器密码。
 
-#### obfs.min_packet_size
+## obfs.min_packet_size
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -130,7 +125,7 @@ QUIC 流量混淆器密码。
 
 默认使用 `512`。
 
-#### obfs.max_packet_size
+## obfs.max_packet_size
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -138,11 +133,11 @@ QUIC 流量混淆器密码。
 
 默认使用 `1200`。
 
-#### password
+## password
 
 认证密码。
 
-#### network
+## network
 
 启用的网络协议。
 
@@ -150,17 +145,15 @@ QUIC 流量混淆器密码。
 
 默认所有。
 
-#### tls
+## tls
 
-==必填==
+**必填。**TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
 
-TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
-
-### QUIC 字段
+## QUIC 字段
 
 参阅 [QUIC 字段](/zh/configuration/shared/quic/) 了解详情。
 
-#### bbr_profile
+### bbr_profile
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -168,11 +161,11 @@ BBR 拥塞控制算法配置，可选 `conservative` `standard` `aggressive`。
 
 默认使用 `standard`。
 
-#### brutal_debug
+### brutal_debug
 
 启用 Hysteria Brutal CC 的调试信息日志记录。
 
-#### disable_chrome_parrot
+### disable_chrome_parrot
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -189,7 +182,7 @@ BBR 拥塞控制算法配置，可选 `conservative` `standard` `aggressive`。
     Chrome 不声明支持 Ed25519，因此使用 Ed25519 证书的服务端将无法完成握手。
     请改用 ECDSA 或 RSA 证书；由 ACME 签发的证书不受影响。
 
-#### realm
+### realm
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -203,37 +196,31 @@ TLS SNI 默认使用 `server_url` 中的主机名。需设置 `tls.server_name` 
 
 会合服务参阅 [Hysteria Realm](/zh/configuration/service/hysteria-realm/)。
 
-#### realm.server_url
+### realm.server_url
 
-==必填==
+**必填。**Realm 会合服务 URL。
 
-Realm 会合服务 URL。
-
-#### realm.token
+### realm.token
 
 Realm 的 Bearer 令牌，需与 realm 上配置的 `users[].token` 之一匹配。
 
-#### realm.realm_id
+### realm.realm_id
 
-==必填==
+**必填。**目标 Hysteria2 服务器注册时使用的相同槽位标识符。
 
-目标 Hysteria2 服务器注册时使用的相同槽位标识符。
+### realm.stun_servers
 
-#### realm.stun_servers
-
-==必填==
-
-用于发现本客户端公网地址的 STUN 服务器列表（`host` 或 `host:port`）。
+**必填。**用于发现本客户端公网地址的 STUN 服务器列表（`host` 或 `host:port`）。
 
 域名通过 [拨号字段](/zh/configuration/shared/dial/) 中的 [`domain_resolver`](/zh/configuration/shared/dial/#domain_resolver) 解析。
 
-#### realm.ip_version
+### realm.ip_version
 
 将 realm 连接（STUN、打洞与最终的 QUIC 路径）限制为单一 IP 版本。
 
 `4` 或 `6`。默认使用两者。
 
-#### realm.port_mapping
+### realm.port_mapping
 
 通过 UPnP 或 NAT-PMP 在本地网关上维护 UDP 端口映射。
 
@@ -241,28 +228,28 @@ Realm 的 Bearer 令牌，需与 realm 上配置的 `users[].token` 之一匹配
 
 需要 IPv4：与 `"ip_version": 6` 冲突。
 
-#### realm.port_mapping.enabled
+### realm.port_mapping.enabled
 
 启用端口映射。
 
-#### realm.port_mapping.timeout
+### realm.port_mapping.timeout
 
 网关发现与映射操作的超时。
 
 默认使用 `10s`。
 
-#### realm.port_mapping.lifetime
+### realm.port_mapping.lifetime
 
 映射的租约时长；每过一半时长续期一次。
 
 默认使用 `10m`。
 
-#### realm.http_client
+### realm.http_client
 
 与 realm 通信使用的 HTTP 客户端。
 
 参阅 [HTTP 客户端](/zh/configuration/shared/http-client/) 了解详情。
 
-### 拨号字段
+## 拨号字段
 
 参阅 [拨号字段](/zh/configuration/shared/dial/)。

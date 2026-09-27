@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# ACME
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [account_key](#account_key)  
@@ -9,15 +11,11 @@ icon: material/new-box
     :material-plus: [profile](#profile)  
     :material-plus: [http_client](#http_client)
 
-# ACME
-
 !!! quote ""
 
     `with_acme` build tag required.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: acme
 tag: ""
 
@@ -40,29 +38,25 @@ profile: ""
 http_client: ""  # or {}
 ```
 
-### Fields
+## domain
 
-#### domain
+**Required.** List of domains.
 
-==Required==
-
-List of domains.
-
-#### data_directory
+## data_directory
 
 The directory to store ACME data.
 
 `$XDG_DATA_HOME/certmagic|$HOME/.local/share/certmagic` will be used if empty.
 
-#### default_server_name
+## default_server_name
 
 Server name to use when choosing a certificate if the ClientHello's ServerName field is empty.
 
-#### email
+## email
 
 The email address to use when creating or selecting an existing ACME server account.
 
-#### provider
+## provider
 
 The ACME CA provider to use.
 
@@ -77,31 +71,31 @@ When `provider` is `zerossl`, sing-box will automatically request ZeroSSL EAB cr
 
 When `provider` is `zerossl`, at least one of `external_account`, `email`, or `account_key` is required.
 
-#### account_key
+## account_key
 
 !!! question "Since sing-box 1.14.0"
 
 The PEM-encoded private key of an existing ACME account.
 
-#### disable_http_challenge
+## disable_http_challenge
 
 Disable all HTTP challenges.
 
-#### disable_tls_alpn_challenge
+## disable_tls_alpn_challenge
 
 Disable all TLS-ALPN challenges
 
-#### alternative_http_port
+## alternative_http_port
 
 The alternate port to use for the ACME HTTP challenge; if non-empty, this port will be used instead of 80 to spin up a
 listener for the HTTP challenge.
 
-#### alternative_tls_port
+## alternative_tls_port
 
 The alternate port to use for the ACME TLS-ALPN challenge; the system must forward 443 to this port for challenge to
 succeed.
 
-#### external_account
+## external_account
 
 EAB (External Account Binding) contains information necessary to bind or map an ACME account to some other account known
 by the CA.
@@ -112,21 +106,21 @@ a CA customer database.
 To enable ACME account binding, the CA operating the ACME server needs to provide the ACME client with a MAC key and a
 key identifier, using some mechanism outside of ACME. §7.3.4
 
-#### external_account.key_id
+## external_account.key_id
 
 The key identifier.
 
-#### external_account.mac_key
+## external_account.mac_key
 
 The MAC key.
 
-#### dns01_challenge
+## dns01_challenge
 
 ACME DNS01 challenge field. If configured, other challenge methods will be disabled.
 
 See [DNS01 Challenge Fields](/configuration/shared/dns01_challenge/) for details.
 
-#### key_type
+## key_type
 
 !!! question "Since sing-box 1.14.0"
 
@@ -140,7 +134,7 @@ The private key type to generate for new certificates.
 | `rsa2048`  | RSA     |
 | `rsa4096`  | RSA     |
 
-#### profile
+## profile
 
 !!! question "Since sing-box 1.14.0"
 
@@ -148,7 +142,7 @@ The ACME profile to use for certificate issuance.
 
 When empty and `provider` is Let's Encrypt, `shortlived` will be used automatically if any domain is an IP address.
 
-#### http_client
+## http_client
 
 !!! question "Since sing-box 1.14.0"
 

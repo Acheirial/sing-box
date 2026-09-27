@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# DNS
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-delete-clock: [independent_cache](#independent_cache)  
@@ -16,11 +18,7 @@ icon: material/alert-decagram
 
     :material-plus: [cache_capacity](#cache_capacity)
 
-# DNS
-
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers: []
   rules: []
@@ -37,39 +35,37 @@ dns:
   fakeip: {}
 ```
 
-### Fields
-
 | Key      | Format                          |
 |----------|---------------------------------|
 | `server` | List of [DNS Server](./server/) |
 | `rules`  | List of [DNS Rule](./rule/)     |
 | `fakeip` | :material-note-remove: [FakeIP](./fakeip/) |
 
-#### final
+## final
 
 Default dns server tag.
 
 The first server will be used if empty.
 
-#### strategy
+## strategy
 
 Default domain strategy for resolving the domain names.
 
 One of `prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`.
 
-#### disable_cache
+## disable_cache
 
 Disable dns cache.
 
 Conflict with `optimistic`.
 
-#### disable_expire
+## disable_expire
 
 Disable dns cache expire.
 
 Conflict with `optimistic`.
 
-#### independent_cache
+## independent_cache
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
@@ -77,7 +73,7 @@ Conflict with `optimistic`.
 
 Make each DNS server's cache independent for special purposes. If enabled, will slightly degrade performance.
 
-#### cache_capacity
+## cache_capacity
 
 !!! question "Since sing-box 1.11.0"
 
@@ -85,7 +81,7 @@ LRU cache capacity.
 
 Value less than 1024 will be ignored.
 
-#### optimistic
+## optimistic
 
 !!! question "Since sing-box 1.14.0"
 
@@ -96,22 +92,22 @@ Conflict with `disable_cache` and `disable_expire`.
 
 Accepts a boolean or an object. When set to `true`, the default timeout of `3d` is used.
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 timeout: 3d
 ```
 
-##### enabled
+### enabled
 
 Enable optimistic DNS caching.
 
-##### timeout
+### timeout
 
 The maximum time an expired cache entry can be served optimistically.
 
 `3d` is used by default.
 
-#### timeout
+## timeout
 
 !!! question "Since sing-box 1.14.0"
 
@@ -121,14 +117,14 @@ Default timeout for each DNS query.
 
 Can be overridden by `rules.[].timeout` (DNS rule action) or `domain_resolver.timeout`.
 
-#### reverse_mapping
+## reverse_mapping
 
 Stores a reverse mapping of IP addresses after responding to a DNS query in order to provide domain names when routing.
 
 Since this process relies on the act of resolving domain names by an application before making a request, it can be
 problematic in environments such as macOS, where DNS is proxied and cached by the system.
 
-#### client_subnet
+## client_subnet
 
 !!! question "Since sing-box 1.9.0"
 

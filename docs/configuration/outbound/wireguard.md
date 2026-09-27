@@ -2,6 +2,8 @@
 icon: material/delete-clock
 ---
 
+# WireGuard
+
 !!! failure "Deprecated in sing-box 1.11.0"
 
     WireGuard outbound is deprecated and will be removed in sing-box 1.13.0, check [Migration](/migration/#migrate-wireguard-outbound-to-endpoint).
@@ -14,9 +16,7 @@ icon: material/delete-clock
     
     :material-plus: [gso](#gso)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: wireguard
 tag: wireguard-out
 
@@ -53,23 +53,18 @@ network: tcp
 gso: false
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required if multi-peer disabled.** The server address.
 
-==Required if multi-peer disabled==
+## server_port
 
-The server address.
+**Required if multi-peer disabled.** The server port.
 
-#### server_port
-
-==Required if multi-peer disabled==
-
-The server port.
-
-#### system_interface
+## system_interface
 
 Use system interface.
 
@@ -77,11 +72,11 @@ Requires privilege and cannot conflict with exists system interfaces.
 
 Forced if gVisor not included in the build.
 
-#### interface_name
+## interface_name
 
 Custom interface name for system interface.
 
-#### gso
+## gso
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
@@ -95,66 +90,60 @@ Custom interface name for system interface.
 
 Try to enable generic segmentation offload.
 
-#### local_address
+## local_address
 
-==Required==
+**Required.** List of IP (v4 or v6) address prefixes to be assigned to the interface.
 
-List of IP (v4 or v6) address prefixes to be assigned to the interface.
+## private_key
 
-#### private_key
-
-==Required==
-
-WireGuard requires base64-encoded public and private keys. These can be generated using the wg(8) utility:
+**Required.** WireGuard requires base64-encoded public and private keys. These can be generated using the wg(8) utility:
 
 ```shell
 wg genkey
 echo "private key" || wg pubkey
 ```
 
-#### peers
+## peers
 
 Multi-peer support. 
 
 If enabled, `server, server_port, peer_public_key, pre_shared_key` will be ignored.
 
-#### peers.allowed_ips
+## peers.allowed_ips
 
 WireGuard allowed IPs.
 
-#### peers.reserved
+## peers.reserved
 
 WireGuard reserved field bytes.
 
 `$outbound.reserved` will be used if empty.
 
-#### peer_public_key
+## peer_public_key
 
-==Required if multi-peer disabled==
+**Required if multi-peer disabled.** WireGuard peer public key.
 
-WireGuard peer public key.
-
-#### pre_shared_key
+## pre_shared_key
 
 WireGuard pre-shared key.
 
-#### reserved
+## reserved
 
 WireGuard reserved field bytes.
 
-#### workers
+## workers
 
 WireGuard worker count.
 
 CPU count is used by default.
 
-#### mtu
+## mtu
 
 WireGuard MTU.
 
 1408 will be used if empty.
 
-#### network
+## network
 
 Enabled network
 
@@ -162,6 +151,6 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.12.0"
-
 # Resolved
 
-```yaml
+!!! question "Since sing-box 1.12.0"
+
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: resolved
@@ -16,16 +16,11 @@ dns:
       accept_default_resolvers: false
 ```
 
+## service
 
-### Fields
+**Required.** The tag of the [Resolved Service](/configuration/service/resolved).
 
-#### service
-
-==Required==
-
-The tag of the [Resolved Service](/configuration/service/resolved).
-
-#### accept_default_resolvers
+## accept_default_resolvers
 
 Indicates whether the default DNS resolvers should be accepted for fallback queries in addition to matching domains.
 
@@ -33,13 +28,13 @@ Specifically, default DNS resolvers are DNS servers that have `SetLinkDefaultRou
 
 If not enabled, `NXDOMAIN` will be returned for requests that do not match search or match domains.
 
-### Examples
+## Examples
 
 === "Split DNS only"
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -55,7 +50,7 @@ If not enabled, `NXDOMAIN` will be returned for requests that do not match searc
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -70,7 +65,7 @@ If not enabled, `NXDOMAIN` will be returned for requests that do not match searc
 
 === "Use as global DNS"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: resolved

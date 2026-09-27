@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # sing-box API
+
+!!! question "Since sing-box 1.14.0"
 
 The sing-box API service is a gRPC server for observing and controlling the running sing-box instance.
 
@@ -15,9 +15,7 @@ The server also accepts [gRPC-Web](https://github.com/grpc/grpc/blob/master/doc/
 including the WebSocket transport of [@improbable-eng/grpc-web](https://github.com/improbable-eng/grpc-web)
 for bidirectional streaming methods.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: api
 
 # ... Listen Fields
@@ -34,13 +32,11 @@ dashboard:
 tls: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
-
-#### secret
+## secret
 
 Secret for the API.
 
@@ -48,15 +44,15 @@ Clients authenticate with the standard `authorization: Bearer <secret>` gRPC met
 
 If empty, authentication is disabled.
 
-#### access_control_allow_origin
+## access_control_allow_origin
 
 CORS allowed origins, `*` will be used if empty.
 
-#### access_control_allow_private_network
+## access_control_allow_private_network
 
 Allow access from private network.
 
-#### dashboard
+## dashboard
 
 Web dashboard downloaded and served over the API listener at `/dashboard/`; other browser
 requests are redirected to it.
@@ -66,11 +62,11 @@ requests are redirected to it.
     The object can be replaced with a boolean value (equivalent to `{ "enabled": <bool> }`),
     or with a string path (equivalent to `{ "enabled": true, "path": "<string>" }`).
 
-##### enabled
+### enabled
 
 Enable the dashboard.
 
-##### path
+### path
 
 Directory the dashboard files are stored in.
 
@@ -80,13 +76,13 @@ If the directory is empty, the dashboard is downloaded and an `.etag` file is st
 it to skip unchanged updates. A non-empty directory without an `.etag` file is served as-is
 and never updated automatically.
 
-##### download_url
+### download_url
 
 Download URL of the dashboard archive (zip).
 
 `https://github.com/SagerNet/sing-box-dashboard/archive/refs/heads/gh-pages.zip` will be used by default.
 
-##### http_client
+### http_client
 
 HTTP client used to download the dashboard.
 
@@ -94,12 +90,12 @@ See [HTTP Client Fields](/configuration/shared/http-client/) for details.
 
 Not used when the dashboard directory contains user-provided files.
 
-##### update_interval
+### update_interval
 
 Update interval of the dashboard.
 
 `1d` will be used by default.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).

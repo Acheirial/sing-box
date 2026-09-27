@@ -1,6 +1,6 @@
-### 结构
+# VLESS
 
-```yaml
+```{.yaml linenums="1"}
 type: vless
 tag: vless-in
 
@@ -15,25 +15,19 @@ multiplex: {}
 transport: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
+## users
 
-#### users
+**必填。**VLESS 用户。
 
-==必填==
+## users.uuid
 
-VLESS 用户。
+**必填。**VLESS 用户 ID。
 
-#### users.uuid
-
-==必填==
-
-VLESS 用户 ID。
-
-#### users.flow
+## users.flow
 
 VLESS 子协议。
 
@@ -41,14 +35,14 @@ VLESS 子协议。
 
 * `xtls-rprx-vision`
 
-#### tls
+## tls
 
 TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
-#### multiplex
+## multiplex
 
 参阅 [多路复用](/zh/configuration/shared/multiplex#入站)。
 
-#### transport
+## transport
 
 V2Ray 传输配置，参阅 [V2Ray 传输层](/zh/configuration/shared/v2ray-transport/)。

@@ -1,8 +1,6 @@
 # 日志
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 log:
   disabled: false
   level: info
@@ -10,20 +8,18 @@ log:
   timestamp: true
 ```
 
-### 字段
-
-#### disabled
+## disabled
 
 禁用日志，启动后不输出日志。
 
-#### level
+## level
 
 日志等级，可选值：`trace` `debug` `info` `warn` `error` `fatal` `panic`。
 
-#### output
+## output
 
 输出文件路径，启动后将不输出到控制台。
 
-#### timestamp
+## timestamp
 
 添加时间到每行。

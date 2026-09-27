@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
+# Snell
+
 !!! question "Since sing-box 1.14.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: snell
 tag: snell-in
 
@@ -20,9 +20,9 @@ users:
 obfs_mode: ""
 ```
 
-### Version 6 Structure
+## Version 6 Structure
 
-```yaml
+```{.yaml linenums="1"}
 type: snell
 tag: snell-in
 
@@ -36,17 +36,13 @@ users:
 mode: ""
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
+## version
 
-#### version
-
-==Required==
-
-The Snell protocol version, one of `5` `6`.
+**Required.** The Snell protocol version, one of `5` `6`.
 
 Version `5` supports HTTP obfuscation (`obfs_mode`); version `6` replaces it
 with traffic shaping (`mode`) and requires a `psk` of 12 to 255 bytes.
@@ -56,31 +52,25 @@ with traffic shaping (`mode`) and requires a `psk` of 12 to 255 bytes.
     Since we intentionally do not support the QUIC proxy mode of Snell v5, the v5 wire protocol
     is effectively identical to v4, so no separate v4 server or v5 client is provided.
 
-#### psk
+## psk
 
-==Required==
+**Required.** The pre-shared key.
 
-The pre-shared key.
-
-#### users
+## users
 
 Snell users.
 
 When set, the server runs in multi-user mode: each entry has a `name` (optional, used in
 logs) and a `userkey` (the user's key). The top-level `psk` remains the server key.
 
-#### obfs_mode
+## obfs_mode
 
-==Version 5 only==
-
-HTTP obfuscation mode, one of `none` `http`.
+**Version 5 only.** HTTP obfuscation mode, one of `none` `http`.
 
 `none` is used by default.
 
-#### mode
+## mode
 
-==Version 6 only==
-
-Traffic shaping mode, one of `default` `unshaped` `unsafe-raw`.
+**Version 6 only.** Traffic shaping mode, one of `default` `unshaped` `unsafe-raw`.
 
 `default` is used by default.

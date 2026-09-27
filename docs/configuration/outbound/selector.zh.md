@@ -1,6 +1,6 @@
-### 结构
+# Selector
 
-```yaml
+```{.yaml linenums="1"}
 type: selector
 tag: select
 
@@ -16,19 +16,15 @@ interrupt_exist_connections: false
 
     选择器目前只能通过 [Clash API](/zh/configuration/experimental/clash-api/) 来控制。
 
-### 字段
+## outbounds
 
-#### outbounds
+**必填。**用于选择的出站标签列表。
 
-==必填==
-
-用于选择的出站标签列表。
-
-#### default
+## default
 
 默认的出站标签。默认使用第一个出站。
 
-#### interrupt_exist_connections
+## interrupt_exist_connections
 
 当选定的出站发生更改时，中断现有连接。
 

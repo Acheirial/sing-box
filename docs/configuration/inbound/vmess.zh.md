@@ -1,6 +1,6 @@
-### 结构
+# VMess
 
-```yaml
+```{.yaml linenums="1"}
 type: vmess
 tag: vmess-in
 
@@ -15,17 +15,13 @@ multiplex: {}
 transport: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
+## users
 
-#### users
-
-==必填==
-
-VMess 用户。
+**必填。**VMess 用户。
 
 | Alter ID | 描述    |
 |----------|-------|
@@ -36,14 +32,14 @@ VMess 用户。
 
     提供旧协议支持（VMess MD5 身份验证）仅出于兼容性目的，不建议使用 alterId > 1。
 
-#### tls
+## tls
 
 TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
-#### multiplex
+## multiplex
 
 参阅 [多路复用](/zh/configuration/shared/multiplex#入站)。
 
-#### transport
+## transport
 
 V2Ray 传输配置，参阅 [V2Ray 传输层](/zh/configuration/shared/v2ray-transport/)。

@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# Direct
+
 !!! quote "sing-box 1.11.0 中的更改"
 
     :material-delete-clock: [override_address](#override_address)  
@@ -9,9 +11,7 @@ icon: material/alert-decagram
 
 `direct` 出站直接发送请求。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: direct
 tag: direct-out
 
@@ -19,11 +19,10 @@ override_address: 1.0.0.1
 override_port: 53
 
 # ... 拨号字段
+
 ```
 
-### 字段
-
-#### override_address
+## override_address
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
@@ -31,7 +30,7 @@ override_port: 53
 
 覆盖连接目标地址。
 
-#### override_port
+## override_port
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
@@ -39,6 +38,6 @@ override_port: 53
 
 覆盖连接目标端口。
 
-### 拨号字段
+## 拨号字段
 
 参阅 [拨号字段](/zh/configuration/shared/dial/)。

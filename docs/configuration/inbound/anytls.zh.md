@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
+# AnyTLS
+
 !!! question "自 sing-box 1.12.0 起"
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: anytls
 tag: anytls-in
 
@@ -19,25 +19,21 @@ padding_scheme: []
 tls: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
+## users
 
-#### users
+**必填。**AnyTLS 用户。
 
-==必填==
-
-AnyTLS 用户。
-
-#### padding_scheme
+## padding_scheme
 
 AnyTLS 填充方案行数组。
 
 默认填充方案:
 
-```yaml
+```{.yaml linenums="1"}
 - stop=8
 - 0=30-30
 - 1=100-400
@@ -49,6 +45,6 @@ AnyTLS 填充方案行数组。
 - 7=500-1000
 ```
 
-#### tls
+## tls
 
 TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。

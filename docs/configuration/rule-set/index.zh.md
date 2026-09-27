@@ -1,3 +1,5 @@
+# 规则集
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [http_client](#http_client)  
@@ -9,17 +11,13 @@
 
     :material-plus: `type: inline`
 
-# 规则集
-
 !!! question "自 sing-box 1.8.0 起"
-
-### 结构
 
 === "内联"
 
     !!! question "自 sing-box 1.10.0 起"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     type: inline  # 可选
     tag: ""
     rules: []
@@ -27,7 +25,7 @@
 
 === "本地文件"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     type: local
     tag: ""  # 或 []
     format: source  # or binary
@@ -40,7 +38,7 @@
     
         远程规则集将被缓存如果 `experimental.cache_file.enabled` 已启用。
 
-    ```yaml
+    ```{.yaml linenums="1"}
     type: remote
     tag: ""  # 或 []
     format: source  # or binary
@@ -54,19 +52,13 @@
     download_detour: ""
     ```
 
-### 字段
+## type
 
-#### type
+**必填。**规则集类型， `local` 或 `remote`。
 
-==必填==
+## tag
 
-规则集类型， `local` 或 `remote`。
-
-#### tag
-
-==必填==
-
-规则集的标签。
+**必填。**规则集的标签。
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -76,31 +68,27 @@
 
     多个标签与 `type: inline` 冲突。
 
-### 内联字段
+## 内联字段
 
 !!! question "自 sing-box 1.10.0 起"
 
-#### rules
+### rules
 
-==必填==
+**必填。**一组 [无头规则](./headless-rule/).
 
-一组 [无头规则](./headless-rule/).
+## 本地或远程字段
 
-### 本地或远程字段
+### format
 
-#### format
-
-==必填==
-
-规则集格式， `source` 或 `binary`。
+**必填。**规则集格式， `source` 或 `binary`。
 
 当 `path` 或 `url` 使用 `json` 或 `srs` 作为扩展名时可选。
 
-### 本地字段
+## 本地字段
 
-#### path
+### path
 
-==必填==
+**必填。**
 
 !!! note ""
 
@@ -108,15 +96,13 @@
 
 规则集的文件路径。
 
-### 远程字段
+## 远程字段
 
-#### url
+### url
 
-==必填==
+**必填。**规则集的下载 URL。
 
-规则集的下载 URL。
-
-#### initial_path
+### initial_path
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -125,7 +111,7 @@
 仅在启动时没有可用的规则集缓存时读取一次，使启动不被初始下载阻塞。
 启动后规则集仍会立即在后台更新。
 
-#### http_client
+### http_client
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -141,13 +127,13 @@
     当 `http_clients` 与 `default_http_client` 均未配置时，将使用通过默认出站连接的隐式 HTTP 客户端。
     该隐式默认已在 sing-box 1.14.0 废弃，并将在 sing-box 1.16.0 移除；请改为定义 `http_clients`。
 
-#### update_interval
+### update_interval
 
 规则集的更新间隔。
 
 默认使用 `1d`。
 
-#### download_detour
+### download_detour
 
 !!! failure "已在 sing-box 1.14.0 废弃"
 

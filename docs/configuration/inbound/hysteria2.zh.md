@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# Hysteria2
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [bbr_profile](#bbr_profile)  
@@ -13,9 +15,7 @@ icon: material/alert-decagram
     :material-alert: [masquerade](#masquerade)  
     :material-alert: [ignore_client_bandwidth](#ignore_client_bandwidth)
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: hysteria2
 tag: hy2-in
 
@@ -57,29 +57,27 @@ realm:
     本质上是将用户名与密码的组合 `<username>:<password>` 作为实际上的密码，而 sing-box 不提供此别名。
     要将 sing-box 与官方程序一起使用， 您需要填写该组合作为实际密码。
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/)。
 
-### 字段
-
-#### up_mbps, down_mbps
+## up_mbps, down_mbps
 
 支持的速率，默认不限制。
 
 与 `ignore_client_bandwidth` 冲突。
 
-#### obfs.type
+## obfs.type
 
 QUIC 流量混淆器类型，可选 `salamander` `gecko`。
 
 如果为空则禁用。
 
-#### obfs.password
+## obfs.password
 
 QUIC 流量混淆器密码。
 
-#### obfs.min_packet_size
+## obfs.min_packet_size
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -87,7 +85,7 @@ QUIC 流量混淆器密码。
 
 默认使用 `512`。
 
-#### obfs.max_packet_size
+## obfs.max_packet_size
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -95,15 +93,15 @@ QUIC 流量混淆器密码。
 
 默认使用 `1200`。
 
-#### users
+## users
 
 Hysteria 用户
 
-#### users.password
+## users.password
 
 认证密码。
 
-#### ignore_client_bandwidth
+## ignore_client_bandwidth
 
 *当 `up_mbps` 和 `down_mbps` 未设定时*:
 
@@ -113,17 +111,15 @@ Hysteria 用户
 
 禁止客户端使用 BBR 拥塞控制算法。
 
-#### tls
+## tls
 
-==必填==
+**必填。**TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
-TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
-
-### QUIC 字段
+## QUIC 字段
 
 参阅 [QUIC 字段](/zh/configuration/shared/quic/) 了解详情。
 
-#### masquerade
+### masquerade
 
 HTTP3 服务器认证失败时的行为 （URL 字符串配置）。
 
@@ -136,7 +132,7 @@ HTTP3 服务器认证失败时的行为 （URL 字符串配置）。
 
 与 `masquerade.type` 冲突。
 
-#### masquerade.type
+### masquerade.type
 
 HTTP3 服务器认证失败时的行为 （对象配置）。
 
@@ -150,31 +146,31 @@ HTTP3 服务器认证失败时的行为 （对象配置）。
 
 与 `masquerade` 冲突。
 
-#### masquerade.directory
+### masquerade.directory
 
 文件服务器根目录。
 
-#### masquerade.url
+### masquerade.url
 
 反向代理目标 URL。
 
-#### masquerade.rewrite_host
+### masquerade.rewrite_host
 
 重写请求头中的 Host 字段到目标 URL。
 
-#### masquerade.status_code
+### masquerade.status_code
 
 固定响应状态码。
 
-#### masquerade.headers
+### masquerade.headers
 
 固定响应头。
 
-#### masquerade.content
+### masquerade.content
 
 固定响应内容。
 
-#### bbr_profile
+### bbr_profile
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -182,11 +178,11 @@ BBR 拥塞控制算法配置，可选 `conservative` `standard` `aggressive`。
 
 默认使用 `standard`。
 
-#### brutal_debug
+### brutal_debug
 
 启用 Hysteria Brutal CC 的调试信息日志记录。
 
-#### realm
+### realm
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -196,33 +192,27 @@ BBR 拥塞控制算法配置，可选 `conservative` `standard` `aggressive`。
 
 会合服务参阅 [Hysteria Realm](/zh/configuration/service/hysteria-realm/)。
 
-#### realm.server_url
+### realm.server_url
 
-==必填==
+**必填。**Realm 会合服务 URL。
 
-Realm 会合服务 URL。
-
-#### realm.token
+### realm.token
 
 Realm 的 Bearer 令牌，需与 realm 上配置的 `users[].token` 之一匹配。
 
-#### realm.realm_id
+### realm.realm_id
 
-==必填==
-
-Realm 上的槽位标识符。
+**必填。**Realm 上的槽位标识符。
 
 1–64 字符，需匹配 `^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$`。
 
 出站需使用相同的 `realm_id` 才能找到本服务器。
 
-#### realm.stun_servers
+### realm.stun_servers
 
-==必填==
+**必填。**用于发现公网地址的 STUN 服务器列表（`host` 或 `host:port`）。
 
-用于发现公网地址的 STUN 服务器列表（`host` 或 `host:port`）。
-
-#### realm.stun_domain_resolver
+### realm.stun_domain_resolver
 
 用于解析 STUN 服务器域名的域名解析器。
 
@@ -232,7 +222,7 @@ Realm 上的槽位标识符。
 
 如果为空，则使用默认域名解析器。
 
-#### realm.ip_version
+### realm.ip_version
 
 将 realm 连接（STUN、打洞与最终的 QUIC 路径）限制为单一 IP 版本。
 
@@ -240,7 +230,7 @@ Realm 上的槽位标识符。
 
 `listen` 地址必须与所选版本兼容。
 
-#### realm.port_mapping
+### realm.port_mapping
 
 通过 UPnP 或 NAT-PMP 在本地网关上维护 UDP 端口映射。
 
@@ -248,23 +238,23 @@ Realm 上的槽位标识符。
 
 需要 IPv4：与 `"ip_version": 6` 冲突。
 
-#### realm.port_mapping.enabled
+### realm.port_mapping.enabled
 
 启用端口映射。
 
-#### realm.port_mapping.timeout
+### realm.port_mapping.timeout
 
 网关发现与映射操作的超时。
 
 默认使用 `10s`。
 
-#### realm.port_mapping.lifetime
+### realm.port_mapping.lifetime
 
 映射的租约时长；每过一半时长续期一次。
 
 默认使用 `10m`。
 
-#### realm.http_client
+### realm.http_client
 
 与 realm 通信使用的 HTTP 客户端。
 

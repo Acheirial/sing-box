@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Tailscale
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [listen_port](#listen_port)  
@@ -19,9 +21,7 @@ icon: material/new-box
 
 !!! question "Since sing-box 1.12.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: tailscale
 tag: ts-ep
 state_directory: ""
@@ -46,11 +46,10 @@ ssh_server: false
 taildrop_directory: ""
 
 # ... Dial Fields
+
 ```
 
-### Fields
-
-#### state_directory
+## state_directory
 
 The directory where the Tailscale state is stored.
 
@@ -58,7 +57,7 @@ The directory where the Tailscale state is stored.
 
 Example: `$HOME/.tailscale`
 
-#### auth_key
+## auth_key
 
 !!! note
     
@@ -67,17 +66,17 @@ Example: `$HOME/.tailscale`
 The auth key to create the node. If the node is already created (from state previously stored), then this field is not
 used.
 
-#### control_url
+## control_url
 
 The coordination server URL.
 
 `https://controlplane.tailscale.com` is used by default.
 
-#### ephemeral
+## ephemeral
 
 Indicates whether the instance should register as an Ephemeral node (https://tailscale.com/s/ephemeral-nodes).
 
-#### hostname
+## hostname
 
 The hostname of the node.
 
@@ -89,15 +88,15 @@ System hostname is used by default.
 
 Example: `localhost`
 
-#### accept_routes
+## accept_routes
 
 Indicates whether the node should accept routes advertised by other nodes.
 
-#### exit_node
+## exit_node
 
 The exit node name or IP address to use.
 
-#### exit_node_allow_lan_access
+## exit_node_allow_lan_access
 
 !!! note
 
@@ -105,17 +104,17 @@ The exit node name or IP address to use.
 
 Indicates whether locally accessible subnets should be routed directly or via the exit node.
 
-#### advertise_routes
+## advertise_routes
 
 CIDR prefixes to advertise into the Tailscale network as reachable through the current node.
 
 Example: `["192.168.1.1/24"]`
 
-#### advertise_exit_node
+## advertise_exit_node
 
 Indicates whether the node should advertise itself as an exit node.
 
-#### advertise_tags
+## advertise_tags
 
 !!! question "Since sing-box 1.13.0"
 
@@ -123,7 +122,7 @@ Tags to advertise for this node, for ACL enforcement purposes.
 
 Example: `["tag:server"]`
 
-#### listen_port
+## listen_port
 
 !!! question "Since sing-box 1.14.0"
 
@@ -131,43 +130,43 @@ The UDP port to listen on for WireGuard and peer-to-peer traffic.
 
 A port is automatically selected by default.
 
-#### relay_server_port
+## relay_server_port
 
 !!! question "Since sing-box 1.13.0"
 
 The port to listen on for incoming relay connections from other Tailscale nodes.
 
-#### relay_server_static_endpoints
+## relay_server_static_endpoints
 
 !!! question "Since sing-box 1.13.0"
 
 Static endpoints to advertise for the relay server.
 
-#### system_interface
+## system_interface
 
 !!! question "Since sing-box 1.13.0"
 
 Create a system TUN interface for Tailscale.
 
-#### system_interface_name
+## system_interface_name
 
 !!! question "Since sing-box 1.13.0"
 
 Custom TUN interface name. By default, `tailscale` (or `utun` on macOS) will be used.
 
-#### system_interface_mtu
+## system_interface_mtu
 
 !!! question "Since sing-box 1.13.0"
 
 Override the TUN MTU. By default, Tailscale's own MTU is used.
 
-#### udp_timeout
+## udp_timeout
 
 UDP NAT expiration time.
 
 `5m` will be used by default.
 
-#### ssh_server
+## ssh_server
 
 !!! question "Since sing-box 1.14.0"
 
@@ -184,7 +183,7 @@ Access is controlled by the SSH ACL in the Tailscale admin console, which maps e
 
 Object format:
 
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 disable_pty: false
 disable_sftp: false
@@ -193,23 +192,23 @@ disable_forwarding: false
 
 Setting `ssh_server` value to `true` is equivalent to `{ "enabled": true }`.
 
-#### ssh_server.enabled
+## ssh_server.enabled
 
 Enable the SSH server.
 
-#### ssh_server.disable_pty
+## ssh_server.disable_pty
 
 Refuse PTY allocation requests.
 
-#### ssh_server.disable_sftp
+## ssh_server.disable_sftp
 
 Refuse the SFTP subsystem.
 
-#### ssh_server.disable_forwarding
+## ssh_server.disable_forwarding
 
 Refuse local and remote TCP and Unix-socket forwarding, including SSH agent forwarding.
 
-#### taildrop_directory
+## taildrop_directory
 
 !!! question "Since sing-box 1.14.0"
 
@@ -220,7 +219,7 @@ is.
 
 `Taildrop` is used by default.
 
-### Dial Fields
+## Dial Fields
 
 !!! note
 
@@ -228,6 +227,6 @@ is.
 
 See [Dial Fields](/configuration/shared/dial/) for details.
 
-### Interactive authentication
+## Interactive authentication
 
 Use `Tools` > `Endpoints` in the sing-box dashboard or any sing-box graphical client to authenticate and manage the endpoint.

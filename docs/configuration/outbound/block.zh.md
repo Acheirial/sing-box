@@ -2,15 +2,13 @@
 icon: material/delete-clock
 ---
 
+# Block
+
 `block` 出站关闭所有传入请求。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: block
 tag: block
 ```
-
-### 字段
 
 无字段。

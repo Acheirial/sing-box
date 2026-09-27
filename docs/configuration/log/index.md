@@ -1,8 +1,6 @@
 # Log
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 log:
   disabled: false
   level: info
@@ -10,20 +8,18 @@ log:
   timestamp: true
 ```
 
-### Fields
-
-#### disabled
+## disabled
 
 Disable logging, no output after start.
 
-#### level
+## level
 
 Log level. One of: `trace` `debug` `info` `warn` `error` `fatal` `panic`.
 
-#### output
+## output
 
 Output file path. Will not write log to console after enable.
 
-#### timestamp
+## timestamp
 
 Add time to each line.

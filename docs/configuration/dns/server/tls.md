@@ -2,13 +2,11 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.12.0"
-
 # DNS over TLS (DoT)
 
-### Structure
+!!! question "Since sing-box 1.12.0"
 
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: tls
@@ -27,26 +25,22 @@ dns:
     * The old server uses default outbound by default unless detour is specified; the new one uses dialer just like outbound, which is equivalent to using an empty direct outbound by default.
     * The old server uses `address_resolver` and `address_strategy` to resolve the domain name in the server; the new one uses `domain_resolver` and `domain_strategy` in [Dial Fields](/configuration/shared/dial/) instead.
 
-### Fields
+## server
 
-#### server
-
-==Required==
-
-The address of the DNS server.
+**Required.** The address of the DNS server.
 
 If domain name is used, `domain_resolver` must also be set to resolve IP address.
 
-#### server_port
+## server_port
 
 The port of the DNS server.
 
 `853` will be used by default.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

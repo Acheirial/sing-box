@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# DNS 规则动作
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-delete-clock: [strategy](#strategy)  
@@ -20,20 +22,19 @@ icon: material/new-box
 
 !!! question "自 sing-box 1.11.0 起"
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 action: ""
 race: false
 
 # ... 动作字段
+
 ```
 
-#### action
+## action
 
 要执行的动作。默认使用 `route`。
 
-#### race
+## race
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -48,9 +49,9 @@ race: false
 
 未启用 `race` 的规则仍严格按顺序生效：只要前面还有未判定的竞态规则，其他已匹配规则的动作就被扣住，直到所有竞态规则均未匹配。因此只有竞态规则之间的结果取决于服务器速度。
 
-### route
+## route
 
-```yaml
+```{.yaml linenums="1"}
 action: route  # 默认
 server: ""
 speculative: false
@@ -65,13 +66,11 @@ remove_client_subnet: false
 
 `route` 继承了将 DNS 请求 路由到指定服务器的经典规则动作。
 
-#### server
+### server
 
-==必填==
+**必填。**目标 DNS 服务器的标签。
 
-目标 DNS 服务器的标签。
-
-#### speculative
+### speculative
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -81,7 +80,7 @@ remove_client_subnet: false
 
 启用 `speculative` 后，查询成为投机查询：在规则匹配时立即发出、与未判定的竞态规则并行，且可能被浪费；其响应仍仅在所有竞态规则均未匹配后才被使用。
 
-#### strategy
+### strategy
 
 !!! question "自 sing-box 1.12.0 起"
 
@@ -93,21 +92,21 @@ remove_client_subnet: false
 
 可选项：`prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`。
 
-#### disable_cache
+### disable_cache
 
 在此查询中禁用缓存。
 
-#### disable_optimistic_cache
+### disable_optimistic_cache
 
 !!! question "自 sing-box 1.14.0 起"
 
 在此查询中禁用乐观 DNS 缓存。
 
-#### rewrite_ttl
+### rewrite_ttl
 
 重写 DNS 回应中的 TTL。
 
-#### timeout
+### timeout
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -115,7 +114,7 @@ remove_client_subnet: false
 
 将覆盖 `dns.timeout`。
 
-#### client_subnet
+### client_subnet
 
 默认情况下，将带有指定 IP 前缀的 `edns0-subnet` OPT 附加记录附加到每个查询。
 
@@ -123,7 +122,7 @@ remove_client_subnet: false
 
 将覆盖 `dns.client_subnet`.
 
-#### remove_client_subnet
+### remove_client_subnet
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -131,11 +130,11 @@ remove_client_subnet: false
 
 与 `client_subnet` 冲突。
 
-### evaluate
+## evaluate
 
 !!! question "自 sing-box 1.14.0 起"
 
-```yaml
+```{.yaml linenums="1"}
 action: evaluate
 server: ""
 tag: ""
@@ -155,20 +154,18 @@ remove_client_subnet: false
 需要位于更早的顶层 `evaluate` 规则之后。规则自身的 `evaluate` 动作不能满足这个条件，
 因为匹配发生在动作执行之前。
 
-#### server
+### server
 
-==必填==
+**必填。**目标 DNS 服务器的标签。
 
-目标 DNS 服务器的标签。
-
-#### tag
+### tag
 
 已评估响应的标签。
 
 带标签的响应仅能通过 [`match_response`](/zh/configuration/dns/rule/#match_response) 以标签引用；
 `match_response: true` 引用最近一条无 `tag` 的 `evaluate` 动作的响应。
 
-#### speculative
+### speculative
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -178,21 +175,21 @@ remove_client_subnet: false
 
 启用 `speculative` 后，查询成为投机查询：在规则匹配时立即发出、与未判定的竞态规则并行，且可能被浪费；规则匹配继续进行而不等待竞态规则。
 
-#### disable_cache
+### disable_cache
 
 在此查询中禁用缓存。
 
-#### disable_optimistic_cache
+### disable_optimistic_cache
 
 !!! question "自 sing-box 1.14.0 起"
 
 在此查询中禁用乐观 DNS 缓存。
 
-#### rewrite_ttl
+### rewrite_ttl
 
 重写 DNS 回应中的 TTL。
 
-#### timeout
+### timeout
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -200,7 +197,7 @@ remove_client_subnet: false
 
 将覆盖 `dns.timeout`。
 
-#### client_subnet
+### client_subnet
 
 默认情况下，将带有指定 IP 前缀的 `edns0-subnet` OPT 附加记录附加到每个查询。
 
@@ -208,7 +205,7 @@ remove_client_subnet: false
 
 将覆盖 `dns.client_subnet`.
 
-#### remove_client_subnet
+### remove_client_subnet
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -216,11 +213,11 @@ remove_client_subnet: false
 
 与 `client_subnet` 冲突。
 
-### respond
+## respond
 
 !!! question "自 sing-box 1.14.0 起"
 
-```yaml
+```{.yaml linenums="1"}
 action: respond
 ```
 
@@ -230,9 +227,9 @@ action: respond
 
 只能用于前面已有顶层 `evaluate` 规则的场景。如果运行时命中该动作时没有已评估的响应，则请求会直接返回错误，而不是继续匹配后续规则。
 
-### route-options
+## route-options
 
-```yaml
+```{.yaml linenums="1"}
 action: route-options
 disable_cache: false
 disable_optimistic_cache: false
@@ -244,9 +241,9 @@ remove_client_subnet: false
 
 `route-options` 为路由设置选项。
 
-### reject
+## reject
 
-```yaml
+```{.yaml linenums="1"}
 action: reject
 method: ""
 no_drop: false
@@ -254,24 +251,24 @@ no_drop: false
 
 `reject` 拒绝 DNS 请求。
 
-#### method
+### method
 
 - `default`: 返回 REFUSED。
 - `drop`: 丢弃请求。
 
 默认使用 `default`。
 
-#### no_drop
+### no_drop
 
 如果未启用，则 30 秒内触发 50 次后，`method` 将被暂时覆盖为 `drop`。
 
 当 `method` 设为 `drop` 时不可用。
 
-### predefined
+## predefined
 
 !!! question "自 sing-box 1.12.0 起"
 
-```yaml
+```{.yaml linenums="1"}
 action: predefined
 rcode: ""
 answer: []
@@ -281,7 +278,7 @@ extra: []
 
 `predefined` 以预定义的 DNS 记录响应。
 
-#### rcode
+### rcode
 
 响应码。
 
@@ -296,7 +293,7 @@ extra: []
 
 默认使用 `NOERROR`。
 
-#### answer
+### answer
 
 用于作为回答响应的文本 DNS 记录列表。
 
@@ -308,10 +305,10 @@ extra: []
 | `AAAA` | `localhost. IN AAAA ::1`      |
 | `TXT`  | `localhost. IN TXT \"Hello\"` |
 
-#### ns
+### ns
 
 用于作为名称服务器响应的文本 DNS 记录列表。
 
-#### extra
+### extra
 
 用于作为额外记录响应的文本 DNS 记录列表。

@@ -2,19 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.12.0"
-
 # Service
 
-### Structure
+!!! question "Since sing-box 1.12.0"
 
-```yaml
+```{.yaml linenums="1"}
 services:
   - type: ""
     tag: ""
 ```
-
-### Fields
 
 | Type              | Format                                |
 |-------------------|---------------------------------------|
@@ -28,6 +24,6 @@ services:
 | `usbip-server`    | [USB/IP Server](./usbip-server)       |
 | `usbip-client`    | [USB/IP Client](./usbip-client)       |
 
-#### tag
+## tag
 
 The tag of the endpoint.

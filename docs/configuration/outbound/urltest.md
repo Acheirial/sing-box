@@ -1,6 +1,6 @@
-### Structure
+# URLTest
 
-```yaml
+```{.yaml linenums="1"}
 type: urltest
 tag: auto
 
@@ -15,31 +15,27 @@ idle_timeout: ""
 interrupt_exist_connections: false
 ```
 
-### Fields
+## outbounds
 
-#### outbounds
+**Required.** List of outbound tags to test.
 
-==Required==
-
-List of outbound tags to test.
-
-#### url
+## url
 
 The URL to test. `https://www.gstatic.com/generate_204` will be used if empty.
 
-#### interval
+## interval
 
 The test interval. `3m` will be used if empty.
 
-#### tolerance
+## tolerance
 
 The test tolerance in milliseconds. `50` will be used if empty.
 
-#### idle_timeout
+## idle_timeout
 
 The idle timeout. `30m` will be used if empty.
 
-#### interrupt_exist_connections
+## interrupt_exist_connections
 
 Interrupt existing connections when the selected outbound has changed.
 

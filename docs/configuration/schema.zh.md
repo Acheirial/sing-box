@@ -2,22 +2,18 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.14.0 起"
-
 # JSON Schema
+
+!!! question "自 sing-box 1.14.0 起"
 
 sing-box 为配置文件提供 JSON Schema Draft 2020-12。
 兼容的编辑器可使用它提供补全和校验。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 $schema: https://sing-box.sagernet.org/schema.json
 ```
 
-### 字段
-
-#### $schema
+## $schema
 
 兼容编辑器使用的 Schema URI。
 该字段不影响 sing-box 的运行行为。
@@ -25,7 +21,7 @@ $schema: https://sing-box.sagernet.org/schema.json
 随本文档发布的 Schema 位于
 [sing-box.sagernet.org/schema.json](https://sing-box.sagernet.org/schema.json)。
 
-### 生成
+## 生成
 
 使用以下命令生成与已安装的二进制文件匹配的 Schema：
 
@@ -38,6 +34,6 @@ sing-box schema -o schema.json
 
 之后可从配置文件中引用本地 Schema：
 
-```yaml
+```{.yaml linenums="1"}
 $schema: ./schema.json
 ```

@@ -1,3 +1,5 @@
+# WireGuard
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [udp_mapping](/zh/configuration/shared/udp-nat/#udp_mapping)  
@@ -6,9 +8,7 @@
 
 !!! question "自 sing-box 1.11.0 起"
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: wireguard
 tag: wg-ep
 
@@ -35,43 +35,38 @@ peers:
 workers: 0
 
 # ... 拨号字段
+
 ```
 
 !!! note ""
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-### 字段
-
-#### system
+## system
 
 使用系统设备。
 
 需要特权且不能与已有系统接口冲突。
 
-#### name
+## name
 
 为系统接口自定义设备名称。
 
-#### mtu
+## mtu
 
 WireGuard MTU。
 
 默认使用 1408。
 
-#### address
+## address
 
-==必填==
-
-接口的 IPv4/IPv6 地址或地址段的列表。
+**必填。**接口的 IPv4/IPv6 地址或地址段的列表。
 
 要分配给接口的 IP（v4 或 v6）地址段列表。
 
-#### private_key
+## private_key
 
-==必填==
-
-WireGuard 需要 base64 编码的公钥和私钥。 这些可以使用 wg(8) 实用程序生成：
+**必填。**WireGuard 需要 base64 编码的公钥和私钥。 这些可以使用 wg(8) 实用程序生成：
 
 ```shell
 wg genkey
@@ -80,56 +75,50 @@ echo "private key" || wg pubkey
 
 或 `sing-box generate wg-keypair`.
 
-#### peers
+## peers
 
-==必填==
+**必填。**WireGuard 对等方的列表。
 
-WireGuard 对等方的列表。
-
-#### peers.address
+## peers.address
 
 对等方的 IP 地址。
 
-#### peers.port
+## peers.port
 
 对等方的 WireGuard 端口。
 
-#### peers.public_key
+## peers.public_key
 
-==必填==
+**必填。**对等方的 WireGuard 公钥。
 
-对等方的 WireGuard 公钥。
-
-#### peers.pre_shared_key
+## peers.pre_shared_key
 
 对等方的预共享密钥。
 
-#### peers.allowed_ips
+## peers.allowed_ips
 
-==必填==
+**必填。**对等方的允许 IP 地址。
 
-对等方的允许 IP 地址。
-
-#### peers.persistent_keepalive_interval
+## peers.persistent_keepalive_interval
 
 对等方的持久性保持活动间隔，以秒为单位。
 
 默认禁用。
 
-#### peers.reserved
+## peers.reserved
 
 对等方的保留字段字节。
 
-#### workers
+## workers
 
 WireGuard worker 数量。
 
 默认使用 CPU 数量。
 
-### UDP NAT 字段
+## UDP NAT 字段
 
 参阅 [UDP NAT 字段](/zh/configuration/shared/udp-nat/)。
 
-### 拨号字段
+## 拨号字段
 
 参阅 [拨号字段](/zh/configuration/shared/dial/)。

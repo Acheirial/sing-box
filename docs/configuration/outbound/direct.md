@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# Direct
+
 !!! quote "Changes in sing-box 1.11.0"
 
     :material-delete-clock: [override_address](#override_address)  
@@ -9,9 +11,7 @@ icon: material/alert-decagram
 
 `direct` outbound send requests directly.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: direct
 tag: direct-out
 
@@ -19,11 +19,10 @@ override_address: 1.0.0.1
 override_port: 53
 
 # ... Dial Fields
+
 ```
 
-### Fields
-
-#### override_address
+## override_address
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
@@ -31,7 +30,7 @@ override_port: 53
 
 Override the connection destination address.
 
-#### override_port
+## override_port
 
 !!! failure "Deprecated in sing-box 1.11.0"
 
@@ -41,6 +40,6 @@ Override the connection destination port.
 
 Protocol value can be `1` or `2`.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

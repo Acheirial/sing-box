@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # Hysteria Realm
+
+!!! question "Since sing-box 1.14.0"
 
 Hysteria Realm is a rendezvous service for Hysteria2 NAT traversal.
 
@@ -12,9 +12,7 @@ A Hysteria2 server behind NAT registers its STUN-discovered public addresses to 
 
 The realm only carries control-plane signaling. Once hole-punching succeeds, all proxy traffic flows directly between client and server.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: hysteria-realm
 
 # ... Listen Fields
@@ -29,40 +27,32 @@ users:
     max_realms: 0
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### HTTP2 Fields
+## HTTP2 Fields
 
 See [HTTP2 Fields](/configuration/shared/http2/) for details.
 
-### Fields
-
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
 When configured, the realm serves HTTP/2 over TLS; otherwise plain HTTP/1.1.
 
-#### users
+## users
 
-==Required==
+**Required.** Authorized users.
 
-Authorized users.
+## users.name
 
-#### users.name
+**Required.** Username, used in logs and as the quota key.
 
-==Required==
+## users.token
 
-Username, used in logs and as the quota key.
+**Required.** Bearer token presented by Hysteria2 inbounds and outbounds via `Authorization: Bearer <token>`.
 
-#### users.token
-
-==Required==
-
-Bearer token presented by Hysteria2 inbounds and outbounds via `Authorization: Bearer <token>`.
-
-#### users.max_realms
+## users.max_realms
 
 Maximum number of realm slots this user may hold concurrently.

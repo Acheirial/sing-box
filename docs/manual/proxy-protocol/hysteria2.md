@@ -46,7 +46,7 @@ To use sing-box with the official program, you need to fill in that combination 
 
 === ":material-harddisk: With local certificate"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: hysteria2
         listen: "::"
@@ -65,7 +65,7 @@ To use sing-box with the official program, you need to fill in that combination 
 
 === ":material-auto-fix: With ACME"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: hysteria2
         listen: "::"
@@ -85,7 +85,7 @@ To use sing-box with the official program, you need to fill in that combination 
 
 === ":material-cloud: With ACME and Cloudflare API"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: hysteria2
         listen: "::"
@@ -114,7 +114,7 @@ To use sing-box with the official program, you need to fill in that combination 
 
 === ":material-web-check: With valid certificate"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: hysteria2
         server: 127.0.0.1
@@ -133,7 +133,7 @@ To use sing-box with the official program, you need to fill in that combination 
         
         Use `sing-box merge` command to merge configuration and certificate into one file.
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: hysteria2
         server: 127.0.0.1
@@ -149,7 +149,7 @@ To use sing-box with the official program, you need to fill in that combination 
 
 === ":material-alert: Ignore certificate verification"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: hysteria2
         server: 127.0.0.1

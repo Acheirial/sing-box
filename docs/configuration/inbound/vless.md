@@ -1,6 +1,6 @@
-### Structure
+# VLESS
 
-```yaml
+```{.yaml linenums="1"}
 type: vless
 tag: vless-in
 
@@ -15,25 +15,19 @@ multiplex: {}
 transport: {}
 ```
 
-### Listen Fields
+## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details.
 
-### Fields
+## users
 
-#### users
+**Required.** VLESS users.
 
-==Required==
+## users.uuid
 
-VLESS users.
+**Required.** VLESS user id.
 
-#### users.uuid
-
-==Required==
-
-VLESS user id.
-
-#### users.flow
+## users.flow
 
 VLESS Sub-protocol.
 
@@ -41,14 +35,14 @@ Available values:
 
 * `xtls-rprx-vision`
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#inbound) for details.
 
-#### transport
+## transport
 
 V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).

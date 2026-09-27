@@ -1,6 +1,6 @@
-### Structure
+# Trojan
 
-```yaml
+```{.yaml linenums="1"}
 type: trojan
 tag: trojan-out
 
@@ -13,29 +13,22 @@ multiplex: {}
 transport: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
+## password
 
-==Required==
+**Required.** The Trojan password.
 
-The server port.
-
-#### password
-
-==Required==
-
-The Trojan password.
-
-#### network
+## network
 
 Enabled network
 
@@ -43,18 +36,18 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#outbound) for details.
 
-#### transport
+## transport
 
 V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

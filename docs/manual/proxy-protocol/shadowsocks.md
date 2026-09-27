@@ -40,7 +40,7 @@ doing otherwise is vulnerable to passive detection.)
 
 === ":material-account: Single-user"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: shadowsocks
         listen: "::"
@@ -54,7 +54,7 @@ doing otherwise is vulnerable to passive detection.)
 
 === ":material-account-multiple: Multi-user"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: shadowsocks
         listen: "::"
@@ -73,7 +73,7 @@ doing otherwise is vulnerable to passive detection.)
 
 === ":material-account: Single-user"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: shadowsocks
         server: 127.0.0.1
@@ -86,7 +86,7 @@ doing otherwise is vulnerable to passive detection.)
 
 === ":material-account-multiple: Multi-user"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: shadowsocks
         server: 127.0.0.1

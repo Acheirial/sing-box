@@ -2,6 +2,8 @@
 icon: material/alert-decagram
 ---
 
+# DNS Server
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: [mdns](./mdns/)
@@ -10,18 +12,14 @@ icon: material/alert-decagram
 
     :material-plus: [type](#type)
 
-# DNS Server
-
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: ""
       tag: ""
 ```
 
-#### type
+## type
 
 The type of the DNS server.
 
@@ -44,6 +42,6 @@ The type of the DNS server.
 | `openvpn`       | [OpenVPN](./openvpn/)         |
 | `resolved`      | [Resolved](./resolved/)   |
 
-#### tag
+## tag
 
 The tag of the DNS server.

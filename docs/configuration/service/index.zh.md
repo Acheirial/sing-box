@@ -2,19 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.12.0 起"
-
 # 服务
 
-### 结构
+!!! question "自 sing-box 1.12.0 起"
 
-```yaml
+```{.yaml linenums="1"}
 services:
   - type: ""
     tag: ""
 ```
-
-### 字段
 
 | 类型              | 格式                                  |
 |-------------------|---------------------------------------|
@@ -28,6 +24,6 @@ services:
 | `usbip-server`    | [USB/IP Server](./usbip-server)       |
 | `usbip-client`    | [USB/IP Client](./usbip-client)       |
 
-#### tag
+## tag
 
 端点的标签。

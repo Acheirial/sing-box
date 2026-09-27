@@ -6,9 +6,7 @@ sing-box 配置文件使用 YAML 格式编写。
 
 支持 YAML 锚点（`&`）、别名（`*`）以及合并键（`<<`）。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 $schema: https://sing-box.sagernet.org/schema.json
 log: {}
 dns: {}
@@ -24,8 +22,6 @@ route: {}
 services: []
 experimental: {}
 ```
-
-### 字段
 
 | Key            | Format                 |
 |----------------|------------------------|
@@ -44,13 +40,13 @@ experimental: {}
 | `services`     | [服务](./service/)       |
 | `experimental` | [实验性](./experimental/) |
 
-### 检查
+## 检查
 
 ```bash
 sing-box check
 ```
 
-### 格式化
+## 格式化
 
 ```bash
 sing-box format -w -c config.yaml -D config_directory
@@ -58,13 +54,13 @@ sing-box format -w -c config.yaml -D config_directory
 
 输出将保持 YAML 格式，键按字母排序，注释不保留。
 
-### 合并
+## 合并
 
 ```bash
 sing-box merge output.yaml -c config.yaml -D config_directory
 ```
 
-### JSON 支持
+## JSON 支持
 
 同样支持使用 JSON 格式的配置文件，它与 YAML 配置文件共享完全相同的配置结构与校验规则。
 

@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
+# Tailscale
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [accept_search_domain](#accept_search_domain)
 
 !!! question "自 sing-box 1.12.0 起"
 
-# Tailscale
-
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: tailscale
@@ -23,21 +21,17 @@ dns:
       accept_search_domain: false
 ```
 
-### 字段
+## endpoint
 
-#### endpoint
+**必填。**[Tailscale 端点](/zh/configuration/endpoint/tailscale) 的标签。
 
-==必填==
-
-[Tailscale 端点](/zh/configuration/endpoint/tailscale) 的标签。
-
-#### accept_default_resolvers
+## accept_default_resolvers
 
 指示是否除了 MagicDNS 外，还应接受默认 DNS 解析器以进行回退查询。
 
 如果未启用，对于非 Tailscale 域名查询将返回 `NXDOMAIN`。
 
-#### accept_search_domain
+## accept_search_domain
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -45,13 +39,13 @@ dns:
 
 对于单标签查询，无论 `accept_default_resolvers` 是否启用，都不会使用默认 DNS 解析器。
 
-### 示例
+## 示例
 
 === "仅 MagicDNS"
 
     === ":material-card-multiple: sing-box 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -67,7 +61,7 @@ dns:
 
     === ":material-card-remove: sing-box < 1.14.0"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -82,7 +76,7 @@ dns:
 
 === "用作全局 DNS"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: tailscale

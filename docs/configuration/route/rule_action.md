@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Rule Action
+
 !!! quote "Changes in sing-box 1.13.0"
 
     :material-plus: [bypass](#bypass)  
@@ -27,11 +29,12 @@ icon: material/new-box
 
 ### route
 
-```yaml
+```{.yaml linenums="1"}
 action: route  # default
 outbound: ""
 
 # ... route-options Fields
+
 ```
 
 !!! note ""
@@ -42,9 +45,7 @@ outbound: ""
 
 #### outbound
 
-==Required==
-
-Tag of target outbound.
+**Required.** Tag of target outbound.
 
 #### route-options Fields
 
@@ -58,11 +59,12 @@ See `route-options` fields below.
 
     Only supported on Linux with `auto_redirect` enabled.
 
-```yaml
+```{.yaml linenums="1"}
 action: bypass
 outbound: ""
 
 # ... route-options Fields
+
 ```
 
 `bypass` bypasses sing-box at the kernel level for auto redirect connections in pre-match.
@@ -88,7 +90,7 @@ See `route-options` fields below.
 
     Since sing-box 1.13.0, you can reject (or directly reply to) ICMP echo (ping) requests using `reject` action.
 
-```yaml
+```{.yaml linenums="1"}
 action: reject
 method: default  # default
 no_drop: false
@@ -121,7 +123,7 @@ Not available when `method` is set to drop.
 
 ### hijack-dns
 
-```yaml
+```{.yaml linenums="1"}
 action: hijack-dns
 ```
 
@@ -131,7 +133,7 @@ action: hijack-dns
 
 ### route-options
 
-```yaml
+```{.yaml linenums="1"}
 action: route-options
 override_address: ""
 override_port: 0
@@ -266,7 +268,7 @@ of accepted values and platform notes.
 
 ### sniff
 
-```yaml
+```{.yaml linenums="1"}
 action: sniff
 sniffer: []
 timeout: ""
@@ -292,7 +294,7 @@ Timeout for sniffing.
 
 ### resolve
 
-```yaml
+```{.yaml linenums="1"}
 action: resolve
 server: ""
 strategy: ""

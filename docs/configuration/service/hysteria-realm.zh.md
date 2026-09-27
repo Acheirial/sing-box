@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.14.0 起"
-
 # Hysteria Realm
+
+!!! question "自 sing-box 1.14.0 起"
 
 Hysteria Realm 是用于 Hysteria2 NAT 穿透的会合服务。
 
@@ -12,9 +12,7 @@ Hysteria Realm 是用于 Hysteria2 NAT 穿透的会合服务。
 
 Realm 只承载控制信令。打洞成功后，所有代理流量在客户端和服务器之间直连传输。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: hysteria-realm
 
 # ... 监听字段
@@ -29,40 +27,32 @@ users:
     max_realms: 0
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/) 了解详情。
 
-### HTTP2 字段
+## HTTP2 字段
 
 参阅 [HTTP2 字段](/zh/configuration/shared/http2/) 了解详情。
 
-### 字段
-
-#### tls
+## tls
 
 TLS 配置，参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
 配置后，realm 将通过 TLS 提供 HTTP/2 服务；否则提供明文 HTTP/1.1。
 
-#### users
+## users
 
-==必填==
+**必填。**授权用户。
 
-授权用户。
+## users.name
 
-#### users.name
+**必填。**用户名，用于日志记录和配额键。
 
-==必填==
+## users.token
 
-用户名，用于日志记录和配额键。
+**必填。**Hysteria2 入站和出站通过 `Authorization: Bearer <token>` 出示的 Bearer 令牌。
 
-#### users.token
-
-==必填==
-
-Hysteria2 入站和出站通过 `Authorization: Bearer <token>` 出示的 Bearer 令牌。
-
-#### users.max_realms
+## users.max_realms
 
 此用户可同时持有的 realm 槽位数量上限。

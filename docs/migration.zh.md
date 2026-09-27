@@ -2,6 +2,8 @@
 icon: material/arrange-bring-forward
 ---
 
+# 迁移指南
+
 ## 1.14.0
 
 ### 迁移 macOS standalone 客户端数据
@@ -40,7 +42,7 @@ sing-box 1.14.0 新增字段参阅 [ACME](/zh/configuration/shared/certificate-p
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: trojan
         tls:
@@ -53,7 +55,7 @@ sing-box 1.14.0 新增字段参阅 [ACME](/zh/configuration/shared/certificate-p
 
 === ":material-card-multiple: 内联"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: trojan
         tls:
@@ -67,7 +69,7 @@ sing-box 1.14.0 新增字段参阅 [ACME](/zh/configuration/shared/certificate-p
 
 === ":material-card-multiple: 共享"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     certificate_providers:
       - type: acme
         tag: my-cert
@@ -98,7 +100,7 @@ sing-box 1.14.0 新增字段参阅 [ACME](/zh/configuration/shared/certificate-p
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       rules:
         - rule_set: geoip-cn
@@ -110,7 +112,7 @@ sing-box 1.14.0 新增字段参阅 [ACME](/zh/configuration/shared/certificate-p
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       rules:
         - action: evaluate
@@ -134,14 +136,14 @@ DNS 缓存现在始终按传输名称分离，使 `independent_cache` 不再需�
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       independent_cache: true
     ```
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns: {}
     ```
 
@@ -156,7 +158,7 @@ DNS 缓存现在始终按传输名称分离，使 `independent_cache` 不再需�
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       cache_file:
         enabled: true
@@ -165,7 +167,7 @@ DNS 缓存现在始终按传输名称分离，使 `independent_cache` 不再需�
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       cache_file:
         enabled: true
@@ -228,7 +230,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: local
@@ -236,7 +238,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -246,7 +248,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: tcp://1.1.1.1
@@ -254,7 +256,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: tcp
@@ -265,7 +267,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -273,7 +275,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -284,7 +286,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: tls://1.1.1.1
@@ -292,7 +294,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: tls
@@ -303,7 +305,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: https://1.1.1.1/dns-query
@@ -311,7 +313,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: https
@@ -322,7 +324,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: quic://1.1.1.1
@@ -330,7 +332,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: quic
@@ -341,7 +343,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: h3://1.1.1.1/dns-query
@@ -349,7 +351,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: h3
@@ -360,7 +362,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: dhcp://auto
@@ -369,7 +371,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: dhcp
@@ -381,7 +383,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -400,7 +402,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -420,7 +422,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: rcode://refused
@@ -428,7 +430,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           rules:
             - domain:
@@ -443,7 +445,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: https://dns.google/dns-query
@@ -454,7 +456,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: https
@@ -469,7 +471,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -484,7 +486,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -503,7 +505,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -514,7 +516,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -540,7 +542,7 @@ DNS 服务器已经重构。
 
 === ":material-card-remove: 废弃的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - address: local
@@ -556,7 +558,7 @@ DNS 服务器已经重构。
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: local
@@ -592,7 +594,7 @@ DNS 服务器已经重构。
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: socks
         server: example.org
@@ -602,7 +604,7 @@ DNS 服务器已经重构。
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: local
@@ -632,7 +634,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         outbounds:
           - type: block
             tag: block
@@ -645,7 +647,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         route:
           rules:
             # ...
@@ -657,7 +659,7 @@ DNS 服务器已经重构。
 
     === ":material-card-remove: 弃用的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         inbounds:
           # ...
 
@@ -673,7 +675,7 @@ DNS 服务器已经重构。
 
     === ":material-card-multiple: 新的"
 
-        ```yaml
+        ```{.yaml linenums="1"}
         route:
           rules:
             - action: sniff
@@ -695,7 +697,7 @@ DNS 服务器已经重构。
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: mixed
         sniff: true
@@ -705,7 +707,7 @@ DNS 服务器已经重构。
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: mixed
         tag: in
@@ -730,7 +732,7 @@ direct 出站中的目标地址覆盖字段已废弃，且可以被路由字段�
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: direct
         override_address: 1.1.1.1
@@ -739,7 +741,7 @@ direct 出站中的目标地址覆盖字段已废弃，且可以被路由字段�
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - action: route-options  # 或 route
@@ -759,7 +761,7 @@ WireGuard 出站已被弃用，且可以被端点替代。
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: wireguard
         tag: wg-out
@@ -783,7 +785,7 @@ WireGuard 出站已被弃用，且可以被端点替代。
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     endpoints:
       - type: wireguard
         tag: wg-ep
@@ -822,7 +824,7 @@ WireGuard 出站已被弃用，且可以被端点替代。
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: tun
         inet4_address: 172.19.0.1/30
@@ -841,7 +843,7 @@ WireGuard 出站已被弃用，且可以被端点替代。
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: tun
         address:
@@ -901,7 +903,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       clash_api:
         cache_file: cache.db  # 默认值
@@ -913,7 +915,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       cache_file:
         enabled: true
@@ -938,7 +940,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - geoip: private
@@ -953,7 +955,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - ip_is_private: true
@@ -995,7 +997,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-remove: 弃用的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - geosite: cn
@@ -1006,7 +1008,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 === ":material-card-multiple: 新的"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - rule_set: geosite-cn

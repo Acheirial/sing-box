@@ -2,9 +2,9 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.14.0"
-
 # Unshare
+
+!!! question "Since sing-box 1.14.0"
 
 Create a new network namespace, without root privilege.
 
@@ -12,18 +12,14 @@ Create a new network namespace, without root privilege.
 
     Rootless operation requires the kernel to allow unprivileged user namespace creation.
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 network_namespaces:
   - type: unshare
     tag: ""
     pid_file: ""
 ```
 
-### Fields
-
-#### pid_file
+## pid_file
 
 If set, the PID of the process holding the namespace open is written to this path.
 

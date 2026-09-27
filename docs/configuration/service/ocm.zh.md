@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
-!!! question "自 sing-box 1.13.0 起"
-
 # OCM
+
+!!! question "自 sing-box 1.13.0 起"
 
 OCM（OpenAI Codex 多路复用器）服务是一个多路复用服务，允许您通过自定义令牌远程访问本地的 OpenAI Codex 订阅。
 
 它在本地机器上处理与 OpenAI API 的 OAuth 身份验证，同时允许远程客户端使用自定义令牌进行身份验证。
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: ocm
 
 # ... 监听字段
@@ -25,13 +23,11 @@ detour: ""
 tls: {}
 ```
 
-### 监听字段
+## 监听字段
 
 参阅 [监听字段](/zh/configuration/shared/listen/) 了解详情。
 
-### 字段
-
-#### credential_path
+## credential_path
 
 OpenAI OAuth 凭据文件的路径。
 
@@ -41,7 +37,7 @@ OpenAI OAuth 凭据文件的路径。
 
 刷新的令牌会自动写回相同位置。
 
-#### usages_path
+## usages_path
 
 用于存储聚合 API 使用统计信息的文件路径。
 
@@ -56,7 +52,7 @@ OpenAI OAuth 凭据文件的路径。
 
 统计文件每分钟自动保存一次，并在服务关闭时保存。
 
-#### users
+## users
 
 用于令牌身份验证的授权用户列表。
 
@@ -64,7 +60,7 @@ OpenAI OAuth 凭据文件的路径。
 
 对象格式：
 
-```yaml
+```{.yaml linenums="1"}
 name: ""
 token: ""
 ```
@@ -74,38 +70,38 @@ token: ""
 - `name`：用于跟踪的用户名标识符。
 - `token`：用于身份验证的 Bearer 令牌。客户端通过设置 `Authorization: Bearer <token>` 头进行身份验证。
 
-#### headers
+## headers
 
 发送到 OpenAI API 的自定义 HTTP 头。
 
 这些头会覆盖同名的现有头。
 
-#### detour
+## detour
 
 用于连接 OpenAI API 的出站标签。
 
-#### tls
+## tls
 
 TLS 配置，参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
-### 示例
+## 示例
 
-#### 服务端
+### 服务端
 
-```yaml
+```{.yaml linenums="1"}
 services:
   - type: ocm
     listen: 127.0.0.1
     listen_port: 8080
 ```
 
-#### 客户端
+### 客户端
 
 在 `~/.codex/config.toml` 中添加：
 
 ```toml
-# profile = "ocm"                # 设为默认配置
 
+# profile = "ocm"                # 设为默认配置
 
 [model_providers.ocm]
 name = "OCM Proxy"
@@ -114,8 +110,11 @@ supports_websockets = true
 
 [profiles.ocm]
 model_provider = "ocm"
+
 # model = "gpt-5.4"              # 如果最新模型尚未公开发布
+
 # model_reasoning_effort = "xhigh"
+
 ```
 
 然后运行：
@@ -124,11 +123,11 @@ model_provider = "ocm"
 codex --profile ocm
 ```
 
-### 带身份验证的示例
+## 带身份验证的示例
 
-#### 服务端
+### 服务端
 
-```yaml
+```{.yaml linenums="1"}
 services:
   - type: ocm
     listen: 0.0.0.0
@@ -141,11 +140,12 @@ services:
         token: sk-ocm-hello-bob
 ```
 
-#### 客户端
+### 客户端
 
 在 `~/.codex/config.toml` 中添加：
 
 ```toml
+
 # profile = "ocm"                # 设为默认配置
 
 [model_providers.ocm]
@@ -156,8 +156,11 @@ experimental_bearer_token = "sk-ocm-hello-world"
 
 [profiles.ocm]
 model_provider = "ocm"
+
 # model = "gpt-5.4"              # 如果最新模型尚未公开发布
+
 # model_reasoning_effort = "xhigh"
+
 ```
 
 然后运行：

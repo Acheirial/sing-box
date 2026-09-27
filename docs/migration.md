@@ -2,6 +2,8 @@
 icon: material/arrange-bring-forward
 ---
 
+# Migration
+
 ## 1.14.0
 
 ### Migrate the macOS standalone client data
@@ -41,7 +43,7 @@ See [ACME](/configuration/shared/certificate-provider/acme/) for fields newly ad
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: trojan
         tls:
@@ -54,7 +56,7 @@ See [ACME](/configuration/shared/certificate-provider/acme/) for fields newly ad
 
 === ":material-card-multiple: Inline"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: trojan
         tls:
@@ -68,7 +70,7 @@ See [ACME](/configuration/shared/certificate-provider/acme/) for fields newly ad
 
 === ":material-card-multiple: Shared"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     certificate_providers:
       - type: acme
         tag: my-cert
@@ -99,7 +101,7 @@ to fetch a DNS response, then match against it explicitly with `match_response`.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       rules:
         - rule_set: geoip-cn
@@ -111,7 +113,7 @@ to fetch a DNS response, then match against it explicitly with `match_response`.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       rules:
         - action: evaluate
@@ -135,14 +137,14 @@ Simply remove the field.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       independent_cache: true
     ```
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns: {}
     ```
 
@@ -157,7 +159,7 @@ which persists the full DNS cache to the cache file.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       cache_file:
         enabled: true
@@ -166,7 +168,7 @@ which persists the full DNS cache to the cache file.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       cache_file:
         enabled: true
@@ -238,7 +240,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
         
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: local
@@ -246,7 +248,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: local
@@ -256,7 +258,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: tcp://1.1.1.1
@@ -264,7 +266,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: tcp
@@ -275,7 +277,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -283,7 +285,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -294,7 +296,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: tls://1.1.1.1
@@ -302,7 +304,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: tls
@@ -313,7 +315,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: https://1.1.1.1/dns-query
@@ -321,7 +323,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: https
@@ -332,7 +334,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: quic://1.1.1.1
@@ -340,7 +342,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: quic
@@ -351,7 +353,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: h3://1.1.1.1/dns-query
@@ -359,7 +361,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: h3
@@ -370,7 +372,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: dhcp://auto
@@ -379,7 +381,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: dhcp
@@ -391,7 +393,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
         
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -410,7 +412,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -430,7 +432,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
         
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: rcode://refused
@@ -438,7 +440,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
         
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           rules:
             - domain:
@@ -453,7 +455,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
         
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: https://dns.google/dns-query
@@ -464,7 +466,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: https
@@ -479,7 +481,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
             
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -494,7 +496,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -513,7 +515,7 @@ DNS servers are refactored for better performance and scalability.
 
     === ":material-card-remove: Deprecated"
         
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - address: 1.1.1.1
@@ -524,7 +526,7 @@ DNS servers are refactored for better performance and scalability.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         dns:
           servers:
             - type: udp
@@ -550,7 +552,7 @@ The legacy outbound DNS rules are deprecated and can be replaced by new domain r
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - address: local
@@ -566,7 +568,7 @@ The legacy outbound DNS rules are deprecated and can be replaced by new domain r
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: local
@@ -603,7 +605,7 @@ some people mistakenly believe that `domain_strategy` is the same feature as in 
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: socks
         server: example.org
@@ -613,7 +615,7 @@ some people mistakenly believe that `domain_strategy` is the same feature as in 
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     dns:
       servers:
         - type: local
@@ -643,7 +645,7 @@ Legacy special outbounds are deprecated and can be replaced by rule actions.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         outbounds:
           - type: block
             tag: block
@@ -656,7 +658,7 @@ Legacy special outbounds are deprecated and can be replaced by rule actions.
 
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         route:
           rules:
             # ...
@@ -668,7 +670,7 @@ Legacy special outbounds are deprecated and can be replaced by rule actions.
 
     === ":material-card-remove: Deprecated"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         inbounds:
           # ...
 
@@ -684,7 +686,7 @@ Legacy special outbounds are deprecated and can be replaced by rule actions.
     
     === ":material-card-multiple: New"
     
-        ```yaml
+        ```{.yaml linenums="1"}
         route:
           rules:
             - action: sniff
@@ -706,7 +708,7 @@ Inbound fields are deprecated and can be replaced by rule actions.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: mixed
         sniff: true
@@ -716,7 +718,7 @@ Inbound fields are deprecated and can be replaced by rule actions.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: mixed
         tag: in
@@ -741,7 +743,7 @@ Destination override fields in direct outbound are deprecated and can be replace
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: direct
         override_address: 1.1.1.1
@@ -750,7 +752,7 @@ Destination override fields in direct outbound are deprecated and can be replace
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - action: route-options  # or route
@@ -770,7 +772,7 @@ WireGuard outbound is deprecated and can be replaced by endpoint.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     outbounds:
       - type: wireguard
         tag: wg-out
@@ -794,7 +796,7 @@ WireGuard outbound is deprecated and can be replaced by endpoint.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     endpoints:
       - type: wireguard
         tag: wg-ep
@@ -833,7 +835,7 @@ WireGuard outbound is deprecated and can be replaced by endpoint.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: tun
         inet4_address: 172.19.0.1/30
@@ -852,7 +854,7 @@ WireGuard outbound is deprecated and can be replaced by endpoint.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     inbounds:
       - type: tun
         address:
@@ -914,7 +916,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       clash_api:
         cache_file: cache.db  # default value
@@ -926,7 +928,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     experimental:
       cache_file:
         enabled: true
@@ -951,7 +953,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - geoip: private
@@ -966,7 +968,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - ip_is_private: true
@@ -1008,7 +1010,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 === ":material-card-remove: Deprecated"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - geosite: cn
@@ -1019,7 +1021,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 === ":material-card-multiple: New"
 
-    ```yaml
+    ```{.yaml linenums="1"}
     route:
       rules:
         - rule_set: geosite-cn

@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# 路由规则
+
 !!! quote "sing-box 1.14.0 中的更改"
 
     :material-plus: [source_mac_address](#source_mac_address)  
@@ -41,9 +43,7 @@ icon: material/new-box
     :material-delete-clock: [geoip](#geoip)  
     :material-delete-clock: [geosite](#geosite)
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 route:
   rules:
     - inbound:
@@ -155,7 +155,7 @@ route:
 
     当内容只有一项时，可以直接使用单个值，无需数组。
 
-### 默认字段
+## 默认字段
 
 !!! note ""
 
@@ -168,31 +168,31 @@ route:
 
     当规则集仅包含一条默认规则且非 invert 时，其中字段视为按以上规则与外层规则合并；否则，作为一条 `其他字段` 匹配；不同规则集之间始终保持 or。
 
-#### inbound
+### inbound
 
 [入站](/zh/configuration/inbound/) 标签。
 
-#### ip_version
+### ip_version
 
 4 或 6。
 
 默认不限制。
 
-#### auth_user
+### auth_user
 
 认证用户名，参阅入站设置。
 
-#### protocol
+### protocol
 
 探测到的协议, 参阅 [协议探测](/zh/configuration/route/sniff/)。
 
-#### client
+### client
 
 !!! question "自 sing-box 1.10.0 起"
 
 探测到的客户端类型, 参阅 [协议探测](/zh/configuration/route/sniff/)。
 
-#### network
+### network
 
 !!! quote "sing-box 1.13.0 中的更改"
 
@@ -204,23 +204,23 @@ route:
 
 `tcp`、`udp` 或 `icmp`。
 
-#### domain
+### domain
 
 匹配完整域名。
 
-#### domain_suffix
+### domain_suffix
 
 匹配域名后缀。
 
-#### domain_keyword
+### domain_keyword
 
 匹配域名关键字。
 
-#### domain_regex
+### domain_regex
 
 匹配域名正则表达式。
 
-#### geosite
+### geosite
 
 !!! failure "已在 sing-box 1.8.0 废弃"
 
@@ -228,7 +228,7 @@ route:
 
 匹配 Geosite。
 
-#### source_geoip
+### source_geoip
 
 !!! failure "已在 sing-box 1.8.0 废弃"
 
@@ -236,7 +236,7 @@ route:
 
 匹配源 GeoIP。
 
-#### geoip
+### geoip
 
 !!! failure "已在 sing-box 1.8.0 废弃"
 
@@ -244,43 +244,43 @@ route:
 
 匹配 GeoIP。
 
-#### source_ip_cidr
+### source_ip_cidr
 
 匹配源 IP CIDR。
 
-#### source_ip_is_private
+### source_ip_is_private
 
 !!! question "自 sing-box 1.8.0 起"
 
 匹配非公开源 IP。
 
-#### ip_cidr
+### ip_cidr
 
 匹配 IP CIDR。
 
-#### ip_is_private
+### ip_is_private
 
 !!! question "自 sing-box 1.8.0 起"
 
 匹配非公开 IP。
 
-#### source_port
+### source_port
 
 匹配源端口。
 
-#### source_port_range
+### source_port_range
 
 匹配源端口范围。
 
-#### port
+### port
 
 匹配端口。
 
-#### port_range
+### port_range
 
 匹配端口范围。
 
-#### process_name
+### process_name
 
 !!! quote ""
 
@@ -288,7 +288,7 @@ route:
 
 匹配进程名称。
 
-#### process_path
+### process_path
 
 !!! quote ""
 
@@ -296,7 +296,7 @@ route:
 
 匹配进程路径。
 
-#### process_path_regex
+### process_path_regex
 
 !!! question "自 sing-box 1.10.0 起"
 
@@ -306,17 +306,17 @@ route:
 
 使用正则表达式匹配进程路径。
 
-#### package_name
+### package_name
 
 匹配 Android 应用包名。
 
-#### package_name_regex
+### package_name_regex
 
 !!! question "自 sing-box 1.14.0 起"
 
 使用正则表达式匹配 Android 应用包名。
 
-#### user
+### user
 
 !!! quote ""
 
@@ -324,7 +324,7 @@ route:
 
 匹配用户名。
 
-#### user_id
+### user_id
 
 !!! quote ""
 
@@ -332,11 +332,11 @@ route:
 
 匹配用户 ID。
 
-#### clash_mode
+### clash_mode
 
 匹配 Clash 模式。
 
-#### network_type
+### network_type
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -348,7 +348,7 @@ route:
 
 可用值: `wifi`, `cellular`, `ethernet` and `other`.
 
-#### network_is_expensive
+### network_is_expensive
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -359,7 +359,7 @@ route:
 匹配如果网络被视为计费 (在 Android) 或被视为昂贵，
 像蜂窝网络或个人热点 (在 Apple 平台)。
 
-#### network_is_constrained
+### network_is_constrained
 
 !!! question "自 sing-box 1.11.0 起"
 
@@ -369,7 +369,7 @@ route:
 
 匹配如果网络在低数据模式下。
 
-#### interface_address
+### interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -379,7 +379,7 @@ route:
 
 匹配接口地址。
 
-#### network_interface_address
+### network_interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -389,7 +389,7 @@ route:
 
 匹配网络接口（可用值同 `network_type`）地址。
 
-#### default_interface_address
+### default_interface_address
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -399,19 +399,19 @@ route:
 
 匹配默认接口地址。
 
-#### wifi_ssid
+### wifi_ssid
 
 匹配 WiFi SSID。
 
 参阅 [Wi-Fi 状态](/zh/configuration/shared/wifi-state/)。
 
-#### wifi_bssid
+### wifi_bssid
 
 匹配 WiFi BSSID。
 
 参阅 [Wi-Fi 状态](/zh/configuration/shared/wifi-state/)。
 
-#### preferred_by
+### preferred_by
 
 !!! question "自 sing-box 1.13.0 起"
 
@@ -423,7 +423,7 @@ route:
 | `wireguard` | 匹配对端的 allowed IPs              |
 | `bridge`    | 匹配除本机本地地址外的所有地址，仅在[预匹配](/zh/configuration/shared/pre-match/)中 |
 
-#### source_mac_address
+### source_mac_address
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -433,7 +433,7 @@ route:
 
 匹配源设备 MAC 地址。
 
-#### source_hostname
+### source_hostname
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -443,13 +443,13 @@ route:
 
 匹配源设备从 DHCP 租约获取的主机名。
 
-#### rule_set
+### rule_set
 
 !!! question "自 sing-box 1.8.0 起"
 
 匹配[规则集](/zh/configuration/route/#rule_set)。
 
-#### rule_set_ipcidr_match_source
+### rule_set_ipcidr_match_source
 
 !!! question "自 sing-box 1.8.0 起"
 
@@ -459,42 +459,36 @@ route:
 
 使规则集中的 `ip_cidr` 规则匹配源 IP。
 
-#### rule_set_ip_cidr_match_source
+### rule_set_ip_cidr_match_source
 
 !!! question "自 sing-box 1.10.0 起"
 
 使规则集中的 `ip_cidr` 规则匹配源 IP。
 
-#### invert
+### invert
 
 反选匹配结果。
 
-#### action
+### action
 
-==必填==
+**必填。**参阅 [规则动作](../rule_action/)。
 
-参阅 [规则动作](../rule_action/)。
-
-#### outbound
+### outbound
 
 !!! failure "已在 sing-box 1.11.0 废弃"
 
     已移动到 [规则动作](../rule_action#route).
 
-### 逻辑字段
+## 逻辑字段
 
-#### type
+### type
 
 `logical`
 
-#### mode
+### mode
 
-==必填==
+**必填。** `and` 或 `or`
 
-`and` 或 `or`
+### rules
 
-#### rules
-
-==必填==
-
-包括的规则。
+**必填。**包括的规则。

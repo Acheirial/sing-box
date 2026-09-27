@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
+# Naive
+
 !!! question "Since sing-box 1.13.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: naive
 tag: naive-out
 
@@ -24,6 +24,7 @@ quic_session_receive_window: ""
 tls: {}
 
 # ... Dial Fields
+
 ```
 
 !!! warning "Platform Support"
@@ -48,37 +49,31 @@ tls: {}
 
     For self-built binaries, see [Build from source](/installation/build-from-source/#with_naive_outbound).
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
-
-==Required==
-
-The server port.
-
-#### username
+## username
 
 Authentication username.
 
-#### password
+## password
 
 Authentication password.
 
-#### insecure_concurrency
+## insecure_concurrency
 
 Number of concurrent tunnel connections. Multiple connections make the tunneling easier to detect through traffic analysis, which defeats the purpose of NaiveProxy's design to resist traffic analysis.
 
-#### extra_headers
+## extra_headers
 
 Extra headers to send in HTTP requests.
 
-#### stream_receive_window
+## stream_receive_window
 
 The flow control window.
 
@@ -86,17 +81,17 @@ When `quic` is enabled, it sets the initial QUIC stream receive window, and `6 M
 
 Otherwise, it sets the HTTP/2 session receive window, the stream receive window is set to half of it, and `4 MB` is used by default on iOS, `128 MB` on other platforms.
 
-#### udp_over_tcp
+## udp_over_tcp
 
 UDP over TCP protocol settings.
 
 See [UDP Over TCP](/configuration/shared/udp-over-tcp/) for details.
 
-#### quic
+## quic
 
 Use QUIC instead of HTTP/2.
 
-#### quic_congestion_control
+## quic_congestion_control
 
 QUIC congestion control algorithm.
 
@@ -109,7 +104,7 @@ QUIC congestion control algorithm.
 
 `cubic` is used by default (the default of Chromium, which NaiveProxy is based on).
 
-#### quic_session_receive_window
+## quic_session_receive_window
 
 !!! note ""
 
@@ -119,16 +114,14 @@ The initial QUIC session receive window.
 
 `15 MB` is used by default.
 
-#### tls
+## tls
 
-==Required==
-
-TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
+**Required.** TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
 Only `server_name`, `certificate`, `certificate_path` and `ech` are supported.
 
 Self-signed certificates change traffic behavior significantly, which defeats the purpose of NaiveProxy's design to resist traffic analysis, and should not be used in production.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

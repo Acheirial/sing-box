@@ -2,9 +2,7 @@
 
 !!! question "Since sing-box 1.14.0"
 
-## Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: openvpn-client
 tag: ovpn-client
 
@@ -95,15 +93,14 @@ mtu: 1500
 # ... UDP NAT Fields
 
 # ... Dial Fields
+
 ```
 
 !!! note ""
 
     You can use a single value instead of an array when the content is only one item.
 
-## Fields
-
-### mode
+## mode
 
 OpenVPN session mode, one of `tls` or `static_key`.
 
@@ -114,7 +111,7 @@ forward secrecy. It is retained as an explicit compatibility option for
 immutable enterprise VPN servers. It does not use `tls`, username/password
 authentication, pull options, or TLS renegotiation options.
 
-### server
+## server
 
 OpenVPN server address.
 
@@ -122,13 +119,13 @@ Either `server` or `servers` is required.
 
 Conflict with `servers`.
 
-### server_port
+## server_port
 
 OpenVPN server port.
 
 Required when `server` is set.
 
-### servers
+## servers
 
 List of OpenVPN servers.
 
@@ -138,31 +135,27 @@ Either `server` or `servers` is required.
 
 Conflict with `server`.
 
-### servers.server
+## servers.server
 
-==Required==
+**Required.** OpenVPN server address.
 
-OpenVPN server address.
+## servers.server_port
 
-### servers.server_port
+**Required.** OpenVPN server port.
 
-==Required==
-
-OpenVPN server port.
-
-### servers.network
+## servers.network
 
 OpenVPN transport network for this server, one of `udp` or `tcp`.
 
 The top-level `network` is used by default.
 
-### remote_random
+## remote_random
 
 Randomize the `servers` order before connecting.
 
 Disabled by default.
 
-### network
+## network
 
 Default OpenVPN transport network, one of `udp` or `tcp`.
 
@@ -170,7 +163,7 @@ Default OpenVPN transport network, one of `udp` or `tcp`.
 
 This value applies to `server` and to `servers` entries without their own `network`.
 
-### address
+## address
 
 Local IPv4 and IPv6 tunnel prefixes.
 
@@ -178,35 +171,35 @@ At least one address is required in `static_key` mode. In TLS mode these
 addresses are optional and can be replaced by addresses pulled from the
 server.
 
-### peer_address
+## peer_address
 
 IPv4 tunnel peer address and VPN gateway.
 
 Required when an IPv4 `address` is configured in `static_key` mode.
 
-### peer_address_ipv6
+## peer_address_ipv6
 
 IPv6 tunnel peer address and VPN gateway.
 
 Required when an IPv6 `address` is configured in `static_key` mode.
 
-### topology
+## topology
 
 Tunnel topology, one of `net30`, `p2p`, or `subnet`.
 
 The topology pulled from the server is used when empty in TLS mode.
 
-### username
+## username
 
 Username for OpenVPN username/password authentication.
 
 Only available in TLS mode.
 
-### password
+## password
 
 Password for OpenVPN username/password authentication.
 
-### auth_retry
+## auth_retry
 
 Behavior after username/password authentication fails, one of `none`, `nointeract`, or `interact`.
 
@@ -214,15 +207,15 @@ Behavior after username/password authentication fails, one of `none`, `nointerac
 
 `nointeract` and `interact` allow authentication retries.
 
-### static_challenge
+## static_challenge
 
 Static challenge text shown when requesting an authentication response.
 
-### static_challenge_echo
+## static_challenge_echo
 
 Show the static challenge response as plain text.
 
-### static_key
+## static_key
 
 OpenVPN static key content.
 
@@ -230,7 +223,7 @@ Required in `static_key` mode.
 
 Conflict with `static_key_path`.
 
-### static_key_path
+## static_key_path
 
 OpenVPN static key path.
 
@@ -238,25 +231,25 @@ Required in `static_key` mode when `static_key` is not set.
 
 Conflict with `static_key`.
 
-### key_direction
+## key_direction
 
 Static key direction, one of `server` or `client`.
 
 The key is used bidirectionally if empty. Only available in `static_key` mode.
 
-### tls
+## tls
 
 Required in TLS mode.
 
 OpenVPN control channel TLS configuration.
 
-### tls.server_name
+## tls.server_name
 
 Expected server certificate name.
 
 Certificate name verification is disabled if empty. The certificate chain or fingerprint and server certificate usage are still verified.
 
-### tls.server_name_type
+## tls.server_name_type
 
 Certificate field matched by `tls.server_name`, one of `subject`, `name`, or `name-prefix`.
 
@@ -264,7 +257,7 @@ Certificate field matched by `tls.server_name`, one of `subject`, `name`, or `na
 
 `subject` matches the full certificate subject, `name` matches the common name exactly, and `name-prefix` matches a common name prefix.
 
-### tls.certificate
+## tls.certificate
 
 Trusted CA certificate content.
 
@@ -272,7 +265,7 @@ One of `tls.certificate`, `tls.certificate_path`, or `tls.peer_fingerprint` is r
 
 Conflict with `tls.certificate_path`.
 
-### tls.certificate_path
+## tls.certificate_path
 
 Trusted CA certificate path.
 
@@ -280,25 +273,25 @@ One of `tls.certificate`, `tls.certificate_path`, or `tls.peer_fingerprint` is r
 
 Conflict with `tls.certificate`.
 
-### tls.client_certificate
+## tls.client_certificate
 
 Client certificate content.
 
 Conflict with `tls.client_certificate_path`.
 
-### tls.client_certificate_path
+## tls.client_certificate_path
 
 Client certificate path.
 
 Conflict with `tls.client_certificate`.
 
-### tls.client_key
+## tls.client_key
 
 Client private key content.
 
 Conflict with `tls.client_key_path`.
 
-### tls.client_key_path
+## tls.client_key_path
 
 Client private key path.
 
@@ -306,7 +299,7 @@ Conflict with `tls.client_key`.
 
 The client certificate and key must both be set or both be empty.
 
-### tls.peer_fingerprint
+## tls.peer_fingerprint
 
 Allowed SHA-256 fingerprints of the server leaf certificate.
 
@@ -314,7 +307,7 @@ Each fingerprint must be 64 lowercase hexadecimal characters without separators.
 
 When a trusted CA is also configured, both the certificate chain and fingerprint are verified. Without a trusted CA, the fingerprint, certificate validity period, configured name, and certificate usage are verified, but the certificate chain is not.
 
-### tls.crl_path
+## tls.crl_path
 
 Path to a PEM or DER certificate revocation list used to reject revoked server certificates.
 
@@ -322,7 +315,7 @@ The CRL signature and validity period are verified against the trusted certifica
 
 Disabled by default.
 
-### tls.remote_certificate_ku
+## tls.remote_certificate_ku
 
 Required server certificate key usage masks, written as hexadecimal values in OpenVPN `remote-cert-ku` format.
 
@@ -330,7 +323,7 @@ The certificate must contain all bits from at least one configured mask.
 
 Disabled by default.
 
-### tls.remote_certificate_eku
+## tls.remote_certificate_eku
 
 Required server certificate extended key usage.
 
@@ -340,7 +333,7 @@ When set, this field replaces the default `tls.remote_certificate_tls` check.
 
 Conflict with an explicitly configured `tls.remote_certificate_tls`.
 
-### tls.remote_certificate_tls
+## tls.remote_certificate_tls
 
 Peer certificate purpose check, one of `server`, `client`, or `none`.
 
@@ -350,7 +343,7 @@ Peer certificate purpose check, one of `server`, `client`, or `none`.
 
 Conflict with `tls.remote_certificate_eku`.
 
-### tls.certificate_profile
+## tls.certificate_profile
 
 Certificate profile, one of `insecure`, `legacy`, `preferred`, or `suiteb`.
 
@@ -363,19 +356,19 @@ requires stronger signatures and keys.
 
 When `suiteb` is selected and `tls.cipher` is empty, the TLS 1.2 cipher list defaults to the Suite B ECDHE-ECDSA AES-GCM suites. Explicit `tls.cipher` and `tls.groups` values are not restricted by the profile.
 
-### tls.ns_certificate_type
+## tls.ns_certificate_type
 
 Deprecated Netscape certificate type check, one of `server` or `client`.
 
 Disabled by default. Prefer `tls.remote_certificate_tls`.
 
-### tls.version_min
+## tls.version_min
 
 Minimum TLS version, one of `1.0`, `1.1`, `1.2`, or `1.3`.
 
 `1.2` is used by default.
 
-### tls.version_max
+## tls.version_max
 
 Maximum TLS version, one of `1.0`, `1.1`, `1.2`, or `1.3`.
 
@@ -383,13 +376,13 @@ The maximum supported version is used by default.
 
 The value cannot be lower than `tls.version_min`.
 
-### tls.cipher
+## tls.cipher
 
 Colon-separated OpenSSL cipher suite names allowed for TLS 1.2 and earlier.
 
 The default TLS cipher suites are used when empty. TLS 1.3 cipher suites are not controlled by this field.
 
-### tls.groups
+## tls.groups
 
 Colon-separated TLS key exchange groups in preference order.
 
@@ -397,7 +390,7 @@ Supported groups are `X25519`, `SECP256R1`, `SECP384R1`, and `SECP521R1`, includ
 
 The default TLS groups are used when empty.
 
-### tls.control_wrap
+## tls.control_wrap
 
 OpenVPN control channel wrapping.
 
@@ -405,29 +398,29 @@ Equivalent to OpenVPN `tls-auth`, `tls-crypt`, and `tls-crypt-v2`.
 
 Disabled if empty.
 
-### tls.control_wrap.type
+## tls.control_wrap.type
 
 Control channel wrapping type, one of `tls_auth`, `tls_crypt`, or `tls_crypt_v2`.
 
-### tls.control_wrap.key
+## tls.control_wrap.key
 
 Control channel wrapping key content.
 
 Conflict with `tls.control_wrap.key_path`.
 
-### tls.control_wrap.key_path
+## tls.control_wrap.key_path
 
 Control channel wrapping key path.
 
 Conflict with `tls.control_wrap.key`.
 
-### tls.control_wrap.direction
+## tls.control_wrap.direction
 
 `tls-auth` key direction, one of `server` or `client`.
 
 Only available when `tls.control_wrap.type` is `tls_auth`. The key is used bidirectionally if empty.
 
-### cipher
+## cipher
 
 Data-channel cipher used in `static_key` mode.
 
@@ -439,7 +432,7 @@ ARIA-CBC, and Camellia-CBC families, `SEED-CBC`, `SM4-CBC`, and `NONE`.
 
 Only available in `static_key` mode. `NONE` provides no confidentiality.
 
-### data_ciphers
+## data_ciphers
 
 Allowed OpenVPN data channel ciphers.
 
@@ -453,7 +446,7 @@ CFB, and OFB forms of SEED and SM4, and `NONE`. CFB and OFB are available only
 in TLS mode. Legacy ciphers provide weaker or no confidentiality and are not
 enabled by default.
 
-### data_ciphers_fallback
+## data_ciphers_fallback
 
 Data channel cipher for peers that do not support cipher negotiation.
 
@@ -461,7 +454,7 @@ Disabled by default.
 
 Only available in TLS mode.
 
-### auth
+## auth
 
 OpenVPN data channel authentication digest.
 
@@ -470,7 +463,7 @@ OpenVPN data channel authentication digest.
 Legacy digests including `MD5` and `RIPEMD160` remain available when explicitly
 configured for compatibility.
 
-### mss_fix
+## mss_fix
 
 Maximum OpenVPN UDP packet size used to clamp the MSS of TCP connections sent through the tunnel.
 
@@ -479,13 +472,13 @@ This prevents TCP packets from exceeding the path MTU after OpenVPN encapsulatio
 When empty, the upstream OpenVPN default is used: `fragment` when configured,
 otherwise `1492` for the default tunnel MTU or the configured tunnel MTU.
 
-### mss_fix_disabled
+## mss_fix_disabled
 
 Disable MSS clamping, including the default clamp.
 
 Conflict with `mss_fix` and `mss_fix_mode`.
 
-### mss_fix_mode
+## mss_fix_mode
 
 OpenVPN MSS calculation mode for an explicit `mss_fix`, one of `mtu` or `fixed`.
 
@@ -493,7 +486,7 @@ An empty value uses the normal OpenVPN encapsulation-aware calculation. `mtu` al
 
 Requires `mss_fix`.
 
-### fragment
+## fragment
 
 Maximum OpenVPN UDP packet size used for OpenVPN data channel fragmentation.
 
@@ -501,19 +494,19 @@ Disabled when `0`. A non-zero value must be at least `68`.
 
 Conflict with TCP transport.
 
-### replay_window
+## replay_window
 
 UDP data-channel replay window size. `64` is used by default. The maximum is `65536`.
 
 TCP always requires strictly consecutive packet IDs.
 
-### replay_window_time
+## replay_window_time
 
 UDP data-channel replay window duration. `15s` is used by default and the maximum is `10m`.
 
 The value must use whole seconds.
 
-### compression
+## compression
 
 OpenVPN `compress` framing mode, one of `none`, `no`, `lz4`, `lz4-v2`, `stub`, `stub-v2`, `disabled`, or `off`.
 
@@ -521,7 +514,7 @@ Disabled by default.
 
 Compression can weaken traffic confidentiality. Prefer `stub` or `stub-v2` only when framing compatibility is required.
 
-### compression_lzo
+## compression_lzo
 
 OpenVPN `comp-lzo` mode, one of `none`, `no`, `yes`, `adaptive`, `asym`, `disabled`, or `off`.
 
@@ -529,7 +522,7 @@ Disabled by default.
 
 Compression can weaken traffic confidentiality. Enable it only when required by the server.
 
-### allow_compression
+## allow_compression
 
 Policy for compression pushed by the server, one of `no`, `asym`, or `yes`.
 
@@ -537,7 +530,7 @@ Policy for compression pushed by the server, one of `no`, `asym`, or `yes`.
 
 Conflict with non-stub compression enabled by `compression` or `compression_lzo` when set to `no`.
 
-### route_no_pull
+## route_no_pull
 
 Ignore routes, DNS and DHCP settings, route metrics, `redirect-gateway`,
 `redirect-private`, `block-ipv6`, and `block-outside-dns` pushed by the server.
@@ -546,29 +539,25 @@ Interface configuration, topology, tunnel MTU, `route-gateway`, and locally conf
 
 Disabled by default.
 
-### pull_filters
+## pull_filters
 
 Ordered filters for options pushed by the server.
 
 The first filter whose `text` is a case-sensitive prefix of the complete pushed option is applied. Options that match no filter are accepted.
 
-### pull_filters.action
+## pull_filters.action
 
-==Required==
-
-Filter action, one of `accept`, `ignore`, or `reject`.
+**Required.** Filter action, one of `accept`, `ignore`, or `reject`.
 
 `accept` applies the option, `ignore` discards it, and `reject` terminates the connection.
 
-### pull_filters.text
+## pull_filters.text
 
-==Required==
-
-Case-sensitive prefix to match against the pushed option name and value.
+**Required.** Case-sensitive prefix to match against the pushed option name and value.
 
 For example, `route ` matches pushed IPv4 route options without matching `route-gateway`.
 
-### routes
+## routes
 
 IPv4 and IPv6 prefixes preferred by sing-box routing for this OpenVPN endpoint.
 
@@ -577,7 +566,7 @@ These routes are used in addition to routes accepted from the server.
 They do not install operating-system routes. Select the endpoint through
 sing-box route rules or its preferred-route behavior.
 
-### route_gateway
+## route_gateway
 
 IPv4 gateway for routes through the OpenVPN endpoint.
 
@@ -586,7 +575,7 @@ When empty, the VPN gateway received from the server is used.
 The value is retained for OpenVPN configuration compatibility; endpoint route
 preference is prefix-based and does not install a system gateway route.
 
-### route_metric
+## route_metric
 
 Default metric for routes through the OpenVPN endpoint.
 
@@ -595,7 +584,7 @@ The platform default is used when `0`.
 The value is retained for OpenVPN configuration compatibility and does not
 install a system route.
 
-### redirect_gateway
+## redirect_gateway
 
 Prefer the OpenVPN endpoint for all IPv4 destinations in sing-box routing.
 
@@ -603,7 +592,7 @@ Disabled by default.
 
 This does not install an operating-system default route.
 
-### redirect_gateway_flags
+## redirect_gateway_flags
 
 OpenVPN `redirect-gateway` flags.
 
@@ -618,19 +607,19 @@ for the physical default gateway needed to preserve the gateway exception.
 
 Empty by default.
 
-### redirect_private
+## redirect_private
 
 Accept `redirect_gateway_flags` without adding a default-route preference. Routes pushed or configured separately still affect the endpoint's preferred addresses, but no operating-system routes are installed.
 
 Disabled by default.
 
-### block_ipv6
+## block_ipv6
 
 Reject IPv6 traffic locally instead of sending it through the VPN.
 
 Disabled by default.
 
-### ping_interval
+## ping_interval
 
 Interval after which the client sends a data-channel ping when no packet has been sent to the server.
 
@@ -640,7 +629,7 @@ The value must use whole seconds.
 
 Disabled by default.
 
-### ping_restart
+## ping_restart
 
 Time without receiving a packet after which the client reconnects to the server.
 
@@ -651,47 +640,47 @@ The value must use whole seconds.
 When empty, `120s` is used for UDP connections with pull enabled until the
 server pushes another value. No default receive timeout is used for TCP.
 
-### ping_restart_disabled
+## ping_restart_disabled
 
 Disable the initial `120s` UDP pull timeout and any locally configured ping restart timeout.
 
 Conflict with `ping_restart`.
 
-### renegotiate_interval
+## renegotiate_interval
 
 OpenVPN TLS renegotiation interval.
 
 When empty, the OpenVPN default `1h` is used.
 
-### renegotiate_disabled
+## renegotiate_disabled
 
 Disable time-based TLS renegotiation, including the default interval.
 
 Conflict with `renegotiate_interval`.
 
-### renegotiate_bytes
+## renegotiate_bytes
 
 Renegotiate data-channel keys after this many bytes. `0` uses the cipher-dependent OpenVPN default.
 
-### renegotiate_packets
+## renegotiate_packets
 
 Renegotiate data-channel keys after this many packets. `0` uses the cipher-dependent OpenVPN default.
 
-### tls_timeout
+## tls_timeout
 
 Initial retransmission timeout for TLS control packets. The OpenVPN default `2s` is used when empty.
 
-### handshake_window
+## handshake_window
 
 Maximum time allowed for the initial TLS handshake and each renegotiation. The OpenVPN default `1m` is used when empty.
 
-### explicit_exit_notify
+## explicit_exit_notify
 
 Number of OpenVPN exit notifications sent when closing a UDP connection.
 
 Notifications are sent one second apart. Disabled when `0`.
 
-### system
+## system
 
 Use a system interface.
 
@@ -702,13 +691,13 @@ operating-system routes or DNS settings.
 
 If disabled, sing-box uses the internal network stack.
 
-### name
+## name
 
 Custom interface name for the system interface.
 
 An automatically generated `ovpn` interface name is used by default.
 
-### mtu
+## mtu
 
 OpenVPN interface MTU.
 

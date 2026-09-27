@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
+# AnyTLS
+
 !!! question "自 sing-box 1.12.0 起"
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 type: anytls
 tag: anytls-out
 
@@ -20,52 +20,43 @@ client_metadata: ""
 tls: {}
 
 # ... 拨号字段
+
 ```
 
-### 字段
+## server
 
-#### server
+**必填。**服务器地址。
 
-==必填==
+## server_port
 
-服务器地址。
+**必填。**服务器端口。
 
-#### server_port
+## password
 
-==必填==
+**必填。**AnyTLS 密码。
 
-服务器端口。
-
-#### password
-
-==必填==
-
-AnyTLS 密码。
-
-#### idle_session_check_interval
+## idle_session_check_interval
 
 检查空闲会话的时间间隔。默认值：30秒。
 
-#### idle_session_timeout
+## idle_session_timeout
 
 在检查中，关闭闲置时间超过此值的会话。默认值：30秒。
 
-#### min_idle_session
+## min_idle_session
 
 在检查中，至少前 `n` 个空闲会话保持打开状态。默认值：`n`=0
 
-#### client_metadata
+## client_metadata
 
 !!! question "自 sing-box 1.13.16 起"
 
 参阅 [AnyTLS 客户端元数据](/zh/manual/misc/anytls-client-metadata/)。
 
-#### tls
+## tls
 
-==必填==
+**必填。**TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
 
-TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
-
-### 拨号字段
+## 拨号字段
 
 参阅 [拨号字段](/zh/configuration/shared/dial/)。

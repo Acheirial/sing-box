@@ -2,6 +2,8 @@
 icon: material/note-remove
 ---
 
+# Legacy
+
 !!! failure "Removed in sing-box 1.14.0"
 
     Legacy DNS servers are deprecated in sing-box 1.12.0 and removed in sing-box 1.14.0, check [Migration](/migration/#migrate-to-new-dns-server-formats).
@@ -10,9 +12,7 @@ icon: material/note-remove
 
     :material-plus: [client_subnet](#client_subnet)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - tag: ""
@@ -24,17 +24,13 @@ dns:
       client_subnet: ""
 ```
 
-### Fields
-
-#### tag
+## tag
 
 The tag of the dns server.
 
-#### address
+## address
 
-==Required==
-
-The address of the dns server.
+**Required.** The address of the dns server.
 
 | Protocol                             | Format                        |
 |--------------------------------------|-------------------------------|
@@ -66,13 +62,11 @@ The address of the dns server.
 | `not_implemented` | `Not implemented`     |
 | `refused`         | `Query refused`       |
 
-#### address_resolver
+## address_resolver
 
-==Required if address contains domain==
+**Required if address contains domain.** Tag of a another server to resolve the domain name in the address.
 
-Tag of a another server to resolve the domain name in the address.
-
-#### address_strategy
+## address_strategy
 
 The domain strategy for resolving the domain name in the address.
 
@@ -80,7 +74,7 @@ One of `prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`.
 
 `dns.strategy` will be used if empty.
 
-#### strategy
+## strategy
 
 Default domain strategy for resolving the domain names.
 
@@ -88,13 +82,13 @@ One of `prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`.
 
 Take no effect if overridden by other settings.
 
-#### detour
+## detour
 
 Tag of an outbound for connecting to the dns server.
 
 Default outbound will be used if empty.
 
-#### client_subnet
+## client_subnet
 
 !!! question "Since sing-box 1.9.0"
 

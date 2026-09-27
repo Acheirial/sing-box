@@ -2,17 +2,15 @@
 icon: material/new-box
 ---
 
+# Certificate
+
 !!! question "Since sing-box 1.12.0"
 
 !!! quote "Changes in sing-box 1.13.0"
 
     :material-plus: [Chrome Root Store](#store)
 
-# Certificate
-
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 store: ""
 certificate: []
 certificate_path: []
@@ -23,9 +21,7 @@ certificate_directory_path: []
 
     You can use a single value instead of an array when the content is only one item
 
-### Fields
-
-#### store
+## store
 
 The default X509 trusted CA certificate list.
 
@@ -36,11 +32,11 @@ The default X509 trusted CA certificate list.
 | `chrome`           | [Chrome Root Store](https://g.co/chrome/root-policy) with China CA certificates removed                        |
 | `none`             | Empty list                                                                                                     |
 
-#### certificate
+## certificate
 
 The certificate line array to trust, in PEM format.
 
-#### certificate_path
+## certificate_path
 
 !!! note ""
 
@@ -48,7 +44,7 @@ The certificate line array to trust, in PEM format.
 
 The paths to certificates to trust, in PEM format.
 
-#### certificate_directory_path
+## certificate_directory_path
 
 !!! note ""
 

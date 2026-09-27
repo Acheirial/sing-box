@@ -1,3 +1,5 @@
+# Cache File
+
 !!! question "Since sing-box 1.8.0"
 
 !!! quote "Changes in sing-box 1.14.0"
@@ -10,9 +12,7 @@
     :material-plus: [store_rdrc](#store_rdrc)  
     :material-plus: [rdrc_timeout](#rdrc_timeout)
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 enabled: true
 path: ""
 cache_id: ""
@@ -22,29 +22,27 @@ rdrc_timeout: ""
 store_dns: false
 ```
 
-### Fields
-
-#### enabled
+## enabled
 
 Enable cache file.
 
-#### path
+## path
 
 Path to the cache file.
 
 `cache.db` will be used if empty.
 
-#### cache_id
+## cache_id
 
 Identifier in the cache file
 
 If not empty, configuration specified data will use a separate store keyed by it.
 
-#### store_fakeip
+## store_fakeip
 
 Store fakeip in the cache file
 
-#### store_rdrc
+## store_rdrc
 
 !!! failure "Deprecated in sing-box 1.14.0"
 
@@ -55,13 +53,13 @@ Store rejected DNS response cache in the cache file
 The check results of [Legacy Address Filter Fields](/configuration/dns/rule/#legacy-address-filter-fields)
 will be cached until expiration.
 
-#### rdrc_timeout
+## rdrc_timeout
 
 Timeout of rejected DNS response cache.
 
 `7d` is used by default.
 
-#### store_dns
+## store_dns
 
 !!! question "Since sing-box 1.14.0"
 

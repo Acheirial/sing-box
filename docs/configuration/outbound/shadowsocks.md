@@ -1,6 +1,6 @@
-### Structure
+# Shadowsocks
 
-```yaml
+```{.yaml linenums="1"}
 type: shadowsocks
 tag: ss-out
 
@@ -15,27 +15,20 @@ udp_over_tcp: false  # or {}
 multiplex: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
+## method
 
-==Required==
-
-The server port.
-
-#### method
-
-==Required==
-
-Encryption methods:
+**Required.** Encryption methods:
 
 * `2022-blake3-aes-128-gcm`
 * `2022-blake3-aes-256-gcm`
@@ -59,23 +52,21 @@ Legacy encryption methods:
 * `chacha20-ietf`
 * `xchacha20`
 
-#### password
+## password
 
-==Required==
+**Required.** The shadowsocks password.
 
-The shadowsocks password.
-
-#### plugin
+## plugin
 
 Shadowsocks SIP003 plugin, implemented in internal.
 
 Only `obfs-local` and `v2ray-plugin` are supported.
 
-#### plugin_opts
+## plugin_opts
 
 Shadowsocks SIP003 plugin options.
 
-#### network
+## network
 
 Enabled network
 
@@ -83,7 +74,7 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
-#### udp_over_tcp
+## udp_over_tcp
 
 UDP over TCP configuration.
 
@@ -91,10 +82,10 @@ See [UDP Over TCP](/configuration/shared/udp-over-tcp/) for details.
 
 Conflict with `multiplex`.
 
-#### multiplex
+## multiplex
 
 See [Multiplex](/configuration/shared/multiplex#outbound) for details.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

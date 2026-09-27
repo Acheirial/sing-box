@@ -2,6 +2,8 @@
 icon: material/note-remove
 ---
 
+# Legacy
+
 !!! failure "已在 sing-box 1.14.0 移除"
 
     旧的 DNS 服务器配置已在 sing-box 1.12.0 废弃且已在 sing-box 1.14.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移到新的-dns-服务器格式)。
@@ -10,9 +12,7 @@ icon: material/note-remove
 
     :material-plus: [client_subnet](#client_subnet)
 
-### 结构
-
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - tag: ""
@@ -24,17 +24,13 @@ dns:
       client_subnet: ""
 ```
 
-### 字段
-
-#### tag
+## tag
 
 DNS 服务器的标签。
 
-#### address
+## address
 
-==必填==
-
-DNS 服务器的地址。
+**必填。**DNS 服务器的地址。
 
 | 协议                                   | 格式                           |
 |--------------------------------------|------------------------------|
@@ -66,13 +62,11 @@ DNS 服务器的地址。
 | `not_implemented` | `功能未实现`  |
 | `refused`         | `请求被拒绝`  |
 
-#### address_resolver
+## address_resolver
 
-==如果服务器地址包括域名则必须==
+**如果服务器地址包括域名则必须。**用于解析本 DNS 服务器的域名的另一个 DNS 服务器的标签。
 
-用于解析本 DNS 服务器的域名的另一个 DNS 服务器的标签。
-
-#### address_strategy
+## address_strategy
 
 用于解析本 DNS 服务器的域名的策略。
 
@@ -80,7 +74,7 @@ DNS 服务器的地址。
 
 默认使用 `dns.strategy`。
 
-#### strategy
+## strategy
 
 默认解析策略。
 
@@ -88,13 +82,13 @@ DNS 服务器的地址。
 
 如果被其他设置覆盖则不生效。
 
-#### detour
+## detour
 
 用于连接到 DNS 服务器的出站的标签。
 
 如果为空，将使用默认出站。
 
-#### client_subnet
+## client_subnet
 
 !!! question "自 sing-box 1.9.0 起"
 

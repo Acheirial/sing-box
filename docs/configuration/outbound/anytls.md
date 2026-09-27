@@ -2,11 +2,11 @@
 icon: material/new-box
 ---
 
+# AnyTLS
+
 !!! question "Since sing-box 1.12.0"
 
-### Structure
-
-```yaml
+```{.yaml linenums="1"}
 type: anytls
 tag: anytls-out
 
@@ -20,52 +20,43 @@ client_metadata: ""
 tls: {}
 
 # ... Dial Fields
+
 ```
 
-### Fields
+## server
 
-#### server
+**Required.** The server address.
 
-==Required==
+## server_port
 
-The server address.
+**Required.** The server port.
 
-#### server_port
+## password
 
-==Required==
+**Required.** The AnyTLS password.
 
-The server port.
-
-#### password
-
-==Required==
-
-The AnyTLS password.
-
-#### idle_session_check_interval
+## idle_session_check_interval
 
 Interval checking for idle sessions. Default: 30s.
 
-#### idle_session_timeout
+## idle_session_timeout
 
 In the check, close sessions that have been idle for longer than this. Default: 30s.
 
-#### min_idle_session
+## min_idle_session
 
 In the check, at least the first `n` idle sessions are kept open. Default value: `n`=0
 
-#### client_metadata
+## client_metadata
 
 !!! question "Since sing-box 1.13.16"
 
 Check [AnyTLS client metadata](/manual/misc/anytls-client-metadata/).
 
-#### tls
+## tls
 
-==Required==
+**Required.** TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
-TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
-
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details.

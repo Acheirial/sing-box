@@ -2,6 +2,8 @@
 icon: material/new-box
 ---
 
+# Source Format
+
 !!! quote "Changes in sing-box 1.14.0"
 
     :material-plus: version `5`
@@ -20,8 +22,6 @@ icon: material/new-box
 
 !!! question "Since sing-box 1.8.0"
 
-### Structure
-
 ```json
 {
   "version": 3,
@@ -29,17 +29,13 @@ icon: material/new-box
 }
 ```
 
-### Compile
+## Compile
 
 Use `sing-box rule-set compile [--output <file-name>.srs] <file-name>.json` to compile source to binary rule-set.
 
-### Fields
+## version
 
-#### version
-
-==Required==
-
-Version of rule-set.
+**Required.** Version of rule-set.
 
 * 1: sing-box 1.8.0: Initial rule-set version.
 * 2: sing-box 1.10.0: Optimized memory usages of `domain_suffix` rules in binary rule-sets.
@@ -47,8 +43,6 @@ Version of rule-set.
 * 4: sing-box 1.13.0: Added `network_interface_address` and `default_interface_address` rule items.
 * 5: sing-box 1.14.0: Added `package_name_regex` rule item.
 
-#### rules
+## rules
 
-==Required==
-
-List of [Headless Rule](../headless-rule/).
+**Required.** List of [Headless Rule](../headless-rule/).

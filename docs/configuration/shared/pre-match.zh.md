@@ -15,21 +15,21 @@ icon: material/new-box
 
 预匹配是在连接建立之前运行的规则匹配。
 
-### 工作原理
+## 工作原理
 
 当 L3 入站（TUN、WireGuard 或 Tailscale）收到连接请求时，连接尚未建立：对于 TCP 连接，无连接数据可用；对于 UDP 连接，仅首个数据包可用。在此阶段，sing-box 在预匹配模式下运行路由规则。
 
 当规则匹配到需要比当前可用数据更多连接数据的动作时，预匹配将在该规则处停止。
 
-### 支持的动作
+## 支持的动作
 
-#### reject
+### reject
 
 以 TCP RST / ICMP 不可达拒绝。
 
 详情参阅 [reject](/zh/configuration/route/rule_action/#reject)。
 
-#### route
+### route
 
 !!! quote "sing-box 1.14.0 中的更改"
 
@@ -48,7 +48,7 @@ FakeIP 目标需要在预匹配中先执行 `resolve` 动作，否则连接将�
 
 详情参阅 [route](/zh/configuration/route/rule_action/#route)。
 
-#### sniff
+### sniff
 
 !!! question "自 sing-box 1.14.0 起"
 
@@ -60,7 +60,7 @@ FakeIP 目标需要在预匹配中先执行 `resolve` 动作，否则连接将�
 
 详情参阅 [sniff](/zh/configuration/route/rule_action/#sniff)。
 
-#### bypass
+### bypass
 
 !!! question "自 sing-box 1.13.0 起"
 

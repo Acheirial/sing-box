@@ -2,13 +2,11 @@
 icon: material/new-box
 ---
 
-!!! question "Since sing-box 1.12.0"
-
 # DHCP
 
-### Structure
+!!! question "Since sing-box 1.12.0"
 
-```yaml
+```{.yaml linenums="1"}
 dns:
   servers:
     - type: dhcp
@@ -19,14 +17,12 @@ dns:
       # Dial Fields
 ```
 
-### Fields
-
-#### interface
+## interface
 
 Interface name to listen on. 
 
 Tge default interface will be used by default.
 
-### Dial Fields
+## Dial Fields
 
 See [Dial Fields](/configuration/shared/dial/) for details. 
