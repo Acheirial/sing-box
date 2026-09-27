@@ -68,3 +68,21 @@ JSON configuration files are also supported and share the identical schema and
 validation rules with YAML.
 
 Rule-set files and other external resources remain JSON or their respective binary formats.
+
+## Configuration Compatibility
+
+YAML and JSON are equivalent configuration formats: both are validated against
+the same schema, and the `check`, `format` and `merge` commands accept either.
+
+Unknown fields are rejected. A configuration containing a field that is not
+declared in the schema fails to load rather than having the field silently
+ignored.
+
+Deprecated options keep working until their scheduled removal. sing-box reports
+every deprecated option it encounters at startup, with the version that
+deprecated it, the version that will remove it, and a link to the migration
+recipe where one exists. Impending deprecations require setting the documented
+`ENABLE_DEPRECATED_<NAME>` environment variable to continue.
+
+Migration recipes are collected in [Migration](/migration/), and the removal
+schedule in the [Deprecated Feature List](/deprecated/).
