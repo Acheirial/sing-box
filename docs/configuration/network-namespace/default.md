@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Default
-
-!!! question "Since sing-box 1.14.0"
 
 Attach to an existing network namespace.
 

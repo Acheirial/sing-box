@@ -1,18 +1,10 @@
----
-icon: material/new-box
----
-
 # Tailscale
-
-!!! question "自 sing-box 1.14.0 起"
-
 
 ```{.yaml linenums="1"}
 type: tailscale
 tag: ts-cert
 endpoint: ts-ep
 ```
-
 
 ## endpoint
 

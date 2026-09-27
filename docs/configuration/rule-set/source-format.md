@@ -1,26 +1,4 @@
----
-icon: material/new-box
----
-
 # Source Format
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: version `5`
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: version `4`
-
-!!! quote "Changes in sing-box 1.11.0"
-
-    :material-plus: version `3`
-
-!!! quote "Changes in sing-box 1.10.0"
-
-    :material-plus: version `2`
-
-!!! question "Since sing-box 1.8.0"
 
 ```json
 {

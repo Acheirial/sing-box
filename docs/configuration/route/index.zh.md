@@ -1,38 +1,7 @@
----
-icon: material/alert-decagram
----
-
 # 路由
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [default_http_client](#default_http_client)  
-    :material-plus: [find_neighbor](#find_neighbor)  
-    :material-plus: [dhcp_lease_files](#dhcp_lease_files)
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [default_domain_resolver](#default_domain_resolver)  
-    :material-note-remove: [geoip](#geoip)  
-    :material-note-remove: [geosite](#geosite)
-
-!!! quote "sing-box 1.11.0 中的更改"
-
-    :material-plus: [default_network_strategy](#default_network_strategy)  
-    :material-plus: [default_network_type](#default_network_type)  
-    :material-plus: [default_fallback_network_type](#default_fallback_network_type)  
-    :material-plus: [default_fallback_delay](#default_fallback_delay)
-
-!!! quote "sing-box 1.8.0 中的更改"
-
-    :material-plus: [rule_set](#rule_set)  
-    :material-delete-clock: [geoip](#geoip)  
-    :material-delete-clock: [geosite](#geosite)
 
 ```{.yaml linenums="1"}
 route:
-  geoip: {}
-  geosite: {}
   rules: []
   rule_set: []
   final: ""
@@ -44,26 +13,27 @@ route:
   find_neighbor: false
   dhcp_lease_files: []
   default_http_client: ""
+  default_domain_resolver: ""  # or {}
   default_network_strategy: ""
+  default_network_type: []
+  default_fallback_network_type: []
   default_fallback_delay: ""
+
+  # Removed
+
+  geoip: {}
+  geosite: {}
 ```
 
 !!! note ""
 
     当内容只有一项时，可以直接使用单个值，无需数组
 
-| 键         | 格式                    |
-|-----------|-----------------------|
-| `geoip`   | [GeoIP](./geoip/)     |
-| `geosite` | [Geosite](./geosite/) |
-
 ## rule
 
 一组 [路由规则](./rule/)    。
 
 ## rule_set
-
-!!! question "自 sing-box 1.8.0 起"
 
 一组 [规则集](/zh/configuration/rule-set/)。
 
@@ -119,8 +89,6 @@ route:
 
 ## find_neighbor
 
-!!! question "自 sing-box 1.14.0 起"
-
 !!! quote ""
 
     仅支持 Linux 和 macOS。
@@ -130,8 +98,6 @@ route:
 参阅 [邻居解析](/configuration/shared/neighbor/) 了解设置方法。
 
 ## dhcp_lease_files
-
-!!! question "自 sing-box 1.14.0 起"
 
 !!! quote ""
 
@@ -143,23 +109,17 @@ route:
 
 ## default_http_client
 
-!!! question "自 sing-box 1.14.0 起"
-
 远程规则集使用的默认 [HTTP 客户端](/zh/configuration/shared/http-client/) 的标签。
 
 如果为空且 `http_clients` 已定义，将使用第一个 HTTP 客户端。
 
 ## default_domain_resolver
 
-!!! question "自 sing-box 1.12.0 起"
-
 详情参阅 [拨号字段](/zh/configuration/shared/dial/#domain_resolver)。
 
 可以被 `outbound.domain_resolver` 覆盖。
 
 ## network_strategy
-
-!!! question "自 sing-box 1.11.0 起"
 
 详情参阅 [拨号字段](/zh/configuration/shared/dial/#network_strategy)。
 
@@ -171,18 +131,12 @@ route:
 
 ## default_network_type
 
-!!! question "自 sing-box 1.11.0 起"
-
-详情参阅 [拨号字段](/zh/configuration/shared/dial/#default_network_type)。
+详情参阅 [拨号字段](/zh/configuration/shared/dial/#network_type)。
 
 ## default_fallback_network_type
 
-!!! question "自 sing-box 1.11.0 起"
-
-详情参阅 [拨号字段](/zh/configuration/shared/dial/#default_fallback_network_type)。
+详情参阅 [拨号字段](/zh/configuration/shared/dial/#fallback_network_type)。
 
 ## default_fallback_delay
-
-!!! question "自 sing-box 1.11.0 起"
 
 详情参阅 [拨号字段](/zh/configuration/shared/dial/#fallback_delay)。

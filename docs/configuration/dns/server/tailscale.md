@@ -1,14 +1,4 @@
----
-icon: material/new-box
----
-
 # Tailscale
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [accept_search_domain](#accept_search_domain)
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 dns:
@@ -32,8 +22,6 @@ Indicates whether default DNS resolvers should be accepted for fallback queries 
 if not enabled, `NXDOMAIN` will be returned for non-Tailscale domain queries.
 
 ## accept_search_domain
-
-!!! question "Since sing-box 1.14.0"
 
 When enabled, single-label queries (e.g. `my-device`) are retried against each Tailscale search domain until one resolves.
 

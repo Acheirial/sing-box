@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # DNS over HTTPS (DoH)
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 dns:

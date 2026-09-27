@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Hysteria Realm
-
-!!! question "Since sing-box 1.14.0"
 
 Hysteria Realm is a rendezvous service for Hysteria2 NAT traversal.
 

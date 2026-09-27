@@ -6,7 +6,6 @@
 
 UDP over TCP 协议用于在 TCP 中传输 UDP 数据包。
 
-
 ```{.yaml linenums="1"}
 enabled: true
 version: 2
@@ -15,7 +14,6 @@ version: 2
 !!! info ""
 
     当不指定版本时，结构可以用布尔值替换。
-
 
 ## enabled
 

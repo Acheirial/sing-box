@@ -1,14 +1,4 @@
----
-icon: material/new-box
----
-
 # Tailscale
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [accept_search_domain](#accept_search_domain)
-
-!!! question "自 sing-box 1.12.0 起"
 
 ```{.yaml linenums="1"}
 dns:
@@ -32,8 +22,6 @@ dns:
 如果未启用，对于非 Tailscale 域名查询将返回 `NXDOMAIN`。
 
 ## accept_search_domain
-
-!!! question "自 sing-box 1.14.0 起"
 
 启用后，单标签查询（例如 `my-device`）将依次附加 Tailscale 搜索域进行重试，直到其中一个解析成功。
 

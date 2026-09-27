@@ -1,33 +1,4 @@
----
-icon: material/new-box
----
-
 # Dial Fields
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-alert: [domain_resolver](#domain_resolver)  
-    :material-alert: [netns](#netns)
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [disable_tcp_keep_alive](#disable_tcp_keep_alive)  
-    :material-plus: [tcp_keep_alive](#tcp_keep_alive)  
-    :material-plus: [tcp_keep_alive_interval](#tcp_keep_alive_interval)  
-    :material-plus: [bind_address_no_port](#bind_address_no_port)
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-plus: [domain_resolver](#domain_resolver)  
-    :material-delete-clock: [domain_strategy](#domain_strategy)  
-    :material-plus: [netns](#netns)
-
-!!! quote "Changes in sing-box 1.11.0"
-
-    :material-plus: [network_strategy](#network_strategy)  
-    :material-alert: [fallback_delay](#fallback_delay)  
-    :material-alert: [network_type](#network_type)  
-    :material-alert: [fallback_network_type](#fallback_network_type)
 
 ```{.yaml linenums="1"}
 detour: ""
@@ -51,10 +22,6 @@ network_strategy: ""
 network_type: []
 fallback_network_type: []
 fallback_delay: ""
-
-# Deprecated
-
-domain_strategy: ""
 ```
 
 !!! note ""
@@ -81,8 +48,6 @@ The IPv6 address to bind to.
 
 ## bind_address_no_port
 
-!!! question "Since sing-box 1.13.0"
-
 !!! quote ""
 
     Only supported on Linux.
@@ -106,8 +71,6 @@ Integers (e.g. `1234`) and string hexadecimals (e.g. `"0x1234"`) are supported.
 Reuse listener address.
 
 ## netns
-
-!!! question "Since sing-box 1.12.0"
 
 !!! quote ""
 
@@ -141,23 +104,15 @@ Enable TCP Multi Path.
 
 ## disable_tcp_keep_alive
 
-!!! question "Since sing-box 1.13.0"
-
 Disable TCP keep alive.
 
 ## tcp_keep_alive
-
-!!! question "Since sing-box 1.13.0"
-
-    Default value changed from `10m` to `5m`.
 
 TCP keep alive initial period.
 
 `5m` will be used by default.
 
 ## tcp_keep_alive_interval
-
-!!! question "Since sing-box 1.13.0"
 
 TCP keep alive interval.
 
@@ -168,10 +123,6 @@ TCP keep alive interval.
 Enable UDP fragmentation.
 
 ## domain_resolver
-
-!!! warning ""
-
-    `outbound` DNS rule items are deprecated and will be removed in sing-box 1.14.0, so this item will be required for outbound/endpoints using domain name in server address since sing-box 1.14.0.
 
 !!! info ""
 
@@ -189,8 +140,6 @@ Setting this option directly to a string is equivalent to setting `server` of th
 | others             | Domain in server address |
 
 ## network_strategy
-
-!!! question "Since sing-box 1.11.0"
 
 !!! quote ""
 
@@ -212,8 +161,6 @@ Conflicts with `bind_interface`, `inet4_bind_address` and `inet6_bind_address`.
 
 ## network_type
 
-!!! question "Since sing-box 1.11.0"
-
 !!! quote ""
 
     Only supported in graphical clients on Android and Apple platforms with `auto_detect_interface` enabled.
@@ -227,8 +174,6 @@ Device's default network is used by default.
 
 ## fallback_network_type
 
-!!! question "Since sing-box 1.11.0"
-
 !!! quote ""
 
     Only supported in graphical clients on Android and Apple platforms with `auto_detect_interface` enabled.
@@ -239,35 +184,15 @@ All other networks expect preferred are used by default.
 
 ## fallback_delay
 
-!!! question "Since sing-box 1.11.0"
-
 !!! quote ""
 
     Only supported in graphical clients on Android and Apple platforms with `auto_detect_interface` enabled.
 
 The length of time to wait before spawning a RFC 6555 Fast Fallback connection.
 
-For `domain_strategy`, is the amount of time to wait for connection to succeed before assuming
-that IPv4/IPv6 is misconfigured and falling back to other type of addresses.
-
 For `network_strategy`, is the amount of time to wait for connection to succeed before falling
 back to other interfaces.
 
-Only take effect when `domain_strategy` or `network_strategy` is set.
+Only take effect when `network_strategy` is set.
 
 `300ms` is used by default.
-
-## domain_strategy
-
-!!! failure "Deprecated in sing-box 1.12.0"
-
-    `domain_strategy` is deprecated and will be removed in sing-box 1.14.0, check [Migration](/migration/#migrate-outbound-domain-strategy-option-to-domain-resolver).
-
-Available values: `prefer_ipv4`, `prefer_ipv6`, `ipv4_only`, `ipv6_only`.
-
-If set, the requested domain name will be resolved to IP before connect.
-
-| Outbound | Effected domains         | Fallback Value                            |
-|----------|--------------------------|-------------------------------------------|
-| `direct` | Domain in request        | Take `inbound.domain_strategy` if not set | 
-| others   | Domain in server address | /                                         |

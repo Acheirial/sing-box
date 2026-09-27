@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # USB/IP Server
-
-!!! question "自 sing-box 1.14.0 起"
 
 USB/IP Server 服务通过 [USB/IP](https://usbip.sourceforge.net/) 导出本地 USB 设备，供 [USB/IP Client](/zh/configuration/service/usbip-client/) 或标准 USB/IP 客户端导入。
 

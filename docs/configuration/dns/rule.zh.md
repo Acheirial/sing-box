@@ -1,69 +1,4 @@
----
-icon: material/alert-decagram
----
-
 # DNS 规则
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [source_mac_address](#source_mac_address)  
-    :material-plus: [source_hostname](#source_hostname)  
-    :material-plus: [preferred_by](#preferred_by)  
-    :material-plus: [match_response](#match_response)  
-    :material-delete-clock: [rule_set_ip_cidr_accept_empty](#rule_set_ip_cidr_accept_empty)  
-    :material-plus: [response_rcode](#response_rcode)  
-    :material-plus: [response_answer](#response_answer)  
-    :material-plus: [response_ns](#response_ns)  
-    :material-plus: [response_extra](#response_extra)  
-    :material-plus: [package_name_regex](#package_name_regex)  
-    :material-plus: [query_client_subnet](#query_client_subnet)  
-    :material-plus: [query_dnssec](#query_dnssec)  
-    :material-alert: [ip_version](#ip_version)  
-    :material-alert: [query_type](#query_type)
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [interface_address](#interface_address)  
-    :material-plus: [network_interface_address](#network_interface_address)  
-    :material-plus: [default_interface_address](#default_interface_address)
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [ip_accept_any](#ip_accept_any)  
-    :material-delete-clock: [outbound](#outbound)
-
-!!! quote "sing-box 1.11.0 中的更改"
-
-    :material-plus: [action](#action)  
-    :material-alert: [server](#server)  
-    :material-alert: [disable_cache](#disable_cache)  
-    :material-alert: [rewrite_ttl](#rewrite_ttl)  
-    :material-alert: [client_subnet](#client_subnet)  
-    :material-plus: [network_type](#network_type)  
-    :material-plus: [network_is_expensive](#network_is_expensive)  
-    :material-plus: [network_is_constrained](#network_is_constrained)
-
-!!! quote "sing-box 1.10.0 中的更改"
-
-    :material-delete-clock: [rule_set_ipcidr_match_source](#rule_set_ipcidr_match_source)  
-    :material-plus: [rule_set_ip_cidr_match_source](#rule_set_ip_cidr_match_source)  
-    :material-plus: [rule_set_ip_cidr_accept_empty](#rule_set_ip_cidr_accept_empty)  
-    :material-plus: [process_path_regex](#process_path_regex)
-
-!!! quote "sing-box 1.9.0 中的更改"
-
-    :material-plus: [geoip](#geoip)  
-    :material-plus: [ip_cidr](#ip_cidr)  
-    :material-plus: [ip_is_private](#ip_is_private)  
-    :material-plus: [client_subnet](#client_subnet)  
-    :material-plus: [rule_set_ipcidr_match_source](#rule_set_ipcidr_match_source)
-
-!!! quote "sing-box 1.8.0 中的更改"
-
-    :material-plus: [rule_set](#rule_set)  
-    :material-plus: [source_ip_is_private](#source_ip_is_private)  
-    :material-delete-clock: [geoip](#geoip)  
-    :material-delete-clock: [geosite](#geosite)
 
 ```{.yaml linenums="1"}
 dns:
@@ -171,21 +106,8 @@ dns:
       response_ns: []
       response_extra: []
       invert: false
-      outbound:
-        - direct
       action: route
       server: local
-
-      # 已弃用
-
-      rule_set_ip_cidr_accept_empty: false
-      rule_set_ipcidr_match_source: false
-      geosite:
-        - cn
-      source_geoip:
-        - private
-      geoip:
-        - cn
     - type: logical
       mode: and
       rules: []
@@ -216,41 +138,15 @@ dns:
 
 ### ip_version
 
-!!! quote "sing-box 1.14.0 中的更改"
-
-    此字段现在也会在 DNS 规则被未指定具体 DNS 服务器的内部域名解析匹配时生效，
-    例如未设置 `server` 的 [`resolve`](../../route/rule_action/#resolve) 路由规则动作。参阅
-    [迁移指南](/zh/migration/#dns-规则中的-ip_version-和-query_type-行为更改)。
-
-    在 DNS 规则中设置此字段后，该 DNS 规则在同一 DNS 配置中不能与
-    旧版地址筛选字段 (DNS 规则)、旧版 DNS 规则动作 `strategy` 选项，
-    或旧版 `rule_set_ip_cidr_accept_empty` DNS 规则项共存。如需与
-    基于地址的筛选组合，请使用 [`evaluate`](../rule_action/#evaluate) 动作和
-    [`match_response`](#match_response)。
-
 4 (A DNS 查询) 或 6 (AAAA DNS 查询)。
 
 默认不限制。
 
 ### query_type
 
-!!! quote "sing-box 1.14.0 中的更改"
-
-    此字段现在也会在 DNS 规则被未指定具体 DNS 服务器的内部域名解析匹配时生效，
-    例如未设置 `server` 的 [`resolve`](../../route/rule_action/#resolve) 路由规则动作。参阅
-    [迁移指南](/zh/migration/#dns-规则中的-ip_version-和-query_type-行为更改)。
-
-    在 DNS 规则中设置此字段后，该 DNS 规则在同一 DNS 配置中不能与
-    旧版地址筛选字段 (DNS 规则)、旧版 DNS 规则动作 `strategy` 选项，
-    或旧版 `rule_set_ip_cidr_accept_empty` DNS 规则项共存。如需与
-    基于地址的筛选组合，请使用 [`evaluate`](../rule_action/#evaluate) 动作和
-    [`match_response`](#match_response)。
-
 DNS 查询类型。值可以为整数或者类型名称字符串。
 
 ### query_client_subnet
-
-!!! question "自 sing-box 1.14.0 起"
 
 匹配查询中的 `edns0-subnet` OPT 附加记录（EDNS 客户端子网）。
 
@@ -259,8 +155,6 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 如果值是 IP 地址而不是前缀，则会自动附加 `/32` 或 `/128`。
 
 ### query_dnssec
-
-!!! question "自 sing-box 1.14.0 起"
 
 匹配设置了 DNSSEC OK (`DO`) 位的查询。
 
@@ -294,17 +188,9 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 ### geosite
 
-!!! failure "已在 sing-box 1.12.0 中被移除"
-
-    GeoSite 已在 sing-box 1.8.0 废弃且在 sing-box 1.12.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移-geosite-到规则集)。
-
 匹配 Geosite。
 
 ### source_geoip
-
-!!! failure "已在 sing-box 1.12.0 中被移除"
-
-    GeoIP 已在 sing-box 1.8.0 废弃且在 sing-box 1.12.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移-geoip-到规则集)。
 
 匹配源 GeoIP。
 
@@ -313,8 +199,6 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 匹配源 IP CIDR。
 
 ### source_ip_is_private
-
-!!! question "自 sing-box 1.8.0 起"
 
 匹配非公开源 IP。
 
@@ -352,8 +236,6 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 ### process_path_regex
 
-!!! question "自 sing-box 1.10.0 起"
-
 !!! quote ""
 
     仅支持 Linux、Windows 和 macOS.
@@ -365,8 +247,6 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 匹配 Android 应用包名。
 
 ### package_name_regex
-
-!!! question "自 sing-box 1.14.0 起"
 
 使用正则表达式匹配 Android 应用包名。
 
@@ -392,8 +272,6 @@ DNS 查询类型。值可以为整数或者类型名称字符串。
 
 ### network_type
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Android 与 Apple 平台图形客户端中支持。
@@ -404,8 +282,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### network_is_expensive
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Android 与 Apple 平台图形客户端中支持。
@@ -415,8 +291,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### network_is_constrained
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Apple 平台图形客户端中支持。
@@ -424,8 +298,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 匹配如果网络在低数据模式下。
 
 ### interface_address
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 
@@ -435,8 +307,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### network_interface_address
 
-!!! question "自 sing-box 1.13.0 起"
-
 !!! quote ""
 
     仅在 Android 与 Apple 平台图形客户端中支持。
@@ -444,8 +314,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 匹配网络接口（可用值同 `network_type`）地址。
 
 ### default_interface_address
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 
@@ -455,8 +323,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### source_mac_address
 
-!!! question "自 sing-box 1.14.0 起"
-
 !!! quote ""
 
     仅支持 Linux、macOS，或在 Android 和 macOS 图形客户端中支持。参阅 [邻居解析](/configuration/shared/neighbor/) 了解设置方法。
@@ -465,8 +331,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### source_hostname
 
-!!! question "自 sing-box 1.14.0 起"
-
 !!! quote ""
 
     仅支持 Linux、macOS，或在 Android 和 macOS 图形客户端中支持。参阅 [邻居解析](/configuration/shared/neighbor/) 了解设置方法。
@@ -474,8 +338,6 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 匹配源设备从 DHCP 租约获取的主机名。
 
 ### preferred_by
-
-!!! question "自 sing-box 1.14.0 起"
 
 匹配指定 DNS 服务器的首选域名。
 
@@ -532,29 +394,13 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### rule_set
 
-!!! question "自 sing-box 1.8.0 起"
-
 匹配[规则集](/zh/configuration/route/#rule_set)。
 
-### rule_set_ipcidr_match_source
-
-!!! question "自 sing-box 1.9.0 起"
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `rule_set_ipcidr_match_source` 已重命名为 `rule_set_ip_cidr_match_source` 且将在 sing-box 1.11.0 中被移除。
-
-使规则集中的 `ip_cidr` 规则匹配源 IP。
-
 ### rule_set_ip_cidr_match_source
-
-!!! question "自 sing-box 1.10.0 起"
 
 使规则集中的 `ip_cidr` 规则匹配源 IP。
 
 ### match_response
-
-!!! question "自 sing-box 1.14.0 起"
 
 启用响应匹配。启用后，此规则将匹配已评估的响应（由前序 [`evaluate`](/zh/configuration/dns/rule_action/#evaluate) 动作设置），而不仅是匹配原始查询。
 
@@ -567,58 +413,25 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### ip_accept_any
 
-!!! question "自 sing-box 1.12.0 起"
-
 当 DNS 查询响应包含至少一个地址时匹配。
 
 ### invert
 
 反选匹配结果。
 
-### outbound
-
-!!! failure "已在 sing-box 1.12.0 废弃"
-
-    `outbound` 规则项已废弃且将在 sing-box 1.14.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移-outbound-dns-规则项到域解析选项)。
-
-匹配出站。
-
-`any` 可作为值用于匹配任意出站。
-
 ### action
 
-**必填。**参阅 [规则动作](../rule_action/)。
+**必填。**参阅 [规则动作](/zh/configuration/dns/rule_action/)。
 
 ### server
 
-!!! failure "已在 sing-box 1.11.0 废弃"
-
-    已移动到 [DNS 规则动作](../rule_action#route).
-
 ### disable_cache
-
-!!! failure "已在 sing-box 1.11.0 废弃"
-
-    已移动到 [DNS 规则动作](../rule_action#route).
 
 ### rewrite_ttl
 
-!!! failure "已在 sing-box 1.11.0 废弃"
-
-    已移动到 [DNS 规则动作](../rule_action#route).
-
 ### client_subnet
 
-!!! failure "已在 sing-box 1.11.0 废弃"
-
-    已移动到 [DNS 规则动作](../rule_action#route).
-
 ## 旧版地址筛选字段
-
-!!! failure "已在 sing-box 1.14.0 废弃"
-
-    旧版地址筛选字段已废弃，且将在 sing-box 1.16.0 中被移除，
-    参阅[迁移指南](/zh/migration/#迁移地址筛选字段到响应匹配)。
 
 仅对地址请求 (A/AAAA/HTTPS) 生效。 当查询结果与地址筛选规则项不匹配时，将跳过当前规则。
 
@@ -626,21 +439,7 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
     引用的规则集中的 `ip_cidr` 项也作为地址筛选字段生效。
 
-!!! note ""
-
-    启用 `experimental.cache_file.store_rdrc` 以缓存结果。
-
-### geoip
-
-!!! failure "已在 sing-box 1.12.0 中被移除"
-
-    GeoIP 已在 sing-box 1.8.0 废弃且在 sing-box 1.12.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移-geoip-到规则集)。
-
-与查询响应匹配 GeoIP。
-
 ### ip_cidr
-
-!!! question "自 sing-box 1.9.0 起"
 
 与查询响应匹配 IP CIDR。
 
@@ -649,27 +448,12 @@ Available values: `wifi`, `cellular`, `ethernet` and `other`.
 
 ### ip_is_private
 
-!!! question "自 sing-box 1.9.0 起"
-
 与查询响应匹配非公开 IP。
 
 作为旧版地址筛选字段已废弃。请改为配合 `match_response` 使用，
 参阅[迁移指南](/zh/migration/#迁移地址筛选字段到响应匹配)。
 
-### rule_set_ip_cidr_accept_empty
-
-!!! question "自 sing-box 1.10.0 起"
-
-!!! failure "已在 sing-box 1.14.0 废弃"
-
-    `rule_set_ip_cidr_accept_empty` 已废弃且将在 sing-box 1.16.0 中被移除，
-    参阅[迁移指南](/zh/migration/#迁移地址筛选字段到响应匹配)。
-
-使规则集中的 `ip_cidr` 规则接受空查询响应。
-
 ## 响应匹配字段
-
-!!! question "自 sing-box 1.14.0 起"
 
 已评估的响应的匹配字段。需要将 `match_response` 设为 `true`，
 且需要前序规则使用 [`evaluate`](/zh/configuration/dns/rule_action/#evaluate) 动作来填充响应。

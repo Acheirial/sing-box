@@ -1,47 +1,4 @@
----
-icon: material/new-box
----
-
 # 路由规则
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [source_mac_address](#source_mac_address)  
-    :material-plus: [source_hostname](#source_hostname)  
-    :material-plus: [package_name_regex](#package_name_regex)
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [interface_address](#interface_address)  
-    :material-plus: [network_interface_address](#network_interface_address)  
-    :material-plus: [default_interface_address](#default_interface_address)  
-    :material-plus: [preferred_by](#preferred_by)  
-    :material-alert: [network](#network)
-
-!!! quote "sing-box 1.11.0 中的更改"
-
-    :material-plus: [action](#action)  
-    :material-alert: [outbound](#outbound)  
-    :material-plus: [network_type](#network_type)  
-    :material-plus: [network_is_expensive](#network_is_expensive)  
-    :material-plus: [network_is_constrained](#network_is_constrained)
-
-!!! quote "sing-box 1.10.0 中的更改"
-
-    :material-plus: [client](#client)  
-    :material-delete-clock: [rule_set_ipcidr_match_source](#rule_set_ipcidr_match_source)  
-    :material-plus: [rule_set_ip_cidr_match_source](#rule_set_ip_cidr_match_source)  
-    :material-plus: [process_path_regex](#process_path_regex)
-
-!!! quote "sing-box 1.8.0 中的更改"
-
-    :material-plus: [rule_set](#rule_set)  
-    :material-plus: [rule_set_ipcidr_match_source](#rule_set_ipcidr_match_source)  
-    :material-plus: [source_ip_is_private](#source_ip_is_private)  
-    :material-plus: [ip_is_private](#ip_is_private)  
-    :material-delete-clock: [source_geoip](#source_geoip)  
-    :material-delete-clock: [geoip](#geoip)  
-    :material-delete-clock: [geosite](#geosite)
 
 ```{.yaml linenums="1"}
 route:
@@ -71,12 +28,6 @@ route:
         - test
       domain_regex:
         - ^stun\..+
-      geosite:
-        - cn
-      source_geoip:
-        - private
-      geoip:
-        - cn
       source_ip_cidr:
         - 10.0.0.0/24
       source_ip_is_private: false
@@ -143,8 +94,6 @@ route:
       rule_set:
         - geoip-cn
         - geosite-cn
-      # 已弃用
-      rule_set_ipcidr_match_source: false
       rule_set_ip_cidr_match_source: false
       invert: false
       action: route
@@ -166,9 +115,9 @@ route:
 !!! note ""
 
     默认规则使用以下匹配逻辑:  
-    (`domain` || `domain_suffix` || `domain_keyword` || `domain_regex` || `geosite` || `geoip` || `ip_cidr` || `ip_is_private`) &&  
+    (`domain` || `domain_suffix` || `domain_keyword` || `domain_regex` || `ip_cidr` || `ip_is_private`) &&  
     (`port` || `port_range`) &&  
-    (`source_geoip` || `source_ip_cidr` || `source_ip_is_private`) &&  
+    (`source_ip_cidr` || `source_ip_is_private`) &&  
     (`source_port` || `source_port_range`) &&  
     `其他字段`
 
@@ -194,17 +143,9 @@ route:
 
 ### client
 
-!!! question "自 sing-box 1.10.0 起"
-
 探测到的客户端类型, 参阅 [协议探测](/zh/configuration/route/sniff/)。
 
 ### network
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    自 sing-box 1.13.0 起，您可以通过新的 `icmp` 网络匹配 ICMP 回显（ping）请求。
-
-    此类流量源自 `TUN`、`WireGuard` 和 `Tailscale` 入站，并可路由至 `Direct`、`WireGuard` 和 `Tailscale` 出站。
 
 匹配网络类型。
 
@@ -226,37 +167,11 @@ route:
 
 匹配域名正则表达式。
 
-### geosite
-
-!!! failure "已在 sing-box 1.8.0 废弃"
-
-    Geosite 已废弃且可能在不久的将来移除，参阅 [迁移指南](/zh/migration/#迁移-geosite-到规则集)。
-
-匹配 Geosite。
-
-### source_geoip
-
-!!! failure "已在 sing-box 1.8.0 废弃"
-
-    GeoIP 已废弃且可能在不久的将来移除，参阅 [迁移指南](/zh/migration/#迁移-geoip-到规则集)。
-
-匹配源 GeoIP。
-
-### geoip
-
-!!! failure "已在 sing-box 1.8.0 废弃"
-
-    GeoIP 已废弃且可能在不久的将来移除，参阅 [迁移指南](/zh/migration/#迁移-geoip-到规则集)。
-
-匹配 GeoIP。
-
 ### source_ip_cidr
 
 匹配源 IP CIDR。
 
 ### source_ip_is_private
-
-!!! question "自 sing-box 1.8.0 起"
 
 匹配非公开源 IP。
 
@@ -265,8 +180,6 @@ route:
 匹配 IP CIDR。
 
 ### ip_is_private
-
-!!! question "自 sing-box 1.8.0 起"
 
 匹配非公开 IP。
 
@@ -304,8 +217,6 @@ route:
 
 ### process_path_regex
 
-!!! question "自 sing-box 1.10.0 起"
-
 !!! quote ""
 
     仅支持 Linux、Windows 和 macOS.
@@ -317,8 +228,6 @@ route:
 匹配 Android 应用包名。
 
 ### package_name_regex
-
-!!! question "自 sing-box 1.14.0 起"
 
 使用正则表达式匹配 Android 应用包名。
 
@@ -344,8 +253,6 @@ route:
 
 ### network_type
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Android 与 Apple 平台图形客户端中支持。
@@ -356,8 +263,6 @@ route:
 
 ### network_is_expensive
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Android 与 Apple 平台图形客户端中支持。
@@ -367,8 +272,6 @@ route:
 
 ### network_is_constrained
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Apple 平台图形客户端中支持。
@@ -376,8 +279,6 @@ route:
 匹配如果网络在低数据模式下。
 
 ### interface_address
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 
@@ -387,8 +288,6 @@ route:
 
 ### network_interface_address
 
-!!! question "自 sing-box 1.13.0 起"
-
 !!! quote ""
 
     仅在 Android 与 Apple 平台图形客户端中支持。
@@ -396,8 +295,6 @@ route:
 匹配网络接口（可用值同 `network_type`）地址。
 
 ### default_interface_address
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 
@@ -418,8 +315,6 @@ route:
 参阅 [Wi-Fi 状态](/zh/configuration/shared/wifi-state/)。
 
 ### preferred_by
-
-!!! question "自 sing-box 1.13.0 起"
 
 匹配制定出站的首选路由。
 
@@ -457,8 +352,6 @@ route:
 
 ### source_mac_address
 
-!!! question "自 sing-box 1.14.0 起"
-
 !!! quote ""
 
     仅支持 Linux、macOS，或在 Android 和 macOS 图形客户端中支持。参阅 [邻居解析](/configuration/shared/neighbor/) 了解设置方法。
@@ -466,8 +359,6 @@ route:
 匹配源设备 MAC 地址。
 
 ### source_hostname
-
-!!! question "自 sing-box 1.14.0 起"
 
 !!! quote ""
 
@@ -477,23 +368,9 @@ route:
 
 ### rule_set
 
-!!! question "自 sing-box 1.8.0 起"
-
 匹配[规则集](/zh/configuration/route/#rule_set)。
 
-### rule_set_ipcidr_match_source
-
-!!! question "自 sing-box 1.8.0 起"
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `rule_set_ipcidr_match_source` 已重命名为 `rule_set_ip_cidr_match_source` 且将在 sing-box 1.11.0 中被移除。
-
-使规则集中的 `ip_cidr` 规则匹配源 IP。
-
 ### rule_set_ip_cidr_match_source
-
-!!! question "自 sing-box 1.10.0 起"
 
 使规则集中的 `ip_cidr` 规则匹配源 IP。
 
@@ -503,13 +380,9 @@ route:
 
 ### action
 
-**必填。**参阅 [规则动作](../rule_action/)。
+**必填。**参阅 [规则动作](/zh/configuration/route/rule_action/)。
 
 ### outbound
-
-!!! failure "已在 sing-box 1.11.0 废弃"
-
-    已移动到 [规则动作](../rule_action#route).
 
 ## 逻辑字段
 

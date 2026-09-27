@@ -1,18 +1,5 @@
 # Clash API
 
-!!! quote "sing-box 1.10.0 中的更改"
-
-    :material-plus: [access_control_allow_origin](#access_control_allow_origin)  
-    :material-plus: [access_control_allow_private_network](#access_control_allow_private_network)
-
-!!! quote "sing-box 1.8.0 中的更改"
-
-    :material-delete-alert: [store_mode](#store_mode)  
-    :material-delete-alert: [store_selected](#store_selected)  
-    :material-delete-alert: [store_fakeip](#store_fakeip)  
-    :material-delete-alert: [cache_file](#cache_file)  
-    :material-delete-alert: [cache_id](#cache_id)
-
 === "结构"
 
     ```{.yaml linenums="1"}
@@ -24,19 +11,9 @@
     default_mode: ""
     access_control_allow_origin: []
     access_control_allow_private_network: false
-
-    # Deprecated
-
-    store_mode: false
-    store_selected: false
-    store_fakeip: false
-    cache_file: ""
-    cache_id: ""
     ```
 
 === "示例 (在线)"
-
-    !!! question "自 sing-box 1.10.0 起"
 
     ```{.yaml linenums="1"}
     external_controller: 127.0.0.1:9090
@@ -47,8 +24,6 @@
     ```
 
 === "示例 (下载)"
-
-    !!! question "自 sing-box 1.10.0 起"
 
     ```{.yaml linenums="1"}
     external_controller: 0.0.0.0:9090
@@ -94,62 +69,12 @@ Clash 中的默认模式，默认使用 `Rule`。
 
 ## access_control_allow_origin
 
-!!! question "自 sing-box 1.10.0 起"
-
 允许的 CORS 来源，默认使用 `*`。
 
 要从公共网站访问私有网络上的 Clash API，必须在 `access_control_allow_origin` 中明确指定它而不是使用 `*`。
 
 ## access_control_allow_private_network
 
-!!! question "自 sing-box 1.10.0 起"
-
 允许从私有网络访问。
 
 要从公共网站访问私有网络上的 Clash API，必须启用 `access_control_allow_private_network`。
-
-## store_mode
-
-!!! failure "已在 sing-box 1.8.0 废弃"
-
-    `store_mode` 已在 Clash API 中废弃，且默认启用当 `cache_file.enabled`。
-
-将 Clash 模式存储在缓存文件中。
-
-## store_selected
-
-!!! failure "已在 sing-box 1.8.0 废弃"
-
-    `store_selected` 已在 Clash API 中废弃，且默认启用当 `cache_file.enabled`。
-
-!!! note ""
-
-    必须为目标出站设置标签。
-
-将 `Selector` 中出站的选定的目标出站存储在缓存文件中。
-
-## store_fakeip
-
-!!! failure "已在 sing-box 1.8.0 废弃"
-
-    `store_selected` 已在 Clash API 中废弃，且已迁移到 `cache_file.store_fakeip`。
-
-将 fakeip 存储在缓存文件中。
-
-## cache_file
-
-!!! failure "已在 sing-box 1.8.0 废弃"
- 
-    `cache_file` 已在 Clash API 中废弃，且已迁移到 `cache_file.enabled` 和 `cache_file.path`。
-
-缓存文件路径，默认使用`cache.db`。
-
-## cache_id
-
-!!! failure "已在 sing-box 1.8.0 废弃"
- 
-    `cache_id` 已在 Clash API 中废弃，且已迁移到 `cache_file.cache_id`。
-
-缓存 ID。
-
-如果不为空，配置特定的数据将使用由其键控的单独存储。

@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # CCM
-
-!!! question "自 sing-box 1.13.0 起"
 
 CCM（Claude Code 多路复用器）服务是一个多路复用服务，允许您通过自定义令牌远程访问本地的 Claude Code 订阅。
 

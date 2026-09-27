@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # USB/IP Client
-
-!!! question "Since sing-box 1.14.0"
 
 USB/IP Client service imports remote USB devices over [USB/IP](https://usbip.sourceforge.net/),
 exported by the [USB/IP Server](/configuration/service/usbip-server/).

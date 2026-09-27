@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # sing-box API
-
-!!! question "自 sing-box 1.14.0 起"
 
 sing-box API 服务是用于观察与控制正在运行的 sing-box 实例的 gRPC 服务器。
 
@@ -90,4 +84,4 @@ API 密钥。
 
 ## tls
 
-TLS 配置,参阅 [TLS](/zh/configuration/shared/tls/#inbound)。
+TLS 配置,参阅 [TLS](/zh/configuration/shared/tls/#入站)。

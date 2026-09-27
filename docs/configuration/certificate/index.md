@@ -1,14 +1,4 @@
----
-icon: material/new-box
----
-
 # Certificate
-
-!!! question "Since sing-box 1.12.0"
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [Chrome Root Store](#store)
 
 ```{.yaml linenums="1"}
 store: ""

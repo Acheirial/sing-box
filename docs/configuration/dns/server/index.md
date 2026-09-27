@@ -1,16 +1,4 @@
----
-icon: material/alert-decagram
----
-
 # DNS Server
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [mdns](./mdns/)
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-plus: [type](#type)
 
 ```{.yaml linenums="1"}
 dns:
@@ -25,7 +13,6 @@ The type of the DNS server.
 
 | Type            | Format                    |
 |-----------------|---------------------------|
-| empty (default) | :material-note-remove: [Legacy](./legacy/) |
 | `local`         | [Local](./local/)         |
 | `hosts`         | [Hosts](./hosts/)         |
 | `tcp`           | [TCP](./tcp/)             |

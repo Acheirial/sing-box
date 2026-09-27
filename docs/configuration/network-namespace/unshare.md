@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Unshare
-
-!!! question "Since sing-box 1.14.0"
 
 Create a new network namespace, without root privilege.
 

@@ -1,17 +1,4 @@
----
-icon: material/new-box
----
-
 # Pre-match
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-alert: [route](#route)  
-    :material-plus: [sniff](#sniff)
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [bypass](#bypass)
 
 Pre-match is rule matching that runs before the connection is established.
 
@@ -33,11 +20,6 @@ See [reject](/configuration/route/rule_action/#reject) for details.
 
 ### route
 
-!!! quote "Changes in sing-box 1.14.0"
-
-    Since sing-box 1.14.0, TCP and UDP connections can also be forwarded at L3;
-    previously only ICMP connections were supported.
-
 Forward connections directly at L3 to the specified outbound,
 without going through L3 to L4 translation.
 
@@ -56,8 +38,6 @@ See [route](/configuration/route/rule_action/#route) for details.
 
 ### sniff
 
-!!! question "Since sing-box 1.14.0"
-
 For UDP connections, sniffing runs on the first packet and rule matching continues with the sniffed metadata.
 
 When sniffers require more data (like a fragmented QUIC Client Hello), pre-match stops at that rule.
@@ -67,8 +47,6 @@ For TCP connections, pre-match always stops at that rule.
 See [sniff](/configuration/route/rule_action/#sniff) for details.
 
 ### bypass
-
-!!! question "Since sing-box 1.13.0"
 
 !!! quote ""
 

@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # SSM API
-
-!!! question "Since sing-box 1.12.0"
 
 SSM API service is a RESTful API server for managing Shadowsocks servers.
 

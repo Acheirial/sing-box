@@ -1,26 +1,4 @@
----
-icon: material/new-box
----
-
 # 源文件格式
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: version `5`
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: version `4`
-
-!!! quote "sing-box 1.11.0 中的更改"
-
-    :material-plus: version `3`
-
-!!! quote "sing-box 1.10.0 中的更改"
-
-    :material-plus: version `2`
-
-!!! question "自 sing-box 1.8.0 起"
 
 ```json
 {
@@ -45,4 +23,4 @@ icon: material/new-box
 
 ## rules
 
-**必填。**一组 [无头规则](../headless-rule/).
+**必填。**一组 [无头规则](/zh/configuration/rule-set/headless-rule/).

@@ -1,48 +1,34 @@
----
-icon: material/new-box
----
+# Tailcat
 
-!!! question "Since sing-box 1.15.0"
+```{.yaml linenums="1"}
+type: tailcat
+tag: tailcat-in
 
-### Structure
+private_key: ""
+pre_shared_key: ""
+users:
+  - name: ""
+    public_key: ""
+derp_map_url: ""
+derp_region: 0
+derp_servers: []
+http_client: {}
 
-```json
-{
-  "type": "tailcat",
-  "tag": "tailcat-in",
+# ... Dial Fields
 
-  "private_key": "",
-  "pre_shared_key": "",
-  "users": [
-    {
-      "name": "",
-      "public_key": ""
-    }
-  ],
-  "derp_map_url": "",
-  "derp_region": 0,
-  "derp_servers": [],
-  "http_client": {},
-
-  ... // Dial Fields
-}
 ```
 
-### Fields
+## private_key
 
-#### private_key
-
-==Required==
-
-Private key.
+**Required.** Private key.
 
 Generate with `sing-box generate tailcat-keypair`.
 
-#### pre_shared_key
+## pre_shared_key
 
 Pre-shared key.
 
-#### users
+## users
 
 Tailcat users.
 
@@ -52,25 +38,23 @@ To use a DERP server with client verification, set `verify_client_inbound` or `v
 [DERP service](/configuration/service/derp/#verify_client_inbound), and clients must use fixed
 private keys.
 
-#### users.public_key
+## users.public_key
 
-==Required==
+**Required.** Client public key.
 
-Client public key.
-
-#### derp_map_url
+## derp_map_url
 
 URL of the [DERP map](https://pkg.go.dev/tailscale.com/tailcfg#DERPMap).
 
 `https://tailcat.dev/derpmap.json` is used by default.
 
-#### derp_region
+## derp_region
 
 DERP region ID in the DERP map.
 
 Conflicts with `derp_servers`.
 
-#### derp_servers
+## derp_servers
 
 Custom DERP servers in [DERPNode](https://pkg.go.dev/tailscale.com/tailcfg#DERPNode) format, with
 snake_case field names.
@@ -83,13 +67,13 @@ Setting Array value to a string `__HOST__` is equivalent to configuring:
 { "host": __HOST__ }
 ```
 
-#### http_client
+## http_client
 
 HTTP client used to fetch the DERP map.
 
 See [HTTP Client](/configuration/shared/http-client/) for details.
 
-### Dial Fields
+## Dial Fields
 
 !!! note
 

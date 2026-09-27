@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # USB/IP Client
-
-!!! question "自 sing-box 1.14.0 起"
 
 USB/IP Client 服务通过 [USB/IP](https://usbip.sourceforge.net/) 导入由 [USB/IP Server](/zh/configuration/service/usbip-server/) 导出的远程 USB 设备。
 

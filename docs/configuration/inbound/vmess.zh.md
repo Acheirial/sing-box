@@ -42,4 +42,4 @@ TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
 ## transport
 
-V2Ray 传输配置，参阅 [V2Ray 传输层](/zh/configuration/shared/v2ray-transport/)。
+传输配置，参阅 [传输层](/zh/configuration/shared/transport/)。

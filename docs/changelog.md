@@ -2774,7 +2774,7 @@ and [Migrate WireGuard outbound fields to route options](/migration/#migrate-wir
 **10**:
 
 For WireGuard outbound and endpoint, GSO will be automatically enabled when available,
-see [WireGuard Outbound](/configuration/outbound/wireguard/#gso).
+see [WireGuard Outbound](/configuration/endpoint/wireguard/#gso).
 
 For TUN, GSO has been removed,
 see [Deprecated](/deprecated/#gso-option-in-tun).
@@ -2872,7 +2872,7 @@ See [Rule Action](/configuration/route/rule_action/#udp_timeout).
 **1**:
 
 For WireGuard outbound and endpoint, GSO will be automatically enabled when available,
-see [WireGuard Outbound](/configuration/outbound/wireguard/#gso).
+see [WireGuard Outbound](/configuration/endpoint/wireguard/#gso).
 
 For TUN, GSO has been removed,
 see [Deprecated](/deprecated/#gso-option-in-tun).
@@ -3805,7 +3805,7 @@ This change is intended to break incorrect usage and essentially requires no act
 
 **8**:
 
-See [TUN](/configuration/inbound/tun/) inbound and [WireGuard](/configuration/outbound/wireguard/) outbound.
+See [TUN](/configuration/inbound/tun/) inbound and [WireGuard](/configuration/endpoint/wireguard/) outbound.
 
 **9**:
 
@@ -3840,7 +3840,7 @@ to `20231204.0`
 
 **1**:
 
-See [V2Ray transport](/configuration/shared/v2ray-transport/).
+See [V2Ray transport](/configuration/shared/transport/).
 
 ### 1.8.0-rc.7
 
@@ -3853,7 +3853,7 @@ See [V2Ray transport](/configuration/shared/v2ray-transport/).
 
 **1**:
 
-See [V2Ray transport](/configuration/shared/v2ray-transport/).
+See [V2Ray transport](/configuration/shared/transport/).
 
 ### 1.7.6
 
@@ -3881,7 +3881,7 @@ See [V2Ray transport](/configuration/shared/v2ray-transport/).
 
 **1**:
 
-See [TUN](/configuration/inbound/tun/) inbound and [WireGuard](/configuration/outbound/wireguard/) outbound.
+See [TUN](/configuration/inbound/tun/) inbound and [WireGuard](/configuration/endpoint/wireguard/) outbound.
 
 **2**:
 
@@ -4035,7 +4035,7 @@ Important changes since 1.6:
 
 * Add [exclude route support](/configuration/inbound/tun/) for TUN inbound
 * Add `udp_disable_domain_unmapping` [inbound listen option](/configuration/shared/listen/) **1**
-* Add [HTTPUpgrade V2Ray transport](/configuration/shared/v2ray-transport#HTTPUpgrade) support **2**
+* Add [HTTPUpgrade V2Ray transport](/configuration/shared/transport#HTTPUpgrade) support **2**
 * Migrate multiplex and UoT server to inbound **3**
 * Add TCP Brutal support for multiplex **4**
 * Add `wifi_ssid` and `wifi_bssid` route and DNS rules **5**
@@ -4178,7 +4178,7 @@ see [TCP Brutal](/configuration/shared/tcp-brutal/) for details.
 
 ### 1.7.0-alpha.3
 
-* Add [HTTPUpgrade V2Ray transport](/configuration/shared/v2ray-transport#HTTPUpgrade) support **1**
+* Add [HTTPUpgrade V2Ray transport](/configuration/shared/transport#HTTPUpgrade) support **1**
 * Fixes and improvements
 
 **1**:
@@ -4708,12 +4708,12 @@ The old testflight link and app are no longer valid.
 
 Important changes since 1.2:
 
-* Add [FakeIP](/configuration/dns/fakeip/) support **1**
+* Add [FakeIP](/configuration/dns/server/fakeip/) support **1**
 * Improve multiplex **2**
 * Add [DNS reverse mapping](/configuration/dns#reverse_mapping) support
 * Add `rewrite_ttl` DNS rule action
 * Add `store_fakeip` Clash API option
-* Add multi-peer support for [WireGuard](/configuration/outbound/wireguard#peers) outbound
+* Add multi-peer support for [WireGuard](/configuration/endpoint/wireguard/#peers) outbound
 * Add loopback detect
 * Add Clash.Meta API compatibility for Clash API
 * Download Yacd-meta by default if the specified Clash `external_ui` directory is empty
@@ -4855,9 +4855,9 @@ This is an incompatible update for XUDP in VLESS if vision flow is enabled.
 * Add [DNS reverse mapping](/configuration/dns#reverse_mapping) support
 * Add [L3 routing](/configuration/route/ip-rule/) support **1**
 * Add `rewrite_ttl` DNS rule action
-* Add [FakeIP](/configuration/dns/fakeip/) support **2**
+* Add [FakeIP](/configuration/dns/server/fakeip/) support **2**
 * Add `store_fakeip` Clash API option
-* Add multi-peer support for [WireGuard](/configuration/outbound/wireguard#peers) outbound
+* Add multi-peer support for [WireGuard](/configuration/endpoint/wireguard/#peers) outbound
 * Add loopback detect
 
 *1*:
@@ -5430,7 +5430,7 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 
 #### 2022/08/23
 
-* Add [V2Ray Transport](/configuration/shared/v2ray-transport/) support for VMess and Trojan
+* Add [V2Ray Transport](/configuration/shared/transport/) support for VMess and Trojan
 * Allow plain http request in Naive inbound (It can now be used with nginx)
 * Add proxy protocol support
 * Free memory after start
@@ -5478,7 +5478,7 @@ and [Listen Fields](/configuration/shared/listen#udp_fragment).
 #### 2022/08/16
 
 * Add ip_version (route/dns) rule item
-* Add [WireGuard](/configuration/outbound/wireguard/) outbound
+* Add [WireGuard](/configuration/endpoint/wireguard/) outbound
 
 #### 2022/08/15
 

@@ -1,25 +1,4 @@
----
-icon: material/new-box
----
-
 # Tailscale
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [listen_port](#listen_port)  
-    :material-plus: [ssh_server](#ssh_server)  
-    :material-plus: [taildrop_directory](#taildrop_directory)
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [relay_server_port](#relay_server_port)  
-    :material-plus: [relay_server_static_endpoints](#relay_server_static_endpoints)  
-    :material-plus: [system_interface](#system_interface)  
-    :material-plus: [system_interface_name](#system_interface_name)  
-    :material-plus: [system_interface_mtu](#system_interface_mtu)  
-    :material-plus: [advertise_tags](#advertise_tags)
-
-!!! question "自 sing-box 1.12.0 起"
 
 ```{.yaml linenums="1"}
 type: tailscale
@@ -82,10 +61,6 @@ on_demand: false
 
 默认使用系统主机名。
 
-!!! question "自 sing-box 1.14.0 起"
-
-    在 iOS、tvOS 和 Android 上，默认使用设备名称。
-
 示例：`localhost`
 
 ## accept_routes
@@ -116,15 +91,11 @@ on_demand: false
 
 ## advertise_tags
 
-!!! question "自 sing-box 1.13.0 起"
-
 为此节点通告的标签，用于 ACL 执行。
 
 示例：`["tag:server"]`
 
 ## listen_port
-
-!!! question "自 sing-box 1.14.0 起"
 
 监听 WireGuard 和点对点流量的 UDP 端口。
 
@@ -132,31 +103,21 @@ on_demand: false
 
 ## relay_server_port
 
-!!! question "自 sing-box 1.13.0 起"
-
 监听来自其他 Tailscale 节点的中继连接的端口。
 
 ## relay_server_static_endpoints
-
-!!! question "自 sing-box 1.13.0 起"
 
 为中继服务器通告的静态端点。
 
 ## system_interface
 
-!!! question "自 sing-box 1.13.0 起"
-
 为 Tailscale 创建系统 TUN 接口。
 
 ## system_interface_name
 
-!!! question "自 sing-box 1.13.0 起"
-
 自定义 TUN 接口名。默认使用 `tailscale`（macOS 上为 `utun`）。
 
 ## system_interface_mtu
-
-!!! question "自 sing-box 1.13.0 起"
 
 覆盖 TUN 的 MTU。默认使用 Tailscale 自己的 MTU。
 
@@ -167,8 +128,6 @@ UDP NAT 过期时间。
 默认使用 `5m`。
 
 ## ssh_server
-
-!!! question "自 sing-box 1.14.0 起"
 
 在 tailnet 的 TCP 22 端口上运行 Tailscale SSH 服务器。
 
@@ -209,8 +168,6 @@ disable_forwarding: false
 拒绝本地和远程的 TCP 与 Unix 套接字转发，包括 SSH agent 转发。
 
 ## taildrop_directory
-
-!!! question "自 sing-box 1.14.0 起"
 
 存储从 tailnet 对等节点接收到的文件的目录。
 

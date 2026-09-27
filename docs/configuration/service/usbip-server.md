@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # USB/IP Server
-
-!!! question "Since sing-box 1.14.0"
 
 USB/IP Server service exports local USB devices over [USB/IP](https://usbip.sourceforge.net/),
 to be imported by the [USB/IP Client](/configuration/service/usbip-client/) or a standard USB/IP

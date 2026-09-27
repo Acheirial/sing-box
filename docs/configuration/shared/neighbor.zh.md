@@ -46,4 +46,4 @@ MAC 地址和主机名仅在 VPNHotspot 中可见时 sing-box 才能读取。
 需要独立版本（macOS 系统扩展）。
 App Store 版本可以共享 VPN 热点但不支持 MAC 地址或主机名读取。
 
-参阅 [VPN 热点](/manual/misc/vpn-hotspot/#macos) 了解互联网共享设置。
+参阅 VPN 热点 了解互联网共享设置。

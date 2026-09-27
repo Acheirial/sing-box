@@ -1,34 +1,4 @@
----
-icon: material/new-box
----
-
 # 拨号字段
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-alert: [domain_resolver](#domain_resolver)  
-    :material-alert: [netns](#netns)
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [disable_tcp_keep_alive](#disable_tcp_keep_alive)  
-    :material-plus: [tcp_keep_alive](#tcp_keep_alive)  
-    :material-plus: [tcp_keep_alive_interval](#tcp_keep_alive_interval)  
-    :material-plus: [bind_address_no_port](#bind_address_no_port)
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [domain_resolver](#domain_resolver)  
-    :material-delete-clock: [domain_strategy](#domain_strategy)  
-    :material-plus: [netns](#netns)
-
-!!! quote "sing-box 1.11.0 中的更改"
-
-    :material-plus: [network_strategy](#network_strategy)  
-    :material-alert: [fallback_delay](#fallback_delay)  
-    :material-alert: [network_type](#network_type)  
-    :material-alert: [fallback_network_type](#fallback_network_type)
-
 
 ```{.yaml linenums="1"}
 detour: ""
@@ -52,16 +22,11 @@ network_strategy: ""
 network_type: []
 fallback_network_type: []
 fallback_delay: ""
-
-# 废弃的
-
-domain_strategy: ""
 ```
 
 !!! note ""
 
     当内容只有一项时，可以直接使用单个值，无需数组
-
 
 ## detour
 
@@ -82,8 +47,6 @@ domain_strategy: ""
 要绑定的 IPv6 地址。
 
 ## bind_address_no_port
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 
@@ -108,8 +71,6 @@ domain_strategy: ""
 重用监听地址。
 
 ## netns
-
-!!! question "自 sing-box 1.12.0 起"
 
 !!! quote ""
 
@@ -141,23 +102,15 @@ domain_strategy: ""
 
 ## disable_tcp_keep_alive
 
-!!! question "自 sing-box 1.13.0 起"
-
 禁用 TCP keep alive。
 
 ## tcp_keep_alive
-
-!!! question "自 sing-box 1.13.0 起"
-
-    默认值从 `10m` 更改为 `5m`。
 
 TCP keep alive 初始周期。
 
 默认使用 `5m`。
 
 ## tcp_keep_alive_interval
-
-!!! question "自 sing-box 1.13.0 起"
 
 TCP keep alive 间隔。
 
@@ -168,10 +121,6 @@ TCP keep alive 间隔。
 启用 UDP 分段。
 
 ## domain_resolver
-
-!!! warning ""
-
-    `outbound` DNS 规则项已弃用，且将在 sing-box 1.14.0 中被移除。因此，从 sing-box 1.14.0 版本开始，所有在服务器地址中使用域名的出站/端点均需配置此项。
 
 !!! info ""
 
@@ -190,8 +139,6 @@ TCP keep alive 间隔。
 
 ## network_strategy
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Android 与 iOS 平台图形客户端中支持，并且需要 `route.auto_detect_interface`。
@@ -208,11 +155,9 @@ TCP keep alive 间隔。
 将进入15秒的快速回退状态（同时连接所有首选和回退网络），
 如果首选网络恢复，则立即退出。
 
-与 `bind_interface`, `bind_inet4_address` 和 `bind_inet6_address` 冲突。
+与 `bind_interface`, `inet4_bind_address` 和 `inet6_bind_address` 冲突。
 
 ## network_type
-
-!!! question "自 sing-box 1.11.0 起"
 
 !!! quote ""
 
@@ -226,8 +171,6 @@ TCP keep alive 间隔。
 
 ## fallback_network_type
 
-!!! question "自 sing-box 1.11.0 起"
-
 !!! quote ""
 
     仅在 Android 与 iOS 平台图形客户端中支持，并且需要 `route.auto_detect_interface`。
@@ -240,25 +183,8 @@ TCP keep alive 间隔。
 
 在生成 RFC 6555 快速回退连接之前等待的时间长度。
 
-对于 `domain_strategy`，是在假设之前等待 IPv6 成功的时间量如果设置了 "prefer_ipv4"，则 IPv6 配置错误并回退到 IPv4。
-
 对于 `network_strategy`，对于 `network_strategy`，是在回退到其他接口之前等待连接成功的时间。
 
-仅当 `domain_strategy` 或 `network_strategy` 已设置时生效。
+仅当 `network_strategy` 已设置时生效。
 
 默认使用 `300ms`。
-
-## domain_strategy
-
-!!! failure "已在 sing-box 1.12.0 废弃"
-
-    `domain_strategy` 已废弃且将在 sing-box 1.14.0 中被移除，参阅 [迁移指南](/zh/migration/#迁移出站域名策略选项到域名解析器)。
-
-可选值：`prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`。
-
-如果设置，域名将在请求发出之前解析为 IP。
-
-| 出站       | 受影响的域名    | 默认回退值                     |
-|----------|-----------|---------------------------|
-| `direct` | 请求中的域名    | `inbound.domain_strategy` | 
-| others   | 服务器地址中的域名 | /                         |

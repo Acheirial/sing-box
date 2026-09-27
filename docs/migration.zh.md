@@ -236,7 +236,7 @@ DNS 服务器已经重构。
 !!! info "引用"
 
     [DNS 服务器](/zh/configuration/dns/server/) /
-    [旧 DNS 服务器](/zh/configuration/dns/server/legacy/)
+    [旧 DNS 服务器](/zh/deprecated/)
 
 === "Local"
 
@@ -548,7 +548,7 @@ DNS 服务器已经重构。
 
 !!! info "参考"
 
-    [DNS 规则](/zh/configuration/dns/rule/#outbound) /
+    [DNS 规则](/zh/deprecated/#outbound-dns-规则项) /
     [拨号字段](/zh/configuration/shared/dial/#domain_resolver) /
     [路由](/zh/configuration/route/#default_domain_resolver)
 
@@ -602,7 +602,7 @@ DNS 服务器已经重构。
 
 !!! info "参考"
 
-    [拨号字段](/zh/configuration/shared/dial/#domain_strategy)
+    [拨号字段](/zh/configuration/shared/dial/#domain_resolver)
 
 === ":material-card-remove: 弃用的"
 
@@ -639,8 +639,8 @@ DNS 服务器已经重构。
 !!! info "参考"
 
     [规则动作](/zh/configuration/route/rule_action/) /
-    [Block](/zh/configuration/outbound/block/) / 
-    [DNS](/zh/configuration/outbound/dns)
+    [Block](/zh/deprecated/) / 
+    [DNS](/zh/deprecated/)
 
 === "Block"
 
@@ -769,7 +769,7 @@ WireGuard 出站已被弃用，且可以被端点替代。
 
     [端点](/zh/configuration/endpoint/) /
     [WireGuard 端点](/zh/configuration/endpoint/wireguard/) / 
-    [WireGuard 出站](/zh/configuration/outbound/wireguard/)
+    [WireGuard 出站](/zh/deprecated/)
 
 === ":material-card-remove: 弃用的"
 
@@ -940,7 +940,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 !!! info "参考"
 
-    [GeoIP](/zh/configuration/route/geoip/) / 
+    [GeoIP](/zh/deprecated/) / 
     [路由](/zh/configuration/route/) / 
     [路由规则](/zh/configuration/route/rule/) / 
     [DNS 规则](/zh/configuration/dns/rule/) / 
@@ -997,7 +997,7 @@ sing-box 1.9.0 使 QueryFullProcessImageNameW 输出 Win32 路径（如 `C:\fold
 
 !!! info "参考"
 
-    [Geosite](/zh/configuration/route/geosite/) / 
+    [Geosite](/zh/deprecated/) / 
     [路由](/zh/configuration/route/) / 
     [路由规则](/zh/configuration/route/rule/) / 
     [DNS 规则](/zh/configuration/dns/rule/) / 

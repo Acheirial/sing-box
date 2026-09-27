@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # DERP
-
-!!! question "Since sing-box 1.12.0"
 
 DERP service is a Tailscale DERP server, similar to [derper](https://pkg.go.dev/tailscale.com/cmd/derper).
 

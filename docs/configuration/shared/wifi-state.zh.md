@@ -1,13 +1,4 @@
----
-icon: material/new-box
----
-
 # Wi-Fi 状态
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: Linux 支持  
-    :material-plus: Windows 支持
 
 sing-box 可以监控 Wi-Fi 状态，以启用基于 `wifi_ssid` 和 `wifi_bssid` 的路由规则。
 
@@ -23,8 +14,6 @@ sing-box 可以监控 Wi-Fi 状态，以启用基于 `wifi_ssid` 和 `wifi_bssid
 
 ## Linux
 
-!!! question "自 sing-box 1.13.0 起"
-
 支持以下后端，将按优先级顺序自动探测：
 
 | 后端              | 接口         |
@@ -35,7 +24,5 @@ sing-box 可以监控 Wi-Fi 状态，以启用基于 `wifi_ssid` 和 `wifi_bssid
 | ConnMan          | D-Bus       |
 
 ## Windows
-
-!!! question "自 sing-box 1.13.0 起"
 
 使用 Windows WLAN API。

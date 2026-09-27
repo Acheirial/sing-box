@@ -1,29 +1,4 @@
----
-icon: material/new-box
----
-
 # Rule Action
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [bypass](#bypass)  
-    :material-alert: [reject](#reject)
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [resolve.disable_optimistic_cache](#disable_optimistic_cache)  
-    :material-plus: [resolve.timeout](#timeout)  
-    :material-plus: [tls_spoof](#tls_spoof)  
-    :material-plus: [tls_spoof_method](#tls_spoof_method)
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-plus: [tls_fragment](#tls_fragment)  
-    :material-plus: [tls_fragment_fallback_delay](#tls_fragment_fallback_delay)  
-    :material-plus: [tls_record_fragment](#tls_record_fragment)  
-    :material-plus: [resolve.disable_cache](#disable_cache)  
-    :material-plus: [resolve.rewrite_ttl](#rewrite_ttl)  
-    :material-plus: [resolve.client_subnet](#client_subnet)
 
 ## Final actions
 
@@ -52,8 +27,6 @@ outbound: ""
 See `route-options` fields below.
 
 ### bypass
-
-!!! question "Since sing-box 1.13.0"
 
 !!! quote ""
 
@@ -85,10 +58,6 @@ from auto redirect, and will be skipped in other contexts.
 See `route-options` fields below.
 
 ### reject
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    Since sing-box 1.13.0, you can reject (or directly reply to) ICMP echo (ping) requests using `reject` action.
 
 ```{.yaml linenums="1"}
 action: reject
@@ -214,8 +183,6 @@ If no protocol is sniffed, the following ports will be recognized as protocols b
 
 #### tls_fragment
 
-!!! question "Since sing-box 1.12.0"
-
 Fragment TLS handshakes to bypass firewalls.
 
 This feature is intended to circumvent simple firewalls based on **plaintext packet matching**,
@@ -232,21 +199,15 @@ because the target is considered to be local or behind a transparent proxy.
 
 #### tls_fragment_fallback_delay
 
-!!! question "Since sing-box 1.12.0"
-
 The fallback value used when TLS segmentation cannot automatically determine the wait time.
 
 `500ms` is used by default.
 
 #### tls_record_fragment
 
-!!! question "Since sing-box 1.12.0"
-
 Fragment TLS handshake into multiple TLS records to bypass firewalls.
 
 #### tls_spoof
-
-!!! question "Since sing-box 1.14.0"
 
 !!! quote ""
 
@@ -259,8 +220,6 @@ See outbound TLS [`spoof`](/configuration/shared/tls/#spoof) for details
 and required privileges.
 
 #### tls_spoof_method
-
-!!! question "Since sing-box 1.14.0"
 
 How the forged segment is rejected by the real server. See outbound TLS
 [`spoof_method`](/configuration/shared/tls/#spoof_method) for the full table
@@ -319,33 +278,23 @@ DNS resolution strategy, available values are: `prefer_ipv4`, `prefer_ipv6`, `ip
 
 #### disable_cache
 
-!!! question "Since sing-box 1.12.0"
-
 Disable cache and save cache in this query.
 
 #### disable_optimistic_cache
-
-!!! question "Since sing-box 1.14.0"
 
 Disable optimistic DNS caching in this query.
 
 #### rewrite_ttl
 
-!!! question "Since sing-box 1.12.0"
-
 Rewrite TTL in DNS responses.
 
 #### timeout
-
-!!! question "Since sing-box 1.14.0"
 
 Override the DNS query timeout for this lookup.
 
 Will override `dns.timeout`.
 
 #### client_subnet
-
-!!! question "Since sing-box 1.12.0"
 
 Append a `edns0-subnet` OPT extra record with the specified IP prefix to every query by default.
 

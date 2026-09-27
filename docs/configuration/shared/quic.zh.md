@@ -1,11 +1,4 @@
----
-icon: material/new-box
----
-
 # QUIC Fields
-
-!!! question "自 sing-box 1.14.0 起"
-
 
 ```{.yaml linenums="1"}
 initial_packet_size: 0
@@ -14,7 +7,6 @@ disable_path_mtu_discovery: false
 # ... HTTP2 字段
 
 ```
-
 
 ## initial_packet_size
 

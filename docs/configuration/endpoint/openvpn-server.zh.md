@@ -1,7 +1,5 @@
 # OpenVPN 服务器
 
-!!! question "自 sing-box 1.14.0 起"
-
 ```{.yaml linenums="1"}
 type: openvpn-server
 tag: ovpn-server

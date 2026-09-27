@@ -7,13 +7,11 @@
 
 参阅 [tcp-brutal](https://github.com/apernet/tcp-brutal)。
 
-
 ```{.yaml linenums="1"}
 enabled: true
 up_mbps: 100
 down_mbps: 100
 ```
-
 
 ## enabled
 

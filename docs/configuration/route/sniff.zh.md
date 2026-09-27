@@ -1,14 +1,5 @@
 # 协议探测
 
-!!! quote "sing-box 1.10.0 中的更改"
-
-    :material-plus: QUIC 的 客户端类型探测支持  
-    :material-plus: QUIC 的 Chromium 支持  
-    :material-plus: BitTorrent 支持  
-    :material-plus: DTLS 支持  
-    :material-plus: SSH 支持  
-    :material-plus: RDP 支持
-
 如果在入站中启用，则可以嗅探连接的协议和域名（如果存在）。
 
 ## 支持的协议

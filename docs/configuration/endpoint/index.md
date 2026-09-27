@@ -1,7 +1,5 @@
 # Endpoint
 
-!!! question "Since sing-box 1.11.0"
-
 An endpoint is a protocol with inbound and outbound behavior.
 
 ```{.yaml linenums="1"}

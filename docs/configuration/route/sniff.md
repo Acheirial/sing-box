@@ -1,14 +1,5 @@
 # Protocol Sniff
 
-!!! quote "Changes in sing-box 1.10.0"
-
-    :material-plus: QUIC client type detect support for QUIC  
-    :material-plus: Chromium support for QUIC  
-    :material-plus: BitTorrent support  
-    :material-plus: DTLS support  
-    :material-plus: SSH support  
-    :material-plus: RDP support
-
 If enabled in the inbound, the protocol and domain name (if present) of by the connection can be sniffed.
 
 ## Supported Protocols

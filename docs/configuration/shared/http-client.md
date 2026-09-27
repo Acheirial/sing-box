@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # HTTP Client
-
-!!! question "Since sing-box 1.14.0"
 
 A string or an object.
 

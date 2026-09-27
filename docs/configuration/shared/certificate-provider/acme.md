@@ -1,15 +1,4 @@
----
-icon: material/new-box
----
-
 # ACME
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [account_key](#account_key)  
-    :material-plus: [key_type](#key_type)  
-    :material-plus: [profile](#profile)  
-    :material-plus: [http_client](#http_client)
 
 !!! quote ""
 
@@ -73,8 +62,6 @@ When `provider` is `zerossl`, at least one of `external_account`, `email`, or `a
 
 ## account_key
 
-!!! question "Since sing-box 1.14.0"
-
 The PEM-encoded private key of an existing ACME account.
 
 ## disable_http_challenge
@@ -122,8 +109,6 @@ See [DNS01 Challenge Fields](/configuration/shared/dns01_challenge/) for details
 
 ## key_type
 
-!!! question "Since sing-box 1.14.0"
-
 The private key type to generate for new certificates.
 
 | Value      | Type    |
@@ -136,15 +121,11 @@ The private key type to generate for new certificates.
 
 ## profile
 
-!!! question "Since sing-box 1.14.0"
-
 The ACME profile to use for certificate issuance.
 
 When empty and `provider` is Let's Encrypt, `shortlived` will be used automatically if any domain is an IP address.
 
 ## http_client
-
-!!! question "Since sing-box 1.14.0"
 
 HTTP Client for all provider HTTP requests.
 

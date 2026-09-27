@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # OpenConnect
-
-!!! question "自 sing-box 1.14.0 起"
 
 ```{.yaml linenums="1"}
 dns:

@@ -1,18 +1,4 @@
----
-icon: material/new-box
----
-
 # Local
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [neighbor_domain](#neighbor_domain)
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [prefer_go](#prefer_go)
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 dns:
@@ -32,8 +18,6 @@ dns:
 
 ## prefer_go
 
-!!! question "Since sing-box 1.13.0"
-
 When enabled, `local` DNS server will resolve DNS by dialing itself whenever possible.
 
 Specifically, it disables following behaviors which was added as features in sing-box 1.13.0:
@@ -52,8 +36,6 @@ On devices running Android versions lower than 10, this interface can only resol
 it will not be disabled by `prefer_go`.
 
 ## neighbor_domain
-
-!!! question "Since sing-box 1.14.0"
 
 A list of domain suffixes for which A/AAAA queries are answered from the
 [neighbor resolver](/configuration/shared/neighbor/) instead of the upstream.

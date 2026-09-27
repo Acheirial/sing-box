@@ -1,9 +1,5 @@
 # Naive
 
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [quic_congestion_control](#quic_congestion_control)
-
 ```{.yaml linenums="1"}
 type: naive
 tag: naive-in
@@ -33,8 +29,6 @@ tls: {}
 **必填。**Naive 用户。
 
 ## quic_congestion_control
-
-!!! question "Since sing-box 1.13.0"
 
 QUIC 拥塞控制算法。
 

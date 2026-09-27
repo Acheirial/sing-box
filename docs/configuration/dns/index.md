@@ -1,22 +1,4 @@
----
-icon: material/alert-decagram
----
-
 # DNS
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-delete-clock: [independent_cache](#independent_cache)  
-    :material-plus: [optimistic](#optimistic)  
-    :material-plus: [timeout](#timeout)
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-decagram: [servers](#servers)
-
-!!! quote "Changes in sing-box 1.11.0"
-
-    :material-plus: [cache_capacity](#cache_capacity)
 
 ```{.yaml linenums="1"}
 dns:
@@ -26,20 +8,17 @@ dns:
   strategy: ""
   disable_cache: false
   disable_expire: false
-  independent_cache: false
   cache_capacity: 0
   optimistic: false  # or {}
   timeout: ""
   reverse_mapping: false
   client_subnet: ""
-  fakeip: {}
 ```
 
 | Key      | Format                          |
 |----------|---------------------------------|
 | `server` | List of [DNS Server](./server/) |
 | `rules`  | List of [DNS Rule](./rule/)     |
-| `fakeip` | :material-note-remove: [FakeIP](./fakeip/) |
 
 ## final
 
@@ -65,25 +44,13 @@ Disable dns cache expire.
 
 Conflict with `optimistic`.
 
-## independent_cache
-
-!!! failure "Deprecated in sing-box 1.14.0"
-
-    `independent_cache` is deprecated and will be removed in sing-box 1.16.0, check [Migration](/migration/#migrate-independent-dns-cache).
-
-Make each DNS server's cache independent for special purposes. If enabled, will slightly degrade performance.
-
 ## cache_capacity
-
-!!! question "Since sing-box 1.11.0"
 
 LRU cache capacity.
 
 Value less than 1024 will be ignored.
 
 ## optimistic
-
-!!! question "Since sing-box 1.14.0"
 
 Enable optimistic DNS caching. When a cached DNS entry has expired but is still within the timeout window,
 the stale response is returned immediately while a background refresh is triggered.
@@ -109,8 +76,6 @@ The maximum time an expired cache entry can be served optimistically.
 
 ## timeout
 
-!!! question "Since sing-box 1.14.0"
-
 Default timeout for each DNS query.
 
 `10s` is used by default.
@@ -125,8 +90,6 @@ Since this process relies on the act of resolving domain names by an application
 problematic in environments such as macOS, where DNS is proxied and cached by the system.
 
 ## client_subnet
-
-!!! question "Since sing-box 1.9.0"
 
 Append a `edns0-subnet` OPT extra record with the specified IP prefix to every query by default.
 

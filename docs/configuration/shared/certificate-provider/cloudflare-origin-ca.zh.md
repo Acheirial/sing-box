@@ -1,11 +1,4 @@
----
-icon: material/new-box
----
-
 # Cloudflare Origin CA
-
-!!! question "自 sing-box 1.14.0 起"
-
 
 ```{.yaml linenums="1"}
 type: cloudflare-origin-ca
@@ -19,7 +12,6 @@ request_type: ""
 requested_validity: 0
 http_client: ""  # 或 {}
 ```
-
 
 ## domain
 

@@ -42,4 +42,4 @@ See [Multiplex](/configuration/shared/multiplex#inbound) for details.
 
 ## transport
 
-V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).
+Transport configuration, see [Transport](/configuration/shared/transport/).

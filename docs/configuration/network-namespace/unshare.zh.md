@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Unshare
-
-!!! question "自 sing-box 1.14.0 起"
 
 创建一个新的网络命名空间，无需 root 权限。
 
@@ -12,14 +6,12 @@ icon: material/new-box
 
     无 root 运行需要内核允许非特权用户创建 user namespace。
 
-
 ```{.yaml linenums="1"}
 network_namespaces:
   - type: unshare
     tag: ""
     pid_file: ""
 ```
-
 
 ## pid_file
 

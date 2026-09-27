@@ -1,7 +1,5 @@
 # OpenConnect Client
 
-!!! question "Since sing-box 1.14.0"
-
 **Client only.**
 
 ```{.yaml linenums="1"}

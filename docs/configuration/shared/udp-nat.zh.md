@@ -1,15 +1,4 @@
----
-icon: material/new-box
----
-
 # UDP NAT 字段
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [udp_mapping](#udp_mapping)  
-    :material-plus: [udp_filtering](#udp_filtering)  
-    :material-plus: [udp_nat_max](#udp_nat_max)
-
 
 ```{.yaml linenums="1"}
 udp_timeout: 5m
@@ -18,7 +7,6 @@ udp_filtering: endpoint_independent
 udp_nat_max: 0
 ```
 
-
 ## udp_timeout
 
 UDP NAT 过期时间。
@@ -26,8 +14,6 @@ UDP NAT 过期时间。
 默认使用 `5m`。
 
 ## udp_mapping
-
-!!! question "自 sing-box 1.14.0 起"
 
 UDP NAT 映射行为。
 
@@ -41,8 +27,6 @@ UDP NAT 映射行为。
 
 ## udp_filtering
 
-!!! question "自 sing-box 1.14.0 起"
-
 UDP NAT 过滤行为。
 
 | 值                            | 行为                                                     |
@@ -54,8 +38,6 @@ UDP NAT 过滤行为。
 默认使用 `endpoint_independent`。
 
 ## udp_nat_max
-
-!!! question "自 sing-box 1.14.0 起"
 
 UDP NAT 会话的最大数量。
 

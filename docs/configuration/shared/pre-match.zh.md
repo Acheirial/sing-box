@@ -1,17 +1,4 @@
----
-icon: material/new-box
----
-
 # 预匹配
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-alert: [route](#route)  
-    :material-plus: [sniff](#sniff)
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [bypass](#bypass)
 
 预匹配是在连接建立之前运行的规则匹配。
 
@@ -31,10 +18,6 @@ icon: material/new-box
 
 ### route
 
-!!! quote "sing-box 1.14.0 中的更改"
-
-    自 sing-box 1.14.0 起，TCP 和 UDP 连接也可以在 L3 转发；此前仅支持 ICMP 连接。
-
 将连接直接在 L3 转发到指定出站，不经过 L3 到 L4 转换。
 
 支持的目标：
@@ -50,8 +33,6 @@ FakeIP 目标需要在预匹配中先执行 `resolve` 动作，否则连接将�
 
 ### sniff
 
-!!! question "自 sing-box 1.14.0 起"
-
 对于 UDP 连接，协议探测在首个数据包上运行，随后规则匹配将携带探测结果继续。
 
 当探测器需要更多数据时（如分片的 QUIC Client Hello），预匹配将在该规则处停止。
@@ -61,8 +42,6 @@ FakeIP 目标需要在预匹配中先执行 `resolve` 动作，否则连接将�
 详情参阅 [sniff](/zh/configuration/route/rule_action/#sniff)。
 
 ### bypass
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 

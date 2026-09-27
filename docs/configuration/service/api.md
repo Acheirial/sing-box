@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # sing-box API
-
-!!! question "Since sing-box 1.14.0"
 
 The sing-box API service is a gRPC server for observing and controlling the running sing-box instance.
 

@@ -1,32 +1,23 @@
----
-icon: material/new-box
----
+# Tailcat
 
-!!! question "Since sing-box 1.15.0"
+```{.yaml linenums="1"}
+type: tailcat
+tag: tailcat-out
 
-### Structure
+private_key: ""
+server_public_key: ""
+server_disco_key: ""
+pre_shared_key: ""
+derp_map_url: ""
+derp_region: 0
+derp_servers: []
+http_client: {}
 
-```json
-{
-  "type": "tailcat",
-  "tag": "tailcat-out",
+# ... Dial Fields
 
-  "private_key": "",
-  "server_public_key": "",
-  "server_disco_key": "",
-  "pre_shared_key": "",
-  "derp_map_url": "",
-  "derp_region": 0,
-  "derp_servers": [],
-  "http_client": {},
-
-  ... // Dial Fields
-}
 ```
 
-### Fields
-
-#### private_key
+## private_key
 
 Private key.
 
@@ -35,47 +26,43 @@ A random key is used by default.
 Required when the server verifies clients with `users`, or the DERP server verifies clients with
 `verify_client_inbound` or `verify_client_key`.
 
-#### server_public_key
+## server_public_key
 
-==Required==
+**Required.** Server public key.
 
-Server public key.
+## server_disco_key
 
-#### server_disco_key
+**Required.** Server disco public key.
 
-==Required==
-
-Server disco public key.
-
-#### pre_shared_key
+## pre_shared_key
 
 Pre-shared key.
 
-#### derp_map_url
+## derp_map_url
 
 URL of the [DERP map](https://pkg.go.dev/tailscale.com/tailcfg#DERPMap).
 
 `https://tailcat.dev/derpmap.json` is used by default.
 
-#### derp_region
+## derp_region
 
 DERP region ID in the DERP map.
 
 Conflicts with `derp_servers`.
 
-#### derp_servers
+## derp_servers
 
 Custom DERP servers, see [derp_servers](/configuration/inbound/tailcat/#derp_servers) in Tailcat inbound.
 
 Conflicts with `derp_map_url` and `derp_region`.
 
-#### http_client
+## http_client
 
 HTTP client used to fetch the DERP map.
 
 See [HTTP Client](/configuration/shared/http-client/) for details.
 
-### Dial Fields
+## Dial Fields
 
 !!! note
 

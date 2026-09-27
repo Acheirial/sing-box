@@ -6897,6 +6897,9 @@
             "ignore_client_bandwidth": {
               "type": "boolean"
             },
+            "disable_udp": {
+              "type": "boolean"
+            },
             "tls": {
               "$ref": "#/$defs/InboundTLSOptions"
             },
@@ -6969,6 +6972,12 @@
                           "type": "string"
                         },
                         "rewrite_host": {
+                          "type": "boolean"
+                        },
+                        "x_forwarded": {
+                          "type": "boolean"
+                        },
+                        "insecure": {
                           "type": "boolean"
                         }
                       },
@@ -8806,6 +8815,9 @@
             },
             "transport": {
               "$ref": "#/$defs/V2RayTransport"
+            },
+            "decryption": {
+              "type": "string"
             }
           },
           "required": [
@@ -9053,6 +9065,24 @@
       },
       "additionalProperties": false
     },
+    "InboundRealityLimitFallbackOptions": {
+      "type": "object",
+      "properties": {
+        "after_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bytes_per_sec": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "burst_bytes_per_sec": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
     "InboundRealityOptions": {
       "type": "object",
       "properties": {
@@ -9080,6 +9110,56 @@
         },
         "max_time_difference": {
           "$ref": "#/$defs/Duration"
+        },
+        "server_names": {
+          "anyOf": [
+            {
+              "type": "string",
+              "examples": [
+                "example.com",
+                "www.example.com"
+              ]
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "examples": [
+                  "example.com",
+                  "www.example.com"
+                ]
+              }
+            }
+          ]
+        },
+        "min_client_ver": {
+          "type": "string",
+          "examples": [
+            "1.0.0"
+          ]
+        },
+        "max_client_ver": {
+          "type": "string",
+          "examples": [
+            "1.0.0"
+          ]
+        },
+        "xver": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "show": {
+          "type": "boolean"
+        },
+        "master_key_log": {
+          "type": "string"
+        },
+        "limit_fallback_upload": {
+          "$ref": "#/$defs/InboundRealityLimitFallbackOptions"
+        },
+        "limit_fallback_download": {
+          "$ref": "#/$defs/InboundRealityLimitFallbackOptions"
         }
       },
       "additionalProperties": false
@@ -12598,6 +12678,9 @@
             "disable_chrome_parrot": {
               "type": "boolean"
             },
+            "disable_udp": {
+              "type": "boolean"
+            },
             "realm": {
               "$ref": "#/$defs/Hysteria2Realm"
             }
@@ -14797,6 +14880,9 @@
                 }
               ]
             },
+            "encryption": {
+              "type": "string"
+            },
             "tls": {
               "$ref": "#/$defs/OutboundTLSOptions"
             },
@@ -15070,6 +15156,15 @@
         },
         "short_id": {
           "type": "string"
+        },
+        "mldsa65_verify": {
+          "type": "string"
+        },
+        "spider_x": {
+          "type": "string",
+          "examples": [
+            "/"
+          ]
         }
       },
       "additionalProperties": false

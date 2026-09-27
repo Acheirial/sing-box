@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Resolved
-
-!!! question "自 sing-box 1.12.0 起"
 
 Resolved 服务是一个伪造的 systemd-resolved DBUS 服务，用于从其他程序
 （如 NetworkManager）接收 DNS 设置并提供 DNS 解析。

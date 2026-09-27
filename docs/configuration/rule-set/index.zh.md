@@ -1,21 +1,6 @@
 # 规则集
 
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [http_client](#http_client)  
-    :material-delete-clock: [download_detour](#download_detour)  
-    :material-alert: [tag](#tag)  
-    :material-plus: [initial_path](#initial_path)
-
-!!! quote "sing-box 1.10.0 中的更改"
-
-    :material-plus: `type: inline`
-
-!!! question "自 sing-box 1.8.0 起"
-
 === "内联"
-
-    !!! question "自 sing-box 1.10.0 起"
 
     ```{.yaml linenums="1"}
     type: inline  # 可选
@@ -46,10 +31,6 @@
     initial_path: ""
     http_client: ""  # 或 {}
     update_interval: ""
-
-    # 废弃的
-
-    download_detour: ""
     ```
 
 ## type
@@ -60,17 +41,7 @@
 
 **必填。**规则集的标签。
 
-!!! question "自 sing-box 1.14.0 起"
-
-    `tag` 也接受一组标签，用于一次定义多个共享其他选项的规则集。
-
-    `path`、`url` 或 `initial_path` 中的 `{tag}` 占位符将被替换为每个标签，设置多个标签时必填。
-
-    多个标签与 `type: inline` 冲突。
-
 ## 内联字段
-
-!!! question "自 sing-box 1.10.0 起"
 
 ### rules
 
@@ -104,15 +75,11 @@
 
 ### initial_path
 
-!!! question "自 sing-box 1.14.0 起"
-
 规则集初始内容的文件路径。
 
 在启动时没有可用的规则集缓存时使用。
 
 ### http_client
-
-!!! question "自 sing-box 1.14.0 起"
 
 用于下载规则集的 HTTP 客户端。
 
@@ -121,21 +88,8 @@
 留空时使用默认 HTTP 客户端：即由 [`default_http_client`](/zh/configuration/route/#default_http_client)
 指定的客户端，或当 `default_http_client` 为空时使用顶级 `http_clients` 的第一项。
 
-!!! failure "隐式默认已在 sing-box 1.14.0 废弃"
-
-    当 `http_clients` 与 `default_http_client` 均未配置时，将使用通过默认出站连接的隐式 HTTP 客户端。
-    该隐式默认已在 sing-box 1.14.0 废弃，并将在 sing-box 1.16.0 移除；请改为定义 `http_clients`。
-
 ### update_interval
 
 规则集的更新间隔。
 
 默认使用 `1d`。
-
-### download_detour
-
-!!! failure "已在 sing-box 1.14.0 废弃"
-
-    `download_detour` 已在 sing-box 1.14.0 废弃且将在 sing-box 1.16.0 中被移除，请使用 `http_client` 代替。
-
-用于下载规则集的出站的标签。

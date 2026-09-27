@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # 网络命名空间
-
-!!! question "自 sing-box 1.14.0 起"
 
 !!! quote ""
 
@@ -13,7 +7,6 @@ icon: material/new-box
 网络命名空间使入站和出站可以运行在独立的 Linux 网络命名空间中，
 通过标签从 [tun](/zh/configuration/inbound/tun/#netns)、
 [监听字段](/zh/configuration/shared/listen/#netns) 和 [拨号字段](/zh/configuration/shared/dial/#netns) 引用。
-
 
 ```{.yaml linenums="1"}
 network_namespaces:

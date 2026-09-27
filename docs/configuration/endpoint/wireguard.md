@@ -1,13 +1,5 @@
 # WireGuard
 
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [udp_mapping](/configuration/shared/udp-nat/#udp_mapping)  
-    :material-plus: [udp_filtering](/configuration/shared/udp-nat/#udp_filtering)  
-    :material-plus: [udp_nat_max](/configuration/shared/udp-nat/#udp_nat_max)
-
-!!! question "Since sing-box 1.11.0"
-
 ```{.yaml linenums="1"}
 type: wireguard
 tag: wg-ep

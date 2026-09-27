@@ -1,13 +1,6 @@
----
-icon: material/new-box
----
-
 # Default
 
-!!! question "自 sing-box 1.14.0 起"
-
 附加到已存在的网络命名空间。
-
 
 ```{.yaml linenums="1"}
 network_namespaces:
@@ -15,7 +8,6 @@ network_namespaces:
     tag: ""
     path: ""
 ```
-
 
 ## path
 

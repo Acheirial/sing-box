@@ -1,16 +1,4 @@
----
-icon: material/alert-decagram
----
-
 # DNS Server
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [mdns](./mdns/)
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [type](#type)
 
 ```{.yaml linenums="1"}
 dns:
@@ -25,7 +13,6 @@ DNS 服务器的类型。
 
 | 类型              | 格式                        |
 |-----------------|---------------------------|
-| empty (default) | :material-note-remove: [Legacy](./legacy/) |
 | `local`         | [Local](./local/)         |
 | `hosts`         | [Hosts](./hosts/)         |
 | `tcp`           | [TCP](./tcp/)             |

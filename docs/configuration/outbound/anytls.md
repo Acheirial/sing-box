@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # AnyTLS
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 type: anytls
@@ -48,8 +42,6 @@ In the check, close sessions that have been idle for longer than this. Default: 
 In the check, at least the first `n` idle sessions are kept open. Default value: `n`=0
 
 ## client_metadata
-
-!!! question "Since sing-box 1.13.16"
 
 Check [AnyTLS client metadata](/manual/misc/anytls-client-metadata/).
 

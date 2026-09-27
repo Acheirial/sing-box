@@ -1,25 +1,4 @@
----
-icon: material/new-box
----
-
 # Tailscale
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [listen_port](#listen_port)  
-    :material-plus: [ssh_server](#ssh_server)  
-    :material-plus: [taildrop_directory](#taildrop_directory)
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [relay_server_port](#relay_server_port)  
-    :material-plus: [relay_server_static_endpoints](#relay_server_static_endpoints)  
-    :material-plus: [system_interface](#system_interface)  
-    :material-plus: [system_interface_name](#system_interface_name)  
-    :material-plus: [system_interface_mtu](#system_interface_mtu)  
-    :material-plus: [advertise_tags](#advertise_tags)
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 type: tailscale
@@ -83,10 +62,6 @@ The hostname of the node.
 
 System hostname is used by default.
 
-!!! question "Since sing-box 1.14.0"
-
-    On iOS, tvOS and Android, the device name is used by default.
-
 Example: `localhost`
 
 ## accept_routes
@@ -117,15 +92,11 @@ Indicates whether the node should advertise itself as an exit node.
 
 ## advertise_tags
 
-!!! question "Since sing-box 1.13.0"
-
 Tags to advertise for this node, for ACL enforcement purposes.
 
 Example: `["tag:server"]`
 
 ## listen_port
-
-!!! question "Since sing-box 1.14.0"
 
 The UDP port to listen on for WireGuard and peer-to-peer traffic.
 
@@ -133,31 +104,21 @@ A port is automatically selected by default.
 
 ## relay_server_port
 
-!!! question "Since sing-box 1.13.0"
-
 The port to listen on for incoming relay connections from other Tailscale nodes.
 
 ## relay_server_static_endpoints
-
-!!! question "Since sing-box 1.13.0"
 
 Static endpoints to advertise for the relay server.
 
 ## system_interface
 
-!!! question "Since sing-box 1.13.0"
-
 Create a system TUN interface for Tailscale.
 
 ## system_interface_name
 
-!!! question "Since sing-box 1.13.0"
-
 Custom TUN interface name. By default, `tailscale` (or `utun` on macOS) will be used.
 
 ## system_interface_mtu
-
-!!! question "Since sing-box 1.13.0"
 
 Override the TUN MTU. By default, Tailscale's own MTU is used.
 
@@ -168,8 +129,6 @@ UDP NAT expiration time.
 `5m` will be used by default.
 
 ## ssh_server
-
-!!! question "Since sing-box 1.14.0"
 
 Run a Tailscale SSH server on tailnet port 22.
 
@@ -210,8 +169,6 @@ Refuse the SFTP subsystem.
 Refuse local and remote TCP and Unix-socket forwarding, including SSH agent forwarding.
 
 ## taildrop_directory
-
-!!! question "Since sing-box 1.14.0"
 
 The directory where files received from tailnet peers are stored.
 

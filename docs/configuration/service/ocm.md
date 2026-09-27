@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # OCM
-
-!!! question "Since sing-box 1.13.0"
 
 OCM (OpenAI Codex Multiplexer) service is a multiplexing service that allows you to access your local OpenAI Codex subscription remotely through custom tokens.
 

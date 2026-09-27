@@ -46,7 +46,7 @@ TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
 
 ## transport
 
-V2Ray 传输配置，参阅 [V2Ray 传输层](/zh/configuration/shared/v2ray-transport/)。
+传输配置，参阅 [传输层](/zh/configuration/shared/transport/)。
 
 ## 拨号字段
 

@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # HTTP2 Fields
-
-!!! question "Since sing-box 1.14.0"
 
 ```{.yaml linenums="1"}
 idle_timeout: ""

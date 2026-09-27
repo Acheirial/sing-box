@@ -1,7 +1,5 @@
 # 端点
 
-!!! question "自 sing-box 1.11.0 起"
-
 端点是具有入站和出站行为的协议。
 
 ```{.yaml linenums="1"}

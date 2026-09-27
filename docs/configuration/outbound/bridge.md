@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Bridge
-
-!!! question "Since sing-box 1.14.0"
 
 !!! quote ""
 

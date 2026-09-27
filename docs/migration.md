@@ -242,7 +242,7 @@ DNS servers are refactored for better performance and scalability.
 !!! info "References"
 
     [DNS Server](/configuration/dns/server/) /
-    [Legacy DNS Server](/configuration/dns/server/legacy/)
+    [Legacy DNS Server](/deprecated/)
 
 === "Local"
 
@@ -554,9 +554,9 @@ The legacy outbound DNS rules are deprecated and can be replaced by new domain r
 
 !!! info "References"
 
-    [DNS rule](/configuration/dns/rule/#outbound) /
+    [DNS rule](/deprecated/#outbound-dns-rule-item) /
     [Dial Fields](/configuration/shared/dial/#domain_resolver) /
-    [Route](/configuration/route/#domain_resolver)
+    [Route](/configuration/route/#default_domain_resolver)
 
 === ":material-card-remove: Deprecated"
 
@@ -604,7 +604,7 @@ The legacy outbound DNS rules are deprecated and can be replaced by new domain r
 
 !!! info "References"
 
-    [Dial Fields](/configuration/shared/dial/#domain_strategy)
+    [Dial Fields](/configuration/shared/dial/#domain_resolver)
 
 The `domain_strategy` option in Dial Fields has been deprecated and can be replaced with the new domain resolver option.
 
@@ -646,8 +646,8 @@ Legacy special outbounds are deprecated and can be replaced by rule actions.
 !!! info "References"
 
     [Rule Action](/configuration/route/rule_action/) / 
-    [Block](/configuration/outbound/block/) / 
-    [DNS](/configuration/outbound/dns)
+    [Block](/deprecated/) / 
+    [DNS](/deprecated/)
 
 === "Block"
 
@@ -776,7 +776,7 @@ WireGuard outbound is deprecated and can be replaced by endpoint.
 
     [Endpoint](/configuration/endpoint/) /
     [WireGuard Endpoint](/configuration/endpoint/wireguard/) /
-    [WireGuard Outbound](/configuration/outbound/wireguard/)
+    [WireGuard Outbound](/deprecated/)
 
 === ":material-card-remove: Deprecated"
 
@@ -949,7 +949,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 !!! info "References"
 
-    [GeoIP](/configuration/route/geoip/) / 
+    [GeoIP](/deprecated/) / 
     [Route](/configuration/route/) / 
     [Route Rule](/configuration/route/rule/) / 
     [DNS Rule](/configuration/dns/rule/) / 
@@ -1006,7 +1006,7 @@ which will disrupt the existing `process_path` use cases in Windows.
 
 !!! info "References"
 
-    [Geosite](/configuration/route/geosite/) / 
+    [Geosite](/deprecated/) / 
     [Route](/configuration/route/) / 
     [Route Rule](/configuration/route/rule/) / 
     [DNS Rule](/configuration/dns/rule/) / 

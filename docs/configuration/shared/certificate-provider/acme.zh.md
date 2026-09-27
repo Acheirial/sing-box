@@ -1,20 +1,8 @@
----
-icon: material/new-box
----
-
 # ACME
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [account_key](#account_key)  
-    :material-plus: [key_type](#key_type)  
-    :material-plus: [profile](#profile)  
-    :material-plus: [http_client](#http_client)
 
 !!! quote ""
 
     需要 `with_acme` 构建标签。
-
 
 ```{.yaml linenums="1"}
 type: acme
@@ -38,7 +26,6 @@ key_type: ""
 profile: ""
 http_client: ""  # 或 {}
 ```
-
 
 ## domain
 
@@ -74,8 +61,6 @@ sing-box 会自动向 ZeroSSL 请求 EAB 凭据。
 当 `provider` 为 `zerossl` 时，必须至少设置 `external_account`、`email` 或 `account_key` 之一。
 
 ## account_key
-
-!!! question "自 sing-box 1.14.0 起"
 
 现有 ACME 帐户的 PEM 编码私钥。
 
@@ -119,8 +104,6 @@ ACME DNS01 质询字段。如果配置，将禁用其他质询方法。
 
 ## key_type
 
-!!! question "自 sing-box 1.14.0 起"
-
 为新证书生成的私钥类型。
 
 | 值         | 类型      |
@@ -133,15 +116,11 @@ ACME DNS01 质询字段。如果配置，将禁用其他质询方法。
 
 ## profile
 
-!!! question "自 sing-box 1.14.0 起"
-
 用于证书签发的 ACME profile。
 
 当为空且 `provider` 为 Let's Encrypt 时，如果任意域名为 IP 地址，将自动使用 `shortlived`。
 
 ## http_client
-
-!!! question "自 sing-box 1.14.0 起"
 
 用于所有提供者 HTTP 请求的 HTTP 客户端。
 

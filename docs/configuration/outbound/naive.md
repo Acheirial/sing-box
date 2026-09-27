@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Naive
-
-!!! question "Since sing-box 1.13.0"
 
 ```{.yaml linenums="1"}
 type: naive

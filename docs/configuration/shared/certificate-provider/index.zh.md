@@ -1,18 +1,10 @@
----
-icon: material/new-box
----
-
 # 证书提供者
-
-!!! question "自 sing-box 1.14.0 起"
-
 
 ```{.yaml linenums="1"}
 certificate_providers:
   - type: ""
     tag: ""
 ```
-
 
 | 类型   | 格式             |
 |--------|------------------|

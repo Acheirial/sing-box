@@ -77,7 +77,6 @@ nav:
           - configuration/dns/index.md
           - DNS Server:
               - configuration/dns/server/index.md
-              - Legacy: configuration/dns/server/legacy.md
               - Local: configuration/dns/server/local.md
               - Hosts: configuration/dns/server/hosts.md
               - TCP: configuration/dns/server/tcp.md
@@ -95,13 +94,10 @@ nav:
               - Resolved: configuration/dns/server/resolved.md
           - DNS Rule: configuration/dns/rule.md
           - DNS Rule Action: configuration/dns/rule_action.md
-          - FakeIP: configuration/dns/fakeip.md
       - NTP: configuration/ntp/index.md
       - Certificate: configuration/certificate/index.md
       - Route:
           - configuration/route/index.md
-          - GeoIP: configuration/route/geoip.md
-          - Geosite: configuration/route/geosite.md
           - Route Rule: configuration/route/rule.md
           - Rule Action: configuration/route/rule_action.md
           - Protocol Sniff: configuration/route/sniff.md
@@ -114,6 +110,7 @@ nav:
           - configuration/experimental/index.md
           - Cache File: configuration/experimental/cache-file.md
           - Clash API: configuration/experimental/clash-api.md
+          - Debug: configuration/experimental/debug.md
           - V2Ray API: configuration/experimental/v2ray-api.md
       - Shared:
           - Listen Fields: configuration/shared/listen.md
@@ -130,7 +127,7 @@ nav:
           - DNS01 Challenge Fields: configuration/shared/dns01_challenge.md
           - Pre-match: configuration/shared/pre-match.md
           - Multiplex: configuration/shared/multiplex.md
-          - V2Ray Transport: configuration/shared/v2ray-transport.md
+          - Transport: configuration/shared/transport.md
           - UDP over TCP: configuration/shared/udp-over-tcp.md
           - UDP NAT Fields: configuration/shared/udp-nat.md
           - TCP Brutal: configuration/shared/tcp-brutal.md
@@ -175,14 +172,12 @@ nav:
           - configuration/outbound/index.md
           - Direct: configuration/outbound/direct.md
           - Bridge: configuration/outbound/bridge.md
-          - Block: configuration/outbound/block.md
           - SOCKS: configuration/outbound/socks.md
           - HTTP: configuration/outbound/http.md
           - Shadowsocks: configuration/outbound/shadowsocks.md
           - VMess: configuration/outbound/vmess.md
           - Trojan: configuration/outbound/trojan.md
           - Naive: configuration/outbound/naive.md
-          - WireGuard: configuration/outbound/wireguard.md
           - Hysteria: configuration/outbound/hysteria.md
           - ShadowTLS: configuration/outbound/shadowtls.md
           - VLESS: configuration/outbound/vless.md
@@ -193,7 +188,6 @@ nav:
           - Tailcat: configuration/outbound/tailcat.md
           - Tor: configuration/outbound/tor.md
           - SSH: configuration/outbound/ssh.md
-          - DNS: configuration/outbound/dns.md
           - Selector: configuration/outbound/selector.md
           - URLTest: configuration/outbound/urltest.md
       - Service:
@@ -204,6 +198,7 @@ nav:
           - SSM API: configuration/service/ssm-api.md
           - CCM: configuration/service/ccm.md
           - OCM: configuration/service/ocm.md
+          - OOM Killer: configuration/service/oom-killer.md
           - Hysteria Realm: configuration/service/hysteria-realm.md
           - USB/IP Server: configuration/service/usbip-server.md
           - USB/IP Client: configuration/service/usbip-client.md
@@ -269,12 +264,6 @@ plugins:
             Package Manager: 包管理器
             Build from source: 从源代码构建
 
-            Graphical Clients: 图形界面客户端
-            Features: 特性
-            Apple platforms: Apple 平台
-            General: 通用
-            Privacy policy: 隐私政策
-
             Configuration: 配置
             Log: 日志
             DNS Server: DNS 服务器
@@ -292,14 +281,15 @@ plugins:
 
             Experimental: 实验性
             Cache File: 缓存文件
+            Debug: 调试
+            OOM Killer: OOM 终结者
 
             Shared: 通用
             Listen Fields: 监听字段
             Dial Fields: 拨号字段
-            Certificate Provider Fields: 证书提供者字段
             DNS01 Challenge Fields: DNS01 验证字段
             Multiplex: 多路复用
-            V2Ray Transport: V2Ray 传输层
+            Transport: 传输层
             Wi-Fi State: Wi-Fi 状态
             UDP NAT Fields: UDP NAT 字段
 

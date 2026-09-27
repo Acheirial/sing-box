@@ -1,11 +1,4 @@
----
-icon: material/new-box
----
-
 # HTTP2 Fields
-
-!!! question "自 sing-box 1.14.0 起"
-
 
 ```{.yaml linenums="1"}
 idle_timeout: ""
@@ -14,7 +7,6 @@ stream_receive_window: ""
 connection_receive_window: ""
 max_concurrent_streams: 0
 ```
-
 
 ## idle_timeout
 

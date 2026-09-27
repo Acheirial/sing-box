@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Cloudflare Origin CA
-
-!!! question "Since sing-box 1.14.0"
 
 ```{.yaml linenums="1"}
 type: cloudflare-origin-ca

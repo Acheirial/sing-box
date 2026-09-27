@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Resolved
-
-!!! question "Since sing-box 1.12.0"
 
 Resolved service is a fake systemd-resolved DBUS service to receive DNS settings from other programs
 (e.g. NetworkManager) and provide DNS resolution.

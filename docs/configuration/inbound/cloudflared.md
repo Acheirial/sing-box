@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Cloudflared
-
-!!! question "Since sing-box 1.14.0"
 
 `cloudflared` inbound runs an embedded Cloudflare Tunnel client and routes all
 incoming tunnel traffic (TCP, UDP, ICMP) through sing-box's routing engine.

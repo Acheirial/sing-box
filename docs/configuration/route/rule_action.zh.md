@@ -1,29 +1,4 @@
----
-icon: material/new-box
----
-
 # 规则动作
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [bypass](#bypass)  
-    :material-alert: [reject](#reject)
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [resolve.disable_optimistic_cache](#disable_optimistic_cache)  
-    :material-plus: [resolve.timeout](#timeout)  
-    :material-plus: [tls_spoof](#tls_spoof)  
-    :material-plus: [tls_spoof_method](#tls_spoof_method)
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [tls_fragment](#tls_fragment)  
-    :material-plus: [tls_fragment_fallback_delay](#tls_fragment_fallback_delay)  
-    :material-plus: [tls_record_fragment](#tls_record_fragment)  
-    :material-plus: [resolve.disable_cache](#disable_cache)  
-    :material-plus: [resolve.rewrite_ttl](#rewrite_ttl)  
-    :material-plus: [resolve.client_subnet](#client_subnet)
 
 ## 最终动作
 
@@ -48,8 +23,6 @@ outbound: ""
 参阅下方的 `route-options` 字段。
 
 ### bypass
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 
@@ -78,10 +51,6 @@ outbound: ""
 参阅下方的 `route-options` 字段。
 
 ### reject
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    自 sing-box 1.13.0 起，您可以通过 `reject` 动作拒绝（或直接回复）ICMP 回显（ping）请求。
 
 ```{.yaml linenums="1"}
 action: reject
@@ -209,8 +178,6 @@ UDP 连接超时时间。
 
 #### tls_fragment
 
-!!! question "自 sing-box 1.12.0 起"
-
 通过分段 TLS 握手数据包来绕过防火墙检测。
 
 此功能旨在规避基于**明文数据包匹配**的简单防火墙，不应该用于规避真的审查。
@@ -224,21 +191,15 @@ UDP 连接超时时间。
 
 #### tls_fragment_fallback_delay
 
-!!! question "自 sing-box 1.12.0 起"
-
 当 TLS 分片功能无法自动判定等待时间时使用的回退值。
 
 默认使用 `500ms`。
 
 #### tls_record_fragment
 
-!!! question "自 sing-box 1.12.0 起"
-
 通过分段 TLS 握手数据包到多个 TLS 记录来绕过防火墙检测。
 
 #### tls_spoof
-
-!!! question "自 sing-box 1.14.0 起"
 
 !!! quote ""
 
@@ -250,8 +211,6 @@ UDP 连接超时时间。
 详情与所需权限参阅出站 TLS [`spoof`](/zh/configuration/shared/tls/#spoof)。
 
 #### tls_spoof_method
-
-!!! question "自 sing-box 1.14.0 起"
 
 控制伪造报文被真实服务器拒绝的方式。完整取值表与平台说明参阅出站 TLS
 [`spoof_method`](/zh/configuration/shared/tls/#spoof_method)。
@@ -274,7 +233,7 @@ timeout: ""
 
 默认启用所有探测器。
 
-可用的协议值可以在 [协议嗅探](../sniff/) 中找到。
+可用的协议值可以在 [协议嗅探](/zh/configuration/route/sniff/) 中找到。
 
 #### timeout
 
@@ -309,33 +268,23 @@ DNS 解析策略，可用值有：`prefer_ipv4`、`prefer_ipv6`、`ipv4_only`、
 
 #### disable_cache
 
-!!! question "自 sing-box 1.12.0 起"
-
 在此查询中禁用缓存。
 
 #### disable_optimistic_cache
-
-!!! question "自 sing-box 1.14.0 起"
 
 在此查询中禁用乐观 DNS 缓存。
 
 #### rewrite_ttl
 
-!!! question "自 sing-box 1.12.0 起"
-
 重写 DNS 回应中的 TTL。
 
 #### timeout
-
-!!! question "自 sing-box 1.14.0 起"
 
 覆盖此查询的 DNS 查询超时时间。
 
 将覆盖 `dns.timeout`。
 
 #### client_subnet
-
-!!! question "自 sing-box 1.12.0 起"
 
 默认情况下，将带有指定 IP 前缀的 `edns0-subnet` OPT 附加记录附加到每个查询。
 

@@ -1,7 +1,5 @@
 # OpenConnect 客户端
 
-!!! question "自 sing-box 1.14.0 起"
-
 **仅客户端。**
 
 ```{.yaml linenums="1"}

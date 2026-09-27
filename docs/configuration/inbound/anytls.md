@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # AnyTLS
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 type: anytls

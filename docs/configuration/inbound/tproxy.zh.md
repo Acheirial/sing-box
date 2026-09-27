@@ -1,11 +1,5 @@
 # TProxy
 
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [udp_mapping](/zh/configuration/shared/udp-nat/#udp_mapping)  
-    :material-plus: [udp_filtering](/zh/configuration/shared/udp-nat/#udp_filtering)  
-    :material-plus: [udp_nat_max](/zh/configuration/shared/udp-nat/#udp_nat_max)
-
 !!! quote ""
 
     仅支持 Linux。

@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Tailscale
-
-!!! question "Since sing-box 1.14.0"
 
 ```{.yaml linenums="1"}
 type: tailscale

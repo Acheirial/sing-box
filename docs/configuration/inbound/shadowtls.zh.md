@@ -1,12 +1,4 @@
----
-icon: material/new-box
----
-
 # ShadowTLS
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [wildcard_sni](#wildcard_sni)
 
 ```{.yaml linenums="1"}
 type: shadowtls
@@ -77,8 +69,6 @@ ShadowTLS 严格模式。
 仅在 ShadowTLS 协议版本 3 中可用。
 
 ## wildcard_sni
-
-!!! question "自 sing-box 1.12.0 起"
 
 ShadowTLS 通配符 SNI 模式。
 

@@ -14,7 +14,7 @@ interrupt_exist_connections: false
 
 !!! quote ""
 
-    The selector can only be controlled through the [Clash API](/configuration/experimental#clash-api-fields) currently.
+    The selector can only be controlled through the [Clash API](/configuration/experimental/clash-api/) currently.
 
 ## outbounds
 

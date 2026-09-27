@@ -1,13 +1,4 @@
----
-icon: material/new-box
----
-
 # Hysteria
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [server_ports](#server_ports)  
-    :material-plus: [hop_interval](#hop_interval)
 
 ```{.yaml linenums="1"}
 type: hysteria
@@ -49,15 +40,11 @@ disable_mtu_discovery: false
 
 ## server_ports
 
-!!! question "自 sing-box 1.12.0 起"
-
 服务器端口范围列表。
 
 与 `server_port` 冲突。
 
 ## hop_interval
-
-!!! question "自 sing-box 1.12.0 起"
 
 端口跳跃间隔。
 
@@ -120,18 +107,6 @@ base64 编码的认证密码。
 
 ### recv_window_conn
 
-!!! failure "已在 sing-box 1.14.0 废弃"
-
-    请使用 QUIC 字段 `stream_receive_window` 代替。
-
 ### recv_window
 
-!!! failure "已在 sing-box 1.14.0 废弃"
-
-    请使用 QUIC 字段 `connection_receive_window` 代替。
-
 ### disable_mtu_discovery
-
-!!! failure "已在 sing-box 1.14.0 废弃"
-
-    请使用 QUIC 字段 `disable_path_mtu_discovery` 代替。

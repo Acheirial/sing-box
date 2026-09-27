@@ -1,69 +1,4 @@
----
-icon: material/new-box
----
-
 # Tun
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [include_mac_address](#include_mac_address)  
-    :material-plus: [exclude_mac_address](#exclude_mac_address)  
-    :material-plus: [dns_mode](#dns_mode)  
-    :material-plus: [dns_address](#dns_address)  
-    :material-plus: [netns](#netns)  
-    :material-plus: [udp_mapping](/configuration/shared/udp-nat/#udp_mapping)  
-    :material-plus: [udp_filtering](/configuration/shared/udp-nat/#udp_filtering)  
-    :material-plus: [udp_nat_max](/configuration/shared/udp-nat/#udp_nat_max)
-
-!!! quote "Changes in sing-box 1.13.3"
-
-    :material-alert: [strict_route](#strict_route)
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [auto_redirect_reset_mark](#auto_redirect_reset_mark)  
-    :material-plus: [auto_redirect_nfqueue](#auto_redirect_nfqueue)  
-    :material-plus: [exclude_mptcp](#exclude_mptcp)  
-    :material-plus: [auto_redirect_iproute2_fallback_rule_index](#auto_redirect_iproute2_fallback_rule_index)
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-plus: [loopback_address](#loopback_address)
-
-!!! quote "Changes in sing-box 1.11.0"
-
-    :material-delete-alert: [gso](#gso)  
-    :material-alert-decagram: [route_address_set](#stack)  
-    :material-alert-decagram: [route_exclude_address_set](#stack)
-
-!!! quote "Changes in sing-box 1.10.0"
-
-    :material-plus: [address](#address)  
-    :material-delete-clock: [inet4_address](#inet4_address)  
-    :material-delete-clock: [inet6_address](#inet6_address)  
-    :material-plus: [route_address](#route_address)  
-    :material-delete-clock: [inet4_route_address](#inet4_route_address)  
-    :material-delete-clock: [inet6_route_address](#inet6_route_address)  
-    :material-plus: [route_exclude_address](#route_address)  
-    :material-delete-clock: [inet4_route_exclude_address](#inet4_route_exclude_address)  
-    :material-delete-clock: [inet6_route_exclude_address](#inet6_route_exclude_address)  
-    :material-plus: [iproute2_table_index](#iproute2_table_index)  
-    :material-plus: [iproute2_rule_index](#iproute2_table_index)  
-    :material-plus: [auto_redirect](#auto_redirect)  
-    :material-plus: [auto_redirect_input_mark](#auto_redirect_input_mark)  
-    :material-plus: [auto_redirect_output_mark](#auto_redirect_output_mark)  
-    :material-plus: [route_address_set](#route_address_set)  
-    :material-plus: [route_exclude_address_set](#route_address_set)
-
-!!! quote "Changes in sing-box 1.9.0"
-
-    :material-plus: [platform.http_proxy.bypass_domain](#platformhttp_proxybypass_domain)  
-    :material-plus: [platform.http_proxy.match_domain](#platformhttp_proxymatch_domain)
-
-!!! quote "Changes in sing-box 1.8.0"
-
-    :material-plus: [gso](#gso)  
-    :material-alert-decagram: [stack](#stack)
 
 !!! quote ""
 
@@ -143,25 +78,6 @@ platform:
     bypass_domain: []
     match_domain: []
 
-# Deprecated
-
-stack: system
-gso: false
-inet4_address:
-  - 172.19.0.1/30
-inet6_address:
-  - fdfe:dcba:9876::1/126
-inet4_route_address:
-  - 0.0.0.0/1
-  - 128.0.0.0/1
-inet6_route_address:
-  - "::/1"
-  - 8000::/1
-inet4_route_exclude_address:
-  - 192.168.0.0/16
-inet6_route_exclude_address:
-  - fc00::/7
-
 # ...
 
 # Listen Fields
@@ -182,8 +98,6 @@ Virtual device name, automatically selected if empty.
 
 ## netns
 
-!!! question "Since sing-box 1.14.0"
-
 !!! quote ""
 
     Only supported on Linux.
@@ -198,33 +112,13 @@ Conflict with `platform`.
 
 ## address
 
-!!! question "Since sing-box 1.10.0"
-
 IPv4 and IPv6 prefix for the tun interface.
-
-## inet4_address
-
-!!! failure "Deprecated in sing-box 1.10.0"
-
-    `inet4_address` is merged to `address` and will be removed in sing-box 1.12.0.
-
-IPv4 prefix for the tun interface.
-
-## inet6_address
-
-!!! failure "Deprecated in sing-box 1.10.0"
-
-    `inet6_address` is merged to `address` and will be removed in sing-box 1.12.0.
-
-IPv6 prefix for the tun interface.
 
 ## mtu
 
 The maximum transmission unit.
 
 ## dns_mode
-
-!!! question "Since sing-box 1.14.0"
 
 How DNS is handled on the TUN interface.
 
@@ -249,8 +143,6 @@ through interfaces other than the TUN is blocked.
 
 ## dns_address
 
-!!! question "Since sing-box 1.14.0"
-
 List of DNS server addresses used by [`dns_mode`](#dns_mode).
 
 When unset, the next address after the first IPv4 and IPv6 entry in
@@ -259,20 +151,6 @@ When unset, the next address after the first IPv4 and IPv6 entry in
 
 When set, configure a [`hijack-dns`](/configuration/route/rule_action/#hijack-dns)
 route rule to handle DNS traffic to these addresses.
-
-## gso
-
-!!! failure "Deprecated in sing-box 1.11.0"
-
-    GSO has no advantages for transparent proxy scenarios, is deprecated and no longer works, and will be removed in sing-box 1.12.0.
-
-!!! question "Since sing-box 1.8.0"
-
-!!! quote ""
-
-    Only supported on Linux with `auto_route` enabled.
-
-Enable generic segmentation offload.
 
 ## auto_route
 
@@ -292,23 +170,17 @@ Set the default route to the Tun.
 
 ## iproute2_table_index
 
-!!! question "Since sing-box 1.10.0"
-
 Linux iproute2 table index generated by `auto_route`.
 
 `2022` is used by default.
 
 ## iproute2_rule_index
 
-!!! question "Since sing-box 1.10.0"
-
 Linux iproute2 rule start index generated by `auto_route`.
 
 `9000` is used by default.
 
 ## auto_redirect
-
-!!! question "Since sing-box 1.10.0"
 
 !!! quote ""
 
@@ -333,23 +205,17 @@ Conflict with `route.default_mark` and `[dialOptions].routing_mark`.
 
 ## auto_redirect_input_mark
 
-!!! question "Since sing-box 1.10.0"
-
 Connection input mark used by `auto_redirect`.
 
 `0x2023` is used by default (`0x400000` on Android).
 
 ## auto_redirect_output_mark
 
-!!! question "Since sing-box 1.10.0"
-
 Connection output mark used by `auto_redirect`.
 
 `0x2024` is used by default (`0x200000` on Android).
 
 ## auto_redirect_reset_mark
-
-!!! question "Since sing-box 1.13.0"
 
 Connection reset mark used by `auto_redirect` pre-matching.
 
@@ -363,15 +229,11 @@ Connection TPROXY mark used by the `auto_redirect` iptables backend for IPv6 TCP
 
 ## auto_redirect_nfqueue
 
-!!! question "Since sing-box 1.13.0"
-
 NFQueue number used by `auto_redirect` pre-matching.
 
 `100` is used by default.
 
 ## auto_redirect_iproute2_fallback_rule_index
-
-!!! question "Since sing-box 1.12.18"
 
 Linux iproute2 fallback rule index generated by `auto_redirect`.
 
@@ -381,8 +243,6 @@ routing traffic to the sing-box table only when no route is found in system tabl
 `32768` is used by default.
 
 ## exclude_mptcp
-
-!!! question "Since sing-box 1.13.0"
 
 !!! quote ""
 
@@ -395,8 +255,6 @@ Such traffic is usually created by Apple systems.
 When enabled, MPTCP connections will bypass sing-box and connect directly, otherwise, will be rejected to avoid errors by default.
 
 ## loopback_address
-
-!!! question "Since sing-box 1.12.0"
 
 Loopback addresses make TCP connections to the specified address connect to the source address.
 
@@ -426,57 +284,15 @@ It may prevent some Windows applications (such as VirtualBox) from working prope
 
 ## route_address
 
-!!! question "Since sing-box 1.10.0"
-
-Use custom routes instead of default when `auto_route` is enabled.
-
-## inet4_route_address
-
-!!! failure "Deprecated in sing-box 1.10.0"
-
-`inet4_route_address` is deprecated and will be removed in sing-box 1.12.0, please use [route_address](#route_address)
-instead.
-
-Use custom routes instead of default when `auto_route` is enabled.
-
-## inet6_route_address
-
-!!! failure "Deprecated in sing-box 1.10.0"
-
-`inet6_route_address` is deprecated and will be removed in sing-box 1.12.0, please use [route_address](#route_address)
-instead.
-
 Use custom routes instead of default when `auto_route` is enabled.
 
 ## route_exclude_address
-
-!!! question "Since sing-box 1.10.0"
-
-Exclude custom routes when `auto_route` is enabled.
-
-## inet4_route_exclude_address
-
-!!! failure "Deprecated in sing-box 1.10.0"
-
-`inet4_route_exclude_address` is deprecated and will be removed in sing-box 1.12.0, please
-use [route_exclude_address](#route_exclude_address) instead.
-
-Exclude custom routes when `auto_route` is enabled.
-
-## inet6_route_exclude_address
-
-!!! failure "Deprecated in sing-box 1.10.0"
-
-`inet6_route_exclude_address` is deprecated and will be removed in sing-box 1.12.0, please
-use [route_exclude_address](#route_exclude_address) instead.
 
 Exclude custom routes when `auto_route` is enabled.
 
 ## route_address_set
 
 === "With `auto_redirect` enabled"
-
-    !!! question "Since sing-box 1.10.0"
 
     !!! quote ""
     
@@ -489,8 +305,6 @@ Exclude custom routes when `auto_route` is enabled.
 
 === "Without `auto_redirect` enabled"
 
-    !!! question "Since sing-box 1.11.0"
-    
     Add the destination IP CIDR rules in the specified rule-sets to routes, equivalent to adding to `route_address`.
     Unmatched traffic will bypass the sing-box routes.
 
@@ -502,8 +316,6 @@ Exclude custom routes when `auto_route` is enabled.
 
 === "With `auto_redirect` enabled"
 
-    !!! question "Since sing-box 1.10.0"
-
     !!! quote ""
 
         Only supported on Linux and requires `auto_route` and `auto_redirect` enabled.
@@ -513,8 +325,6 @@ Exclude custom routes when `auto_route` is enabled.
 
 === "Without `auto_redirect` enabled"
 
-    !!! question "Since sing-box 1.11.0"
-    
     Add the destination IP CIDR rules in the specified rule-sets to routes, equivalent to adding to `route_exclude_address`.
     Matched traffic will bypass the sing-box routes.
 
@@ -528,24 +338,6 @@ This option has had no effect since sing-box 1.11.0 and can be removed from the 
 
 Since sing-box 1.14.0, use [UDP NAT fields](/configuration/shared/udp-nat/)
 to customize the mapping and filtering behavior.
-
-## stack
-
-`stack` is deprecated and will be removed in sing-box 1.17.0.
-Remove the `stack` option to use sing-tun's own TCP/IP stack.
-See [Migration](/migration/#migrate-tun-stack).
-
-!!! quote "Changes in sing-box 1.8.0"
-
-    :material-delete-alert: The legacy LWIP stack has been deprecated and removed.
-
-TCP/IP stack.
-
-| Stack    | Description                                                                                           | 
-|----------|-------------------------------------------------------------------------------------------------------|
-| `system` | Perform L3 to L4 translation using the system network stack                                           |
-| `gvisor` | Perform L3 to L4 translation using [gVisor](https://github.com/google/gvisor)'s virtual network stack |
-| `mixed`  | Mixed `system` TCP stack and `gvisor` UDP stack                                                       |
 
 ## multi_queue
 
@@ -618,8 +410,6 @@ Exclude android packages in route.
 
 ## include_mac_address
 
-!!! question "Since sing-box 1.14.0"
-
 !!! quote ""
 
     Only supported on Linux with `auto_route` and `auto_redirect` enabled.
@@ -629,8 +419,6 @@ Limit MAC addresses in route. Not limited by default.
 Conflict with `exclude_mac_address`.
 
 ## exclude_mac_address
-
-!!! question "Since sing-box 1.14.0"
 
 !!! quote ""
 

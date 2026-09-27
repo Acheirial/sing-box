@@ -1,26 +1,4 @@
----
-icon: material/new-box
----
-
 # DNS Rule Action
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-delete-clock: [strategy](#strategy)  
-    :material-plus: [evaluate](#evaluate)  
-    :material-plus: [respond](#respond)  
-    :material-plus: [disable_optimistic_cache](#disable_optimistic_cache)  
-    :material-plus: [timeout](#timeout)  
-    :material-plus: [race](#race)  
-    :material-plus: [speculative](#speculative)  
-    :material-plus: [remove_client_subnet](#remove_client_subnet)
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-plus: [strategy](#strategy)  
-    :material-plus: [predefined](#predefined)
-
-!!! question "Since sing-box 1.11.0"
 
 ```{.yaml linenums="1"}
 action: ""
@@ -35,8 +13,6 @@ race: false
 The action to perform. `route` will be used by default.
 
 ## race
-
-!!! question "Since sing-box 1.14.0"
 
 Only available with `route`, `respond`, `reject` and `predefined` actions.
 
@@ -62,7 +38,6 @@ matched.
 action: route  # default
 server: ""
 speculative: false
-strategy: ""
 disable_cache: false
 disable_optimistic_cache: false
 rewrite_ttl: null
@@ -79,8 +54,6 @@ remove_client_subnet: false
 
 ### speculative
 
-!!! question "Since sing-box 1.14.0"
-
 Conflict with `race`. Has no effect without a preceding `race` rule.
 
 By default, no query is sent in parallel with pending race rules: a matched `route` action
@@ -89,25 +62,11 @@ holds its query until none of the race rules matched.
 When `speculative` is enabled, the query is sent as soon as the rule matches, in parallel with
 the pending race rules; its response is used only after none of the race rules matched.
 
-### strategy
-
-!!! question "Since sing-box 1.12.0"
-
-!!! failure "Deprecated in sing-box 1.14.0"
-
-    `strategy` is deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0.
-
-Set domain strategy for this query.
-
-One of `prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`.
-
 ### disable_cache
 
 Disable cache and save cache in this query.
 
 ### disable_optimistic_cache
-
-!!! question "Since sing-box 1.14.0"
 
 Disable optimistic DNS caching in this query.
 
@@ -116,8 +75,6 @@ Disable optimistic DNS caching in this query.
 Rewrite TTL in DNS responses.
 
 ### timeout
-
-!!! question "Since sing-box 1.14.0"
 
 Override the DNS query timeout for matched queries.
 
@@ -133,15 +90,11 @@ Will override `dns.client_subnet`.
 
 ### remove_client_subnet
 
-!!! question "Since sing-box 1.14.0"
-
 Remove the `edns0-subnet` OPT extra record from the query, and suppress `dns.client_subnet`.
 
 Conflict with `client_subnet`.
 
 ## evaluate
-
-!!! question "Since sing-box 1.14.0"
 
 ```{.yaml linenums="1"}
 action: evaluate
@@ -177,8 +130,6 @@ A tagged response is only referenced via [`match_response`](/configuration/dns/r
 
 ### speculative
 
-!!! question "Since sing-box 1.14.0"
-
 Has no effect without a preceding `race` rule.
 
 By default, no query is sent in parallel with pending race rules: a matched `evaluate` action
@@ -193,8 +144,6 @@ Disable cache and save cache in this query.
 
 ### disable_optimistic_cache
 
-!!! question "Since sing-box 1.14.0"
-
 Disable optimistic DNS caching in this query.
 
 ### rewrite_ttl
@@ -202,8 +151,6 @@ Disable optimistic DNS caching in this query.
 Rewrite TTL in DNS responses.
 
 ### timeout
-
-!!! question "Since sing-box 1.14.0"
 
 Override the DNS query timeout for matched queries.
 
@@ -219,15 +166,11 @@ Will override `dns.client_subnet`.
 
 ### remove_client_subnet
 
-!!! question "Since sing-box 1.14.0"
-
 Remove the `edns0-subnet` OPT extra record from the query, and suppress `dns.client_subnet`.
 
 Conflict with `client_subnet`.
 
 ## respond
-
-!!! question "Since sing-box 1.14.0"
 
 ```{.yaml linenums="1"}
 action: respond
@@ -275,8 +218,6 @@ If not enabled, `method` will be temporarily overwritten to `drop` after 50 trig
 Not available when `method` is set to drop.
 
 ## predefined
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 action: predefined

@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Service
-
-!!! question "Since sing-box 1.12.0"
 
 ```{.yaml linenums="1"}
 services:
@@ -19,6 +13,7 @@ services:
 | `derp`            | [DERP](./derp)                        |
 | `hysteria-realm`  | [Hysteria Realm](./hysteria-realm)    |
 | `ocm`             | [OCM](./ocm)                          |
+| `oom-killer`      | [OOM Killer](./oom-killer)            |
 | `resolved`        | [Resolved](./resolved)                |
 | `ssm-api`         | [SSM API](./ssm-api)                  |
 | `usbip-server`    | [USB/IP Server](./usbip-server)       |

@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # CCM
-
-!!! question "Since sing-box 1.13.0"
 
 CCM (Claude Code Multiplexer) service is a multiplexing service that allows you to access your local Claude Code subscription remotely through custom tokens.
 

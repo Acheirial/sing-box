@@ -1,18 +1,4 @@
----
-icon: material/new-box
----
-
 # Local
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [neighbor_domain](#neighbor_domain)
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [prefer_go](#prefer_go)
-
-!!! question "自 sing-box 1.12.0 起"
 
 ```{.yaml linenums="1"}
 dns:
@@ -32,8 +18,6 @@ dns:
 
 ## prefer_go
 
-!!! question "自 sing-box 1.13.0 起"
-
 启用后，`local` DNS 服务器将尽可能通过拨号自身来解析 DNS。
 
 具体来说，它禁用了在 sing-box 1.13.0 中作为功能添加的以下行为：
@@ -52,8 +36,6 @@ dns:
 它不会被 `prefer_go` 禁用。
 
 ## neighbor_domain
-
-!!! question "自 sing-box 1.14.0 起"
 
 用于从[邻居解析器](/zh/configuration/shared/neighbor/)而非上游回答 A/AAAA 查询的域后缀列表。
 

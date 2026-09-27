@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Network Namespace
-
-!!! question "Since sing-box 1.14.0"
 
 !!! quote ""
 

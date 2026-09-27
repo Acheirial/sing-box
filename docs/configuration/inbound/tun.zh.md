@@ -1,69 +1,4 @@
----
-icon: material/new-box
----
-
 # Tun
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [include_mac_address](#include_mac_address)  
-    :material-plus: [exclude_mac_address](#exclude_mac_address)  
-    :material-plus: [dns_mode](#dns_mode)  
-    :material-plus: [dns_address](#dns_address)  
-    :material-plus: [netns](#netns)  
-    :material-plus: [udp_mapping](/zh/configuration/shared/udp-nat/#udp_mapping)  
-    :material-plus: [udp_filtering](/zh/configuration/shared/udp-nat/#udp_filtering)  
-    :material-plus: [udp_nat_max](/zh/configuration/shared/udp-nat/#udp_nat_max)
-
-!!! quote "sing-box 1.13.3 中的更改"
-
-    :material-alert: [strict_route](#strict_route)
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [auto_redirect_reset_mark](#auto_redirect_reset_mark)  
-    :material-plus: [auto_redirect_nfqueue](#auto_redirect_nfqueue)  
-    :material-plus: [exclude_mptcp](#exclude_mptcp)  
-    :material-plus: [auto_redirect_iproute2_fallback_rule_index](#auto_redirect_iproute2_fallback_rule_index)
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [loopback_address](#loopback_address)
-
-!!! quote "sing-box 1.11.0 中的更改"
-
-    :material-delete-alert: [gso](#gso)  
-    :material-alert-decagram: [route_address_set](#stack)  
-    :material-alert-decagram: [route_exclude_address_set](#stack)
-
-!!! quote "sing-box 1.10.0 中的更改"
-
-    :material-plus: [address](#address)  
-    :material-delete-clock: [inet4_address](#inet4_address)  
-    :material-delete-clock: [inet6_address](#inet6_address)  
-    :material-plus: [route_address](#route_address)  
-    :material-delete-clock: [inet4_route_address](#inet4_route_address)  
-    :material-delete-clock: [inet6_route_address](#inet6_route_address)  
-    :material-plus: [route_exclude_address](#route_address)  
-    :material-delete-clock: [inet4_route_exclude_address](#inet4_route_exclude_address)  
-    :material-delete-clock: [inet6_route_exclude_address](#inet6_route_exclude_address)  
-    :material-plus: [iproute2_table_index](#iproute2_table_index)  
-    :material-plus: [iproute2_rule_index](#iproute2_table_index)  
-    :material-plus: [auto_redirect](#auto_redirect)  
-    :material-plus: [auto_redirect_input_mark](#auto_redirect_input_mark)  
-    :material-plus: [auto_redirect_output_mark](#auto_redirect_output_mark)  
-    :material-plus: [route_address_set](#route_address_set)  
-    :material-plus: [route_exclude_address_set](#route_address_set)
-
-!!! quote "sing-box 1.9.0 中的更改"
-
-    :material-plus: [platform.http_proxy.bypass_domain](#platformhttp_proxybypass_domain)  
-    :material-plus: [platform.http_proxy.match_domain](#platformhttp_proxymatch_domain)
-
-!!! quote "sing-box 1.8.0 中的更改"
-
-    :material-plus: [gso](#gso)  
-    :material-alert-decagram: [stack](#stack)
 
 !!! quote ""
 
@@ -144,25 +79,6 @@ platform:
     bypass_domain: []
     match_domain: []
 
-# 已弃用
-
-stack: system
-gso: false
-inet4_address:
-  - 172.19.0.1/30
-inet6_address:
-  - fdfe:dcba:9876::1/126
-inet4_route_address:
-  - 0.0.0.0/1
-  - 128.0.0.0/1
-inet6_route_address:
-  - "::/1"
-  - 8000::/1
-inet4_route_exclude_address:
-  - 192.168.0.0/16
-inet6_route_exclude_address:
-  - fc00::/7
-
 # ... 监听字段
 
 ```
@@ -181,8 +97,6 @@ inet6_route_exclude_address:
 
 ## netns
 
-!!! question "自 sing-box 1.14.0 起"
-
 !!! quote ""
 
     仅支持 Linux。
@@ -195,33 +109,13 @@ inet6_route_exclude_address:
 
 ## address
 
-!!! question "自 sing-box 1.10.0 起"
-
 **必填。**tun 接口的 IPv4 和 IPv6 前缀。
-
-## inet4_address
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `inet4_address` 已合并到 `address` 且将在 sing-box 1.12.0 中被移除。
-
-**必填。**tun 接口的 IPv4 前缀。
-
-## inet6_address
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `inet6_address` 已合并到 `address` 且将在 sing-box 1.12.0 中被移除。
-
-tun 接口的 IPv6 前缀。
 
 ## mtu
 
 最大传输单元。
 
 ## dns_mode
-
-!!! question "自 sing-box 1.14.0 起"
 
 TUN 接口上 DNS 的处理方式。
 
@@ -243,8 +137,6 @@ TUN 接口上 DNS 的处理方式。
 
 ## dns_address
 
-!!! question "自 sing-box 1.14.0 起"
-
 [`dns_mode`](#dns_mode) 使用的 DNS 服务器地址列表。
 
 未设置时，使用 [`address`](#address) 中第一个 IPv4 和 IPv6 条目的下一个地址，
@@ -252,20 +144,6 @@ TUN 接口上 DNS 的处理方式。
 
 设置后，请配置 [`hijack-dns`](/zh/configuration/route/rule_action/#hijack-dns)
 路由规则以处理发往这些地址的 DNS 流量。
-
-## gso
-
-!!! failure "已在 sing-box 1.11.0 废弃"
-
-    GSO 对于透明代理场景没有优势，已废弃和不再生效，且将在 sing-box 1.12.0 中被移除。
-
-!!! question "自 sing-box 1.8.0 起"
-
-!!! quote ""
-
-    仅支持 Linux。
-
-启用通用分段卸载。
 
 ## auto_route
 
@@ -285,23 +163,17 @@ TUN 接口上 DNS 的处理方式。
 
 ## iproute2_table_index
 
-!!! question "自 sing-box 1.10.0 起"
-
 `auto_route` 生成的 iproute2 路由表索引。
 
 默认使用 `2022`。
 
 ## iproute2_rule_index
 
-!!! question "自 sing-box 1.10.0 起"
-
 `auto_route` 生成的 iproute2 规则起始索引。
 
 默认使用 `9000`。
 
 ## auto_redirect
-
-!!! question "自 sing-box 1.10.0 起"
 
 !!! quote ""
 
@@ -321,23 +193,17 @@ TUN 接口上 DNS 的处理方式。
 
 ## auto_redirect_input_mark
 
-!!! question "自 sing-box 1.10.0 起"
-
 `auto_redirect` 使用的连接输入标记。
 
 默认使用 `0x2023`（Android 上为 `0x400000`）。
 
 ## auto_redirect_output_mark
 
-!!! question "自 sing-box 1.10.0 起"
-
 `auto_redirect` 使用的连接输出标记。
 
 默认使用 `0x2024`（Android 上为 `0x200000`）。
 
 ## auto_redirect_reset_mark
-
-!!! question "自 sing-box 1.13.0 起"
 
 `auto_redirect` 预匹配使用的连接重置标记。
 
@@ -351,15 +217,11 @@ TUN 接口上 DNS 的处理方式。
 
 ## auto_redirect_nfqueue
 
-!!! question "自 sing-box 1.13.0 起"
-
 `auto_redirect` 预匹配使用的 NFQueue 编号。
 
 默认使用 `100`。
 
 ## auto_redirect_iproute2_fallback_rule_index
-
-!!! question "自 sing-box 1.12.18 起"
 
 `auto_redirect` 生成的 iproute2 回退规则索引。
 
@@ -369,8 +231,6 @@ TUN 接口上 DNS 的处理方式。
 默认使用 `32768`。
 
 ## exclude_mptcp
-
-!!! question "自 sing-box 1.13.0 起"
 
 !!! quote ""
 
@@ -383,8 +243,6 @@ TUN 接口上 DNS 的处理方式。
 启用时，MPTCP 连接将绕过 sing-box 直接连接，否则，将被拒绝以避免错误。
 
 ## loopback_address
-
-!!! question "自 sing-box 1.12.0 起"
 
 环回地址是用于使指向指定地址的 TCP 连接连接到来源地址的。
 
@@ -413,54 +271,16 @@ TUN 接口上 DNS 的处理方式。
 
 ## route_address
 
-!!! question "自 sing-box 1.10.0 起"
-
 设置到 Tun 的自定义路由。
-
-## inet4_route_address
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `inet4_route_address` 已合并到 `route_address` 且将在 sing-box 1.12.0 中被移除。
-
-启用 `auto_route` 时使用自定义路由而不是默认路由。
-
-## inet6_route_address
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `inet6_route_address` 已合并到 `route_address` 且将在 sing-box 1.12.0 中被移除。
-
-启用 `auto_route` 时使用自定义路由而不是默认路由。
 
 ## route_exclude_address
 
-!!! question "自 sing-box 1.10.0 起"
-
 设置到 Tun 的排除自定义路由。
-
-## inet4_route_exclude_address
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `inet4_route_exclude_address` 已合并到 `route_exclude_address` 且将在 sing-box 1.12.0 中被移除。
-
-启用 `auto_route` 时排除自定义路由。
-
-## inet6_route_exclude_address
-
-!!! failure "已在 sing-box 1.10.0 废弃"
-
-    `inet6_route_exclude_address` 已合并到 `route_exclude_address` 且将在 sing-box 1.12.0 中被移除。
-
-启用 `auto_route` 时排除自定义路由。
 
 ## route_address_set
 
 === "`auto_redirect` 已启用"
 
-    !!! question "自 sing-box 1.10.0 起"
-    
     !!! quote ""
     
         仅支持 Linux，且需要 `auto_route` 和 `auto_redirect` 已启用。
@@ -469,8 +289,6 @@ TUN 接口上 DNS 的处理方式。
     不匹配的流量将绕过 sing-box 路由。
 
 === "`auto_redirect` 未启用"
-
-    !!! question "自 sing-box 1.11.0 起"
 
     将指定规则集中的目标 IP CIDR 规则添加到路由，相当于添加到 `route_address`。
     不匹配的流量将绕过 sing-box 路由。
@@ -482,8 +300,6 @@ TUN 接口上 DNS 的处理方式。
 
 === "`auto_redirect` 已启用"
 
-    !!! question "自 sing-box 1.10.0 起"
-    
     !!! quote ""
     
         仅支持 Linux，且需要 `auto_route` 和 `auto_redirect` 已启用。
@@ -494,8 +310,6 @@ TUN 接口上 DNS 的处理方式。
     与 `route.default_mark` 和 `[dialOptions].routing_mark` 冲突。
 
 === "`auto_redirect` 未启用"
-
-    !!! question "自 sing-box 1.11.0 起"
 
     将指定规则集中的目标 IP CIDR 规则添加到路由，相当于添加到 `route_exclude_address`。
     匹配的流量将绕过 sing-box 路由。
@@ -508,24 +322,6 @@ TUN 接口上 DNS 的处理方式。
 此选项自 sing-box 1.11.0 起不再生效，可从配置中移除。
 
 自 sing-box 1.14.0 起，可使用 [UDP NAT 字段](/zh/configuration/shared/udp-nat/)自定义映射和过滤行为。
-
-## stack
-
-`stack` 已废弃，并将在 sing-box 1.17.0 中被移除。
-移除 `stack` 参数以使用 sing-tun 自有的 TCP/IP stack。
-参阅[迁移指南](/zh/migration/#迁移-tun-stack)。
-
-!!! quote "sing-box 1.8.0 中的更改"
-
-    :material-delete-alert: 旧的 LWIP 栈已被弃用并移除。
-
-TCP/IP 栈。
-
-| 栈       | 描述                                                                                                  | 
-|----------|-------------------------------------------------------------------------------------------------------|
-| `system` | 基于系统网络栈执行 L3 到 L4 转换                                                                        |
-| `gvisor` | 基于 [gVisor](https://github.com/google/gvisor) 虚拟网络栈执行 L3 到 L4 转换                            |
-| `mixed`  | 混合 `system` TCP 栈与 `gvisor` UDP 栈                                                                 |
 
 ## multi_queue
 
@@ -598,8 +394,6 @@ TCP/IP 栈。
 
 ## include_mac_address
 
-!!! question "自 sing-box 1.14.0 起"
-
 !!! quote ""
 
     仅支持 Linux，且需要 `auto_route` 和 `auto_redirect` 已启用。
@@ -609,8 +403,6 @@ TCP/IP 栈。
 与 `exclude_mac_address` 冲突。
 
 ## exclude_mac_address
-
-!!! question "自 sing-box 1.14.0 起"
 
 !!! quote ""
 

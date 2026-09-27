@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # JSON Schema
-
-!!! question "自 sing-box 1.14.0 起"
 
 sing-box 为配置文件提供 JSON Schema Draft 2020-12。
 兼容的编辑器可使用它提供补全和校验。

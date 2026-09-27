@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # SSM API
-
-!!! question "自 sing-box 1.12.0 起"
 
 SSM API 服务是一个用于管理 Shadowsocks 服务器的 RESTful API 服务器。
 

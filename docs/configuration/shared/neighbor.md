@@ -48,4 +48,4 @@ of the connected network. Non-Apple devices are always visible.
 Requires the standalone version (macOS system extension).
 The App Store version can share the VPN as a hotspot but does not support MAC address or hostname reading.
 
-See [VPN Hotspot](/manual/misc/vpn-hotspot/#macos) for Internet Sharing setup.
+See VPN Hotspot for Internet Sharing setup.

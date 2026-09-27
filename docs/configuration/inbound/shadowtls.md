@@ -1,12 +1,4 @@
----
-icon: material/new-box
----
-
 # ShadowTLS
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-plus: [wildcard_sni](#wildcard_sni)
 
 ```{.yaml linenums="1"}
 type: shadowtls
@@ -79,8 +71,6 @@ ShadowTLS strict mode.
 Only available in the ShadowTLS protocol 3.
 
 ## wildcard_sni
-
-!!! question "Since sing-box 1.12.0"
 
 ShadowTLS wildcard SNI mode.
 

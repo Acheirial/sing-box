@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Hysteria Realm
-
-!!! question "自 sing-box 1.14.0 起"
 
 Hysteria Realm 是用于 Hysteria2 NAT 穿透的会合服务。
 

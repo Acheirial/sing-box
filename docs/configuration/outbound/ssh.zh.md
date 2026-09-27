@@ -1,11 +1,5 @@
 # SSH
 
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [cipher](#cipher)  
-    :material-plus: [mac](#mac)  
-    :material-plus: [kex_algorithm](#kex_algorithm)
-
 ```{.yaml linenums="1"}
 type: ssh
 tag: ssh-out
@@ -71,19 +65,13 @@ SSH 用户, 默认使用 root。
 
 ## cipher
 
-!!! question "自 sing-box 1.14.0 起"
-
 允许的加密算法。留空使用默认值。
 
 ## mac
 
-!!! question "自 sing-box 1.14.0 起"
-
 允许的 MAC 算法。留空使用默认值。
 
 ## kex_algorithm
-
-!!! question "自 sing-box 1.14.0 起"
 
 允许的密钥交换算法。留空使用默认值。
 

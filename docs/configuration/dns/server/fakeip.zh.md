@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Fake IP
-
-!!! question "自 sing-box 1.12.0 起"
 
 ```{.yaml linenums="1"}
 dns:

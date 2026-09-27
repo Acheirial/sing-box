@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # AnyTLS
-
-!!! question "自 sing-box 1.12.0 起"
 
 ```{.yaml linenums="1"}
 type: anytls
@@ -48,8 +42,6 @@ tls: {}
 在检查中，至少前 `n` 个空闲会话保持打开状态。默认值：`n`=0
 
 ## client_metadata
-
-!!! question "自 sing-box 1.13.16 起"
 
 参阅 [AnyTLS 客户端元数据](/zh/manual/misc/anytls-client-metadata/)。
 

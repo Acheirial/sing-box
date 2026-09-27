@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # JSON Schema
-
-!!! question "Since sing-box 1.14.0"
 
 sing-box provides a JSON Schema Draft 2020-12 for configuration files.
 Compatible editors can use it for completion and validation.

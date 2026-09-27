@@ -1,15 +1,4 @@
----
-icon: material/new-box
----
-
 # 证书
-
-!!! question "自 sing-box 1.12.0 起"
-
-!!! quote "sing-box 1.13.0 中的更改"
-
-    :material-plus: [Chrome Root Store](#store)
-
 
 ```{.yaml linenums="1"}
 store: ""
@@ -21,7 +10,6 @@ certificate_directory_path: []
 !!! note ""
 
     当内容只有一项时，可以直接使用单个值，无需数组
-
 
 ## store
 

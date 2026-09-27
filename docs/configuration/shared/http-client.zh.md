@@ -1,11 +1,4 @@
----
-icon: material/new-box
----
-
 # HTTP Client
-
-!!! question "自 sing-box 1.14.0 起"
-
 
 字符串或对象。
 
@@ -26,7 +19,6 @@ tls: {}
 # ... 拨号字段
 
 ```
-
 
 ## engine
 

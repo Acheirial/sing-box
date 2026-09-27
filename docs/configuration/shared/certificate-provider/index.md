@@ -1,10 +1,4 @@
----
-icon: material/new-box
----
-
 # Certificate Provider
-
-!!! question "Since sing-box 1.14.0"
 
 ```{.yaml linenums="1"}
 certificate_providers:

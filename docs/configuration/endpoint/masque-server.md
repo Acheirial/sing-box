@@ -1,49 +1,39 @@
 # MASQUE Server
 
-!!! question "Since sing-box 1.15.0"
-
 `masque-server` endpoint is an IP proxying over HTTP ([RFC 9484](https://datatracker.ietf.org/doc/html/rfc9484), CONNECT-IP) server.
 
-## Structure
+```{.yaml linenums="1"}
+type: masque-server
+tag: masque-server
 
-```json
-{
-  "type": "masque-server",
-  "tag": "masque-server",
+# ... Listen Fields
 
-  ... // Listen Fields
+version: []
+users:
+  - username: ""
+    password: ""
+tls: {}
+path: ""
+address: []
+advertise_routes: []
+system: false
+name: ""
+mtu: 1280
 
-  "version": [],
-  "users": [
-    {
-      "username": "",
-      "password": ""
-    }
-  ],
-  "tls": {},
-  "path": "",
-  "address": [],
-  "advertise_routes": [],
-  "system": false,
-  "name": "",
-  "mtu": 1280,
+# ... HTTP2 Fields / QUIC Fields
+# ... UDP NAT Fields
 
-  ... // HTTP2 Fields / QUIC Fields
-  ... // UDP NAT Fields
-}
 ```
 
 !!! note ""
 
-    You can ignore the JSON Array [] tag when the content is only one item
+    You can use a single value instead of an array when the content is only one item
 
 ## Listen Fields
 
 See [Listen Fields](/configuration/shared/listen/) for details. `udp_timeout` is part of the [UDP NAT Fields](#udp-nat-fields) below.
 
-## Fields
-
-### version
+## version
 
 List of HTTP versions to serve.
 
@@ -53,33 +43,31 @@ All versions are used by default.
 
 TLS is required for `3`.
 
-### users
+## users
 
 HTTP users, verified by the `Authorization` header.
 
 No authentication required if empty.
 
-### tls
+## tls
 
 TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
 IP proxying must be operated over TLS or QUIC. Leave it disabled only when the server is placed behind an HTTP intermediary that terminates TLS.
 
-### path
+## path
 
 URI template path of the IP proxying resource, may contain the `target` and `ipproto` variables.
 
 `/.well-known/masque/ip/{target}/{ipproto}/` is used by default.
 
-### address
+## address
 
-==Required==
-
-List of IP prefixes of the tunnel network, at most one for each IP version.
+**Required.** List of IP prefixes of the tunnel network, at most one for each IP version.
 
 The address of the prefix is used by the server itself, other addresses in the prefix are assigned to clients.
 
-### advertise_routes
+## advertise_routes
 
 List of IP prefixes to advertise to clients, in addition to the tunnel network.
 
@@ -87,7 +75,7 @@ Traffic from clients to other destinations is rejected.
 
 All addresses are advertised by default.
 
-### system
+## system
 
 Use system interface.
 
@@ -95,13 +83,13 @@ Requires privilege and cannot conflict with existing system interfaces.
 
 If disabled, sing-box uses the internal network stack.
 
-### name
+## name
 
 Custom interface name for system interface.
 
 An automatically generated `masque` interface name is used by default.
 
-### mtu
+## mtu
 
 Tunnel MTU.
 

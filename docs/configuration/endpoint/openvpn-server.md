@@ -1,7 +1,5 @@
 # OpenVPN Server
 
-!!! question "Since sing-box 1.14.0"
-
 ```{.yaml linenums="1"}
 type: openvpn-server
 tag: ovpn-server

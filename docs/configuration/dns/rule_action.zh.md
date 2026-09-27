@@ -1,26 +1,4 @@
----
-icon: material/new-box
----
-
 # DNS 规则动作
-
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-delete-clock: [strategy](#strategy)  
-    :material-plus: [evaluate](#evaluate)  
-    :material-plus: [respond](#respond)  
-    :material-plus: [disable_optimistic_cache](#disable_optimistic_cache)  
-    :material-plus: [timeout](#timeout)  
-    :material-plus: [race](#race)  
-    :material-plus: [speculative](#speculative)  
-    :material-plus: [remove_client_subnet](#remove_client_subnet)
-
-!!! quote "sing-box 1.12.0 中的更改"
-
-    :material-plus: [strategy](#strategy)  
-    :material-plus: [predefined](#predefined)
-
-!!! question "自 sing-box 1.11.0 起"
 
 ```{.yaml linenums="1"}
 action: ""
@@ -35,8 +13,6 @@ race: false
 要执行的动作。默认使用 `route`。
 
 ## race
-
-!!! question "自 sing-box 1.14.0 起"
 
 仅可用于 `route`、`respond`、`reject` 和 `predefined` 动作。
 
@@ -55,7 +31,6 @@ race: false
 action: route  # 默认
 server: ""
 speculative: false
-strategy: ""
 disable_cache: false
 disable_optimistic_cache: false
 rewrite_ttl: null
@@ -72,33 +47,17 @@ remove_client_subnet: false
 
 ### speculative
 
-!!! question "自 sing-box 1.14.0 起"
-
 与 `race` 冲突。没有前序竞态规则时无效果。
 
 默认情况下，查询决不与未判定的竞态规则并行发出：已匹配的 `route` 动作扣住其查询，直到所有竞态规则均未匹配后才发送。
 
 启用 `speculative` 后，查询在规则匹配时立即发出、与未判定的竞态规则并行；其响应仅在所有竞态规则均未匹配后才被使用。
 
-### strategy
-
-!!! question "自 sing-box 1.12.0 起"
-
-!!! failure "已在 sing-box 1.14.0 废弃"
-
-    `strategy` 已在 sing-box 1.14.0 废弃，且将在 sing-box 1.16.0 中被移除。
-
-为此查询设置域名策略。
-
-可选项：`prefer_ipv4` `prefer_ipv6` `ipv4_only` `ipv6_only`。
-
 ### disable_cache
 
 在此查询中禁用缓存。
 
 ### disable_optimistic_cache
-
-!!! question "自 sing-box 1.14.0 起"
 
 在此查询中禁用乐观 DNS 缓存。
 
@@ -107,8 +66,6 @@ remove_client_subnet: false
 重写 DNS 回应中的 TTL。
 
 ### timeout
-
-!!! question "自 sing-box 1.14.0 起"
 
 覆盖匹配查询的 DNS 查询超时时间。
 
@@ -124,15 +81,11 @@ remove_client_subnet: false
 
 ### remove_client_subnet
 
-!!! question "自 sing-box 1.14.0 起"
-
 移除查询中的 `edns0-subnet` OPT 附加记录，并抑制 `dns.client_subnet`。
 
 与 `client_subnet` 冲突。
 
 ## evaluate
-
-!!! question "自 sing-box 1.14.0 起"
 
 ```{.yaml linenums="1"}
 action: evaluate
@@ -166,8 +119,6 @@ remove_client_subnet: false
 
 ### speculative
 
-!!! question "自 sing-box 1.14.0 起"
-
 没有前序竞态规则时无效果。
 
 默认情况下，查询决不与未判定的竞态规则并行发出：已匹配的 `evaluate` 动作扣住其查询，规则匹配在此处停止，直到所有竞态规则均未匹配。
@@ -180,8 +131,6 @@ remove_client_subnet: false
 
 ### disable_optimistic_cache
 
-!!! question "自 sing-box 1.14.0 起"
-
 在此查询中禁用乐观 DNS 缓存。
 
 ### rewrite_ttl
@@ -189,8 +138,6 @@ remove_client_subnet: false
 重写 DNS 回应中的 TTL。
 
 ### timeout
-
-!!! question "自 sing-box 1.14.0 起"
 
 覆盖匹配查询的 DNS 查询超时时间。
 
@@ -206,15 +153,11 @@ remove_client_subnet: false
 
 ### remove_client_subnet
 
-!!! question "自 sing-box 1.14.0 起"
-
 移除查询中的 `edns0-subnet` OPT 附加记录，并抑制 `dns.client_subnet`。
 
 与 `client_subnet` 冲突。
 
 ## respond
-
-!!! question "自 sing-box 1.14.0 起"
 
 ```{.yaml linenums="1"}
 action: respond
@@ -262,8 +205,6 @@ no_drop: false
 当 `method` 设为 `drop` 时不可用。
 
 ## predefined
-
-!!! question "自 sing-box 1.12.0 起"
 
 ```{.yaml linenums="1"}
 action: predefined

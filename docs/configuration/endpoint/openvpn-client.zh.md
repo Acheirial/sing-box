@@ -1,7 +1,5 @@
 # OpenVPN 客户端
 
-!!! question "自 sing-box 1.14.0 起"
-
 ```{.yaml linenums="1"}
 type: openvpn-client
 tag: ovpn-client
