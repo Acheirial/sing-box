@@ -1,19 +1,4 @@
----
-icon: material/alert-decagram
----
-
 # Hysteria2
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [bbr_profile](#bbr_profile)  
-    :material-plus: [realm](#realm)  
-    :material-alert: [obfs](#obfstype)
-
-!!! quote "Changes in sing-box 1.11.0"
-
-    :material-alert: [masquerade](#masquerade)  
-    :material-alert: [ignore_client_bandwidth](#ignore_client_bandwidth)
 
 ```{.yaml linenums="1"}
 type: hysteria2
@@ -30,6 +15,7 @@ users:
   - name: tobyxdd
     password: goofy_ahh_password
 ignore_client_bandwidth: false
+disable_udp: false
 tls: {}
 
 # ... QUIC Fields
@@ -82,15 +68,11 @@ QUIC traffic obfuscator password.
 
 ## obfs.min_packet_size
 
-!!! question "Since sing-box 1.14.0"
-
 Minimum on-wire packet size in bytes. Gecko only.
 
 `512` is used by default.
 
 ## obfs.max_packet_size
-
-!!! question "Since sing-box 1.14.0"
 
 Maximum on-wire packet size in bytes. Gecko only.
 
@@ -113,6 +95,12 @@ Commands clients to use the BBR CC instead of Hysteria CC.
 *When `up_mbps` and `down_mbps` are set*:
 
 Deny clients to use the BBR CC.
+
+## disable_udp
+
+Disable UDP relay.
+
+UDP is enabled by default.
 
 ## tls
 
@@ -161,6 +149,14 @@ Reverse proxy target URL.
 
 Rewrite the `Host` header to the target URL.
 
+### masquerade.x_forwarded
+
+Append the client address to the `X-Forwarded-For` header on proxied requests.
+
+### masquerade.insecure
+
+Disable verification of the reverse proxy target server certificate.
+
 ### masquerade.status_code
 
 Fixed response status code.
@@ -173,9 +169,25 @@ Fixed response headers.
 
 Fixed response content.
 
-### bbr_profile
+### masquerade.listen_http
 
-!!! question "Since sing-box 1.14.0"
+Start an additional plain HTTP listener on this address serving the same masquerade content.
+
+Responses advertise the QUIC endpoint through the `Alt-Svc` header.
+
+### masquerade.listen_https
+
+Start an additional plain HTTPS listener on this address serving the same masquerade content, using the inbound TLS certificate.
+
+Responses advertise the QUIC endpoint through the `Alt-Svc` header.
+
+### masquerade.force_https
+
+Redirect every request on `masquerade.listen_http` to `masquerade.listen_https` with `301 Moved Permanently`.
+
+Requires both `masquerade.listen_http` and `masquerade.listen_https` to be set.
+
+### bbr_profile
 
 BBR congestion control algorithm profile, one of `conservative` `standard` `aggressive`.
 
@@ -186,8 +198,6 @@ BBR congestion control algorithm profile, one of `conservative` `standard` `aggr
 Enable debug information logging for Hysteria Brutal CC.
 
 ### realm
-
-!!! question "Since sing-box 1.14.0"
 
 Register this inbound to a Hysteria Realm rendezvous service to enable NAT traversal.
 

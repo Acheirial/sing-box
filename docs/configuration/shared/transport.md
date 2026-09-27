@@ -1,7 +1,8 @@
-# V2Ray Transport
+# Transport
 
-V2Ray Transport is a set of private protocols invented by v2ray, and has contaminated the names of other protocols, such
-as `trojan-grpc` in clash.
+Transport is the transport-protocol layer used by the protocols that support it. It contains a set of protocols that
+were originally private protocols invented by v2ray, and their names have since been reused by other implementations,
+such as `trojan-grpc` in clash.
 
 ```{.yaml linenums="1"}
 type: ""
@@ -320,6 +321,13 @@ enabled. Default: `20`–`80`.
 
 Maximum HTTP request-header size accepted by the XHTTP server. Default: `8192`
 bytes. A negative value is invalid.
+
+### trusted_x_forwarded_for
+
+Header names that mark a request as forwarded by a trusted reverse proxy. The
+server only honours the `X-Forwarded-For` header when the request carries at
+least one of them; otherwise the header is ignored and the real remote address
+is used. Empty by default.
 
 ### xmux
 

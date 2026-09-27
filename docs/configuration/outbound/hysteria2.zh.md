@@ -1,18 +1,5 @@
 # Hysteria2
 
-!!! quote "sing-box 1.14.0 中的更改"
-
-    :material-plus: [hop_interval_max](#hop_interval_max)  
-    :material-plus: [bbr_profile](#bbr_profile)  
-    :material-plus: [disable_chrome_parrot](#disable_chrome_parrot)  
-    :material-plus: [realm](#realm)  
-    :material-alert: [obfs](#obfstype)
-
-!!! quote "sing-box 1.11.0 中的更改"
-
-    :material-plus: [server_ports](#server_ports)  
-    :material-plus: [hop_interval](#hop_interval)
-
 ```{.yaml linenums="1"}
 type: hysteria2
 tag: hy2-out
@@ -37,6 +24,7 @@ tls: {}
 bbr_profile: ""
 brutal_debug: false
 disable_chrome_parrot: false
+disable_udp: false
 realm:
   server_url: https://realm.example.com
   token: ""
@@ -79,23 +67,17 @@ realm:
 
 ## server_ports
 
-!!! question "自 sing-box 1.11.0 起"
-
 服务器端口范围列表。
 
 与 `server_port` 和 `realm` 冲突。
 
 ## hop_interval
 
-!!! question "自 sing-box 1.11.0 起"
-
 端口跳跃间隔。
 
 默认使用 `30s`。
 
 ## hop_interval_max
-
-!!! question "自 sing-box 1.14.0 起"
 
 最大端口跳跃间隔，用于随机化。
 
@@ -119,15 +101,11 @@ QUIC 流量混淆器密码。
 
 ## obfs.min_packet_size
 
-!!! question "自 sing-box 1.14.0 起"
-
 最小线上数据包大小（字节）。仅限 Gecko。
 
 默认使用 `512`。
 
 ## obfs.max_packet_size
-
-!!! question "自 sing-box 1.14.0 起"
 
 最大线上数据包大小（字节）。仅限 Gecko。
 
@@ -145,6 +123,12 @@ QUIC 流量混淆器密码。
 
 默认所有。
 
+## disable_udp
+
+禁用 UDP 转发。
+
+默认启用 UDP。
+
 ## tls
 
 **必填。**TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#出站)。
@@ -155,8 +139,6 @@ QUIC 流量混淆器密码。
 
 ### bbr_profile
 
-!!! question "自 sing-box 1.14.0 起"
-
 BBR 拥塞控制算法配置，可选 `conservative` `standard` `aggressive`。
 
 默认使用 `standard`。
@@ -166,8 +148,6 @@ BBR 拥塞控制算法配置，可选 `conservative` `standard` `aggressive`。
 启用 Hysteria Brutal CC 的调试信息日志记录。
 
 ### disable_chrome_parrot
-
-!!! question "自 sing-box 1.14.0 起"
 
 禁用 Chrome QUIC 指纹模仿。
 
@@ -183,8 +163,6 @@ BBR 拥塞控制算法配置，可选 `conservative` `standard` `aggressive`。
     请改用 ECDSA 或 RSA 证书。
 
 ### realm
-
-!!! question "自 sing-box 1.14.0 起"
 
 通过 Hysteria Realm 会合服务连接 Hysteria2 服务器。
 

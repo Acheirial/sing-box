@@ -149,28 +149,33 @@ type V2RayXHTTPDownloadSettings struct {
 // V2RayXHTTPOptions intentionally follows Xray's XHTTP wire configuration.
 // Field names use sing-box's snake_case JSON convention.
 type V2RayXHTTPOptions struct {
-	Host                 string                      `json:"host,omitempty"`
-	Path                 string                      `json:"path,omitempty"`
-	Mode                 string                      `json:"mode,omitempty"`
-	Headers              badoption.HTTPHeader        `json:"headers,omitempty"`
-	XPaddingBytes        V2RayXHTTPRange             `json:"x_padding_bytes,omitempty"`
-	XPaddingObfsMode     bool                        `json:"x_padding_obfs_mode,omitempty"`
-	XPaddingKey          string                      `json:"x_padding_key,omitempty"`
-	XPaddingHeader       string                      `json:"x_padding_header,omitempty"`
-	XPaddingPlacement    string                      `json:"x_padding_placement,omitempty"`
-	XPaddingMethod       string                      `json:"x_padding_method,omitempty"`
-	UplinkHTTPMethod     string                      `json:"uplink_http_method,omitempty"`
-	SessionIDPlacement   string                      `json:"session_id_placement,omitempty"`
-	SessionIDKey         string                      `json:"session_id_key,omitempty"`
-	SessionIDTable       string                      `json:"session_id_table,omitempty"`
-	SessionIDLength      V2RayXHTTPRange             `json:"session_id_length,omitempty"`
-	SeqPlacement         string                      `json:"seq_placement,omitempty"`
-	SeqKey               string                      `json:"seq_key,omitempty"`
-	UplinkDataPlacement  string                      `json:"uplink_data_placement,omitempty"`
-	UplinkDataKey        string                      `json:"uplink_data_key,omitempty"`
-	UplinkChunkSize      V2RayXHTTPRange             `json:"uplink_chunk_size,omitempty"`
-	NoGRPCHeader         bool                        `json:"no_grpc_header,omitempty"`
-	NoSSEHeader          bool                        `json:"no_sse_header,omitempty"`
+	Host                string               `json:"host,omitempty"`
+	Path                string               `json:"path,omitempty"`
+	Mode                string               `json:"mode,omitempty"`
+	Headers             badoption.HTTPHeader `json:"headers,omitempty"`
+	XPaddingBytes       V2RayXHTTPRange      `json:"x_padding_bytes,omitempty"`
+	XPaddingObfsMode    bool                 `json:"x_padding_obfs_mode,omitempty"`
+	XPaddingKey         string               `json:"x_padding_key,omitempty"`
+	XPaddingHeader      string               `json:"x_padding_header,omitempty"`
+	XPaddingPlacement   string               `json:"x_padding_placement,omitempty"`
+	XPaddingMethod      string               `json:"x_padding_method,omitempty"`
+	UplinkHTTPMethod    string               `json:"uplink_http_method,omitempty"`
+	SessionIDPlacement  string               `json:"session_id_placement,omitempty"`
+	SessionIDKey        string               `json:"session_id_key,omitempty"`
+	SessionIDTable      string               `json:"session_id_table,omitempty"`
+	SessionIDLength     V2RayXHTTPRange      `json:"session_id_length,omitempty"`
+	SeqPlacement        string               `json:"seq_placement,omitempty"`
+	SeqKey              string               `json:"seq_key,omitempty"`
+	UplinkDataPlacement string               `json:"uplink_data_placement,omitempty"`
+	UplinkDataKey       string               `json:"uplink_data_key,omitempty"`
+	UplinkChunkSize     V2RayXHTTPRange      `json:"uplink_chunk_size,omitempty"`
+	NoGRPCHeader        bool                 `json:"no_grpc_header,omitempty"`
+	NoSSEHeader         bool                 `json:"no_sse_header,omitempty"`
+	// TrustedXForwardedFor lists request header names that mark a request as
+	// forwarded by a trusted reverse proxy. The server only honours the
+	// X-Forwarded-For header when the request carries at least one of them;
+	// otherwise the header is ignored and the real remote address is used.
+	TrustedXForwardedFor badoption.Listable[string]  `json:"trusted_x_forwarded_for,omitempty"`
 	SCMaxEachPostBytes   V2RayXHTTPRange             `json:"sc_max_each_post_bytes,omitempty"`
 	SCMinPostsIntervalMS V2RayXHTTPRange             `json:"sc_min_posts_interval_ms,omitempty"`
 	SCMaxBufferedPosts   int                         `json:"sc_max_buffered_posts,omitempty"`

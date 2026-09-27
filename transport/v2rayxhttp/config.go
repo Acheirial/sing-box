@@ -61,6 +61,7 @@ type config struct {
 	maxBufferedPosts, maxHeaderBytes                           int
 	quic                                                       option.QUICOptions
 	noGRPCHeader, noSSEHeader                                  bool
+	trustedXForwardedFor                                       []string
 	sessionTable                                               string
 	sessionLength                                              byteRange
 	xmux                                                       xmuxConfig
@@ -72,33 +73,34 @@ func newConfig(options option.V2RayXHTTPOptions) (*config, error) {
 		return nil, err
 	}
 	c := &config{
-		host:             options.Host,
-		mode:             options.Mode,
-		headers:          options.Headers.Build(),
-		padding:          makeRange(options.XPaddingBytes, 100, 1000),
-		paddingObfs:      options.XPaddingObfsMode,
-		paddingKey:       options.XPaddingKey,
-		paddingHeader:    options.XPaddingHeader,
-		paddingPlacement: options.XPaddingPlacement,
-		paddingMethod:    options.XPaddingMethod,
-		uplinkMethod:     strings.ToUpper(options.UplinkHTTPMethod),
-		sessionPlacement: options.SessionIDPlacement,
-		sessionKey:       options.SessionIDKey,
-		seqPlacement:     options.SeqPlacement,
-		seqKey:           options.SeqKey,
-		dataPlacement:    options.UplinkDataPlacement,
-		dataKey:          options.UplinkDataKey,
-		scMaxPost:        makeRange(options.SCMaxEachPostBytes, 1000000, 1000000),
-		scMinInterval:    makeRange(options.SCMinPostsIntervalMS, 30, 30),
-		scStreamUp:       makeRange(options.SCStreamUpServerSecs, 20, 80),
-		maxBufferedPosts: options.SCMaxBufferedPosts,
-		maxHeaderBytes:   options.ServerMaxHeaderBytes,
-		quic:             options.QUIC,
-		noGRPCHeader:     options.NoGRPCHeader,
-		noSSEHeader:      options.NoSSEHeader,
-		sessionTable:     predefinedTable(options.SessionIDTable),
-		sessionLength:    makeRange(options.SessionIDLength, 0, 0),
-		xmux:             xmux,
+		host:                 options.Host,
+		mode:                 options.Mode,
+		headers:              options.Headers.Build(),
+		padding:              makeRange(options.XPaddingBytes, 100, 1000),
+		paddingObfs:          options.XPaddingObfsMode,
+		paddingKey:           options.XPaddingKey,
+		paddingHeader:        options.XPaddingHeader,
+		paddingPlacement:     options.XPaddingPlacement,
+		paddingMethod:        options.XPaddingMethod,
+		uplinkMethod:         strings.ToUpper(options.UplinkHTTPMethod),
+		sessionPlacement:     options.SessionIDPlacement,
+		sessionKey:           options.SessionIDKey,
+		seqPlacement:         options.SeqPlacement,
+		seqKey:               options.SeqKey,
+		dataPlacement:        options.UplinkDataPlacement,
+		dataKey:              options.UplinkDataKey,
+		scMaxPost:            makeRange(options.SCMaxEachPostBytes, 1000000, 1000000),
+		scMinInterval:        makeRange(options.SCMinPostsIntervalMS, 30, 30),
+		scStreamUp:           makeRange(options.SCStreamUpServerSecs, 20, 80),
+		maxBufferedPosts:     options.SCMaxBufferedPosts,
+		maxHeaderBytes:       options.ServerMaxHeaderBytes,
+		quic:                 options.QUIC,
+		noGRPCHeader:         options.NoGRPCHeader,
+		noSSEHeader:          options.NoSSEHeader,
+		trustedXForwardedFor: options.TrustedXForwardedFor,
+		sessionTable:         predefinedTable(options.SessionIDTable),
+		sessionLength:        makeRange(options.SessionIDLength, 0, 0),
+		xmux:                 xmux,
 	}
 	if c.headers.Get("Host") != "" {
 		return nil, E.New("xhttp headers must not contain Host")
@@ -143,9 +145,6 @@ func newConfig(options option.V2RayXHTTPOptions) (*config, error) {
 	}
 	if c.uplinkMethod == "" {
 		c.uplinkMethod = http.MethodPost
-	}
-	if c.uplinkMethod == http.MethodGet && c.mode != "packet-up" && c.mode != "auto" {
-		return nil, E.New("xhttp uplink_http_method GET requires packet-up mode")
 	}
 	if c.sessionPlacement == "" {
 		c.sessionPlacement = placementPath

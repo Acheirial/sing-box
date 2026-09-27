@@ -1,7 +1,6 @@
-# V2Ray 传输层
+# 传输层
 
-V2Ray Transport 是 v2ray 发明的一组私有协议，并污染了其他协议的名称，如 clash 中的 `trojan-grpc`。
-
+传输层是支持它的协议所使用的传输协议层。其中包含一组最初由 v2ray 发明的私有协议，这些协议的名称后来被其他实现沿用，如 clash 中的 `trojan-grpc`。
 
 ```{.yaml linenums="1"}
 type: ""
@@ -295,6 +294,11 @@ header 或 cookie 分包有效载荷的编码后分块大小闭区间。小于 6
 ### server_max_header_bytes
 
 XHTTP 服务端接受的 HTTP 请求标头最大长度，默认 `8192` 字节；负数无效。
+
+### trusted_x_forwarded_for
+
+将这些标头名视为由可信反向代理转发。仅当请求携带其中至少一个标头时，服务端才会采用
+`X-Forwarded-For`；否则忽略该标头并使用真实远端地址。默认空。
 
 ### xmux
 

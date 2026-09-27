@@ -19,15 +19,19 @@ import (
 	"encoding/hex"
 	"fmt"
 	"io"
-	mRand "math/rand"
+	mRand "math/rand/v2"
 	"net"
 	"net/http"
+	"net/url"
 	"reflect"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 	"unsafe"
 
 	"github.com/sagernet/sing-box/adapter"
+	"github.com/sagernet/sing-box/common/badversion"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing/common/debug"
@@ -51,6 +55,8 @@ type RealityClientConfig struct {
 	publicKey     []byte
 	shortID       [8]byte
 	mldsa65Verify []byte
+	spiderX       string
+	spiderY       realitySpiderY
 }
 
 func NewRealityClient(ctx context.Context, logger logger.ContextLogger, serverAddress string, options option.OutboundTLSOptions) (Config, error) {
@@ -97,7 +103,21 @@ func newRealityClient(ctx context.Context, logger logger.ContextLogger, serverAd
 		}
 	}
 
-	var config Config = &RealityClientConfig{ctx, logger, uClient.(*UTLSClientConfig), publicKey, shortID, mldsa65Verify}
+	spiderX, spiderY, err := parseRealitySpiderX(options.Reality.SpiderX)
+	if err != nil {
+		return nil, E.Cause(err, "parse spider_x")
+	}
+
+	var config Config = &RealityClientConfig{
+		ctx:           ctx,
+		logger:        logger,
+		uClient:       uClient.(*UTLSClientConfig),
+		publicKey:     publicKey,
+		shortID:       shortID,
+		mldsa65Verify: mldsa65Verify,
+		spiderX:       spiderX,
+		spiderY:       spiderY,
+	}
 	if options.KernelRx || options.KernelTx {
 		if !C.IsLinux {
 			return nil, E.New("kTLS is only supported on Linux")
@@ -144,7 +164,27 @@ func (e *RealityClientConfig) Client(conn net.Conn) (Conn, error) {
 	return ClientHandshake(context.Background(), conn, e)
 }
 
-func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn) (aTLS.Conn, error) {
+// realityClientVersion returns the REALITY client version sent in the ClientHello
+// session ID. Xray-core encodes its own core version into these three bytes so
+// that servers can enforce min_client_ver / max_client_ver, so we derive the
+// value from the build version instead of the legacy hardcoded 1.8.1.
+func realityClientVersion() [3]byte {
+	version := badversion.Parse(C.Version)
+	clamp := func(value int) byte {
+		if value < 0 {
+			return 0
+		}
+		if value > 255 {
+			return 255
+		}
+		return byte(value)
+	}
+	return [3]byte{clamp(version.Major), clamp(version.Minor), clamp(version.Patch)}
+}
+
+// buildClientHello prepares the utls ClientHello for a REALITY handshake without
+// sending it, so that the encrypted session ID can be verified and tested.
+func (e *RealityClientConfig) buildClientHello(conn net.Conn) (*utls.UConn, *realityVerifier, error) {
 	verifier := &realityVerifier{
 		serverName:    e.uClient.ServerName(),
 		mldsa65Verify: e.mldsa65Verify,
@@ -158,7 +198,7 @@ func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn
 	verifier.UConn = uConn
 	err := uConn.BuildHandshakeState()
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	if len(uConfig.NextProtos) > 0 {
@@ -182,9 +222,8 @@ func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn
 	}
 	binary.BigEndian.PutUint64(hello.SessionId, uint64(nowTime.Unix()))
 
-	hello.SessionId[0] = 1
-	hello.SessionId[1] = 8
-	hello.SessionId[2] = 1
+	clientVersion := realityClientVersion()
+	copy(hello.SessionId[:3], clientVersion[:])
 	binary.BigEndian.PutUint32(hello.SessionId[4:], uint32(time.Now().Unix()))
 	copy(hello.SessionId[8:], e.shortID[:])
 	if debug.Enabled {
@@ -192,38 +231,47 @@ func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn
 	}
 	publicKey, err := ecdh.X25519().NewPublicKey(e.publicKey)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	keyShareKeys := uConn.HandshakeState.State13.KeyShareKeys
 	if keyShareKeys == nil {
-		return nil, E.New("nil KeyShareKeys")
+		return nil, nil, E.New("nil KeyShareKeys")
 	}
 	ecdheKey := keyShareKeys.Ecdhe
 	if ecdheKey == nil {
 		ecdheKey = keyShareKeys.MlkemEcdhe
 	}
 	if ecdheKey == nil {
-		return nil, E.New("Current fingerprint ", e.uClient.id.Client, e.uClient.id.Version, " does not support TLS 1.3, REALITY handshake cannot establish.")
+		return nil, nil, E.New("Current fingerprint ", e.uClient.id.Client, e.uClient.id.Version, " does not support TLS 1.3, REALITY handshake cannot establish.")
 	}
 	authKey, err := ecdheKey.ECDH(publicKey)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	if authKey == nil {
-		return nil, E.New("nil auth_key")
+		return nil, nil, E.New("nil auth_key")
 	}
 	verifier.authKey = authKey
 	_, err = hkdf.New(sha256.New, authKey, hello.Random[:20], []byte("REALITY")).Read(authKey)
 	if err != nil {
+		return nil, nil, err
+	}
+	return uConn, verifier, nil
+}
+
+func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn) (aTLS.Conn, error) {
+	uConn, verifier, err := e.buildClientHello(conn)
+	if err != nil {
 		return nil, err
 	}
-	aesBlock, _ := aes.NewCipher(authKey)
+	hello := uConn.HandshakeState.Hello
+	aesBlock, _ := aes.NewCipher(verifier.authKey)
 	aesGcmCipher, _ := cipher.NewGCM(aesBlock)
 	aesGcmCipher.Seal(hello.SessionId[:0], hello.Random[20:], hello.SessionId[:16], hello.Raw)
 	copy(hello.Raw[39:], hello.SessionId)
 	if debug.Enabled {
 		fmt.Printf("REALITY hello.sessionId: %v\n", hello.SessionId)
-		fmt.Printf("REALITY uConn.AuthKey: %v\n", authKey)
+		fmt.Printf("REALITY uConn.AuthKey: %v\n", verifier.authKey)
 	}
 
 	err = uConn.HandshakeContext(ctx)
@@ -236,15 +284,14 @@ func (e *RealityClientConfig) ClientHandshake(ctx context.Context, conn net.Conn
 	}
 
 	if !verifier.verified {
-		go realityClientFallback(e.ctx, uConn, e.uClient.ServerName(), e.uClient.id)
+		go realityClientFallback(e.ctx, uConn, e.uClient.ServerName(), e.uClient.id, e.spiderX, e.spiderY)
 		return nil, E.New("reality verification failed")
 	}
 
 	return &realityClientConnWrapper{uConn}, nil
 }
 
-func realityClientFallback(ctx context.Context, uConn net.Conn, serverName string, fingerprint utls.ClientHelloID) {
-	defer uConn.Close()
+func realityClientFallback(ctx context.Context, uConn net.Conn, serverName string, fingerprint utls.ClientHelloID, spiderX string, spiderY realitySpiderY) {
 	client := &http.Client{
 		Transport: &http2.Transport{
 			DialTLSContext: func(ctx context.Context, network, addr string, config *tls.Config) (net.Conn, error) {
@@ -256,25 +303,161 @@ func realityClientFallback(ctx context.Context, uConn net.Conn, serverName strin
 			},
 		},
 	}
-	request, _ := http.NewRequest("GET", "https://"+serverName, nil)
-	request.Header.Set("User-Agent", fingerprint.Client)
-	request.AddCookie(&http.Cookie{Name: "padding", Value: strings.Repeat("0", mRand.Intn(32)+30)})
-	response, err := client.Do(request)
-	if err != nil {
-		return
+	// The connection is intentionally left open: the spider reuses it for every
+	// request, mirroring Xray-core.
+	newRealitySpider(serverName, spiderX, fingerprint.Client, spiderY).crawl(client.Do)
+}
+
+type realitySpiderY [10]int64
+
+// parseRealitySpiderX normalizes spider_x and extracts the SpiderY parameters
+// encoded in its query string, mirroring Xray-core.
+func parseRealitySpiderX(spiderX string) (string, realitySpiderY, error) {
+	var spiderY realitySpiderY
+	if spiderX == "" {
+		spiderX = "/"
 	}
-	_, _ = io.Copy(io.Discard, response.Body)
-	response.Body.Close()
+	if spiderX[0] != '/' {
+		return "", spiderY, E.New("spider_x must start with /: ", spiderX)
+	}
+	parsed, err := url.Parse(spiderX)
+	if err != nil {
+		return "", spiderY, E.Cause(err, "parse spider_x")
+	}
+	query := parsed.Query()
+	parse := func(param string, index int) {
+		value := query.Get(param)
+		query.Del(param)
+		if value == "" {
+			return
+		}
+		bounds := strings.SplitN(value, "-", 2)
+		first, _ := strconv.ParseInt(bounds[0], 10, 64)
+		spiderY[index] = first
+		if len(bounds) == 1 {
+			spiderY[index+1] = first
+		} else {
+			second, _ := strconv.ParseInt(bounds[1], 10, 64)
+			spiderY[index+1] = second
+		}
+	}
+	parse("p", 0) // padding
+	parse("c", 2) // concurrency
+	parse("t", 4) // times
+	parse("i", 6) // interval
+	parse("r", 8) // return
+	parsed.RawQuery = query.Encode()
+	return parsed.String(), spiderY, nil
+}
+
+type realitySpider struct {
+	prefix    string
+	userAgent string
+	paths     map[string]struct{}
+	spiderY   realitySpiderY
+}
+
+func newRealitySpider(serverName string, spiderX string, userAgent string, spiderY realitySpiderY) *realitySpider {
+	paths := make(map[string]struct{})
+	if spiderX != "" {
+		paths[spiderX] = struct{}{}
+	}
+	return &realitySpider{
+		prefix:    "https://" + serverName,
+		userAgent: userAgent,
+		paths:     paths,
+		spiderY:   spiderY,
+	}
+}
+
+var realitySpiderHref = regexp.MustCompile(`href="([/h].*?)"`)
+
+func realityRandBetween(first int64, second int64) int64 {
+	if second <= first {
+		return first
+	}
+	return first + mRand.Int64N(second-first+1)
+}
+
+func (s *realitySpider) randomPath() string {
+	if len(s.paths) == 0 {
+		return "/"
+	}
+	stopAt := mRand.IntN(len(s.paths))
+	index := 0
+	for path := range s.paths {
+		if index == stopAt {
+			return path
+		}
+		index++
+	}
+	return "/"
+}
+
+func (s *realitySpider) paddingLength() int {
+	length := int(realityRandBetween(s.spiderY[0], s.spiderY[1]))
+	if length <= 0 {
+		length = mRand.IntN(32) + 30
+	}
+	return length
+}
+
+func (s *realitySpider) addPaths(body []byte) {
+	for _, match := range realitySpiderHref.FindAllSubmatch(body, -1) {
+		path := bytes.TrimPrefix(match[1], []byte(s.prefix))
+		if !bytes.Contains(path, []byte(".")) {
+			s.paths[string(path)] = struct{}{}
+		}
+	}
+}
+
+// crawl walks the fallback server with at least two requests, chaining the
+// Referer header, so that a blocked REALITY handshake blends into ordinary
+// browsing traffic.
+func (s *realitySpider) crawl(do func(*http.Request) (*http.Response, error)) {
+	followUps := max(realityRandBetween(s.spiderY[2], s.spiderY[3]), 1)
+	repeat := max(realityRandBetween(s.spiderY[4], s.spiderY[5]), 1)
+	total := 1 + int(followUps*repeat)
+	requestURL := s.prefix + s.randomPath()
+	referer := ""
+	for i := range total {
+		request, err := http.NewRequest(http.MethodGet, requestURL, nil)
+		if err != nil {
+			return
+		}
+		request.Header.Set("User-Agent", s.userAgent)
+		if referer != "" {
+			request.Header.Set("Referer", referer)
+		}
+		request.AddCookie(&http.Cookie{Name: "padding", Value: strings.Repeat("0", s.paddingLength())})
+		response, err := do(request)
+		if err != nil {
+			return
+		}
+		body, err := io.ReadAll(response.Body)
+		response.Body.Close()
+		if err != nil {
+			return
+		}
+		s.addPaths(body)
+		referer = request.URL.String()
+		requestURL = s.prefix + s.randomPath()
+		if i > 0 {
+			time.Sleep(time.Duration(realityRandBetween(s.spiderY[6], s.spiderY[7])) * time.Millisecond)
+		}
+	}
 }
 
 func (e *RealityClientConfig) Clone() Config {
 	return &RealityClientConfig{
-		e.ctx,
-		e.logger,
-		e.uClient.Clone().(*UTLSClientConfig),
-		e.publicKey,
-		e.shortID,
-		e.mldsa65Verify,
+		ctx:           e.ctx,
+		logger:        e.logger,
+		uClient:       e.uClient.Clone().(*UTLSClientConfig),
+		publicKey:     e.publicKey,
+		shortID:       e.shortID,
+		mldsa65Verify: e.mldsa65Verify,
+		spiderX:       e.spiderX,
+		spiderY:       e.spiderY,
 	}
 }
 

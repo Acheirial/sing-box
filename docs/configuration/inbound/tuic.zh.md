@@ -69,6 +69,8 @@ QUIC 拥塞控制算法
 
 **必填。**TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
+TUIC 运行于 QUIC 之上并协商 `h3` ALPN，因此 `tls.alpn` 未设置时默认为 `h3`。显式设置 `tls.alpn` 会覆盖该默认值。
+
 ## QUIC 字段
 
 参阅 [QUIC 字段](/zh/configuration/shared/quic/) 了解详情。

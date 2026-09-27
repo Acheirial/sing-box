@@ -1,18 +1,5 @@
 # Hysteria2
 
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [hop_interval_max](#hop_interval_max)  
-    :material-plus: [bbr_profile](#bbr_profile)  
-    :material-plus: [disable_chrome_parrot](#disable_chrome_parrot)  
-    :material-plus: [realm](#realm)  
-    :material-alert: [obfs](#obfstype)
-
-!!! quote "Changes in sing-box 1.11.0"
-
-    :material-plus: [server_ports](#server_ports)  
-    :material-plus: [hop_interval](#hop_interval)
-
 ```{.yaml linenums="1"}
 type: hysteria2
 tag: hy2-out
@@ -37,6 +24,7 @@ tls: {}
 bbr_profile: ""
 brutal_debug: false
 disable_chrome_parrot: false
+disable_udp: false
 realm:
   server_url: https://realm.example.com
   token: ""
@@ -81,23 +69,17 @@ Conflicts with `realm`.
 
 ## server_ports
 
-!!! question "Since sing-box 1.11.0"
-
 Server port range list.
 
 Conflicts with `server_port` and `realm`.
 
 ## hop_interval
 
-!!! question "Since sing-box 1.11.0"
-
 Port hopping interval.
 
 `30s` is used by default.
 
 ## hop_interval_max
-
-!!! question "Since sing-box 1.14.0"
 
 Maximum port hopping interval, used for randomization.
 
@@ -121,15 +103,11 @@ QUIC traffic obfuscator password.
 
 ## obfs.min_packet_size
 
-!!! question "Since sing-box 1.14.0"
-
 Minimum on-wire packet size in bytes. Gecko only.
 
 `512` is used by default.
 
 ## obfs.max_packet_size
-
-!!! question "Since sing-box 1.14.0"
 
 Maximum on-wire packet size in bytes. Gecko only.
 
@@ -147,6 +125,12 @@ One of `tcp` `udp`.
 
 Both is enabled by default.
 
+## disable_udp
+
+Disable UDP relay.
+
+UDP is enabled by default.
+
 ## tls
 
 **Required.** TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
@@ -157,8 +141,6 @@ See [QUIC Fields](/configuration/shared/quic/) for details.
 
 ### bbr_profile
 
-!!! question "Since sing-box 1.14.0"
-
 BBR congestion control algorithm profile, one of `conservative` `standard` `aggressive`.
 
 `standard` is used by default.
@@ -168,8 +150,6 @@ BBR congestion control algorithm profile, one of `conservative` `standard` `aggr
 Enable debug information logging for Hysteria Brutal CC.
 
 ### disable_chrome_parrot
-
-!!! question "Since sing-box 1.14.0"
 
 Disable Chrome QUIC fingerprint parroting.
 
@@ -187,8 +167,6 @@ maximums.
     handshake. Use an ECDSA or RSA certificate instead.
 
 ### realm
-
-!!! question "Since sing-box 1.14.0"
 
 Connect to a Hysteria2 server through a Hysteria Realm rendezvous service.
 

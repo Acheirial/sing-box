@@ -12,6 +12,7 @@ import (
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
+	"github.com/sagernet/sing-box/protocol/vless/encryption"
 	"github.com/sagernet/sing-box/transport/v2ray"
 	"github.com/sagernet/sing-vmess/packetaddr"
 	"github.com/sagernet/sing-vmess/vless"
@@ -43,6 +44,7 @@ type Outbound struct {
 	tlsConfig       tls.Config
 	tlsDialer       tls.Dialer
 	transport       adapter.V2RayClientTransport
+	encryption      *encryption.ClientInstance
 	packetAddr      bool
 	xudp            bool
 }
@@ -103,6 +105,16 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 	outbound.client, err = vless.NewClient(options.UUID, options.Flow, logger)
 	if err != nil {
 		return nil, err
+	}
+	if options.Encryption != "" && options.Encryption != "none" {
+		nfsPKeysBytes, xorMode, seconds, padding, parseErr := encryption.ParseClientEncryption(options.Encryption)
+		if parseErr != nil {
+			return nil, parseErr
+		}
+		outbound.encryption = &encryption.ClientInstance{}
+		if parseErr = outbound.encryption.Init(nfsPKeysBytes, xorMode, seconds, padding); parseErr != nil {
+			return nil, E.Cause(parseErr, "failed to use encryption")
+		}
 	}
 	outbound.multiplexDialer, err = mux.NewClientWithOptions((*vlessDialer)(outbound), logger, common.PtrValueOrDefault(options.Multiplex))
 	if err != nil {
@@ -200,6 +212,14 @@ func (h *vlessDialer) DialContext(ctx context.Context, network string, destinati
 	if err != nil {
 		return nil, err
 	}
+	if h.encryption != nil {
+		encryptedConn, handshakeErr := h.encryption.Handshake(conn)
+		if handshakeErr != nil {
+			common.Close(conn)
+			return nil, E.Cause(handshakeErr, "VLESS encryption handshake failed")
+		}
+		conn = encryptedConn
+	}
 	switch N.NetworkName(network) {
 	case N.NetworkTCP:
 		h.logger.InfoContext(ctx, "outbound connection to ", destination)
@@ -242,6 +262,14 @@ func (h *vlessDialer) ListenPacket(ctx context.Context, destination M.Socksaddr)
 	if err != nil {
 		common.Close(conn)
 		return nil, err
+	}
+	if h.encryption != nil {
+		encryptedConn, handshakeErr := h.encryption.Handshake(conn)
+		if handshakeErr != nil {
+			common.Close(conn)
+			return nil, E.Cause(handshakeErr, "VLESS encryption handshake failed")
+		}
+		conn = encryptedConn
 	}
 	if h.xudp {
 		return h.client.DialEarlyXUDPPacketConn(conn, destination)

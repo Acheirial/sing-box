@@ -1,43 +1,4 @@
----
-icon: material/new-box
----
-
 # TLS
-
-!!! quote "Changes in sing-box 1.14.0"
-
-    :material-plus: [certificate_provider](#certificate_provider)  
-    :material-plus: [handshake_timeout](#handshake_timeout)  
-    :material-plus: [spoof](#spoof)  
-    :material-plus: [spoof_method](#spoof_method)  
-    :material-plus: [engine](#engine)  
-    :material-delete-clock: [acme](#acme-fields)
-
-!!! quote "Changes in sing-box 1.13.0"
-
-    :material-plus: [kernel_tx](#kernel_tx)  
-    :material-plus: [kernel_rx](#kernel_rx)  
-    :material-plus: [curve_preferences](#curve_preferences)  
-    :material-plus: [certificate_public_key_sha256](#certificate_public_key_sha256)  
-    :material-plus: [client_certificate](#client_certificate)  
-    :material-plus: [client_certificate_path](#client_certificate_path)  
-    :material-plus: [client_key](#client_key)  
-    :material-plus: [client_key_path](#client_key_path)  
-    :material-plus: [client_authentication](#client_authentication)  
-    :material-plus: [client_certificate_public_key_sha256](#client_certificate_public_key_sha256)  
-    :material-plus: [ech.query_server_name](#query_server_name)
-
-!!! quote "Changes in sing-box 1.12.0"
-
-    :material-plus: [fragment](#fragment)  
-    :material-plus: [fragment_fallback_delay](#fragment_fallback_delay)  
-    :material-plus: [record_fragment](#record_fragment)  
-    :material-delete-clock: [ech.pq_signature_schemes_enabled](#pq_signature_schemes_enabled)  
-    :material-delete-clock: [ech.dynamic_record_sizing_disabled](#dynamic_record_sizing_disabled)
-
-!!! quote "Changes in sing-box 1.10.0"
-
-    :material-alert-decagram: [utls](#utls)
 
 ## Inbound
 
@@ -63,31 +24,10 @@ kernel_rx: false
 handshake_timeout: ""
 certificate_provider: ""
 
-# Deprecated
-
-acme:
-  domain: []
-  data_directory: ""
-  default_server_name: ""
-  email: ""
-  provider: ""
-  disable_http_challenge: false
-  disable_tls_alpn_challenge: false
-  alternative_http_port: 0
-  alternative_tls_port: 0
-  external_account:
-    key_id: ""
-    mac_key: ""
-  dns01_challenge: {}
 ech:
   enabled: false
   key: []
   key_path: ""
-
-  # Deprecated
-
-  pq_signature_schemes_enabled: false
-  dynamic_record_sizing_disabled: false
 reality:
   enabled: false
   handshake:
@@ -135,10 +75,6 @@ ech:
   config: []
   config_path: ""
   query_server_name: ""
-
-  # Deprecated
-  pq_signature_schemes_enabled: false
-  dynamic_record_sizing_disabled: false
 utls:
   enabled: false
   fingerprint: ""
@@ -185,8 +121,6 @@ Cipher suite values:
 Enable TLS.
 
 ## engine
-
-!!! question "Since sing-box 1.14.0"
 
 **Client only.** TLS engine to use.
 
@@ -274,8 +208,6 @@ If empty, a safe default list is used. The default cipher suites might change ov
 
 ## curve_preferences
 
-!!! question "Since sing-box 1.13.0"
-
 Set of supported key exchange mechanisms. The order of the list is ignored, and key exchange mechanisms are chosen
 from this list using an internal preference order by Golang.
 
@@ -317,8 +249,6 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 ## certificate_public_key_sha256
 
-!!! question "Since sing-box 1.13.0"
-
 **Client only.** List of SHA-256 hashes of server certificate public keys, in base64 format.
 
 To generate the SHA-256 hash for a certificate's public key, use the following commands:
@@ -336,25 +266,17 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 ## client_certificate
 
-!!! question "Since sing-box 1.13.0"
-
 **Client only.** Client certificate chain line array, in PEM format.
 
 ## client_certificate_path
-
-!!! question "Since sing-box 1.13.0"
 
 **Client only.** The path to client certificate chain, in PEM format.
 
 ## client_key
 
-!!! question "Since sing-box 1.13.0"
-
 **Client only.** Client private key line array, in PEM format.
 
 ## client_key_path
-
-!!! question "Since sing-box 1.13.0"
 
 **Client only.** The path to client private key, in PEM format.
 
@@ -374,8 +296,6 @@ The path to the server private key, in PEM format.
 
 ## client_authentication
 
-!!! question "Since sing-box 1.13.0"
-
 **Server only.** The type of client authentication to use.
 
 Available values:
@@ -391,13 +311,9 @@ if this option is set to `verify-if-given`, or `require-and-verify`.
 
 ## client_certificate
 
-!!! question "Since sing-box 1.13.0"
-
 **Server only.** Client certificate chain line array, in PEM format.
 
 ## client_certificate_path
-
-!!! question "Since sing-box 1.13.0"
 
 **Server only.**
 
@@ -414,8 +330,6 @@ List of path to client certificate chain, in PEM format.
 The hash is computed over the whole DER-encoded certificate, see [certificate_sha256](#certificate_sha256).
 
 ## client_certificate_public_key_sha256
-
-!!! question "Since sing-box 1.13.0"
 
 **Server only.** List of SHA-256 hashes of client certificate public keys, in base64 format.
 
@@ -434,8 +348,6 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 
 ## kernel_tx
 
-!!! question "Since sing-box 1.13.0"
-
 !!! quote ""
 
     Only supported on Linux 5.1+, use a newer kernel if possible.
@@ -451,8 +363,6 @@ echo | openssl s_client -servername example.com -connect example.com:443 2>/dev/
 Enable kernel TLS transmit support.
 
 ## kernel_rx
-
-!!! question "Since sing-box 1.13.0"
 
 !!! quote ""
 
@@ -470,15 +380,11 @@ Enable kernel TLS receive support.
 
 ## handshake_timeout
 
-!!! question "Since sing-box 1.14.0"
-
 TLS handshake timeout, in golang's Duration format.
 
 `15s` is used by default.
 
 ## certificate_provider
-
-!!! question "Since sing-box 1.14.0"
 
 **Server only.** A string or an object.
 
@@ -513,16 +419,6 @@ uTLS is a fork of "crypto/tls", which provides ClientHello fingerprinting resist
 
 Available fingerprint values:
 
-!!! warning "Removed since sing-box 1.10.0"
-
-    Some legacy chrome fingerprints have been removed and will fallback to chrome:
-
-    :material-close: chrome_psk  
-    :material-close: chrome_psk_shuffle  
-    :material-close: chrome_padding_psk_shuffle  
-    :material-close: chrome_pq  
-    :material-close: chrome_pq_psk
-
 * chrome
 * firefox
 * edge
@@ -542,25 +438,6 @@ ECH (Encrypted Client Hello) is a TLS extension that allows a client to encrypt 
 message.
 
 The ECH key and configuration can be generated by `sing-box generate ech-keypair`.
-
-### pq_signature_schemes_enabled
-
-!!! failure "Deprecated in sing-box 1.12.0"
-
-    `pq_signature_schemes_enabled` is deprecated in sing-box 1.12.0 and removed in sing-box 1.13.0.
-
-Enable support for post-quantum peer certificate signature schemes.
-
-### dynamic_record_sizing_disabled
-
-!!! failure "Deprecated in sing-box 1.12.0"
-
-    `dynamic_record_sizing_disabled` is deprecated in sing-box 1.12.0 and removed in sing-box 1.13.0.
-
-Disables adaptive sizing of TLS records.
-
-When true, the largest possible TLS record size is always used.  
-When false, the size of TLS records may be adjusted in an attempt to improve latency.
 
 ### key
 
@@ -590,15 +467,11 @@ If empty, load from DNS will be attempted.
 
 ### query_server_name
 
-!!! question "Since sing-box 1.13.0"
-
 **Client only.** Overrides the domain name used for ECH HTTPS record queries.
 
 If empty, `server_name` is used for queries.
 
 ### fragment
-
-!!! question "Since sing-box 1.12.0"
 
 **Client only.** Fragment TLS handshakes to bypass firewalls.
 
@@ -616,21 +489,15 @@ because the target is considered to be local or behind a transparent proxy.
 
 ### fragment_fallback_delay
 
-!!! question "Since sing-box 1.12.0"
-
 **Client only.** The fallback value used when TLS segmentation cannot automatically determine the wait time.
 
 `500ms` is used by default.
 
 ### record_fragment
 
-!!! question "Since sing-box 1.12.0"
-
 **Client only.** Fragment TLS handshake into multiple TLS records to bypass firewalls.
 
 ### spoof
-
-!!! question "Since sing-box 1.14.0"
 
 **Client only.**
 
@@ -646,8 +513,6 @@ Administrator on Windows. Windows on ARM64 is not supported.
 
 ### spoof_method
 
-!!! question "Since sing-box 1.14.0"
-
 **Client only.** How the forged segment is rejected by the real server.
 
 | Value                      | Behavior                                                                                                       |
@@ -657,85 +522,6 @@ Administrator on Windows. Windows on ARM64 is not supported.
 | `wrong-ack`                | The forged segment's TCP acknowledgment number is placed before the server's send window.                      |
 | `wrong-md5`                | The forged segment carries a TCP-MD5 signature option.                                                         |
 | `wrong-timestamp`          | The forged segment carries a backdated TCP timestamp. Linux/Windows only; not supported on macOS.              |
-
-## ACME Fields
-
-!!! failure "Deprecated in sing-box 1.14.0"
-
-    Inline ACME options are deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0, check [Migration](/migration/#migrate-inline-acme-to-certificate-provider).
-
-### domain
-
-List of domain.
-
-ACME will be disabled if empty.
-
-### data_directory
-
-The directory to store ACME data.
-
-`$XDG_DATA_HOME/certmagic|$HOME/.local/share/certmagic` will be used if empty.
-
-### default_server_name
-
-Server name to use when choosing a certificate if the ClientHello's ServerName field is empty.
-
-### email
-
-The email address to use when creating or selecting an existing ACME server account
-
-### provider
-
-The ACME CA provider to use.
-
-| Value                   | Provider      |
-|-------------------------|---------------|
-| `letsencrypt (default)` | Let's Encrypt |
-| `zerossl`               | ZeroSSL       |
-| `https://...`           | Custom        |
-
-### disable_http_challenge
-
-Disable all HTTP challenges.
-
-### disable_tls_alpn_challenge
-
-Disable all TLS-ALPN challenges
-
-### alternative_http_port
-
-The alternate port to use for the ACME HTTP challenge; if non-empty, this port will be used instead of 80 to spin up a
-listener for the HTTP challenge.
-
-### alternative_tls_port
-
-The alternate port to use for the ACME TLS-ALPN challenge; the system must forward 443 to this port for challenge to
-succeed.
-
-### external_account
-
-EAB (External Account Binding) contains information necessary to bind or map an ACME account to some other account known
-by the CA.
-
-External account bindings are "used to associate an ACME account with an existing account in a non-ACME system, such as
-a CA customer database.
-
-To enable ACME account binding, the CA operating the ACME server needs to provide the ACME client with a MAC key and a
-key identifier, using some mechanism outside of ACME. §7.3.4
-
-### external_account.key_id
-
-The key identifier.
-
-### external_account.mac_key
-
-The MAC key.
-
-### dns01_challenge
-
-ACME DNS01 challenge field. If configured, other challenge methods will be disabled.
-
-See [DNS01 Challenge Fields](/configuration/shared/dns01_challenge/) for details.
 
 ## Reality Fields
 
@@ -750,6 +536,51 @@ See [DNS01 Challenge Fields](/configuration/shared/dns01_challenge/) for details
 **Server only.**
 
 **Required.** Private key, generated by `sing-box generate reality-keypair`.
+
+### server_names
+
+**Server only.** Additional TLS server names (SNI) accepted by the server,
+besides `server_name`. Empty by default.
+
+### min_client_ver
+
+**Server only.** Minimum accepted REALITY client version, encoded as
+`major.minor.patch`. Empty disables the bound.
+
+### max_client_ver
+
+**Server only.** Maximum accepted REALITY client version, encoded as
+`major.minor.patch`. Empty disables the bound.
+
+### limit_fallback_upload
+
+**Server only.** Rate limit applied to data uploaded over the fallback
+connection:
+
+* `after_bytes`: transferred bytes allowed before limiting starts.
+* `bytes_per_sec`: sustained rate.
+* `burst_bytes_per_sec`: burst rate.
+
+### limit_fallback_download
+
+**Server only.** Rate limit applied to data downloaded over the fallback
+connection, with the same fields as `limit_fallback_upload`.
+
+### xver
+
+**Server only.** PROXY protocol version (`0`, `1` or `2`) requested for the
+fallback connection. The currently used TLS implementation accepts the value but
+does not emit a PROXY header yet.
+
+### show
+
+**Server only.** Log REALITY handshake details at info level instead of trace
+level. Disabled by default.
+
+### master_key_log
+
+**Server only.** File that receives TLS master secrets in NSS key log format.
+`none` disables it.
 
 ### public_key
 
@@ -769,6 +600,10 @@ Check disabled if empty.
 
 ### mldsa65_verify
 
-!!! question "Since sing-box 1.14.0"
-
 **Client only.** A 1952 bytes ML-DSA-65 public key in base64 format, used to verify the additional post-quantum signature in the first certificate extension.
+
+### spider_x
+
+**Client only.** Initial path used when crawling the fallback server after a
+failed verification. The `p`, `c`, `t`, `i` and `r` query parameters configure
+SpiderY; see the Xray-core REALITY documentation for their meaning.

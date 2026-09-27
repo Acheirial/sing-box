@@ -44,15 +44,14 @@ func NewClient(ctx context.Context, dialer N.Dialer, serverAddr M.Socksaddr, opt
 	if err != nil {
 		return nil, err
 	}
-	if options.DownloadSettings != nil && config.mode == "stream-one" {
-		return nil, E.New("xhttp download_settings cannot be used with stream-one")
-	}
 	upload, err := newClientTarget(dialer, serverAddr, config, tlsConfig)
 	if err != nil {
 		return nil, err
 	}
 	client := &Client{ctx: ctx, upload: upload}
-	if options.DownloadSettings == nil {
+	if options.DownloadSettings == nil || config.mode == "stream-one" {
+		// Xray ignores download_settings when the download stream shares the
+		// bidirectional upload request.
 		return client, nil
 	}
 	downloadOptions := options.DownloadSettings
@@ -95,7 +94,10 @@ func newClientTarget(dialer N.Dialer, serverAddr M.Socksaddr, config *config, tl
 				DialContext: func(ctx context.Context, network, _ string) (net.Conn, error) {
 					return dialer.DialContext(ctx, network, serverAddr)
 				},
-				MaxIdleConns: 64, MaxIdleConnsPerHost: 64, IdleConnTimeout: 30 * time.Minute,
+				// Chunked downloads are unreliable over reused plaintext connections,
+				// matching Xray.
+				DisableKeepAlives: true,
+				MaxIdleConns:      64, MaxIdleConnsPerHost: 64, IdleConnTimeout: 30 * time.Minute,
 			}
 		}
 	} else {

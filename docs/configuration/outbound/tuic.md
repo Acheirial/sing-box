@@ -82,6 +82,8 @@ Both is enabled by default.
 
 **Required.** TLS configuration, see [TLS](/configuration/shared/tls/#outbound).
 
+TUIC runs over QUIC and negotiates the `h3` ALPN, so `tls.alpn` defaults to `h3` when unset. Setting `tls.alpn` explicitly overrides it.
+
 ## QUIC Fields
 
 See [QUIC Fields](/configuration/shared/quic/) for details.

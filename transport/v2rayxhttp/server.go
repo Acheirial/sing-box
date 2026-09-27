@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/sagernet/sing-box/adapter"
@@ -69,8 +70,37 @@ func NewServer(ctx context.Context, logger logger.ContextLogger, options option.
 	return server, nil
 }
 
+// stripHostPort removes a trailing numeric port from an HTTP Host header value.
+func stripHostPort(host string) string {
+	if index := strings.LastIndex(host, ":"); index >= 0 {
+		if _, err := strconv.ParseUint(host[index+1:], 10, 16); err == nil {
+			return host[:index]
+		}
+	}
+	return host
+}
+
+// sourceAddress returns the connection source address. The X-Forwarded-For
+// header is only honoured when the request carries one of the configured
+// trusted_x_forwarded_for headers, matching Xray.
+func (s *Server) sourceAddress(request *http.Request) M.Socksaddr {
+	if len(s.config.trustedXForwardedFor) == 0 || !s.trustedForwarded(request) {
+		return M.ParseSocksaddr(request.RemoteAddr)
+	}
+	return sHTTP.SourceAddress(request)
+}
+
+func (s *Server) trustedForwarded(request *http.Request) bool {
+	for _, name := range s.config.trustedXForwardedFor {
+		if request.Header.Get(name) != "" {
+			return true
+		}
+	}
+	return false
+}
+
 func (s *Server) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	if s.config.host != "" && request.Host != s.config.host {
+	if s.config.host != "" && stripHostPort(request.Host) != s.config.host {
 		s.invalid(writer, request, http.StatusNotFound, E.New("bad host"))
 		return
 	}
@@ -89,7 +119,7 @@ func (s *Server) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 	sessionID, sequence := s.config.extractMetadata(request)
-	if sessionID == "" && s.config.mode != "auto" && s.config.mode != "stream-one" {
+	if sessionID == "" && s.config.mode != "auto" && s.config.mode != "stream-one" && s.config.mode != "stream-up" {
 		s.invalid(writer, request, http.StatusBadRequest, E.New("stream-one is not allowed"))
 		return
 	}
@@ -101,7 +131,10 @@ func (s *Server) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 				s.invalid(writer, request, http.StatusBadRequest, E.New("stream-up is not allowed"))
 				return
 			}
-			session.startStream(request.Body)
+			if !session.startStream(request.Body) {
+				s.invalid(writer, request, http.StatusConflict, E.New("xhttp upload stream already exists"))
+				return
+			}
 			_ = http.NewResponseController(writer).EnableFullDuplex()
 			writer.Header().Set("X-Accel-Buffering", "no")
 			writer.Header().Set("Cache-Control", "no-store")
@@ -120,17 +153,21 @@ func (s *Server) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 			return
 		}
 		payload, err := s.config.extractPacketPayload(request)
-		if err != nil || len(payload) > s.config.scMaxPost.random() {
+		if err != nil {
 			s.invalid(writer, request, http.StatusBadRequest, E.New("invalid xhttp upload"))
+			return
+		}
+		if len(payload) > s.config.scMaxPost.random() {
+			s.invalid(writer, request, http.StatusRequestEntityTooLarge, E.New("xhttp upload exceeds sc_max_each_post_bytes"))
 			return
 		}
 		seq, err := strconv.ParseUint(sequence, 10, 64)
 		if err != nil {
-			s.invalid(writer, request, http.StatusBadRequest, E.New("invalid xhttp sequence"))
+			s.invalid(writer, request, http.StatusInternalServerError, E.New("invalid xhttp sequence"))
 			return
 		}
 		if !session.push(packet{sequence: seq, payload: payload}) {
-			s.invalid(writer, request, http.StatusConflict, E.New("closed xhttp session"))
+			s.invalid(writer, request, http.StatusInternalServerError, E.New("closed xhttp session"))
 			return
 		}
 		writer.Header().Set("Cache-Control", "no-store")
@@ -172,7 +209,7 @@ func (s *Server) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	done := make(chan struct{})
 	var closeOnce sync.Once
 	onClose := func(error) { closeOnce.Do(func() { close(done) }) }
-	s.handler.NewConnectionEx(request.Context(), response, sHTTP.SourceAddress(request), M.Socksaddr{}, onClose)
+	s.handler.NewConnectionEx(request.Context(), response, s.sourceAddress(request), M.Socksaddr{}, onClose)
 	select {
 	case <-done:
 	case <-request.Context().Done():
@@ -276,13 +313,14 @@ type packet struct {
 	payload  []byte
 }
 type serverSession struct {
-	reader      *io.PipeReader
-	writer      *io.PipeWriter
-	packets     chan packet
-	closed      chan struct{}
-	connected   chan struct{}
-	closeOnce   sync.Once
-	connectOnce sync.Once
+	reader        *io.PipeReader
+	writer        *io.PipeWriter
+	packets       chan packet
+	closed        chan struct{}
+	connected     chan struct{}
+	closeOnce     sync.Once
+	connectOnce   sync.Once
+	streamStarted atomic.Bool
 }
 
 func newServerSession(maxPackets int) *serverSession {
@@ -325,8 +363,12 @@ func (s *serverSession) push(item packet) bool {
 	}
 }
 
-func (s *serverSession) startStream(reader io.ReadCloser) {
+func (s *serverSession) startStream(reader io.ReadCloser) bool {
+	if !s.streamStarted.CompareAndSwap(false, true) {
+		return false
+	}
 	go func() { _, _ = io.Copy(s.writer, reader); _ = reader.Close() }()
+	return true
 }
 func (s *serverSession) markConnected() { s.connectOnce.Do(func() { close(s.connected) }) }
 func (s *serverSession) close() {

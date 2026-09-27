@@ -21,6 +21,7 @@ type Hysteria2InboundOptions struct {
 	Obfs                  *Hysteria2Obfs  `json:"obfs,omitempty"`
 	Users                 []Hysteria2User `json:"users,omitempty"`
 	IgnoreClientBandwidth bool            `json:"ignore_client_bandwidth,omitempty"`
+	DisableUDP            bool            `json:"disable_udp,omitempty"`
 	InboundTLSOptionsContainer
 	QUICOptions
 	Masquerade  *Hysteria2Masquerade   `json:"masquerade,omitempty"`
@@ -123,6 +124,13 @@ type _Hysteria2Masquerade struct {
 	FileOptions   Hysteria2MasqueradeFile   `json:"-"`
 	ProxyOptions  Hysteria2MasqueradeProxy  `json:"-"`
 	StringOptions Hysteria2MasqueradeString `json:"-"`
+	// ListenHTTP / ListenHTTPS start additional plain HTTP / HTTPS listeners
+	// serving the same masquerade content, so the server also looks like a
+	// regular web server on TCP.
+	ListenHTTP  string `json:"listen_http,omitempty"`
+	ListenHTTPS string `json:"listen_https,omitempty"`
+	// ForceHTTPS redirects every request on ListenHTTP to ListenHTTPS.
+	ForceHTTPS bool `json:"force_https,omitempty"`
 }
 
 type Hysteria2Masquerade _Hysteria2Masquerade
@@ -199,6 +207,10 @@ type Hysteria2MasqueradeFile struct {
 type Hysteria2MasqueradeProxy struct {
 	URL         string `json:"url"`
 	RewriteHost bool   `json:"rewrite_host,omitempty"`
+	// XForwarded appends the client address to X-Forwarded-For.
+	XForwarded bool `json:"x_forwarded,omitempty"`
+	// Insecure disables verification of the target server certificate.
+	Insecure bool `json:"insecure,omitempty"`
 }
 
 type Hysteria2MasqueradeString struct {
@@ -223,6 +235,7 @@ type Hysteria2OutboundOptions struct {
 	BBRProfile          string          `json:"bbr_profile,omitempty" enum:"standard,conservative,aggressive"`
 	BrutalDebug         bool            `json:"brutal_debug,omitempty"`
 	DisableChromeParrot bool            `json:"disable_chrome_parrot,omitempty"`
+	DisableUDP          bool            `json:"disable_udp,omitempty"`
 	Realm               *Hysteria2Realm `json:"realm,omitempty"`
 }
 

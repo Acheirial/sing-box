@@ -8,6 +8,7 @@ server: 127.0.0.1
 server_port: 1080
 uuid: bf000d23-0752-40b4-affe-68f7707a9661
 flow: xtls-rprx-vision
+encryption: ""
 network: tcp
 tls: {}
 packet_encoding: ""
@@ -38,6 +39,26 @@ Available values:
 
 * `xtls-rprx-vision`
 
+## encryption
+
+VLESS Encryption, matching Xray's user `encryption`.
+
+When empty or `none`, the connection is untouched. Otherwise the value uses the
+`mlkem768x25519plus` grammar, and the connection is encrypted before the VLESS
+request is written:
+
+```text
+mlkem768x25519plus.<native|xorpub|random>.<1rtt|0rtt>[.<padding>][.<key>...]
+```
+
+* `native`, `xorpub` and `random` select the XOR mode applied to the relayed
+  traffic.
+* `1rtt` disables session tickets, `0rtt` reuses them.
+* Optional following components shorter than 20 characters define padding, and
+  the remaining ones are base64url-encoded keys (`xray vlessenc` output).
+
+The matching inbound `decryption` value must be generated from the same handshake.
+
 ## network
 
 Enabled network
@@ -66,7 +87,7 @@ See [Multiplex](/configuration/shared/multiplex#outbound) for details.
 
 ## transport
 
-V2Ray Transport configuration, see [V2Ray Transport](/configuration/shared/v2ray-transport/).
+Transport configuration, see [Transport](/configuration/shared/transport/).
 
 ## Dial Fields
 

@@ -92,6 +92,27 @@ func (c *config) applyPadding(request *http.Request) {
 	}
 }
 
+// defaultUserAgent is the browser User-Agent sent when no headers are configured,
+// matching Xray's default browser header set.
+const defaultUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0"
+
+// requestHeaders returns the configured request headers, or a default browser
+// header set when none are configured.
+func (c *config) requestHeaders() http.Header {
+	if len(c.headers) > 0 {
+		return c.headers.Clone()
+	}
+	return http.Header{
+		"User-Agent":     []string{defaultUserAgent},
+		"Accept":         []string{"*/*"},
+		"Cache-Control":  []string{"no-cache"},
+		"Pragma":         []string{"no-cache"},
+		"Sec-Fetch-Mode": []string{"cors"},
+		"Sec-Fetch-Dest": []string{"empty"},
+		"Sec-Fetch-Site": []string{"same-origin"},
+	}
+}
+
 func (c *config) validPadding(request *http.Request) bool {
 	placement, key, header, method := c.paddingPlacement, c.paddingKey, c.paddingHeader, c.paddingMethod
 	if !c.paddingObfs {
@@ -111,6 +132,10 @@ func (c *config) validPadding(request *http.Request) bool {
 	case placementQueryInHeader:
 		if reference, err := url.Parse(request.Header.Get(header)); err == nil {
 			value = reference.Query().Get(key)
+		}
+		if value == "" {
+			// Xray also extracts x_padding from the request URL when the header is absent.
+			value = request.URL.Query().Get(key)
 		}
 	}
 	if method == "tokenish" {
@@ -141,7 +166,7 @@ func paddingValue(method string, length int) string {
 }
 
 func (c *config) fillStreamRequest(request *http.Request, sessionID string) {
-	request.Header = c.headers.Clone()
+	request.Header = c.requestHeaders()
 	c.applyPadding(request)
 	c.applyMetadata(request, sessionID, "")
 	if request.Body != nil && !c.noGRPCHeader {
@@ -150,7 +175,7 @@ func (c *config) fillStreamRequest(request *http.Request, sessionID string) {
 }
 
 func (c *config) fillPacketRequest(request *http.Request, sessionID string, sequence uint64, payload []byte) {
-	request.Header = c.headers.Clone()
+	request.Header = c.requestHeaders()
 	switch c.dataPlacement {
 	case placementHeader:
 		c.fillHeaderPayload(request.Header, c.dataKey, payload)

@@ -152,7 +152,7 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 			InitialPacketSize:       options.InitialPacketSize,
 			DisablePathMTUDiscovery: options.DisablePathMTUDiscovery,
 		},
-		UDPDisabled:  !common.Contains(networkList, N.NetworkUDP),
+		UDPDisabled:  options.DisableUDP || !common.Contains(networkList, N.NetworkUDP),
 		BBRProfile:   options.BBRProfile,
 		ChromeParrot: !options.DisableChromeParrot,
 		RealmOptions: realmOptions,

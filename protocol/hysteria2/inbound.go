@@ -2,12 +2,15 @@ package hysteria2
 
 import (
 	"context"
+	stdTLS "crypto/tls"
+	"fmt"
 	"net"
 	"net/http"
 	"net/http/httputil"
 	"net/netip"
 	"net/url"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/sagernet/sing-box/adapter"
@@ -43,6 +46,13 @@ type Inbound struct {
 	tlsConfig    tls.ServerConfig
 	service      *hysteria2.Service[int]
 	userNameList []string
+
+	masqueradeHandler     http.Handler
+	masqueradeListenHTTP  string
+	masqueradeListenHTTPS string
+	masqueradeForceHTTPS  bool
+	masqueradeServers     []*http.Server
+	masqueradeListeners   []net.Listener
 }
 
 func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLogger, tag string, options option.Hysteria2InboundOptions) (adapter.Inbound, error) {
@@ -86,16 +96,25 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 			if err != nil {
 				return nil, E.Cause(err, "parse masquerade URL")
 			}
+			proxyRewrite := func(r *httputil.ProxyRequest) {
+				r.SetURL(masqueradeURL)
+				if !options.Masquerade.ProxyOptions.RewriteHost {
+					r.Out.Host = r.In.Host
+				}
+				if options.Masquerade.ProxyOptions.XForwarded {
+					r.SetXForwarded()
+				}
+			}
 			masqueradeHandler = &httputil.ReverseProxy{
-				Rewrite: func(r *httputil.ProxyRequest) {
-					r.SetURL(masqueradeURL)
-					if !options.Masquerade.ProxyOptions.RewriteHost {
-						r.Out.Host = r.In.Host
-					}
-				},
+				Rewrite: proxyRewrite,
 				ErrorHandler: func(w http.ResponseWriter, r *http.Request, err error) {
 					w.WriteHeader(http.StatusBadGateway)
 				},
+			}
+			if options.Masquerade.ProxyOptions.Insecure {
+				masqueradeHandler.(*httputil.ReverseProxy).Transport = &http.Transport{
+					TLSClientConfig: &stdTLS.Config{InsecureSkipVerify: true},
+				}
 			}
 		case C.Hysterai2MasqueradeTypeString:
 			masqueradeHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -122,7 +141,19 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 			Logger:  logger,
 			Listen:  options.ListenOptions,
 		}),
-		tlsConfig: tlsConfig,
+		tlsConfig:            tlsConfig,
+		masqueradeHandler:    masqueradeHandler,
+		masqueradeForceHTTPS: options.Masquerade != nil && options.Masquerade.ForceHTTPS,
+	}
+	if options.Masquerade != nil {
+		inbound.masqueradeListenHTTP = options.Masquerade.ListenHTTP
+		inbound.masqueradeListenHTTPS = options.Masquerade.ListenHTTPS
+		if options.Masquerade.ForceHTTPS && (options.Masquerade.ListenHTTP == "" || options.Masquerade.ListenHTTPS == "") {
+			return nil, E.New("masquerade force_https requires listen_http and listen_https")
+		}
+		if (options.Masquerade.ListenHTTP != "" || options.Masquerade.ListenHTTPS != "") && masqueradeHandler == nil {
+			return nil, E.New("masquerade listen_http and listen_https require a masquerade type")
+		}
 	}
 	var udpTimeout time.Duration
 	if options.UDPTimeout != 0 {
@@ -201,6 +232,7 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 			DisablePathMTUDiscovery: options.DisablePathMTUDiscovery,
 		},
 		IgnoreClientBandwidth: options.IgnoreClientBandwidth,
+		UDPDisabled:           options.DisableUDP,
 		UDPTimeout:            udpTimeout,
 		Handler:               inbound,
 		MasqueradeHandler:     masqueradeHandler,
@@ -282,7 +314,84 @@ func (h *Inbound) Start(stage adapter.StartStage) error {
 	if err != nil {
 		return err
 	}
+	if err = h.startMasqueradeServers(); err != nil {
+		return err
+	}
 	return h.service.Start(packetConn)
+}
+
+// masqueradeAltSvcWriter advertises the QUIC endpoint on masquerade TCP
+// responses, mirroring the reference implementation.
+type masqueradeAltSvcWriter struct {
+	http.ResponseWriter
+	port uint16
+}
+
+func (w masqueradeAltSvcWriter) WriteHeader(statusCode int) {
+	w.Header().Set("Alt-Svc", fmt.Sprintf(`h3=":%d"; ma=2592000`, w.port))
+	w.ResponseWriter.WriteHeader(statusCode)
+}
+
+func (h *Inbound) startMasqueradeServers() error {
+	if h.masqueradeHandler == nil {
+		return nil
+	}
+	port := uint16(0)
+	if address := h.listener.UDPConn().LocalAddr(); address != nil {
+		if udpAddress, loaded := address.(*net.UDPAddr); loaded {
+			port = uint16(udpAddress.Port)
+		}
+	}
+	serve := func(listener net.Listener, handler http.Handler) {
+		server := &http.Server{Handler: handler}
+		h.masqueradeServers = append(h.masqueradeServers, server)
+		h.masqueradeListeners = append(h.masqueradeListeners, listener)
+		go func() {
+			if err := server.Serve(listener); err != nil && err != http.ErrServerClosed {
+				h.logger.ErrorContext(context.Background(), "masquerade server: ", err)
+			}
+		}()
+	}
+	if h.masqueradeListenHTTP != "" {
+		tcpListener, err := net.Listen("tcp", h.masqueradeListenHTTP)
+		if err != nil {
+			return E.Cause(err, "listen masquerade HTTP")
+		}
+		httpsPort := uint16(0)
+		if h.masqueradeListenHTTPS != "" {
+			if _, portString, splitErr := net.SplitHostPort(h.masqueradeListenHTTPS); splitErr == nil {
+				parsedPort, parseErr := strconv.ParseUint(portString, 10, 16)
+				if parseErr == nil {
+					httpsPort = uint16(parsedPort)
+				}
+			}
+		}
+		serve(tcpListener, http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+			if h.masqueradeForceHTTPS {
+				target := "https://" + request.Host + request.RequestURI
+				if httpsPort != 0 && httpsPort != 443 {
+					target = fmt.Sprintf("https://%s:%d%s", request.Host, httpsPort, request.RequestURI)
+				}
+				http.Redirect(writer, request, target, http.StatusMovedPermanently)
+				return
+			}
+			h.masqueradeHandler.ServeHTTP(masqueradeAltSvcWriter{ResponseWriter: writer, port: port}, request)
+		}))
+	}
+	if h.masqueradeListenHTTPS != "" {
+		tcpListener, err := net.Listen("tcp", h.masqueradeListenHTTPS)
+		if err != nil {
+			return E.Cause(err, "listen masquerade HTTPS")
+		}
+		stdConfig, err := h.tlsConfig.STDConfig()
+		if err != nil {
+			return E.Cause(err, "masquerade HTTPS requires standard TLS")
+		}
+		serve(stdTLS.NewListener(tcpListener, stdConfig), http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+			h.masqueradeHandler.ServeHTTP(masqueradeAltSvcWriter{ResponseWriter: writer, port: port}, request)
+		}))
+	}
+	return nil
 }
 
 func (h *Inbound) InterfaceUpdated(ctx context.Context) {
@@ -290,9 +399,17 @@ func (h *Inbound) InterfaceUpdated(ctx context.Context) {
 }
 
 func (h *Inbound) Close() error {
-	return common.Close(
+	errList := make([]error, 0, 4)
+	for _, server := range h.masqueradeServers {
+		errList = append(errList, server.Close())
+	}
+	for _, masqueradeListener := range h.masqueradeListeners {
+		errList = append(errList, masqueradeListener.Close())
+	}
+	closeErr := common.Close(
 		h.listener,
 		h.tlsConfig,
 		common.PtrOrNil(h.service),
 	)
+	return E.Errors(append(errList, closeErr)...)
 }

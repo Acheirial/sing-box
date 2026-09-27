@@ -9,6 +9,9 @@ import (
 	"encoding/hex"
 	"fmt"
 	"net"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/sagernet/sing-box/common/dialer"
@@ -25,8 +28,27 @@ import (
 
 var _ ServerConfigCompat = (*RealityServerConfig)(nil)
 
+// parseRealityClientVersion parses a "major.minor.patch" REALITY client version
+// into the three-byte form used by the REALITY handshake, mirroring Xray-core.
+func parseRealityClientVersion(value string) ([]byte, error) {
+	parts := strings.Split(value, ".")
+	if len(parts) > 3 {
+		return nil, E.New("invalid client version: ", value)
+	}
+	version := make([]byte, 3)
+	for i, part := range parts {
+		number, err := strconv.ParseUint(part, 10, 8)
+		if err != nil {
+			return nil, E.Cause(err, "invalid client version: ", value)
+		}
+		version[i] = byte(number)
+	}
+	return version, nil
+}
+
 type RealityServerConfig struct {
 	config           *utls.RealityConfig
+	masterKeyLog     *os.File
 	handshakeTimeout time.Duration
 }
 
@@ -84,15 +106,35 @@ func NewRealityServer(ctx context.Context, logger log.ContextLogger, options opt
 	}
 
 	tlsConfig.SessionTicketsDisabled = true
+	show := options.Reality.Show
 	tlsConfig.Log = func(format string, v ...any) {
-		if logger != nil {
-			logger.Trace(fmt.Sprintf(format, v...))
+		if logger == nil {
+			return
+		}
+		message := fmt.Sprintf(format, v...)
+		if show {
+			logger.Info(message)
+		} else {
+			logger.Trace(message)
 		}
 	}
 	tlsConfig.Type = N.NetworkTCP
 	tlsConfig.Dest = options.Reality.Handshake.ServerOptions.Build().String()
 
-	tlsConfig.ServerNames = map[string]bool{options.ServerName: true}
+	if options.Reality.Xver > 2 {
+		return nil, E.New("invalid xver: ", options.Reality.Xver)
+	}
+	tlsConfig.Xver = options.Reality.Xver
+
+	serverNames := make(map[string]bool)
+	for _, serverName := range options.Reality.ServerNames {
+		serverNames[serverName] = true
+	}
+	if len(serverNames) == 0 {
+		serverNames[options.ServerName] = true
+	}
+	tlsConfig.ServerNames = serverNames
+
 	privateKey, err := base64.RawURLEncoding.DecodeString(options.Reality.PrivateKey)
 	if err != nil {
 		return nil, E.Cause(err, "decode private key")
@@ -102,6 +144,50 @@ func NewRealityServer(ctx context.Context, logger log.ContextLogger, options opt
 	}
 	tlsConfig.PrivateKey = privateKey
 	tlsConfig.MaxTimeDiff = time.Duration(options.Reality.MaxTimeDifference)
+
+	if options.Reality.MinClientVer != "" {
+		tlsConfig.MinClientVer, err = parseRealityClientVersion(options.Reality.MinClientVer)
+		if err != nil {
+			return nil, E.Cause(err, "parse min_client_ver")
+		}
+	}
+	if options.Reality.MaxClientVer != "" {
+		tlsConfig.MaxClientVer, err = parseRealityClientVersion(options.Reality.MaxClientVer)
+		if err != nil {
+			return nil, E.Cause(err, "parse max_client_ver")
+		}
+	}
+
+	if options.Reality.LimitFallbackUpload != nil {
+		tlsConfig.LimitFallbackUpload = utls.RealityLimitFallback{
+			AfterBytes:       options.Reality.LimitFallbackUpload.AfterBytes,
+			BytesPerSec:      options.Reality.LimitFallbackUpload.BytesPerSec,
+			BurstBytesPerSec: options.Reality.LimitFallbackUpload.BurstBytesPerSec,
+		}
+	}
+	if options.Reality.LimitFallbackDownload != nil {
+		tlsConfig.LimitFallbackDownload = utls.RealityLimitFallback{
+			AfterBytes:       options.Reality.LimitFallbackDownload.AfterBytes,
+			BytesPerSec:      options.Reality.LimitFallbackDownload.BytesPerSec,
+			BurstBytesPerSec: options.Reality.LimitFallbackDownload.BurstBytesPerSec,
+		}
+	}
+
+	var masterKeyLog *os.File
+	masterKeyLogSucceeded := false
+	if path := options.Reality.MasterKeyLog; path != "" && path != "none" {
+		file, openErr := os.OpenFile(path, os.O_CREATE|os.O_RDWR|os.O_APPEND, 0o644)
+		if openErr != nil {
+			return nil, E.Cause(openErr, "open master_key_log")
+		}
+		masterKeyLog = file
+		tlsConfig.KeyLogWriter = file
+		defer func() {
+			if !masterKeyLogSucceeded {
+				masterKeyLog.Close()
+			}
+		}()
+	}
 
 	tlsConfig.ShortIds = make(map[[8]byte]bool)
 	if len(options.Reality.ShortID) == 0 {
@@ -139,6 +225,7 @@ func NewRealityServer(ctx context.Context, logger log.ContextLogger, options opt
 	}
 	var config ServerConfig = &RealityServerConfig{
 		config:           &tlsConfig,
+		masterKeyLog:     masterKeyLog,
 		handshakeTimeout: handshakeTimeout,
 	}
 	if options.KernelTx || options.KernelRx {
@@ -152,6 +239,7 @@ func NewRealityServer(ctx context.Context, logger log.ContextLogger, options opt
 			kernelRx:     options.KernelRx,
 		}
 	}
+	masterKeyLogSucceeded = true
 	return config, nil
 }
 
@@ -192,6 +280,11 @@ func (c *RealityServerConfig) Start() error {
 }
 
 func (c *RealityServerConfig) Close() error {
+	if c.masterKeyLog != nil {
+		err := c.masterKeyLog.Close()
+		c.masterKeyLog = nil
+		return err
+	}
 	return nil
 }
 
@@ -210,6 +303,7 @@ func (c *RealityServerConfig) ServerHandshake(ctx context.Context, conn net.Conn
 func (c *RealityServerConfig) Clone() Config {
 	return &RealityServerConfig{
 		config:           c.config.Clone(),
+		masterKeyLog:     c.masterKeyLog,
 		handshakeTimeout: c.handshakeTimeout,
 	}
 }

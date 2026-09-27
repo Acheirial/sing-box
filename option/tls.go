@@ -216,6 +216,32 @@ type InboundRealityOptions struct {
 	PrivateKey        string                         `json:"private_key,omitempty"`
 	ShortID           badoption.Listable[string]     `json:"short_id,omitempty"`
 	MaxTimeDifference badoption.Duration             `json:"max_time_difference,omitempty"`
+
+	// ServerNames restricts the TLS server names (SNI) accepted by the server.
+	// When empty, ServerName is used instead.
+	ServerNames badoption.Listable[string] `json:"server_names,omitempty" examples:"example.com,www.example.com"`
+	// MinClientVer / MaxClientVer restrict the REALITY client version, encoded as
+	// "major.minor.patch". Empty values disable the corresponding bound.
+	MinClientVer string `json:"min_client_ver,omitempty" examples:"1.0.0"`
+	MaxClientVer string `json:"max_client_ver,omitempty" examples:"1.0.0"`
+	// Xver selects the PROXY protocol version (0 to disable, 1 or 2) sent to the
+	// fallback target. It is passed to the REALITY implementation, but the pinned
+	// utls version accepts the value without emitting a PROXY header yet.
+	Xver uint8 `json:"xver,omitempty"`
+	// Show logs REALITY handshake details at info level instead of trace level.
+	Show bool `json:"show,omitempty"`
+	// MasterKeyLog writes the TLS master secrets to the given file in NSS key log
+	// format. The value "none" disables it.
+	MasterKeyLog string `json:"master_key_log,omitempty"`
+
+	LimitFallbackUpload   *InboundRealityLimitFallbackOptions `json:"limit_fallback_upload,omitempty"`
+	LimitFallbackDownload *InboundRealityLimitFallbackOptions `json:"limit_fallback_download,omitempty"`
+}
+
+type InboundRealityLimitFallbackOptions struct {
+	AfterBytes       uint64 `json:"after_bytes,omitempty"`
+	BytesPerSec      uint64 `json:"bytes_per_sec,omitempty"`
+	BurstBytesPerSec uint64 `json:"burst_bytes_per_sec,omitempty"`
 }
 
 type InboundRealityHandshakeOptions struct {
@@ -256,4 +282,8 @@ type OutboundRealityOptions struct {
 	PublicKey     string `json:"public_key,omitempty"`
 	ShortID       string `json:"short_id,omitempty"`
 	Mldsa65Verify string `json:"mldsa65_verify,omitempty"`
+	// SpiderX is the initial path used when crawling the fallback server after a
+	// failed verification. The "p", "c", "t", "i" and "r" query parameters
+	// configure SpiderY, see the Xray-core REALITY documentation.
+	SpiderX string `json:"spider_x,omitempty" examples:"/"`
 }

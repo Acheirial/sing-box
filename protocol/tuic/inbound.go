@@ -5,6 +5,7 @@ import (
 	"net"
 	"time"
 
+	"github.com/sagernet/quic-go/http3"
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/adapter/inbound"
 	"github.com/sagernet/sing-box/common/listener"
@@ -45,6 +46,10 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 	tlsConfig, err := tls.NewServer(ctx, logger, common.PtrValueOrDefault(options.TLS))
 	if err != nil {
 		return nil, err
+	}
+	// TUIC runs over QUIC and negotiates ALPN "h3"; default it like the reference implementation.
+	if len(tlsConfig.NextProtos()) == 0 {
+		tlsConfig.SetNextProtos([]string{http3.NextProtoH3})
 	}
 	inbound := &Inbound{
 		Adapter: inbound.NewAdapter(C.TypeTUIC, tag),
