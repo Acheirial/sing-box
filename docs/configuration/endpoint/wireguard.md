@@ -33,6 +33,7 @@ peers:
 # ... UDP NAT Fields
 
 workers: 0
+on_demand: false
 
 # ... Dial Fields
 
@@ -112,6 +113,10 @@ WireGuard reserved field bytes.
 WireGuard worker count.
 
 CPU count is used by default.
+
+## on_demand
+
+Allow the endpoint to be disconnected when necessary.
 
 ## UDP NAT Fields
 

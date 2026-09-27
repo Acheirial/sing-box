@@ -61,7 +61,7 @@ with traffic shaping (`mode`) and requires a `psk` of 12 to 255 bytes.
 Snell users.
 
 When set, the server runs in multi-user mode: each entry has a `name` (optional, used in
-logs) and a `userkey` (the user's key). The top-level `psk` remains the server key.
+logs) and a `userkey` (the user's key).
 
 ## obfs_mode
 

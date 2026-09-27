@@ -17,6 +17,8 @@ tls: {}
 config_path: ""
 verify_client_endpoint: []
 verify_client_url: []
+verify_client_inbound: []
+verify_client_key: []
 home: ""
 mesh_with: []
 mesh_psk: ""
@@ -60,6 +62,14 @@ url: ""
 ```{.yaml linenums="1"}
 url: __URL__
 ```
+
+## verify_client_inbound
+
+用于验证客户端的 Tailcat 入站标签。
+
+## verify_client_key
+
+用于验证客户端的 Tailcat 公钥。
 
 ## home
 

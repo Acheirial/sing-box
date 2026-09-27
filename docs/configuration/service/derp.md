@@ -17,6 +17,8 @@ tls: {}
 config_path: ""
 verify_client_endpoint: []
 verify_client_url: []
+verify_client_inbound: []
+verify_client_key: []
 home: ""
 mesh_with: []
 mesh_psk: ""
@@ -60,6 +62,14 @@ Setting Array value to a string `__URL__` is equivalent to configuring:
 ```{.yaml linenums="1"}
 url: __URL__
 ```
+
+## verify_client_inbound
+
+Tailcat inbound tags to verify clients.
+
+## verify_client_key
+
+Tailcat public keys to verify clients.
 
 ## home
 

@@ -88,6 +88,7 @@ auto_redirect: true
 auto_redirect_input_mark: "0x2023"
 auto_redirect_output_mark: "0x2024"
 auto_redirect_reset_mark: "0x2025"
+auto_redirect_tproxy_mark: "0x2026"
 auto_redirect_nfqueue: 100
 auto_redirect_iproute2_fallback_rule_index: 32768
 exclude_mptcp: false
@@ -110,7 +111,7 @@ endpoint_independent_nat: false
 
 # ... UDP NAT Fields
 
-stack: system
+multi_queue: false
 include_interface:
   - lan0
 exclude_interface:
@@ -144,6 +145,7 @@ platform:
 
 # Deprecated
 
+stack: system
 gso: false
 inet4_address:
   - 172.19.0.1/30
@@ -234,21 +236,16 @@ How DNS is handled on the TUN interface.
 
 `hijack` adds the following on top of `native`:
 
-*On Linux*: only DNS sent to non-local destinations can be intercepted.
-Traffic destined to addresses on the host's own interfaces (such as
-`127.0.0.53` or the host's LAN-side IP) is delivered through the kernel
-`local` routing table before any user rule applies, and `OUTPUT` NAT cannot
-redirect packets going through `lo`.
+*On Linux*: DNS sent to addresses on the host's own interfaces (such as
+`127.0.0.53` or the host's LAN-side IP) is not hijacked.
 
-- Without `auto_redirect`, an `iproute2` rule makes port 53 skip the `main`
-  table's specific-route lookup, forcing DNS that would otherwise be
-  delivered through a directly-attached subnet through the TUN. Destination
-  addresses are not rewritten.
-- With `auto_redirect`, an nftables rule DNATs port 53 traffic directly to
+- Without `auto_redirect`, port 53 traffic to directly-attached subnets is
+  also routed through the TUN.
+- With `auto_redirect`, port 53 traffic is redirected to
   [`dns_address`](#dns_address).
 
-*On Windows with [`strict_route`](#strict_route)*: a WFP filter blocks port
-53 traffic going through interfaces other than the TUN.
+*On Windows with [`strict_route`](#strict_route)*: port 53 traffic going
+through interfaces other than the TUN is blocked.
 
 ## dns_address
 
@@ -256,15 +253,12 @@ redirect packets going through `lo`.
 
 List of DNS server addresses used by [`dns_mode`](#dns_mode).
 
-When unset, sing-box derives one address per family by taking the next IP after
-the first IPv4/IPv6 entry in [`address`](#address). Connections toward those
-derived addresses are additionally hijacked into the sing-box DNS module,
-equivalent to a [`hijack-dns`](/configuration/route/rule_action/#hijack-dns)
-route action; this preserves the behaviour from before this option was added.
+When unset, the next address after the first IPv4 and IPv6 entry in
+[`address`](#address) is used, and connections to it are handled as a
+[`hijack-dns`](/configuration/route/rule_action/#hijack-dns) route action.
 
-When set, this auto-hijack is not applied; configure an explicit
-[`hijack-dns`](/configuration/route/rule_action/#hijack-dns) route rule if the
-behaviour is still required.
+When set, configure a [`hijack-dns`](/configuration/route/rule_action/#hijack-dns)
+route rule to handle DNS traffic to these addresses.
 
 ## gso
 
@@ -326,11 +320,10 @@ Improve TUN routing and performance using nftables.
 higher performance (better than tproxy),
 and avoids conflicts between TUN and Docker bridge networks.
 
-Note that `auto_redirect` also works on Android, 
-but due to the lack of `nftables` and `ip6tables`,
-only simple IPv4 TCP forwarding is performed.
-To share your VPN connection over hotspot or repeater on Android,
-use [VPNHotspot](https://github.com/Mygod/VPNHotspot).
+Pre-matching requires nfqueue support in the kernel (`nfnetlink_queue`).
+
+`auto_redirect` is fully supported on Android through the root service of the graphical client
+or a root shell, including forwarded traffic (hotspot, repeater).
 
 `auto_redirect` also automatically inserts compatibility rules
 into the OpenWrt fw4 table, i.e. 
@@ -344,7 +337,7 @@ Conflict with `route.default_mark` and `[dialOptions].routing_mark`.
 
 Connection input mark used by `auto_redirect`.
 
-`0x2023` is used by default.
+`0x2023` is used by default (`0x400000` on Android).
 
 ## auto_redirect_output_mark
 
@@ -352,7 +345,7 @@ Connection input mark used by `auto_redirect`.
 
 Connection output mark used by `auto_redirect`.
 
-`0x2024` is used by default.
+`0x2024` is used by default (`0x200000` on Android).
 
 ## auto_redirect_reset_mark
 
@@ -360,7 +353,13 @@ Connection output mark used by `auto_redirect`.
 
 Connection reset mark used by `auto_redirect` pre-matching.
 
-`0x2025` is used by default.
+`0x2025` is used by default (`0x600000` on Android).
+
+## auto_redirect_tproxy_mark
+
+Connection TPROXY mark used by the `auto_redirect` iptables backend for IPv6 TCP.
+
+`0x2026` is used by default (`0x800000` on Android).
 
 ## auto_redirect_nfqueue
 
@@ -481,9 +480,9 @@ Exclude custom routes when `auto_route` is enabled.
 
     !!! quote ""
     
-        Only supported on Linux with nftables and requires `auto_route` and `auto_redirect` enabled.
+        Only supported on Linux and requires `auto_route` and `auto_redirect` enabled.
     
-    Add the destination IP CIDR rules in the specified rule-sets to the firewall.
+    Match the destination IP CIDR rules in the specified rule-sets during pre-matching.
     Unmatched traffic will bypass the sing-box routes.
     
     Conflict with `route.default_mark` and `[dialOptions].routing_mark`.
@@ -507,9 +506,9 @@ Exclude custom routes when `auto_route` is enabled.
 
     !!! quote ""
 
-    Only supported on Linux with nftables and requires `auto_route` and `auto_redirect` enabled.
+        Only supported on Linux and requires `auto_route` and `auto_redirect` enabled.
 
-    Add the destination IP CIDR rules in the specified rule-sets to the firewall.
+    Match the destination IP CIDR rules in the specified rule-sets during pre-matching.
     Matched traffic will bypass the sing-box routes.
 
 === "Without `auto_redirect` enabled"
@@ -532,6 +531,10 @@ to customize the mapping and filtering behavior.
 
 ## stack
 
+`stack` is deprecated and will be removed in sing-box 1.17.0.
+Remove the `stack` option to use sing-tun's own TCP/IP stack.
+See [Migration](/migration/#migrate-tun-stack).
+
 !!! quote "Changes in sing-box 1.8.0"
 
     :material-delete-alert: The legacy LWIP stack has been deprecated and removed.
@@ -544,7 +547,13 @@ TCP/IP stack.
 | `gvisor` | Perform L3 to L4 translation using [gVisor](https://github.com/google/gvisor)'s virtual network stack |
 | `mixed`  | Mixed `system` TCP stack and `gvisor` UDP stack                                                       |
 
-Defaults to the `mixed` stack if the gVisor build tag is enabled, otherwise defaults to the `system` stack.
+## multi_queue
+
+!!! quote ""
+
+    Only supported on Linux, and requires sing-tun's own TCP/IP stack.
+
+Enable multi-queue support based on `IFF_MULTI_QUEUE`, allowing throughput to scale with the number of CPU cores.
 
 ## include_interface
 

@@ -37,8 +37,6 @@ iproute2_rule_index: 0
 
 默认使用默认接口。
 
-接口不可用期间，转发流量将被丢弃。
-
 ## bridge_name
 
 自定义 bridge TUN 接口名前缀，默认使用 `bridge`。
@@ -49,9 +47,9 @@ iproute2_rule_index: 0
 
 !!! quote ""
 
-    仅支持 Linux，且仅在设置了 `interface` 时生效。
+    仅支持 Linux。
 
-用于固定出口路由的 Linux iproute2 路由表索引。
+Linux iproute2 路由表索引。
 
 默认使用 `2200` + 实例索引。
 

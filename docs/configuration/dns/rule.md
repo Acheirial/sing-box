@@ -146,6 +146,12 @@ dns:
       preferred_by:
         - local
         - ts-dns
+      dns_server_address:
+        local:
+          - 192.168.1.1/32
+      dns_search_domain:
+        ts-dns:
+          - example.ts.net
       wifi_ssid:
         - My WIFI
       wifi_bssid:
@@ -215,10 +221,8 @@ Tags of [Inbound](/configuration/inbound/).
     This field now also applies when a DNS rule is matched from an internal
     domain resolution that does not target a specific DNS server, such as a
     [`resolve`](../../route/rule_action/#resolve) route rule action without a
-    `server` set. In earlier versions, only DNS queries received from a
-    client evaluated this field. See
-    [Migration](/migration/#ip_version-and-query_type-behavior-changes-in-dns-rules)
-    for the full list.
+    `server` set. See
+    [Migration](/migration/#ip_version-and-query_type-behavior-changes-in-dns-rules).
 
     Setting this field makes the DNS rule incompatible in the same DNS
     configuration with Legacy Address Filter Fields in DNS rules, the Legacy
@@ -238,10 +242,8 @@ Not limited if empty.
     This field now also applies when a DNS rule is matched from an internal
     domain resolution that does not target a specific DNS server, such as a
     [`resolve`](../../route/rule_action/#resolve) route rule action without a
-    `server` set. In earlier versions, only DNS queries received from a
-    client evaluated this field. See
-    [Migration](/migration/#ip_version-and-query_type-behavior-changes-in-dns-rules)
-    for the full list.
+    `server` set. See
+    [Migration](/migration/#ip_version-and-query_type-behavior-changes-in-dns-rules).
 
     Setting this field makes the DNS rule incompatible in the same DNS
     configuration with Legacy Address Filter Fields in DNS rules, the Legacy
@@ -491,6 +493,32 @@ Match specified DNS servers' preferred domains.
 | `tailscale`   | Match MagicDNS hosts and DNS route suffixes                                  |
 | `openconnect` | Match split DNS and search domains pushed by the VPN server                  |
 | `resolved`    | Match split DNS and search domains from systemd-resolved links               |
+
+### dns_server_address
+
+Match specified DNS servers' server addresses.
+
+| Type          | Match                                         |
+|---------------|-----------------------------------------------|
+| `local`       | Match system DNS servers                      |
+| `dhcp`        | Match DNS servers from DHCP                   |
+| `resolved`    | Match DNS servers from systemd-resolved links |
+| `tailscale`   | Match DNS resolvers of the tailnet            |
+| `openvpn`     | Match DNS servers pushed by the VPN server    |
+| `openconnect` | Match DNS servers pushed by the VPN server    |
+
+### dns_search_domain
+
+Match specified DNS servers' search domains.
+
+| Type          | Match                                            |
+|---------------|--------------------------------------------------|
+| `local`       | Match system search domains                      |
+| `dhcp`        | Match search domains from DHCP                   |
+| `resolved`    | Match search domains from systemd-resolved links |
+| `tailscale`   | Match search domains of the tailnet              |
+| `openvpn`     | Match search domains pushed by the VPN server    |
+| `openconnect` | Match search domains pushed by the VPN server    |
 
 ### wifi_ssid
 

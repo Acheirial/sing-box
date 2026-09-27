@@ -33,6 +33,7 @@ peers:
 # ... UDP NAT 字段
 
 workers: 0
+on_demand: false
 
 # ... 拨号字段
 
@@ -114,6 +115,10 @@ echo "private key" || wg pubkey
 WireGuard worker 数量。
 
 默认使用 CPU 数量。
+
+## on_demand
+
+允许该 endpoint 在需要时断开连接。
 
 ## UDP NAT 字段
 
