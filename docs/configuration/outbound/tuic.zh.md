@@ -13,6 +13,7 @@ udp_relay_mode: native
 udp_over_stream: false
 zero_rtt_handshake: false
 heartbeat: 10s
+max_packet_size: 0
 network: tcp
 tls: {}
 
@@ -75,8 +76,13 @@ UDP 包中继模式
 请参阅 [Attack of the clones](https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/#attack-of-the-clones)
 
 ## heartbeat
-
 发送心跳包以保持连接存活的时间间隔
+
+默认使用 `10s`。
+
+## max_packet_size
+
+通过 QUIC datagram 进行 UDP 中继的最大数据包大小。
 
 ## network
 

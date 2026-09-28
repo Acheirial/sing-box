@@ -22,6 +22,7 @@ type Hysteria2InboundOptions struct {
 	Users                 []Hysteria2User `json:"users,omitempty"`
 	IgnoreClientBandwidth bool            `json:"ignore_client_bandwidth,omitempty"`
 	DisableUDP            bool            `json:"disable_udp,omitempty"`
+	DisableStatelessReset bool            `json:"disable_stateless_reset,omitempty"`
 	InboundTLSOptionsContainer
 	QUICOptions
 	Masquerade  *Hysteria2Masquerade   `json:"masquerade,omitempty"`

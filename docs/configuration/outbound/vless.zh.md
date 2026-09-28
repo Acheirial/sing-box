@@ -8,6 +8,7 @@ server: 127.0.0.1
 server_port: 1080
 uuid: bf000d23-0752-40b4-affe-68f7707a9661
 flow: xtls-rprx-vision
+vless_route: 0
 encryption: ""
 network: tcp
 tls: {}
@@ -38,6 +39,10 @@ VLESS 子协议。
 可用值：
 
 * `xtls-rprx-vision`
+
+## vless_route
+
+编码到用户 UUID 字节 6 和 7 的整数路由标记，与 Xray vlessRoute 匹配。
 
 ## encryption
 

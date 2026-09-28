@@ -93,6 +93,7 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 		UDPStream:         tuicUDPStream,
 		ZeroRTTHandshake:  options.ZeroRTTHandshake,
 		Heartbeat:         time.Duration(options.Heartbeat),
+		MaxPacketSize:     options.MaxPacketSize,
 	})
 	if err != nil {
 		return nil, err

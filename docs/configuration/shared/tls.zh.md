@@ -39,6 +39,7 @@ reality:
   short_id:
     - 0123456789abcdef
   max_time_difference: 1m
+  mldsa65_seed: ""
 ```
 
 ## 出站
@@ -562,7 +563,11 @@ Linux 上需要 `CAP_NET_RAW` 和 `CAP_NET_ADMIN`，macOS 上需要 root，Windo
 
 ### xver
 
-**仅服务器。**为回退连接请求的 PROXY 协议版本（`0`、`1` 或 `2`）。当前使用的 TLS 实现接受该值，但尚未发出 PROXY 标头。
+**仅服务器。**为回退连接请求的 PROXY 协议版本（`0`、`1` 或 `2`）。配置后，在回退连接上发送 PROXY 协议（v1 或 v2）。
+
+### mldsa65_seed
+
+**仅服务器。**用于 ML-DSA-65 服务器证书签名的 32 字节 Base64 URL 编码种子。
 
 ### show
 

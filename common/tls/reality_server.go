@@ -23,6 +23,7 @@ import (
 	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/common/ntp"
 
+	"github.com/cloudflare/circl/sign/mldsa/mldsa65"
 	utls "github.com/metacubex/utls"
 )
 
@@ -145,6 +146,17 @@ func NewRealityServer(ctx context.Context, logger log.ContextLogger, options opt
 	tlsConfig.PrivateKey = privateKey
 	tlsConfig.MaxTimeDiff = time.Duration(options.Reality.MaxTimeDifference)
 
+	if options.Reality.Mldsa65Seed != "" {
+		seed, err := base64.RawURLEncoding.DecodeString(options.Reality.Mldsa65Seed)
+		if err != nil {
+			return nil, E.Cause(err, "decode mldsa65_seed")
+		}
+		if len(seed) != 32 {
+			return nil, E.New("invalid mldsa65_seed length: expected 32 bytes")
+		}
+		_, key := mldsa65.NewKeyFromSeed((*[32]byte)(seed))
+		tlsConfig.Mldsa65Key = key.Bytes()
+	}
 	if options.Reality.MinClientVer != "" {
 		tlsConfig.MinClientVer, err = parseRealityClientVersion(options.Reality.MinClientVer)
 		if err != nil {

@@ -8,6 +8,7 @@ server: 127.0.0.1
 server_port: 1080
 uuid: bf000d23-0752-40b4-affe-68f7707a9661
 flow: xtls-rprx-vision
+vless_route: 0
 encryption: ""
 network: tcp
 tls: {}
@@ -38,6 +39,10 @@ VLESS Sub-protocol.
 Available values:
 
 * `xtls-rprx-vision`
+
+## vless_route
+
+Integer routing tag encoded into bytes 6 and 7 of the user UUID, matching Xray vlessRoute.
 
 ## encryption
 

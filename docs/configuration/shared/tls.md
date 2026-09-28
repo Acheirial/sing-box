@@ -39,6 +39,7 @@ reality:
   short_id:
     - 0123456789abcdef
   max_time_difference: 1m
+  mldsa65_seed: ""
 ```
 
 ## Outbound
@@ -569,8 +570,11 @@ connection, with the same fields as `limit_fallback_upload`.
 ### xver
 
 **Server only.** PROXY protocol version (`0`, `1` or `2`) requested for the
-fallback connection. The currently used TLS implementation accepts the value but
-does not emit a PROXY header yet.
+fallback connection. When configured, PROXY protocol (v1 or v2) is emitted on the fallback connection.
+
+### mldsa65_seed
+
+**Server only.** Base64 URL-encoded 32-byte seed for ML-DSA-65 server certificate signing.
 
 ### show
 

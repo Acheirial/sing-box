@@ -13,6 +13,7 @@ udp_relay_mode: native
 udp_over_stream: false
 zero_rtt_handshake: false
 heartbeat: 10s
+max_packet_size: 0
 network: tcp
 tls: {}
 
@@ -70,8 +71,26 @@ traffic (basically QUIC streams).
 
 Conflict with `udp_relay_mode`.
 
-## network
+## zero_rtt_handshake
 
+Enable 0-RTT QUIC connection handshake on the client side  
+This is not impacting much on the performance, as the protocol is fully multiplexed  
+
+!!! warning ""
+    Disabling this is highly recommended, as it is vulnerable to replay attacks.
+    See [Attack of the clones](https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/#attack-of-the-clones)
+
+## heartbeat
+
+Interval for sending heartbeat packets for keeping the connection alive.
+
+`10s` is used by default.
+
+## max_packet_size
+
+Maximum packet size for UDP relay over QUIC datagrams.
+
+## network
 Enabled network
 
 One of `tcp` `udp`.

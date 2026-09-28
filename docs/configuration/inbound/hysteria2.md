@@ -16,6 +16,7 @@ users:
     password: goofy_ahh_password
 ignore_client_bandwidth: false
 disable_udp: false
+disable_stateless_reset: false
 tls: {}
 
 # ... QUIC Fields
@@ -101,6 +102,10 @@ Deny clients to use the BBR CC.
 Disable UDP relay.
 
 UDP is enabled by default.
+
+## disable_stateless_reset
+
+Disable QUIC stateless reset.
 
 ## tls
 

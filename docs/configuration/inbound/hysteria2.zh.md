@@ -16,6 +16,7 @@ users:
     password: goofy_ahh_password
 ignore_client_bandwidth: false
 disable_udp: false
+disable_stateless_reset: false
 tls: {}
 
 # ... QUIC 字段
@@ -98,6 +99,10 @@ Hysteria 用户
 禁用 UDP 转发。
 
 默认启用 UDP。
+
+## disable_stateless_reset
+
+禁用 QUIC 无状态重置（stateless reset）。
 
 ## tls
 

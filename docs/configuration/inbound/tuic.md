@@ -14,6 +14,8 @@ congestion_control: cubic
 auth_timeout: 3s
 zero_rtt_handshake: false
 heartbeat: 10s
+max_packet_size: 0
+disable_stateless_reset: false
 tls: {}
 
 # ... QUIC Fields
@@ -65,8 +67,15 @@ Interval for sending heartbeat packets for keeping the connection alive
 
 `10s` is used by default.
 
-## tls
+## max_packet_size
 
+Maximum packet size for UDP relay over QUIC datagrams.
+
+## disable_stateless_reset
+
+Disable QUIC stateless reset.
+
+## tls
 **Required.** TLS configuration, see [TLS](/configuration/shared/tls/#inbound).
 
 TUIC runs over QUIC and negotiates the `h3` ALPN, so `tls.alpn` defaults to `h3` when unset. Setting `tls.alpn` explicitly overrides it.

@@ -14,6 +14,8 @@ congestion_control: cubic
 auth_timeout: 3s
 zero_rtt_handshake: false
 heartbeat: 10s
+max_packet_size: 0
+disable_stateless_reset: false
 tls: {}
 
 # ... QUIC 字段
@@ -65,8 +67,15 @@ QUIC 拥塞控制算法
 
 默认使用 `10s`。
 
-## tls
+## max_packet_size
 
+通过 QUIC datagram 进行 UDP 中继的最大数据包大小。
+
+## disable_stateless_reset
+
+禁用 QUIC 无状态重置（stateless reset）。
+
+## tls
 **必填。**TLS 配置, 参阅 [TLS](/zh/configuration/shared/tls/#入站)。
 
 TUIC 运行于 QUIC 之上并协商 `h3` ALPN，因此 `tls.alpn` 未设置时默认为 `h3`。显式设置 `tls.alpn` 会覆盖该默认值。

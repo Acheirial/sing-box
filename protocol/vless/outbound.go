@@ -102,7 +102,11 @@ func NewOutbound(ctx context.Context, router adapter.Router, logger log.ContextL
 			return nil, E.New("unknown packet encoding: ", *options.PacketEncoding)
 		}
 	}
-	outbound.client, err = vless.NewClient(options.UUID, options.Flow, logger)
+	var clientOptions []vless.ClientOption
+	if options.VlessRoute > 0 {
+		clientOptions = append(clientOptions, vless.ClientOptionWithRoute(options.VlessRoute))
+	}
+	outbound.client, err = vless.NewClient(options.UUID, options.Flow, logger, clientOptions...)
 	if err != nil {
 		return nil, err
 	}

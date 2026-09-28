@@ -4,11 +4,13 @@ import "github.com/sagernet/sing/common/json/badoption"
 
 type TUICInboundOptions struct {
 	ListenOptions
-	Users             []TUICUser         `json:"users,omitempty"`
-	CongestionControl string             `json:"congestion_control,omitempty" enum:"cubic,new_reno,bbr"`
-	AuthTimeout       badoption.Duration `json:"auth_timeout,omitempty"`
-	ZeroRTTHandshake  bool               `json:"zero_rtt_handshake,omitempty"`
-	Heartbeat         badoption.Duration `json:"heartbeat,omitempty"`
+	Users                 []TUICUser         `json:"users,omitempty"`
+	CongestionControl     string             `json:"congestion_control,omitempty" enum:"cubic,new_reno,bbr"`
+	AuthTimeout           badoption.Duration `json:"auth_timeout,omitempty"`
+	ZeroRTTHandshake      bool               `json:"zero_rtt_handshake,omitempty"`
+	Heartbeat             badoption.Duration `json:"heartbeat,omitempty"`
+	MaxPacketSize         int                `json:"max_packet_size,omitempty"`
+	DisableStatelessReset bool               `json:"disable_stateless_reset,omitempty"`
 	InboundTLSOptionsContainer
 	QUICOptions
 }
@@ -29,6 +31,7 @@ type TUICOutboundOptions struct {
 	UDPOverStream     bool               `json:"udp_over_stream,omitempty"`
 	ZeroRTTHandshake  bool               `json:"zero_rtt_handshake,omitempty"`
 	Heartbeat         badoption.Duration `json:"heartbeat,omitempty"`
+	MaxPacketSize     int                `json:"max_packet_size,omitempty"`
 	Network           NetworkList        `json:"network,omitempty"`
 	OutboundTLSOptionsContainer
 	QUICOptions

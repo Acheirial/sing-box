@@ -225,9 +225,11 @@ type InboundRealityOptions struct {
 	MinClientVer string `json:"min_client_ver,omitempty" examples:"1.0.0"`
 	MaxClientVer string `json:"max_client_ver,omitempty" examples:"1.0.0"`
 	// Xver selects the PROXY protocol version (0 to disable, 1 or 2) sent to the
-	// fallback target. It is passed to the REALITY implementation, but the pinned
-	// utls version accepts the value without emitting a PROXY header yet.
+	// fallback target.
 	Xver uint8 `json:"xver,omitempty"`
+	// Mldsa65Seed specifies the 32-byte seed in base64 URL format for ML-DSA-65
+	// server-side certificate signing.
+	Mldsa65Seed string `json:"mldsa65_seed,omitempty"`
 	// Show logs REALITY handshake details at info level instead of trace level.
 	Show bool `json:"show,omitempty"`
 	// MasterKeyLog writes the TLS master secrets to the given file in NSS key log

@@ -238,6 +238,7 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 		MasqueradeHandler:     masqueradeHandler,
 		BBRProfile:            options.BBRProfile,
 		RealmOptions:          realmOptions,
+		DisableStatelessReset: options.DisableStatelessReset,
 	})
 	if err != nil {
 		return nil, err

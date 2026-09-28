@@ -21,9 +21,10 @@ type VLESSUser struct {
 type VLESSOutboundOptions struct {
 	DialerOptions
 	ServerOptions
-	UUID    string      `json:"uuid"`
-	Flow    string      `json:"flow,omitempty"`
-	Network NetworkList `json:"network,omitempty"`
+	UUID       string      `json:"uuid"`
+	Flow       string      `json:"flow,omitempty"`
+	VlessRoute uint16      `json:"vless_route,omitempty"`
+	Network    NetworkList `json:"network,omitempty"`
 	// Encryption enables VLESS Encryption on this outbound. Empty or "none"
 	// leaves the connection untouched. Otherwise it uses the
 	// "mlkem768x25519plus" grammar, matching Xray's account.Encryption.

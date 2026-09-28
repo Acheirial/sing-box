@@ -81,12 +81,14 @@ func NewInbound(ctx context.Context, router adapter.Router, logger log.ContextLo
 			InitialPacketSize:       options.InitialPacketSize,
 			DisablePathMTUDiscovery: options.DisablePathMTUDiscovery,
 		},
-		CongestionControl: options.CongestionControl,
-		AuthTimeout:       time.Duration(options.AuthTimeout),
-		ZeroRTTHandshake:  options.ZeroRTTHandshake,
-		Heartbeat:         time.Duration(options.Heartbeat),
-		UDPTimeout:        udpTimeout,
-		Handler:           inbound,
+		CongestionControl:     options.CongestionControl,
+		AuthTimeout:           time.Duration(options.AuthTimeout),
+		ZeroRTTHandshake:      options.ZeroRTTHandshake,
+		Heartbeat:             time.Duration(options.Heartbeat),
+		UDPTimeout:            udpTimeout,
+		Handler:               inbound,
+		MaxPacketSize:         options.MaxPacketSize,
+		DisableStatelessReset: options.DisableStatelessReset,
 	})
 	if err != nil {
 		return nil, err
